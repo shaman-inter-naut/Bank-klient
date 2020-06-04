@@ -974,3 +974,271 @@ $_SERVER = [
     'argv' => []
     'argc' => 0
 ]
+2020-06-04 15:34:13 [-][-][-][error][yii\console\UnknownCommandException] yii\base\InvalidRouteException: Unable to resolve the request "migrate\". in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php:537
+Stack trace:
+#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate\\', Array)
+#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate\\', Array)
+#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
+#4 {main}
+
+Next yii\console\UnknownCommandException: Unknown command "migrate\". in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php:183
+Stack trace:
+#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate\\', Array)
+#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
+#3 {main}
+2020-06-04 15:34:13 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\sd6566\\AppData\\Roaming'
+    'COMMANDER_DRIVE' => 'C:'
+    'COMMANDER_EXE' => 'C:\\Program Files (x86)\\Total Commander\\TOTALCMD64.EXE'
+    'COMMANDER_INI' => 'C:\\Program Files (x86)\\Total Commander\\wincmd.ini'
+    'COMMANDER_INSTANCE' => '1'
+    'COMMANDER_PATH' => 'C:\\Program Files (x86)\\Total Commander'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'SD6566I1468'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\sd6566'
+    'LOCALAPPDATA' => 'C:\\Users\\sd6566\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DC03'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\sd6566\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\composer;C:\\Users\\sd6566\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\sd6566\\AppData\\Local\\GitHubDesktop\\bin;G:\\OSPanel\\modules\\php\\PHP_7.2-x64;C:\\Users\\sd6566\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 23 Stepping 10, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '170a'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
+    'USERDNSDOMAIN' => 'AND.AD.UZAUTOMOTORS.COM'
+    'USERDOMAIN' => 'AND'
+    'USERDOMAIN_ROAMINGPROFILE' => 'AND'
+    'USERNAME' => 'SD6566'
+    'USERPROFILE' => 'C:\\Users\\sd6566'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1591274053.1053
+    'REQUEST_TIME' => 1591274053
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate\\'
+    ]
+    'argc' => 2
+]
+2020-06-04 15:53:01 [-][-][-][error][yii\base\InvalidConfigException] ReflectionException: Class m200604_123519_hrsasasa does not exist in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php:447
+Stack trace:
+#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(447): ReflectionClass->__construct('m200604_123519_...')
+#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(374): yii\di\Container->getDependencies('m200604_123519_...')
+#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(159): yii\di\Container->build('m200604_123519_...', Array, Array)
+#3 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('m200604_123519_...', Array, Array)
+#4 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\MigrateController.php(202): yii\BaseYii::createObject(Array)
+#5 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(724): yii\console\controllers\MigrateController->createMigration('m200604_123519_...')
+#6 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(200): yii\console\controllers\BaseMigrateController->migrateUp('m200604_123519_...')
+#7 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#8 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#10 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Controller.php(164): yii\base\Controller->runAction('', Array)
+#11 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
+#12 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
+#13 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
+#14 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#15 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
+#16 {main}
+
+Next yii\base\InvalidConfigException: Failed to instantiate component or class "m200604_123519_hrsasasa". in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php:449
+Stack trace:
+#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(374): yii\di\Container->getDependencies('m200604_123519_...')
+#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(159): yii\di\Container->build('m200604_123519_...', Array, Array)
+#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('m200604_123519_...', Array, Array)
+#3 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\MigrateController.php(202): yii\BaseYii::createObject(Array)
+#4 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(724): yii\console\controllers\MigrateController->createMigration('m200604_123519_...')
+#5 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(200): yii\console\controllers\BaseMigrateController->migrateUp('m200604_123519_...')
+#6 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#7 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#9 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Controller.php(164): yii\base\Controller->runAction('', Array)
+#10 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
+#11 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
+#12 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
+#13 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#14 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
+#15 {main}
+2020-06-04 15:52:59 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\sd6566\\AppData\\Roaming'
+    'COMMANDER_DRIVE' => 'C:'
+    'COMMANDER_EXE' => 'C:\\Program Files (x86)\\Total Commander\\TOTALCMD64.EXE'
+    'COMMANDER_INI' => 'C:\\Program Files (x86)\\Total Commander\\wincmd.ini'
+    'COMMANDER_INSTANCE' => '1'
+    'COMMANDER_PATH' => 'C:\\Program Files (x86)\\Total Commander'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'SD6566I1468'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\sd6566'
+    'LOCALAPPDATA' => 'C:\\Users\\sd6566\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DC03'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\sd6566\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\composer;C:\\Users\\sd6566\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\sd6566\\AppData\\Local\\GitHubDesktop\\bin;G:\\OSPanel\\modules\\php\\PHP_7.2-x64;C:\\Users\\sd6566\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 23 Stepping 10, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '170a'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
+    'USERDNSDOMAIN' => 'AND.AD.UZAUTOMOTORS.COM'
+    'USERDOMAIN' => 'AND'
+    'USERDOMAIN_ROAMINGPROFILE' => 'AND'
+    'USERNAME' => 'SD6566'
+    'USERPROFILE' => 'C:\\Users\\sd6566'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1591275179.3375
+    'REQUEST_TIME' => 1591275179
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+    ]
+    'argc' => 2
+]
+2020-06-04 17:22:10 [-][-][-][error][ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ')' in G:\OSPanel\domains\Bank-klient\basic\_protected\console\migrations\m200604_142135_contracts.php:34
+Stack trace:
+#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\MigrateController.php(197): yii\console\controllers\BaseMigrateController->includeMigrationFile('m200604_142135_...')
+#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(724): yii\console\controllers\MigrateController->createMigration('m200604_142135_...')
+#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(200): yii\console\controllers\BaseMigrateController->migrateUp('m200604_142135_...')
+#3 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#4 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#6 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Controller.php(164): yii\base\Controller->runAction('', Array)
+#7 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
+#8 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
+#9 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
+#10 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
+#12 {main}
+2020-06-04 17:22:08 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\sd6566\\AppData\\Roaming'
+    'COMMANDER_DRIVE' => 'C:'
+    'COMMANDER_EXE' => 'C:\\Program Files (x86)\\Total Commander\\TOTALCMD64.EXE'
+    'COMMANDER_INI' => 'C:\\Program Files (x86)\\Total Commander\\wincmd.ini'
+    'COMMANDER_INSTANCE' => '1'
+    'COMMANDER_PATH' => 'C:\\Program Files (x86)\\Total Commander'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'SD6566I1468'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\sd6566'
+    'LOCALAPPDATA' => 'C:\\Users\\sd6566\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DC03'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\sd6566\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\composer;C:\\Users\\sd6566\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\sd6566\\AppData\\Local\\GitHubDesktop\\bin;G:\\OSPanel\\modules\\php\\PHP_7.2-x64;C:\\Users\\sd6566\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 23 Stepping 10, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '170a'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
+    'USERDNSDOMAIN' => 'AND.AD.UZAUTOMOTORS.COM'
+    'USERDOMAIN' => 'AND'
+    'USERDOMAIN_ROAMINGPROFILE' => 'AND'
+    'USERNAME' => 'SD6566'
+    'USERPROFILE' => 'C:\\Users\\sd6566'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1591280528.3043
+    'REQUEST_TIME' => 1591280528
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+    ]
+    'argc' => 2
+]
