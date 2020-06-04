@@ -17,7 +17,7 @@ Thumbs.db
 
 # composer vendor dir
 /_protected/vendor
-/_protected/runtime
+
 /_protected/config
 /assets
 
