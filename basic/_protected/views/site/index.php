@@ -5,63 +5,91 @@ $this->title = Yii::t('app', Yii::$app->name);
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully installed Yii2 improved application template</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.freetuts.org/tutorial/view?id=6">Read our tutorial</a></p>
-    </div>
 
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-3">
-                <h3>Yii documentation</h3>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-3">
-                <h3>Yii forum</h3>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.</p>
+            <h1>Ma'lumot</h1>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-3">
-                <h3>Yii extensions</h3>
+            <div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-            <div class="col-lg-3">
-                <h3>Freetuts.org</h3>
+                <h4>Tab</h4>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.</p>
+                <table class="table table-striped">
 
-                <p><a class="btn btn-default" href="http://www.freetuts.org/">Freetuts.org &raquo;</a></p>
+
+                    <thead class="thed">
+                    <tr>
+                        <th>T/R</th>
+                        <th>Korxonalar</th>
+                        <? foreach ($bank as $key => $value ) { ?>
+                            <th><?=$value->bank_name?></th>
+                        <? } ?>
+
+
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <? foreach ($company as $key => $item) {
+
+                        ?>
+                        <tr>
+                            <th scope="row"><?=$key+1?></th>
+                            <td><?=$item->company_name?></td>
+                            <td>
+                                3
+                            </td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                        </tr>
+                    <?}?>
+
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
 
-    </div>
-</div>
+
+        <style type="text/css">
+            .thed{
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+                padding: 8px;
+                border-spacing: 2px;
+            }
+            thead tr th {
+                border: 1px solid #ddd !important;
+                text-align: center;
+            }
+            tbody tr th {
+                border: 1px solid #ddd !important;
+                text-align: center;
+            }
+            tbody tr td {
+                border: 1px solid #ddd !important;
+                text-align: center;
+            }
+
+        </style>
 

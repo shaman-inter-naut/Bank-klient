@@ -15,6 +15,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use Yii;
+use app\models\Company;
+use app\models\Bank;
 
 /**
  * Site controller.
@@ -86,7 +88,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+
+        $bank = Bank::find()->all();
+
+        $company = Company::find()->all();
+
+        return $this->render('index',[
+
+            'bank' => $bank,
+            'company'=> $company
+        ]);
     }
 
     /**
