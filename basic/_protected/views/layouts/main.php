@@ -37,15 +37,49 @@ AppAsset::register($this);
     // everyone can see Home page
     $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/site/index']];
 
+    $menuItems[] =
+        [
+            'label' => 'Ma`lumotlar',
+            'items' => [
+                ['label' => 'Banklar', 'url' => '/site/bank'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Bank filiallari', 'url' => '/site/bank-filial'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Korxonalar', 'url' => '/site/korxona'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Korxona xisob raqamlari', 'url' => '/site/xr'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Shartnomalar', 'url' => '/site/shartnoma'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Hujjatlar / Provodkalar', 'url' => '/site/hujjat'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Fayllar', 'url' => '/site/fayl'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Valyutalar', 'url' => '/site/valyuta'],
+                '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                ['label' => 'Hisobotlar', 'url' => '/site/hisobot'],
+            ],
+        ];
+
     // we do not need to display About and Contact pages to employee+ roles
     if (!Yii::$app->user->can('employee')) {
-        $menuItems[] = ['label' => Yii::t('app', 'Biz haqimizda'), 'url' => ['/site/about']];
-        $menuItems[] = ['label' => Yii::t('app', 'Aloqa'), 'url' => ['/site/contact']];
+//        $menuItems[] = ['label' => Yii::t('app', 'Biz haqimizda'), 'url' => ['/site/about']];
+//        $menuItems[] = ['label' => Yii::t('app', 'Aloqa'), 'url' => ['/site/contact']];
     }
 
     // display Users to admin+ roles
     if (Yii::$app->user->can('admin')){
+        $menuItems[] = ['label' => Yii::t('app', 'Admin'), 'url' => ['/user/view', 'id' => Yii::$app->user->id]];
         $menuItems[] = ['label' => Yii::t('app', 'Foydalanuvchilar'), 'url' => ['/user/index']];
+
     }
     
     // display Logout to logged in users
@@ -82,8 +116,8 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Yii::t('app', Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; <?= "UzAuto Motors" ?> <?= date('Y') ?></p>
+        <p class="pull-right"><?= "" ?></p>
     </div>
 </footer>
 

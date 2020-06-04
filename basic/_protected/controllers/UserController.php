@@ -47,6 +47,16 @@ class UserController extends AppController
         return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
+
+    public function actionDocuments()
+    {
+//        die("salom");
+        return $this->render('documents');
+    }
+
+
+
+
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.

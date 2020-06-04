@@ -110,6 +110,53 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function actionBank()
+    {
+        return $this->render('bank');
+    }
+
+    public function actionBankFilial()
+    {
+        return $this->render('bank-filial');
+    }
+
+    public function actionKorxona()
+    {
+        return $this->render('korxona');
+    }
+
+    public function actionXr()
+    {
+        return $this->render('xr');
+    }
+
+    public function actionShartnoma()
+    {
+        return $this->render('shartnoma');
+    }
+
+    public function actionHujjat()
+    {
+        return $this->render('hujjat');
+    }
+
+    public function actionFayl()
+    {
+        return $this->render('fayl');
+    }
+
+    public function actionValyuta()
+    {
+        return $this->render('valyuta');
+    }
+
+    public function actionHisobot()
+    {
+        return $this->render('hisobot');
+    }
+
+
+
     /**
      * Displays the contact static page and sends the contact email.
      *
