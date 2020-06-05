@@ -52,6 +52,8 @@ class BankController extends Controller
      */
     public function actionView($id)
     {
+//        $model = $this->findModel($id);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -88,7 +90,8 @@ class BankController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+           // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

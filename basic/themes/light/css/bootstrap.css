@@ -35,6 +35,7 @@ video {
   display: inline-block;
   vertical-align: baseline;
 }
+
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -6879,4 +6880,12 @@ legend {
 }
 .modal .close {
   color: #333333;
+}
+
+
+
+/*Yangi qo`shilgan style*/
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
 }

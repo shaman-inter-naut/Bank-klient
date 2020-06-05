@@ -1,0 +1,39 @@
+/*Yangi qo`shilgan style*/
+.info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+}
+
+.thed{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    border-spacing: 2px;
+}
+thead tr th {
+    border: 1px solid #ddd !important;
+    text-align: center;
+}
+tbody tr th {
+    border: 1px solid #ddd !important;
+    text-align: center;
+}
+tbody tr td {
+    border: 1px solid #ddd !important;
+    text-align: left;
+}
+
+thead  tr {
+    background-color: #4CAF50
+}
+thead {
+    color: white
+}
+thead tr a {
+    color: white
+}
+
+

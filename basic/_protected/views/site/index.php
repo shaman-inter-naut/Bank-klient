@@ -5,27 +5,7 @@ $this->title = Yii::t('app', Yii::$app->name);
 ?>
 
 <style type="text/css">
-    .thed{
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #4CAF50;
-        color: white;
-        padding: 8px;
-        border-spacing: 2px;
-    }
-    thead tr th {
-        border: 1px solid #ddd !important;
-        text-align: center;
-    }
-    tbody tr th {
-        border: 1px solid #ddd !important;
-        text-align: center;
-    }
-    tbody tr td {
-        border: 1px solid #ddd !important;
-        text-align: center;
-    }
+
 
 </style>
 
