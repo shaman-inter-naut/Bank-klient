@@ -112,7 +112,38 @@ class SiteController extends Controller
 
     public function actionBank()
     {
-        return $this->render('bank');
+        $bank1 = Bank::find()->where(['id'=>1])->one();
+        $bank2 = Bank::find()->where(['id'=>2])->one();
+        $bank3 = Bank::find()->where(['id'=>3])->one();
+        $bank4 = Bank::find()->where(['id'=>4])->one();
+        $bank5 = Bank::find()->where(['id'=>5])->one();
+        $bank6 = Bank::find()->where(['id'=>6])->one();
+        $bank7 = Bank::find()->where(['id'=>7])->one();
+        $bank8 = Bank::find()->where(['id'=>8])->one();
+        $bank9 = Bank::find()->where(['id'=>9])->one();
+        $bank10 = Bank::find()->where(['id'=>10])->one();
+        $bank11 = Bank::find()->where(['id'=>11])->one();
+        $bank12 = Bank::find()->where(['id'=>12])->one();
+        $bank13 = Bank::find()->where(['id'=>13])->one();
+
+
+        return $this->render('bank',[
+
+            'bank1' => $bank1,
+            'bank2' => $bank2,
+            'bank3' => $bank3,
+            'bank4' => $bank4,
+            'bank5' => $bank5,
+            'bank6' => $bank6,
+            'bank7' => $bank7,
+            'bank8' => $bank8,
+            'bank9' => $bank9,
+            'bank10' => $bank10,
+            'bank11' => $bank11,
+            'bank12' => $bank12,
+            'bank13' => $bank13,
+
+        ]);
     }
 
     public function actionBankFilial()
