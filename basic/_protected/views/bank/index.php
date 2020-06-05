@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'name',
 
             ['class' => 'yii\grid\ActionColumn'],
@@ -35,3 +35,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+<style type="text/css">
+    thead  tr {
+        background-color: #4CAF50
+    }
+    thead {
+        color: white
+    }
+    thead tr a {
+        color: white
+    }
+</style>
