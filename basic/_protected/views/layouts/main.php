@@ -24,7 +24,8 @@ AppAsset::register($this);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<!--    <link rel="stylesheet" href="../../web/new.css">-->
+<!--<link rel="stylesheet" href="../../web/new.css"> -->
+
     <?php $this->head() ?>
     <style>
         .material-icons {vertical-align:-5%}
