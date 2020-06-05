@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Company;
+use app\models\Files;
 
 /**
- * CompanySearch represents the model behind the search form of `app\models\Company`.
+ * FilesSearch represents the model behind the search form of `app\models\Files`.
  */
-class CompanySearch extends Company
+class FilesSearch extends Files
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CompanySearch extends Company
     public function rules()
     {
         return [
-            [['id', 'inn', 'accaunt_begin', 'unical_code'], 'integer'],
-            [['name', 'short_name'], 'safe'],
+            [['id', 'company_inn', 'bank_mfo', 'company_account_number', 'code_currency', 'period', 'first_sum', 'last_sum', 'debit', 'credit', 'account_number_id', 'currency_id'], 'integer'],
+            [['file_date'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CompanySearch extends Company
      */
     public function search($params)
     {
-        $query = Company::find();
+        $query = Files::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,20 @@ class CompanySearch extends Company
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'inn' => $this->inn,
-            'accaunt_begin' => $this->accaunt_begin,
-            'unical_code' => $this->unical_code,
+            'company_inn' => $this->company_inn,
+            'bank_mfo' => $this->bank_mfo,
+            'company_account_number' => $this->company_account_number,
+            'code_currency' => $this->code_currency,
+            'period' => $this->period,
+            'first_sum' => $this->first_sum,
+            'last_sum' => $this->last_sum,
+            'debit' => $this->debit,
+            'credit' => $this->credit,
+            'account_number_id' => $this->account_number_id,
+            'currency_id' => $this->currency_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'short_name', $this->short_name]);
+        $query->andFilterWhere(['like', 'file_date', $this->file_date]);
 
         return $dataProvider;
     }

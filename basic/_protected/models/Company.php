@@ -8,11 +8,14 @@ use Yii;
  * This is the model class for table "company".
  *
  * @property int $id
- * @property string $company_name
- * @property string $company_short_name
- * @property string $company_inn
- * @property string $company_schyot
- * @property string $company_bank_kodi
+ * @property string|null $name
+ * @property string $short_name
+ * @property int|null $inn
+ * @property int $accaunt_begin
+ * @property int|null $unical_code
+ *
+ * @property AccountNumber[] $accountNumbers
+ * @property Contracts[] $contracts
  */
 class Company extends \yii\db\ActiveRecord
 {
@@ -30,11 +33,10 @@ class Company extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_name', 'company_short_name', 'company_inn', 'company_schyot', 'company_bank_kodi'], 'required'],
-            [['company_name', 'company_short_name'], 'string', 'max' => 255],
-            [['company_inn'], 'string', 'max' => 9],
-            [['company_schyot'], 'string', 'max' => 20],
-            [['company_bank_kodi'], 'string', 'max' => 10],
+            [['short_name', 'accaunt_begin'], 'required'],
+            [['inn', 'accaunt_begin', 'unical_code'], 'integer'],
+            [['name'], 'string', 'max' => 255],
+            [['short_name'], 'string', 'max' => 50],
         ];
     }
 
@@ -45,11 +47,31 @@ class Company extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'company_name' => 'Company Name',
-            'company_short_name' => 'Company Short Name',
-            'company_inn' => 'Company Inn',
-            'company_schyot' => 'Company Schyot',
-            'company_bank_kodi' => 'Company Bank Kodi',
+            'name' => 'Name',
+            'short_name' => 'Short Name',
+            'inn' => 'Inn',
+            'accaunt_begin' => 'Accaunt Begin',
+            'unical_code' => 'Unical Code',
         ];
+    }
+
+    /**
+     * Gets query for [[AccountNumbers]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAccountNumbers()
+    {
+        return $this->hasMany(AccountNumber::className(), ['company_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Contracts]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContracts()
+    {
+        return $this->hasMany(Contracts::className(), ['company_id' => 'id']);
     }
 }

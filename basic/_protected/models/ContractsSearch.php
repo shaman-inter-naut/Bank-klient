@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Company;
+use app\models\Contracts;
 
 /**
- * CompanySearch represents the model behind the search form of `app\models\Company`.
+ * ContractsSearch represents the model behind the search form of `app\models\Contracts`.
  */
-class CompanySearch extends Company
+class ContractsSearch extends Contracts
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CompanySearch extends Company
     public function rules()
     {
         return [
-            [['id', 'inn', 'accaunt_begin', 'unical_code'], 'integer'],
-            [['name', 'short_name'], 'safe'],
+            [['id', 'first_company', 'second_company', 'contract_number', 'company_id'], 'integer'],
+            [['contract_date'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CompanySearch extends Company
      */
     public function search($params)
     {
-        $query = Company::find();
+        $query = Contracts::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,13 @@ class CompanySearch extends Company
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'inn' => $this->inn,
-            'accaunt_begin' => $this->accaunt_begin,
-            'unical_code' => $this->unical_code,
+            'first_company' => $this->first_company,
+            'second_company' => $this->second_company,
+            'contract_number' => $this->contract_number,
+            'company_id' => $this->company_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'short_name', $this->short_name]);
+        $query->andFilterWhere(['like', 'contract_date', $this->contract_date]);
 
         return $dataProvider;
     }

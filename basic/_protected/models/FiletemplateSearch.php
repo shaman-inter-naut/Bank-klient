@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Company;
+use app\models\Filetemplate;
 
 /**
- * CompanySearch represents the model behind the search form of `app\models\Company`.
+ * FiletemplateSearch represents the model behind the search form of `app\models\Filetemplate`.
  */
-class CompanySearch extends Company
+class FiletemplateSearch extends Filetemplate
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CompanySearch extends Company
     public function rules()
     {
         return [
-            [['id', 'inn', 'accaunt_begin', 'unical_code'], 'integer'],
-            [['name', 'short_name'], 'safe'],
+            [['id', 'bank_id', 'in_address', 'mfo_address', 'hr_address', 'file_number_address'], 'integer'],
+            [['date_address'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CompanySearch extends Company
      */
     public function search($params)
     {
-        $query = Company::find();
+        $query = Filetemplate::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,14 @@ class CompanySearch extends Company
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'inn' => $this->inn,
-            'accaunt_begin' => $this->accaunt_begin,
-            'unical_code' => $this->unical_code,
+            'bank_id' => $this->bank_id,
+            'in_address' => $this->in_address,
+            'mfo_address' => $this->mfo_address,
+            'hr_address' => $this->hr_address,
+            'file_number_address' => $this->file_number_address,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'short_name', $this->short_name]);
+        $query->andFilterWhere(['like', 'date_address', $this->date_address]);
 
         return $dataProvider;
     }

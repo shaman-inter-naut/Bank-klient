@@ -45,7 +45,32 @@ AppAsset::register($this);
 
     // everyone can see Home page
     $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/site/index']];
-    $menuItems[] = ['label' => Yii::t('app', 'Bank'), 'url' => ['/bank/index']];
+    $menuItems[] =
+        [
+            'label' => 'Admin',
+            'items' => [
+                ['label' => 'Bank', 'url' => '/bank/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Contrackt', 'url' => '/contracts/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Currency', 'url' => '/currency/index'],
+                '<li class="divider"></li>',
+                ['label' => 'FileTemplate', 'url' => '/filetemplate/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Branch', 'url' => '/bankbranch/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Xisob raqam', 'url' => '/accountnumber/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Files', 'url' => '/files/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Documents', 'url' => '/documents/index'],
+                '<li class="divider"></li>',
+                ['label' => 'Company', 'url' => '/company/index'],
+                '<li class="divider"></li>',
+
+            ],
+        ];
+
 
     $menuItems[] =
         [

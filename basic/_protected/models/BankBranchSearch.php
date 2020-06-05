@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Company;
+use app\models\BankBranch;
 
 /**
- * CompanySearch represents the model behind the search form of `app\models\Company`.
+ * BankBranchSearch represents the model behind the search form of `app\models\BankBranch`.
  */
-class CompanySearch extends Company
+class BankBranchSearch extends BankBranch
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CompanySearch extends Company
     public function rules()
     {
         return [
-            [['id', 'inn', 'accaunt_begin', 'unical_code'], 'integer'],
-            [['name', 'short_name'], 'safe'],
+            [['id', 'mfo', 'bank_id'], 'integer'],
+            [['name_branch'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CompanySearch extends Company
      */
     public function search($params)
     {
-        $query = Company::find();
+        $query = BankBranch::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,11 @@ class CompanySearch extends Company
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'inn' => $this->inn,
-            'accaunt_begin' => $this->accaunt_begin,
-            'unical_code' => $this->unical_code,
+            'mfo' => $this->mfo,
+            'bank_id' => $this->bank_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'short_name', $this->short_name]);
+        $query->andFilterWhere(['like', 'name_branch', $this->name_branch]);
 
         return $dataProvider;
     }
