@@ -8,9 +8,10 @@ use Yii;
  * This is the model class for table "bank".
  *
  * @property int $id
- * @property string $bank_name
+ * @property string|null $name
  *
  * @property BankBranch[] $bankBranches
+ * @property FileTemplate[] $fileTemplates
  */
 class Bank extends \yii\db\ActiveRecord
 {
@@ -28,8 +29,7 @@ class Bank extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['bank_name'], 'required'],
-            [['bank_name'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -40,7 +40,7 @@ class Bank extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'bank_name' => 'Bank Name',
+            'name' => 'Name',
         ];
     }
 
@@ -52,5 +52,15 @@ class Bank extends \yii\db\ActiveRecord
     public function getBankBranches()
     {
         return $this->hasMany(BankBranch::className(), ['bank_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[FileTemplates]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFileTemplates()
+    {
+        return $this->hasMany(FileTemplate::className(), ['bank_id' => 'id']);
     }
 }
