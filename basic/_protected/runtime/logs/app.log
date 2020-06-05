@@ -974,271 +974,1698 @@ $_SERVER = [
     'argv' => []
     'argc' => 0
 ]
-2020-06-04 15:34:13 [-][-][-][error][yii\console\UnknownCommandException] yii\base\InvalidRouteException: Unable to resolve the request "migrate\". in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php:537
+2020-06-04 16:02:14 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException: You are not allowed to perform this action. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php:158
 Stack trace:
-#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate\\', Array)
-#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate\\', Array)
-#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
-#3 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
-#4 {main}
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php(131): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(276): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php(188): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(155): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('documents', Array)
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/documents', Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-06-04 16:02:14 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
 
-Next yii\console\UnknownCommandException: Unknown command "migrate\". in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php:183
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50403'
+    'REDIRECT_URL' => '/user/documents'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/documents'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591275734.318
+    'REQUEST_TIME' => 1591275734
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:03:46 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException: You are not allowed to perform this action. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php:158
 Stack trace:
-#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate\\', Array)
-#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
-#2 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php(131): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(276): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php(188): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(155): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('documents', Array)
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/documents', Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-06-04 16:03:46 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50410'
+    'REDIRECT_URL' => '/user/documents'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/documents'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591275826.425
+    'REQUEST_TIME' => 1591275826
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:03:47 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException: You are not allowed to perform this action. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php:158
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php(131): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(276): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php(188): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(155): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('documents', Array)
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/documents', Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-06-04 16:03:47 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50410'
+    'REDIRECT_URL' => '/user/documents'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/documents'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591275827.556
+    'REQUEST_TIME' => 1591275827
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:03:49 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException: You are not allowed to perform this action. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php:158
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php(131): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(276): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php(188): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(155): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('documents', Array)
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/documents', Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-06-04 16:03:48 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/documents'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50413'
+    'REDIRECT_URL' => '/user/documents'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/documents'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591275828.917
+    'REQUEST_TIME' => 1591275828
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:03:50 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException: You are not allowed to perform this action. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php:158
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php(131): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(276): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php(188): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(155): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('documents', Array)
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/documents', Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-06-04 16:03:49 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/documents'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50410'
+    'REDIRECT_URL' => '/user/documents'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/documents'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591275829.983
+    'REQUEST_TIME' => 1591275829
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:11:11 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:11:11 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50498'
+    'REDIRECT_URL' => '/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591276271.179
+    'REQUEST_TIME' => 1591276271
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:11:23 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:11:23 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/view'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50512'
+    'REDIRECT_URL' => '/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591276283.793
+    'REQUEST_TIME' => 1591276283
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:12:14 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "basic/user/view". in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php:537
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('basic/user/view', Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
 #3 {main}
-2020-06-04 15:34:13 [-][-][-][info][application] $_GET = []
+
+Next yii\web\NotFoundHttpException: Page not found. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#2 {main}
+2020-06-04 16:12:14 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
 
 $_POST = []
 
 $_FILES = []
 
-$_COOKIE = []
-
-$_SERVER = [
-    'ALLUSERSPROFILE' => 'C:\\ProgramData'
-    'APPDATA' => 'C:\\Users\\sd6566\\AppData\\Roaming'
-    'COMMANDER_DRIVE' => 'C:'
-    'COMMANDER_EXE' => 'C:\\Program Files (x86)\\Total Commander\\TOTALCMD64.EXE'
-    'COMMANDER_INI' => 'C:\\Program Files (x86)\\Total Commander\\wincmd.ini'
-    'COMMANDER_INSTANCE' => '1'
-    'COMMANDER_PATH' => 'C:\\Program Files (x86)\\Total Commander'
-    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
-    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
-    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
-    'COMPUTERNAME' => 'SD6566I1468'
-    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
-    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
-    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
-    'HOMEDRIVE' => 'C:'
-    'HOMEPATH' => '\\Users\\sd6566'
-    'LOCALAPPDATA' => 'C:\\Users\\sd6566\\AppData\\Local'
-    'LOGONSERVER' => '\\\\DC03'
-    'NUMBER_OF_PROCESSORS' => '2'
-    'OneDrive' => 'C:\\Users\\sd6566\\OneDrive'
-    'OS' => 'Windows_NT'
-    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\composer;C:\\Users\\sd6566\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\sd6566\\AppData\\Local\\GitHubDesktop\\bin;G:\\OSPanel\\modules\\php\\PHP_7.2-x64;C:\\Users\\sd6566\\AppData\\Roaming\\Composer\\vendor\\bin'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'PROCESSOR_ARCHITECTURE' => 'AMD64'
-    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 23 Stepping 10, GenuineIntel'
-    'PROCESSOR_LEVEL' => '6'
-    'PROCESSOR_REVISION' => '170a'
-    'ProgramData' => 'C:\\ProgramData'
-    'ProgramFiles' => 'C:\\Program Files'
-    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
-    'ProgramW6432' => 'C:\\Program Files'
-    'PROMPT' => '$P$G'
-    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
-    'PUBLIC' => 'C:\\Users\\Public'
-    'SESSIONNAME' => 'Console'
-    'SystemDrive' => 'C:'
-    'SystemRoot' => 'C:\\Windows'
-    'TEMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
-    'TMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
-    'USERDNSDOMAIN' => 'AND.AD.UZAUTOMOTORS.COM'
-    'USERDOMAIN' => 'AND'
-    'USERDOMAIN_ROAMINGPROFILE' => 'AND'
-    'USERNAME' => 'SD6566'
-    'USERPROFILE' => 'C:\\Users\\sd6566'
-    'windir' => 'C:\\Windows'
-    'PHP_SELF' => 'yii'
-    'SCRIPT_NAME' => 'yii'
-    'SCRIPT_FILENAME' => 'yii'
-    'PATH_TRANSLATED' => 'yii'
-    'DOCUMENT_ROOT' => ''
-    'REQUEST_TIME_FLOAT' => 1591274053.1053
-    'REQUEST_TIME' => 1591274053
-    'argv' => [
-        0 => 'yii'
-        1 => 'migrate\\'
-    ]
-    'argc' => 2
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
 ]
-2020-06-04 15:53:01 [-][-][-][error][yii\base\InvalidConfigException] ReflectionException: Class m200604_123519_hrsasasa does not exist in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php:447
-Stack trace:
-#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(447): ReflectionClass->__construct('m200604_123519_...')
-#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(374): yii\di\Container->getDependencies('m200604_123519_...')
-#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(159): yii\di\Container->build('m200604_123519_...', Array, Array)
-#3 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('m200604_123519_...', Array, Array)
-#4 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\MigrateController.php(202): yii\BaseYii::createObject(Array)
-#5 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(724): yii\console\controllers\MigrateController->createMigration('m200604_123519_...')
-#6 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(200): yii\console\controllers\BaseMigrateController->migrateUp('m200604_123519_...')
-#7 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
-#8 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
-#9 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
-#10 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Controller.php(164): yii\base\Controller->runAction('', Array)
-#11 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
-#12 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
-#13 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
-#14 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
-#15 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
-#16 {main}
 
-Next yii\base\InvalidConfigException: Failed to instantiate component or class "m200604_123519_hrsasasa". in G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php:449
-Stack trace:
-#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(374): yii\di\Container->getDependencies('m200604_123519_...')
-#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\di\Container.php(159): yii\di\Container->build('m200604_123519_...', Array, Array)
-#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\BaseYii.php(365): yii\di\Container->get('m200604_123519_...', Array, Array)
-#3 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\MigrateController.php(202): yii\BaseYii::createObject(Array)
-#4 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(724): yii\console\controllers\MigrateController->createMigration('m200604_123519_...')
-#5 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(200): yii\console\controllers\BaseMigrateController->migrateUp('m200604_123519_...')
-#6 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
-#7 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
-#8 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
-#9 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Controller.php(164): yii\base\Controller->runAction('', Array)
-#10 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
-#11 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
-#12 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
-#13 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
-#14 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
-#15 {main}
-2020-06-04 15:52:59 [-][-][-][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'ALLUSERSPROFILE' => 'C:\\ProgramData'
-    'APPDATA' => 'C:\\Users\\sd6566\\AppData\\Roaming'
-    'COMMANDER_DRIVE' => 'C:'
-    'COMMANDER_EXE' => 'C:\\Program Files (x86)\\Total Commander\\TOTALCMD64.EXE'
-    'COMMANDER_INI' => 'C:\\Program Files (x86)\\Total Commander\\wincmd.ini'
-    'COMMANDER_INSTANCE' => '1'
-    'COMMANDER_PATH' => 'C:\\Program Files (x86)\\Total Commander'
-    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
-    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
-    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
-    'COMPUTERNAME' => 'SD6566I1468'
-    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
-    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
-    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
-    'HOMEDRIVE' => 'C:'
-    'HOMEPATH' => '\\Users\\sd6566'
-    'LOCALAPPDATA' => 'C:\\Users\\sd6566\\AppData\\Local'
-    'LOGONSERVER' => '\\\\DC03'
-    'NUMBER_OF_PROCESSORS' => '2'
-    'OneDrive' => 'C:\\Users\\sd6566\\OneDrive'
-    'OS' => 'Windows_NT'
-    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\composer;C:\\Users\\sd6566\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\sd6566\\AppData\\Local\\GitHubDesktop\\bin;G:\\OSPanel\\modules\\php\\PHP_7.2-x64;C:\\Users\\sd6566\\AppData\\Roaming\\Composer\\vendor\\bin'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'PROCESSOR_ARCHITECTURE' => 'AMD64'
-    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 23 Stepping 10, GenuineIntel'
-    'PROCESSOR_LEVEL' => '6'
-    'PROCESSOR_REVISION' => '170a'
-    'ProgramData' => 'C:\\ProgramData'
-    'ProgramFiles' => 'C:\\Program Files'
-    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
-    'ProgramW6432' => 'C:\\Program Files'
-    'PROMPT' => '$P$G'
-    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
-    'PUBLIC' => 'C:\\Users\\Public'
-    'SESSIONNAME' => 'Console'
-    'SystemDrive' => 'C:'
-    'SystemRoot' => 'C:\\Windows'
-    'TEMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
-    'TMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
-    'USERDNSDOMAIN' => 'AND.AD.UZAUTOMOTORS.COM'
-    'USERDOMAIN' => 'AND'
-    'USERDOMAIN_ROAMINGPROFILE' => 'AND'
-    'USERNAME' => 'SD6566'
-    'USERPROFILE' => 'C:\\Users\\sd6566'
-    'windir' => 'C:\\Windows'
-    'PHP_SELF' => 'yii'
-    'SCRIPT_NAME' => 'yii'
-    'SCRIPT_FILENAME' => 'yii'
-    'PATH_TRANSLATED' => 'yii'
-    'DOCUMENT_ROOT' => ''
-    'REQUEST_TIME_FLOAT' => 1591275179.3375
-    'REQUEST_TIME' => 1591275179
-    'argv' => [
-        0 => 'yii'
-        1 => 'migrate'
-    ]
-    'argc' => 2
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
 ]
-2020-06-04 17:22:10 [-][-][-][error][ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ')' in G:\OSPanel\domains\Bank-klient\basic\_protected\console\migrations\m200604_142135_contracts.php:34
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50524'
+    'REDIRECT_URL' => '/basic/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591276334.481
+    'REQUEST_TIME' => 1591276334
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:13:19 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "basic/user/view". in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php:537
 Stack trace:
-#0 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\MigrateController.php(197): yii\console\controllers\BaseMigrateController->includeMigrationFile('m200604_142135_...')
-#1 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(724): yii\console\controllers\MigrateController->createMigration('m200604_142135_...')
-#2 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(200): yii\console\controllers\BaseMigrateController->migrateUp('m200604_142135_...')
-#3 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
-#4 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
-#5 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
-#6 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Controller.php(164): yii\base\Controller->runAction('', Array)
-#7 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
-#8 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
-#9 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
-#10 G:\OSPanel\domains\Bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
-#11 G:\OSPanel\domains\Bank-klient\basic\_protected\yii(20): yii\base\Application->run()
-#12 {main}
-2020-06-04 17:22:08 [-][-][-][info][application] $_GET = []
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('basic/user/view', Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#2 {main}
+2020-06-04 16:13:19 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
 
 $_POST = []
 
 $_FILES = []
 
-$_COOKIE = []
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
 
 $_SERVER = [
-    'ALLUSERSPROFILE' => 'C:\\ProgramData'
-    'APPDATA' => 'C:\\Users\\sd6566\\AppData\\Roaming'
-    'COMMANDER_DRIVE' => 'C:'
-    'COMMANDER_EXE' => 'C:\\Program Files (x86)\\Total Commander\\TOTALCMD64.EXE'
-    'COMMANDER_INI' => 'C:\\Program Files (x86)\\Total Commander\\wincmd.ini'
-    'COMMANDER_INSTANCE' => '1'
-    'COMMANDER_PATH' => 'C:\\Program Files (x86)\\Total Commander'
-    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
-    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
-    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
-    'COMPUTERNAME' => 'SD6566I1468'
-    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
-    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
-    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
-    'HOMEDRIVE' => 'C:'
-    'HOMEPATH' => '\\Users\\sd6566'
-    'LOCALAPPDATA' => 'C:\\Users\\sd6566\\AppData\\Local'
-    'LOGONSERVER' => '\\\\DC03'
-    'NUMBER_OF_PROCESSORS' => '2'
-    'OneDrive' => 'C:\\Users\\sd6566\\OneDrive'
-    'OS' => 'Windows_NT'
-    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\composer;C:\\Users\\sd6566\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\sd6566\\AppData\\Local\\GitHubDesktop\\bin;G:\\OSPanel\\modules\\php\\PHP_7.2-x64;C:\\Users\\sd6566\\AppData\\Roaming\\Composer\\vendor\\bin'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'PROCESSOR_ARCHITECTURE' => 'AMD64'
-    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 23 Stepping 10, GenuineIntel'
-    'PROCESSOR_LEVEL' => '6'
-    'PROCESSOR_REVISION' => '170a'
-    'ProgramData' => 'C:\\ProgramData'
-    'ProgramFiles' => 'C:\\Program Files'
-    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
-    'ProgramW6432' => 'C:\\Program Files'
-    'PROMPT' => '$P$G'
-    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
-    'PUBLIC' => 'C:\\Users\\Public'
-    'SESSIONNAME' => 'Console'
-    'SystemDrive' => 'C:'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
     'SystemRoot' => 'C:\\Windows'
-    'TEMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
-    'TMP' => 'C:\\Users\\sd6566\\AppData\\Local\\Temp'
-    'USERDNSDOMAIN' => 'AND.AD.UZAUTOMOTORS.COM'
-    'USERDOMAIN' => 'AND'
-    'USERDOMAIN_ROAMINGPROFILE' => 'AND'
-    'USERNAME' => 'SD6566'
-    'USERPROFILE' => 'C:\\Users\\sd6566'
-    'windir' => 'C:\\Windows'
-    'PHP_SELF' => 'yii'
-    'SCRIPT_NAME' => 'yii'
-    'SCRIPT_FILENAME' => 'yii'
-    'PATH_TRANSLATED' => 'yii'
-    'DOCUMENT_ROOT' => ''
-    'REQUEST_TIME_FLOAT' => 1591280528.3043
-    'REQUEST_TIME' => 1591280528
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50538'
+    'REDIRECT_URL' => '/basic/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/basic/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591276399.584
+    'REQUEST_TIME' => 1591276399
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:13:20 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:13:20 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/basic/user/view'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50538'
+    'REDIRECT_URL' => '/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591276400.826
+    'REQUEST_TIME' => 1591276400
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:13:27 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:13:27 [127.0.0.1][1][29rfgj374156jum6lk8es6jag316i20u][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '29rfgj374156jum6lk8es6jag316i20u'
+    '_identity' => '4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ\",2592000]\";}'
+    '_csrf' => 'c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ITblLtMIW8sGhlgsw26irZnXAwWHU5ub\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=29rfgj374156jum6lk8es6jag316i20u; _identity=4d5c03853f3ba16bfd8bc8c4106bf6865cfea5b1a3e60c1685ce47c5f5e1f382a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22eVTMIMIV4xK1RE0Nzf-sBh9IMZlFC3cZ%22%2C2592000%5D%22%3B%7D; _csrf=c479359003475f7f3d263e45f542b62a639b51852b89ed4a0843277a7830e2c9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ITblLtMIW8sGhlgsw26irZnXAwWHU5ub%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50548'
+    'REDIRECT_URL' => '/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591276407.881
+    'REQUEST_TIME' => 1591276407
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:27:56 [127.0.0.1][6][gjkqra0prjvg6i0nuicsq159iq4tr9ll][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:27:56 [127.0.0.1][6][gjkqra0prjvg6i0nuicsq159iq4tr9ll][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gjkqra0prjvg6i0nuicsq159iq4tr9ll'
+    '_identity' => 'cd22cf3b294e78da9fc5c3952a1ee974e55623e972e1cb3d27bdd0e41d81a312a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"NjmqVaA85ar3l0Hq34z4oIBmCibl10d3\",2592000]\";}'
+    '_csrf' => '939e09cc6e91eab850df8d88a3732d8e638883d585d83efbd5fd771a62ccba87a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"WzZ8HfBduiuKGRLmWhkGIuSjK3aeYsgH\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gjkqra0prjvg6i0nuicsq159iq4tr9ll; _identity=cd22cf3b294e78da9fc5c3952a1ee974e55623e972e1cb3d27bdd0e41d81a312a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22NjmqVaA85ar3l0Hq34z4oIBmCibl10d3%22%2C2592000%5D%22%3B%7D; _csrf=939e09cc6e91eab850df8d88a3732d8e638883d585d83efbd5fd771a62ccba87a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22WzZ8HfBduiuKGRLmWhkGIuSjK3aeYsgH%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50840'
+    'REDIRECT_URL' => '/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277276.455
+    'REQUEST_TIME' => 1591277276
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:30:04 [127.0.0.1][6][gjkqra0prjvg6i0nuicsq159iq4tr9ll][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('update', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/update', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:30:04 [127.0.0.1][6][gjkqra0prjvg6i0nuicsq159iq4tr9ll][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gjkqra0prjvg6i0nuicsq159iq4tr9ll'
+    '_identity' => 'cd22cf3b294e78da9fc5c3952a1ee974e55623e972e1cb3d27bdd0e41d81a312a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"NjmqVaA85ar3l0Hq34z4oIBmCibl10d3\",2592000]\";}'
+    '_csrf' => '939e09cc6e91eab850df8d88a3732d8e638883d585d83efbd5fd771a62ccba87a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"WzZ8HfBduiuKGRLmWhkGIuSjK3aeYsgH\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gjkqra0prjvg6i0nuicsq159iq4tr9ll; _identity=cd22cf3b294e78da9fc5c3952a1ee974e55623e972e1cb3d27bdd0e41d81a312a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22NjmqVaA85ar3l0Hq34z4oIBmCibl10d3%22%2C2592000%5D%22%3B%7D; _csrf=939e09cc6e91eab850df8d88a3732d8e638883d585d83efbd5fd771a62ccba87a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22WzZ8HfBduiuKGRLmWhkGIuSjK3aeYsgH%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50872'
+    'REDIRECT_URL' => '/user/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/update'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277404.065
+    'REQUEST_TIME' => 1591277404
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:30:19 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('update', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/update', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:30:19 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50885'
+    'REDIRECT_URL' => '/user/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/update'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277419.431
+    'REQUEST_TIME' => 1591277419
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:30:31 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('update', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/update', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:30:31 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50895'
+    'REDIRECT_URL' => '/user/update'
+    'REDIRECT_QUERY_STRING' => '=1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '=1'
+    'REQUEST_URI' => '/user/update?=1'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277431.222
+    'REQUEST_TIME' => 1591277431
     'argv' => [
-        0 => 'yii'
-        1 => 'migrate'
+        0 => '=1'
     ]
-    'argc' => 2
+    'argc' => 1
+]
+2020-06-04 16:30:53 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('update', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/update', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:30:53 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/update?id=5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50915'
+    'REDIRECT_URL' => '/user/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/update'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277453.16
+    'REQUEST_TIME' => 1591277453
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:30:55 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('update', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/update', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:30:55 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/update'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50920'
+    'REDIRECT_URL' => '/user/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/update'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277455.191
+    'REQUEST_TIME' => 1591277455
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:31:20 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('update', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/update', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:31:20 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/update?id=5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50931'
+    'REDIRECT_URL' => '/user/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/update'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277480.802
+    'REQUEST_TIME' => 1591277480
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:31:23 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Missing required parameters: id in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php:173
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#6 {main}
+2020-06-04 16:31:23 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/update'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50939'
+    'REDIRECT_URL' => '/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/view'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277483.174
+    'REQUEST_TIME' => 1591277483
+    'argv' => []
+    'argc' => 0
+]
+2020-06-04 16:31:30 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: The requested page does not exist. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\UserController.php:215
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\UserController.php(47): app\controllers\UserController->findModel('3')
+#1 [internal function]: app\controllers\UserController->actionView('3')
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#8 {main}
+2020-06-04 16:31:30 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = [
+    'id' => '3'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50942'
+    'REDIRECT_URL' => '/user/view'
+    'REDIRECT_QUERY_STRING' => 'id=3'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=3'
+    'REQUEST_URI' => '/user/view?id=3'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277490.874
+    'REQUEST_TIME' => 1591277490
+    'argv' => [
+        0 => 'id=3'
+    ]
+    'argc' => 1
+]
+2020-06-04 16:31:35 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: The requested page does not exist. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\UserController.php:215
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\UserController.php(47): app\controllers\UserController->findModel('1')
+#1 [internal function]: app\controllers\UserController->actionView('1')
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#8 {main}
+2020-06-04 16:31:35 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50950'
+    'REDIRECT_URL' => '/user/view'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_URI' => '/user/view?id=1'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277495.408
+    'REQUEST_TIME' => 1591277495
+    'argv' => [
+        0 => 'id=1'
+    ]
+    'argc' => 1
+]
+2020-06-04 16:31:59 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: The requested page does not exist. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\UserController.php:215
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\UserController.php(47): app\controllers\UserController->findModel('2')
+#1 [internal function]: app\controllers\UserController->actionView('2')
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('view', Array)
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/view', Array)
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#8 {main}
+2020-06-04 16:31:59 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '50961'
+    'REDIRECT_URL' => '/user/view'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_URI' => '/user/view?id=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277519.731
+    'REQUEST_TIME' => 1591277519
+    'argv' => [
+        0 => 'id=2'
+    ]
+    'argc' => 1
+]
+2020-06-04 16:37:08 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][error][yii\web\HttpException:403] yii\web\ForbiddenHttpException: You are not allowed to perform this action. in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php:158
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\filters\AccessControl.php(131): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(276): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Controller.php(188): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(155): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('documents', Array)
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('user/documents', Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#11 {main}
+2020-06-04 16:37:08 [127.0.0.1][4][93cb6b28f7agfbtoltncvhmukvfjo9q8][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => '93cb6b28f7agfbtoltncvhmukvfjo9q8'
+    '_identity' => 'f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[4,\"Zo9QxbbfyNETJiFICDp94Ng60OfSddqP\",2592000]\";}'
+    '_csrf' => 'bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://bank-klient/user/view?id=4'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=93cb6b28f7agfbtoltncvhmukvfjo9q8; _identity=f5f4f8ab29476565925d3594aa8a1976d3fa0d60075dfe5c162e1efa1e224ea5a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B4%2C%22Zo9QxbbfyNETJiFICDp94Ng60OfSddqP%22%2C2592000%5D%22%3B%7D; _csrf=bc2337a4d801f45046f296befa74ac917373e41bec4ff6d9a40cc78f527002aba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22FdDM7mV_AmFm2CcUZ8WZCs9-TVjQpRTZ%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '51017'
+    'REDIRECT_URL' => '/user/documents'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/user/documents'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591277828.52
+    'REQUEST_TIME' => 1591277828
+    'argv' => []
+    'argc' => 0
+]
+2020-06-05 05:05:54 [127.0.0.1][-][e3jvo11ejokj9laebbojn2sjv0937r1e][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: app\models\Company::company_name in E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Component.php:154
+Stack trace:
+#0 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(298): yii\base\Component->__get('company_name')
+#1 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\views\site\index.php(65): yii\db\BaseActiveRecord->__get('company_name')
+#2 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\View.php(348): require('E:\\OSPanel\\doma...')
+#3 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\View.php(257): yii\base\View->renderPhpFile('E:\\OSPanel\\doma...', Array)
+#4 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('E:\\OSPanel\\doma...', Array, Object(app\controllers\SiteController))
+#5 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(386): yii\base\View->render('index', Array, Object(app\controllers\SiteController))
+#6 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\controllers\SiteController.php(99): yii\base\Controller->render('index', Array)
+#7 [internal function]: app\controllers\SiteController->actionIndex()
+#8 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#10 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#11 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#12 E:\OSPanel\domains\localhost\bank-klient\basic\_protected\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 E:\OSPanel\domains\localhost\bank-klient\basic\index.php(12): yii\base\Application->run()
+#14 {main}
+2020-06-05 05:05:53 [127.0.0.1][-][e3jvo11ejokj9laebbojn2sjv0937r1e][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'e3jvo11ejokj9laebbojn2sjv0937r1e'
+    '_csrf' => '5efa92e143d9678f1e4537bf13c054b3625949bf033f32b1aa0162d5391844bca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RnqQbD2fpWJVe0zOaaN5KpLjchlJKS8v\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'bank-klient'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=e3jvo11ejokj9laebbojn2sjv0937r1e; _csrf=5efa92e143d9678f1e4537bf13c054b3625949bf033f32b1aa0162d5391844bca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22RnqQbD2fpWJVe0zOaaN5KpLjchlJKS8v%22%3B%7D'
+    'PATH' => 'e:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;e:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;e:\\ospanel\\modules\\php\\PHP_7.2-x64;e:\\ospanel\\modules\\wget\\bin;e:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64\\bin;e:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.2-7.3-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'bank-klient'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OSPanel/domains/localhost/bank-klient/basic'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OSPanel/domains/localhost/bank-klient/basic/index.php'
+    'REMOTE_PORT' => '64907'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1591322752.891
+    'REQUEST_TIME' => 1591322752
+    'argv' => []
+    'argc' => 0
 ]

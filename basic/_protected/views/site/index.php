@@ -3,6 +3,32 @@
 
 $this->title = Yii::t('app', Yii::$app->name);
 ?>
+
+<style type="text/css">
+    .thed{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px;
+        border-spacing: 2px;
+    }
+    thead tr th {
+        border: 1px solid #ddd !important;
+        text-align: center;
+    }
+    tbody tr th {
+        border: 1px solid #ddd !important;
+        text-align: center;
+    }
+    tbody tr td {
+        border: 1px solid #ddd !important;
+        text-align: center;
+    }
+
+</style>
+
 <div class="site-index">
 
 
@@ -10,14 +36,9 @@ $this->title = Yii::t('app', Yii::$app->name);
 
         <div class="row">
 
-
-
             <h1>Ma'lumot</h1>
 
             <div>
-
-
-                <h4>Tab</h4>
 
                 <table class="table table-striped">
 
@@ -27,7 +48,7 @@ $this->title = Yii::t('app', Yii::$app->name);
                         <th>T/R</th>
                         <th>Korxonalar</th>
                         <? foreach ($bank as $key => $value ) { ?>
-                            <th><?=$value->bank_name?></th>
+                            <th><?=$value->name?></th>
                         <? } ?>
 
 
@@ -41,7 +62,7 @@ $this->title = Yii::t('app', Yii::$app->name);
                         ?>
                         <tr>
                             <th scope="row"><?=$key+1?></th>
-                            <td><?=$item->company_name?></td>
+                            <td><?=$item->name?></td>
                             <td>
                                 3
                             </td>
@@ -68,28 +89,5 @@ $this->title = Yii::t('app', Yii::$app->name);
         </div>
 
 
-        <style type="text/css">
-            .thed{
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #4CAF50;
-                color: white;
-                padding: 8px;
-                border-spacing: 2px;
-            }
-            thead tr th {
-                border: 1px solid #ddd !important;
-                text-align: center;
-            }
-            tbody tr th {
-                border: 1px solid #ddd !important;
-                text-align: center;
-            }
-            tbody tr td {
-                border: 1px solid #ddd !important;
-                text-align: center;
-            }
 
-        </style>
 
