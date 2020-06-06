@@ -11,11 +11,12 @@ $this->title = 'My Yii Application';
 
 <div class="tab">
 
-    <?php  foreach($bank as $value) { ?>
-        <a href='bank?id=<?= $value->id; ?>' class="tablinks"
-           onclick="getBranches(event, '<?= $value->id; ?>')"><?= $value->name . '<br>'; ?></a>
-     <? } ?>
-
+    <ul class="banks">
+        <?php  foreach($bank as $value) { ?>
+        <li class="tablinks"><a href='bank?id=<?= $value->id; ?>'
+                                onclick="getBranches(event, '<?= $value->id; ?>')"><?= $value->name . '<br>'; ?></a></li>
+        <? } ?>
+    </ul>
 
 <!--    <button class="tablinks" onclick="getBranches(event, 'infin')" id="defaultOpen">Инфин банк</button>-->
 
@@ -61,6 +62,17 @@ $this->title = 'My Yii Application';
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+    var closebtns = document.getElementsByClassName("close");
+    var i;
+
+    for (i = 0; i < closebtns.length; i++) {
+        closebtns[i].addEventListener("click", function() {
+            this.parentElement.style.display = 'none';
+        });
+    }
 </script>
 
 </body>
