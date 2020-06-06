@@ -46,7 +46,7 @@ thead tr a {
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab a {
     display: block;
     background-color: inherit;
     color: black;
@@ -62,12 +62,12 @@ thead tr a {
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.tab a:hover {
     background-color: #ddd;
 }
 
 /* Create an active/current "tab button" class */
-.tab button.active {
+.tab a.active {
     background-color: #ccc;
 }
 
