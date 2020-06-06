@@ -53,7 +53,6 @@ $this->title = 'My Yii Application';
     <p>Инфин банк</p>
 
 
-
     <table class="table table-striped">
         <thead class="thed">
         <tr>
@@ -65,11 +64,11 @@ $this->title = 'My Yii Application';
         </thead>
         <tbody>
         <? foreach ($bank1->bankBranches as $key => $value){ ?>
-        <tr class="left">
-            <th><?=$key+1?></th>
-            <thstyle="text-align: left"><?=$value->short_name?></th>
-            <th><?=$value->mfo?></th>
-        </tr>
+            <tr>
+                <th><?=$key+1?></th>
+                <th style="text-align: left"><?=$value->short_name?></th>
+                <th><?=$value->mfo?></th>
+            </tr>
         <?}?>
         </tbody>
 
