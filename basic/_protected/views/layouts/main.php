@@ -76,7 +76,7 @@ AppAsset::register($this);
         [
             'label' => 'Ma`lumotlar',
             'items' => [
-                ['label' => 'Banklar', 'url' => '/site/bank'],
+                ['label' => 'Banklar', 'url' => '/site/bank?id=1'],
                 '<li class="divider"></li>',
 //                '<li class="dropdown-header">Dropdown Header</li>',
                 ['label' => 'Bank filiallari', 'url' => '/site/bank-filial'],

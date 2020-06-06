@@ -111,7 +111,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionBank()
+    public function actionBank($id='1')
     {
         $bank = Bank::find()->all();
 
