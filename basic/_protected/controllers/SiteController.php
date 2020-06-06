@@ -18,6 +18,7 @@ use Yii;
 use app\models\Company;
 use app\models\Bank;
 use app\models\BankBranch;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller.
@@ -115,55 +116,61 @@ class SiteController extends Controller
     {
         $bank = Bank::find()->all();
 
-//        $branch = $this->findModel($id);
-//        $branch = BankBranch::find()->where(['id'=>$id])->one();
-//        echo "Branch:" .$branch;
-
         if (Yii::$app->request->get('id')) {
             $id = Yii::$app->request->get('id');
-//            $getID = Bank::find()->where(['id'=>$id])->one();
+            $getID = Bank::find()->where(['id'=>$id])->one();
             $getBranchID = BankBranch::find()->where(['bank_id'=>$id])->all();
-
-//            foreach ($getBranchID as $key){
-//                echo "Filial:  ".$key->short_name.'<br>';
-//            }
         }
 
-//        $bank1 = Bank::find()->where(['id'=>1])->one();
-//        $bank2 = Bank::find()->where(['id'=>2])->one();
-//        $bank3 = Bank::find()->where(['id'=>3])->one();
-//        $bank4 = Bank::find()->where(['id'=>4])->one();
-//        $bank5 = Bank::find()->where(['id'=>5])->one();
-//        $bank6 = Bank::find()->where(['id'=>6])->one();
-//        $bank7 = Bank::find()->where(['id'=>7])->one();
-//        $bank8 = Bank::find()->where(['id'=>8])->one();
-//        $bank9 = Bank::find()->where(['id'=>9])->one();
-//        $bank10 = Bank::find()->where(['id'=>10])->one();
-//        $bank11 = Bank::find()->where(['id'=>11])->one();
-//        $bank12 = Bank::find()->where(['id'=>12])->one();
-//        $bank13 = Bank::find()->where(['id'=>13])->one();
-
-
         return $this->render('bank',[
-
             'bank' => $bank,
             'getBranchID' => $getBranchID,
-            'bank1' => $bank1,
-            'bank2' => $bank2,
-            'bank3' => $bank3,
-            'bank4' => $bank4,
-            'bank5' => $bank5,
-            'bank6' => $bank6,
-            'bank7' => $bank7,
-            'bank8' => $bank8,
-            'bank9' => $bank9,
-            'bank10' => $bank10,
-            'bank11' => $bank11,
-            'bank12' => $bank12,
-            'bank13' => $bank13,
-
+            'getID' => $getID,
         ]);
     }
+
+
+    public function actionView($id)
+    {
+//        $model = $this->findModel($id);
+
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+
+    protected function findModel($id)
+    {
+        if (($model = BankBranch::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
 
     public function actionBankFilial()
     {

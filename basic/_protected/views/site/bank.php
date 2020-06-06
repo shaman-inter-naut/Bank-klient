@@ -1,11 +1,13 @@
 <?
+
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = 'My Yii Application';
 ?>
 
-<div class="info" style="margin-bottom: 15px; padding: 20px;">
-    <p><strong style="font-size: 24px">Банклар ва филиаллари</strong></p>
+<div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
+    <p><strong style="font-size: 24px">БАНКЛАР ВА ФИЛИАЛЛАР</strong></p>
 </div>
 
 
@@ -14,7 +16,7 @@ $this->title = 'My Yii Application';
     <ul class="banks">
         <?php  foreach($bank as $value) { ?>
         <li class="tablinks"><a href='bank?id=<?= $value->id; ?>'
-                                onclick="getBranches(event, '<?= $value->id; ?>')"><?= $value->name . '<br>'; ?></a></li>
+            onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
         <? } ?>
     </ul>
 
@@ -22,12 +24,15 @@ $this->title = 'My Yii Application';
 
 </div>
 
-    <div id='<?= $idd ?>' class="tabcontent">
+    <div id='<?= $getID->id; ?>' class="tabcontent">
         <table class="table table-striped">
             <thead class="thed">
             <tr>
                 <th><h4>№</h4></th>
-                <th><h4><?= $bname; ?> филиаллари</h4> </th>
+                <th style=""><h4>
+                        <div class="col-md-11"><?= $getID->name; ?> филиаллари</div>
+                        <div class="col-md-1"><?= Html::a('add_circle', ['/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
+                    </h4> </th>
                 <th><h4>МФО</h4></th>
             </tr>
             </thead>
@@ -35,7 +40,23 @@ $this->title = 'My Yii Application';
             <?  foreach ($getBranchID as $key => $val){  ?>
                 <tr>
                     <th><?=$key+1?></th>
-                    <th style="text-align: left"><?=$val->short_name?></th>
+                    <th style="text-align: left">
+                        <button class="accordion"  style="color: darkgreen"><?= $val->short_name; ?></button>
+                        <div class="panel">
+                            <br>
+                            <table class="table" border="1" width="100%">
+                                <tr>
+                                    <td width="90%"><?= $val->name_branch; ?></td>
+                                    <td width="5%" >
+                                        <?= Html::a('create', ['/update', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    </td>
+                                    <td width="5%">
+                                        <?= Html::a('delete_forever', ['/view', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </th>
                     <th><?=$val->mfo?></th>
                 </tr>
             <?php } ?>
@@ -65,15 +86,23 @@ $this->title = 'My Yii Application';
 </script>
 
 <script>
-    var closebtns = document.getElementsByClassName("close");
+    var acc = document.getElementsByClassName("accordion");
     var i;
 
-    for (i = 0; i < closebtns.length; i++) {
-        closebtns[i].addEventListener("click", function() {
-            this.parentElement.style.display = 'none';
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
         });
     }
 </script>
+
+
 
 </body>
 </html>
