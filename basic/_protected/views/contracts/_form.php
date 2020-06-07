@@ -2,6 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+//use app\models\Company;
+use yii\helpers\ArrayHelper
+//$names = Company::find()->all();
+//$name = $names->short_name;
+//$name = ArrayHelper::map($name,'id','short_name');
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Contracts */
@@ -20,7 +25,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'contract_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'company_id')->textInput() ?>
+    <?= $form->field($model, 'company_id')->dropDownList(
+            ArrayHelper::map(\app\models\Company::find()->all(),
+                'id',
+                'short_name')
+    )->label(Yii::t('app', 'Корхона номи'),
+        [
+                'prompt'=>'<----Корхонани таиланг---->'
+        ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

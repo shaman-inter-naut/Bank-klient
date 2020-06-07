@@ -73,4 +73,13 @@ class Contracts extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Documents::className(), ['contracts_id' => 'id']);
     }
+
+    public function beforeSave($insert){
+        if($insert){
+
+            $this->contract_date = time();
+
+        }
+        return parent::beforeSave($insert);
+    }
 }

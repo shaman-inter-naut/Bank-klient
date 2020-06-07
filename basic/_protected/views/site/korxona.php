@@ -31,9 +31,9 @@ $this->title = 'My Yii Application';
             <th><h4>№</h4></th>
             <th style=""><h4>
                     <div class="col-md-11"><?= $getID->name; ?> Шартномалари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle', ['company/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
+                    <div class="col-md-1"><?= Html::a('add_circle', ['contracts/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
                 </h4> </th>
-            <th><h4>МФО</h4></th>
+            <th><h4 style="width: 50px;">Шартнома вакти</h4></th>
         </tr>
         </thead>
         <tbody>
@@ -48,16 +48,17 @@ $this->title = 'My Yii Application';
                             <tr>
                                 <td width="90%"><?= $val->contract_number; ?></td>
                                 <td width="5%" >
-                                    <?= Html::a('create', ['company/update', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    <?= Html::a('create', ['contracts/update', 'id' => $val->id], ['class' => 'material-icons']);?>
                                 </td>
                                 <td width="5%">
-                                    <?= Html::a('delete_forever', ['company/view', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    <?= Html::a('delete_forever', ['contracts/view', 'id' => $val->id], ['class' => 'material-icons']);?>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </th>
-                <th><?=$val->contract_date?></th>
+                <th><?=date("d-m-Y",$val->contract_date)?></th>
+
             </tr>
         <?php } ?>
         </tbody>
