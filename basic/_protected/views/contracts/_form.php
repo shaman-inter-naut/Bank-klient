@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 //use app\models\Company;
-use yii\helpers\ArrayHelper
+use yii\helpers\ArrayHelper;
 //$names = Company::find()->all();
 //$name = $names->short_name;
 //$name = ArrayHelper::map($name,'id','short_name');
@@ -28,11 +28,12 @@ use yii\helpers\ArrayHelper
     <?= $form->field($model, 'company_id')->dropDownList(
             ArrayHelper::map(\app\models\Company::find()->all(),
                 'id',
-                'short_name')
-    )->label(Yii::t('app', 'Корхона номи'),
+                'short_name'),
         [
-                'prompt'=>'<----Корхонани таиланг---->'
-        ]) ?>
+            'prompt'=>'---Корхонани танланг---'
+        ]
+    )->label( 'Корхона номи')
+         ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
