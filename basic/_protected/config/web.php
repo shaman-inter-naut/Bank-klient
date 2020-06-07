@@ -36,7 +36,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<alias:\w+>' => 'site/<alias>',
+//                '<alias:\w+>' => 'site/<alias>',
+//                'site' => '/bank/info',
+                '' => 'bank/info',
             ],
         ],
         'user' => [

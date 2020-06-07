@@ -44,7 +44,7 @@ AppAsset::register($this);
         ]);
 
         // everyone can see Home page
-        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/site/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/bank/info']];
         $menuItems[] =
             [
                 'label' => 'Admin',
@@ -76,7 +76,7 @@ AppAsset::register($this);
             [
                 'label' => 'Ma`lumotlar',
                 'items' => [
-                    ['label' => 'Banklar', 'url' => '/site/bank?id=1'],
+                    ['label' => 'Banklar', 'url' => '/bank/info'],
                     '<li class="divider"></li>',
 //                '<li class="dropdown-header">Dropdown Header</li>',
                     ['label' => 'Bank filiallari', 'url' => '/site/bank-filial'],

@@ -112,15 +112,18 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionBank($id='1')
+
+
+
+
+    public function actionBank()
     {
         $bank = Bank::find()->all();
 
-        if (Yii::$app->request->get('id')) {
-            $id = Yii::$app->request->get('id');
-            $getID = Bank::find()->where(['id'=>$id])->one();
-            $getBranchID = BankBranch::find()->where(['bank_id'=>$id])->all();
-        }
+        $id = Yii::$app->request->get('id');
+        $idnew = empty($id) ? 1 : $id;
+        $getID = Bank::find()->where(['id'=>$idnew])->one();
+        $getBranchID = BankBranch::find()->where(['bank_id'=>$idnew])->all();
 
         return $this->render('bank',[
             'bank' => $bank,
@@ -133,7 +136,6 @@ class SiteController extends Controller
 
     public function actionKorxona($id='1')
     {
-
         $company = Company::find()->all();
 
         if (Yii::$app->request->get('id')) {

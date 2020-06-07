@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\BankBranch;
 use Yii;
 use app\models\Bank;
 use app\models\BankSearch;
+use app\models\BankBranchSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,6 +30,25 @@ class BankController extends Controller
             ],
         ];
     }
+
+
+    public function actionInfo()
+    {
+        $bank = Bank::find()->all();
+
+        $id = Yii::$app->request->get('id');
+        $idnew = empty($id) ? 1 : $id;
+        $getID = Bank::find()->where(['id'=>$idnew])->one();
+        $getBranchID = BankBranch::find()->where(['bank_id'=>$idnew])->all();
+
+        return $this->render('info',[
+            'bank' => $bank,
+            'getBranchID' => $getBranchID,
+            'getID' => $getID,
+        ]);
+    }
+
+
 
     /**
      * Lists all Bank models.
@@ -91,7 +112,7 @@ class BankController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
            // return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['index']);
+            return $this->redirect(['info']);
         }
 
         return $this->render('update', [

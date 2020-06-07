@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = 'My Yii Application';
+
+
 ?>
 
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
@@ -82,7 +84,7 @@ $this->title = 'My Yii Application';
     }
 
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+    document.getElementById("<?php echo ($getID->id == null) ? '?id=1' : ''; ?>").click();
 </script>
 
 <script>
@@ -102,7 +104,3 @@ $this->title = 'My Yii Application';
     }
 </script>
 
-
-
-</body>
-</html>
