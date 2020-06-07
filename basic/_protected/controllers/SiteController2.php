@@ -116,48 +116,65 @@ class SiteController extends Controller
     {
         $bank = Bank::find()->all();
 
+//        $branch = $this->findModel($id);
+//        $branch = BankBranch::find()->where(['id'=>$id])->one();
+//        echo "Branch:" .$branch;
+
         if (Yii::$app->request->get('id')) {
             $id = Yii::$app->request->get('id');
-            $getID = Bank::find()->where(['id'=>$id])->one();
+//            $getID = Bank::find()->where(['id'=>$id])->one();
             $getBranchID = BankBranch::find()->where(['bank_id'=>$id])->all();
+
+//            foreach ($getBranchID as $key){
+//                echo "Filial:  ".$key->short_name.'<br>';
+//            }
         }
+
 
         return $this->render('bank',[
+
             'bank' => $bank,
             'getBranchID' => $getBranchID,
-            'getID' => $getID,
+
+
         ]);
     }
-
-
-
-    public function actionKorxona($id='1')
-    {
-
-        $company = Company::find()->all();
-
-        if (Yii::$app->request->get('id')) {
-            $id = Yii::$app->request->get('id');
-            $getID = Company::find()->where(['id' => $id])->one();
-            $getContractID = Contracts::find()->where(['company_id' => $id])->all();
-        }
-
-        return $this->render('korxona',[
-
-            'company' => $company,
-            'getContractID' =>  $getContractID,
-            'getID' => $getID,
-
-        ]);
-
-
-    }
-
 
     public function actionBankFilial()
     {
         return $this->render('bank-filial');
     }
+
+
+
+    public function actionKorxona()
+    {
+
+        $company = Company::find()->all();
+
+       
+        return $this->render('korxona',[
+
+            'company' => $company,
+            
+
+        ]);
+
+
+    }
+
+    public function actionCont()
+    {
+        $id = $_GET['val'];
+//        $korxona = Company::find()->where(['id'=>$id])->one();   yoki bu varianti
+        $korxona = Contracts::find()->where(['company_id'=>$id])->all();
+        Yii::$app->response->format='json';
+        if (!empty($korxona)){
+            return ['result' => 'success', 'korxona' => $korxona];
+        }
+        else return ['result' => 'error'];
+    }
+
 
 
     public function actionXr()

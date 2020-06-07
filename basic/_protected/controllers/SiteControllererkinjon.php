@@ -18,7 +18,7 @@ use Yii;
 use app\models\Company;
 use app\models\Bank;
 use app\models\BankBranch;
-use app\models\Contracts;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller.
@@ -130,27 +130,45 @@ class SiteController extends Controller
     }
 
 
-
-    public function actionKorxona($id='1')
+    public function actionView($id)
     {
+//        $model = $this->findModel($id);
 
-        $company = Company::find()->all();
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
-        if (Yii::$app->request->get('id')) {
-            $id = Yii::$app->request->get('id');
-            $getID = Company::find()->where(['id' => $id])->one();
-            $getContractID = Contracts::find()->where(['company_id' => $id])->all();
+
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
-        return $this->render('korxona',[
-
-            'company' => $company,
-            'getContractID' =>  $getContractID,
-            'getID' => $getID,
-
+        return $this->render('update', [
+            'model' => $model,
         ]);
+    }
+
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
 
 
+    protected function findModel($id)
+    {
+        if (($model = BankBranch::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
 
@@ -159,6 +177,10 @@ class SiteController extends Controller
         return $this->render('bank-filial');
     }
 
+    public function actionKorxona()
+    {
+        return $this->render('korxona');
+    }
 
     public function actionXr()
     {
