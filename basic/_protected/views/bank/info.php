@@ -31,7 +31,7 @@ $this->title = 'My Yii Application';
             <th><h4>№</h4></th>
             <th style=""><h4>
                     <div class="col-md-11"><?= $getID->name; ?> филиаллари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle', ['/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
+                    <div class="col-md-1"><?= Html::a('add_circle', ['bankbranch/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
                 </h4> </th>
             <th><h4>МФО</h4></th>
         </tr>
@@ -51,7 +51,7 @@ $this->title = 'My Yii Application';
                                     <?= Html::a('create', ['bankbranch/update', 'id' => $val->id], ['class' => 'material-icons']);?>
                                 </td>
                                 <td width="5%">
-                                    <?= Html::a('delete_forever', ['bank/view', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    <?= Html::a('delete_forever', ['bankbranch/view', 'id' => $val->id], ['class' => 'material-icons']);?>
                                 </td>
                             </tr>
                         </table>
