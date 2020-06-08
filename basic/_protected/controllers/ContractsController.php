@@ -67,8 +67,7 @@ class ContractsController extends Controller
         $model = new Contracts();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -88,8 +87,7 @@ class ContractsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['site/korxona']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [

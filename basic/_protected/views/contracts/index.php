@@ -27,11 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'first_company',
-            'second_company',
+            'firstCompany.name',
+            'secondCompany.name',
+//        [
+//                'attribute' => 'first_company_id',
+//                'label' => 'nomi',
+//        ],
+//            'second_company_id',
             'contract_number',
             'contract_date',
-            //'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
@@ -39,16 +43,3 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
-
-</div>
-<style type="text/css">
-    thead  tr {
-        background-color: #4CAF50
-    }
-    thead {
-        color: white
-    }
-    thead tr a {
-        color: white
-    }
-</style>

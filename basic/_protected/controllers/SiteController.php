@@ -134,15 +134,16 @@ class SiteController extends Controller
 
 
 
-    public function actionKorxona($id='1')
+    public function actionKorxona()
     {
         $company = Company::find()->all();
 
-        if (Yii::$app->request->get('id')) {
+//        if (Yii::$app->request->get('id')) {
             $id = Yii::$app->request->get('id');
-            $getID = Company::find()->where(['id' => $id])->one();
+            $idnew = empty($id) ? 1 : $id;
+            $getID = Company::find()->where(['id' => $idnew])->one();
             $getContractID = Contracts::find()->where(['company_id' => $id])->all();
-        }
+//        }
 
         return $this->render('korxona',[
 

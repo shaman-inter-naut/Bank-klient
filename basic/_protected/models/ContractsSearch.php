@@ -14,11 +14,12 @@ class ContractsSearch extends Contracts
     /**
      * {@inheritdoc}
      */
+    public $firstCompany;
     public function rules()
     {
         return [
-            [['id', 'first_company', 'second_company', 'contract_number', 'company_id'], 'integer'],
-            [['contract_date'], 'safe'],
+            [['id', 'first_company_id', 'second_company_id', 'contract_number'], 'integer'],
+            [['contract_date', 'firstCompany'], 'safe'],
         ];
     }
 
@@ -59,13 +60,11 @@ class ContractsSearch extends Contracts
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'first_company' => $this->first_company,
-            'second_company' => $this->second_company,
+            'first_company_id' => $this->first_company_id,
+            'second_company_id' => $this->second_company_id,
             'contract_number' => $this->contract_number,
-            'company_id' => $this->company_id,
+            'contract_date' => $this->contract_date,
         ]);
-
-        $query->andFilterWhere(['like', 'contract_date', $this->contract_date]);
 
         return $dataProvider;
     }

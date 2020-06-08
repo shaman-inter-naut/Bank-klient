@@ -7,7 +7,7 @@ $this->title = 'My Yii Application';
 ?>
 
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
-    <p><strong style="font-size: 24px">БАНКЛАР ВА ФИЛИАЛЛАР</strong></p>
+    <p><strong style="font-size: 24px">КОРХОНАЛАР ШАРТНОМАЛАРИ</strong></p>
 </div>
 
 
@@ -16,8 +16,12 @@ $this->title = 'My Yii Application';
     <ul class="banks">
         <?php  foreach($company as $value) { ?>
             <li class="tablinks"><a href='korxona?id=<?= $value->id; ?>'
-                                    onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
+                                    onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->short_name . '<br>'; ?></a></li>
+
         <? } ?>
+    </ul>
+    <ul>
+        <li></li>
     </ul>
 
     <!--    <button class="tablinks" onclick="getBranches(event, 'infin')" id="defaultOpen">Инфин банк</button>-->

@@ -8,20 +8,21 @@ use Yii;
  * This is the model class for table "contracts".
  *
  * @property int $id
- * @property int|null $first_company
- * @property int|null $second_company
+ * @property int $first_company_id
+ * @property int $second_company_id
  * @property int|null $contract_number
- * @property string|null $contract_date
- * @property int|null $company_id
+ * @property string $contract_date
  *
- * @property Company $company
  * @property Documents[] $documents
+ * @property Company $firstCompany
  */
+
 class Contracts extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
+
     public static function tableName()
     {
         return 'contracts';
@@ -33,9 +34,11 @@ class Contracts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_company', 'second_company', 'contract_number', 'company_id'], 'integer'],
-            [['contract_date'], 'string', 'max' => 255],
-            [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
+            [['first_company_id', 'second_company_id'], 'required'],
+            [['first_company_id', 'second_company_id', 'contract_number'], 'integer'],
+//            [['contract_date'], 'safe'],
+            [['contract_date'], 'string'],
+            [['first_company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['first_company_id' => 'id']],
         ];
     }
 
@@ -46,22 +49,11 @@ class Contracts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'first_company' => 'First Company',
-            'second_company' => 'Second Company',
+            'first_company_id' => 'First Company ID',
+            'second_company_id' => 'Second Company ID',
             'contract_number' => 'Contract Number',
             'contract_date' => 'Contract Date',
-            'company_id' => 'Company ID',
         ];
-    }
-
-    /**
-     * Gets query for [[Company]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCompany()
-    {
-        return $this->hasOne(Company::className(), ['id' => 'company_id']);
     }
 
     /**
@@ -74,12 +66,17 @@ class Contracts extends \yii\db\ActiveRecord
         return $this->hasMany(Documents::className(), ['contracts_id' => 'id']);
     }
 
-    public function beforeSave($insert){
-        if($insert){
-
-            $this->contract_date = time();
-
-        }
-        return parent::beforeSave($insert);
+    /**
+     * Gets query for [[FirstCompany]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFirstCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'first_company_id']);
+    }
+    public function getSecondCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'second_company_id']);
     }
 }
