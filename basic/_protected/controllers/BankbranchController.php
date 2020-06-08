@@ -65,9 +65,12 @@ class BankbranchController extends Controller
     public function actionCreate()
     {
         $model = new BankBranch();
-
+        $model->bank_id = empty(Yii::$app->request->get('bank_id')) ? 1 : Yii::$app->request->get('bank_id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+//            $model->bank_id = $this->bank->id;
+
+//            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['bank/info']);
         }
 
         return $this->renderAjax('create', [
@@ -91,7 +94,7 @@ class BankbranchController extends Controller
             return $this->redirect(['/bank/info']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -107,7 +110,8 @@ class BankbranchController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+//        return $this->redirect(['index']);
+        return $this->redirect(['bank/info']);
     }
 
     /**

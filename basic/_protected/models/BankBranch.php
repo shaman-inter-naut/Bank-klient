@@ -34,6 +34,7 @@ class BankBranch extends \yii\db\ActiveRecord
         return [
             [['mfo', 'bank_id'], 'integer'],
             [['name_branch'], 'string', 'max' => 255],
+            [['short_name'], 'string', 'max' => 255],
             [['bank_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bank::className(), 'targetAttribute' => ['bank_id' => 'id']],
         ];
     }
@@ -48,6 +49,7 @@ class BankBranch extends \yii\db\ActiveRecord
             'name_branch' => 'Name Branch',
             'mfo' => 'Mfo',
             'bank_id' => 'Bank ID',
+            'short_name' => 'Short name',
         ];
     }
 

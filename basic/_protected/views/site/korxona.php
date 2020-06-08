@@ -64,7 +64,7 @@ $this->title = 'My Yii Application';
                             <tr>
                                 <td ><?= $val->account_number; ?></td>
                                 <td  >
-                                    <?= Html::a('create', ['accountnumber/update', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    <?= Html::a('create', ['accountnumber/update', 'id' => $val->id], ['class' => 'kor material-icons']);?>
                                 </td>
                                 <td >
                                     <?= Html::a('delete_forever', ['accountnumber/view', 'id' => $val->id], ['class' => 'material-icons']);?>

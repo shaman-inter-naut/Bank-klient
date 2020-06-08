@@ -17,9 +17,11 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'mfo')->textInput() ?>
 
-    <?= $form->field($model, 'bank_id')->dropDownList(
-            ArrayHelper::map(\app\models\Bank::find()->all(),'id','name'),['prompt'=>'---Банкни танланг---'])->
-        label('Банк номи') ?>
+    <?= $form->field($model, 'short_name')->textInput() ?>
+
+<!--    --><?//= $form->field($model, 'bank_id')->dropDownList(
+//            ArrayHelper::map(\app\models\Bank::find()->all(),'id','name'),['prompt'=>'---Банкни танланг---'])->
+//        label('Банк номи') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
