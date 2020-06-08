@@ -1,5 +1,5 @@
 <?php
-
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datetimepicker\DateTimePicker;
@@ -21,9 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!--    --><?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>" Жами {totalCount} ta катор мавжуд",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -61,11 +63,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                     'class' => 'yii\grid\ActionColumn',
-                    'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger']),
+                    'header'=>Html::a(Yii::t('yii', 'Қўшиш'),
+                        ['create'],
+                        ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger', 'id'=>'modalButton']),
                     'headerOptions' => ['width' => '10'],
             ],
         ],
     ]); ?>
 
-
+    <?
+    Modal::begin([
+        'header' => '<h3>Хисоб ракам кошиш</h3>',
+        'id' => 'modal',
+    ]);
+    ?>
+    <div id="modalContent">
+        SALOM
+    </div>
+    <?php
+    Modal::end();
+    ?>
 </div>

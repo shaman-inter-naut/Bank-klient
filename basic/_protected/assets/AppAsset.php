@@ -25,9 +25,14 @@ class AppAsset extends AssetBundle
         'css/bootstrap.min.css',
         'css/style.css',
         '../../web/new.css',
+
+
     ];
 
     public $js = [
+
+        '../../web/sardor.js',
+
     ];
 
     public $depends = [
