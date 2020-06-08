@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'yii\grid\ActionColumn',
                     'header'=>Html::a(Yii::t('yii', 'Қўшиш'),
                         ['create'],
-                        ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger', 'id'=>'modalButton']),
+                        ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger contracts', 'id'=>'modalButton']),
                     'headerOptions' => ['width' => '10'],
             ],
         ],
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
     ?>
     <div id="modalContent">
-        SALOM
+
     </div>
     <?php
     Modal::end();

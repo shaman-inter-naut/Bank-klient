@@ -1,5 +1,5 @@
 <?
-
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -41,7 +41,7 @@ $this->title = 'My Yii Application';
                     </div>
 
                     <div class="col-md-3">
-                        <?= Html::a('add_circle', ['accountnumber/create', 'id' => $val->id], ['class' => 'material-icons']);?>
+                        <?= Html::a('add_circle', ['accountnumber/create', 'id' => $val->id], ['class' => 'kor material-icons']);?>
 
                     </div>
 
@@ -81,6 +81,18 @@ $this->title = 'My Yii Application';
     </table>
 </div>
 
+<?
+Modal::begin([
+    'header' => '<h3>Хисоб ракам кошиш</h3>',
+    'id' => 'modal',
+]);
+?>
+<div id="modalContent">
+
+</div>
+<?php
+Modal::end();
+?>
 
 
 <script>

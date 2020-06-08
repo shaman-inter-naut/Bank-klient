@@ -1,4 +1,4 @@
-$("#modalButton").click(function(e){
+$(".contracts").click(function(e){
 
     e.preventDefault();
     $("#modal").modal('show')
@@ -6,3 +6,31 @@ $("#modalButton").click(function(e){
         .load($(this).attr("href"));
 
 });
+
+$(".bank").click(function(e){
+
+    e.preventDefault();
+    $("#modal").modal('show')
+        .find('#modalContent')
+        .load($(this).attr("href"));
+
+});
+
+$(".bankview").click(function(e){
+
+    e.preventDefault();
+    $("#modal").modal('show')
+        .find('#modalContent')
+        .load($(this).attr("href"));
+
+});
+
+$(".kor").click(function(e){
+
+    e.preventDefault();
+    $("#modal").modal('show')
+        .find('#modalContent')
+        .load($(this).attr("href"));
+
+});
+

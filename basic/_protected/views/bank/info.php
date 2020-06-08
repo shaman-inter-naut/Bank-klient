@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 $this->title = 'My Yii Application';
 ?>
@@ -31,7 +32,7 @@ $this->title = 'My Yii Application';
             <th><h4>№</h4></th>
             <th style=""><h4>
                     <div class="col-md-11"><?= $getID->name; ?> филиаллари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle', ['bankbranch/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
+                    <div class="col-md-1"><?= Html::a('add_circle', ['bankbranch/create', 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
                 </h4> </th>
             <th><h4>МФО</h4></th>
         </tr>
@@ -64,6 +65,19 @@ $this->title = 'My Yii Application';
     </table>
 </div>
 
+
+<?
+Modal::begin([
+    'header' => '<h3>Хисоб ракам кошиш</h3>',
+    'id' => 'modal',
+]);
+?>
+<div id="modalContent">
+
+</div>
+<?php
+Modal::end();
+?>
 
 
 <script>

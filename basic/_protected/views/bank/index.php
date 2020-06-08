@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BankSearch */
@@ -52,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger']),
+                'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
                 'headerOptions' => ['width' => '10'],
                // 'template' => '{view}  {update}  {delete}',
                 'template' => '{my_action} {my_action2} {my_action3}',
@@ -110,6 +111,19 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+
+    <?
+    Modal::begin([
+        'header' => '<h3>Банк кошиш</h3>',
+        'id' => 'modal',
+    ]);
+    ?>
+    <div id="modalContent">
+
+    </div>
+    <?php
+    Modal::end();
+    ?>
 
 </div>
 <style type="text/css">
