@@ -60,7 +60,7 @@ class Company extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getAccountNumbers()
+    public function getAccountnumbers()
     {
         return $this->hasMany(AccountNumber::className(), ['company_id' => 'id']);
     }
@@ -73,5 +73,9 @@ class Company extends \yii\db\ActiveRecord
     public function getContracts()
     {
         return $this->hasMany(Contracts::className(), ['company_id' => 'id']);
+    }
+    public function getBankBranch()
+    {
+        return $this->hasMany(BankBranch::className(), ['company_id' => 'id']);
     }
 }

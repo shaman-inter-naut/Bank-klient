@@ -71,6 +71,10 @@ class AccountNumber extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Company::className(), ['id' => 'company_id']);
     }
+    public function getBankbr()
+        {
+            return $this->hasOne(BankBranch::className(), ['id' => 'bank_branch_id']);
+        }
 
     /**
      * Gets query for [[Documents]].

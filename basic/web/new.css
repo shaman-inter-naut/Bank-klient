@@ -148,3 +148,12 @@ thead tr a {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
+.panels {
+    padding: 0 ;
+    margin: 0;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}

@@ -4,10 +4,12 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = 'My Yii Application';
+
+
 ?>
 
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
-    <p><strong style="font-size: 24px">КОРХОНАЛАР ШАРТНОМАЛАРИ</strong></p>
+    <p><strong style="font-size: 24px">КОРХОНА ХИСОБ РАКАМЛАРИ</strong></p>
 </div>
 
 
@@ -16,12 +18,8 @@ $this->title = 'My Yii Application';
     <ul class="banks">
         <?php  foreach($company as $value) { ?>
             <li class="tablinks"><a href='korxona?id=<?= $value->id; ?>'
-                                    onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->short_name . '<br>'; ?></a></li>
-
+                                    onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
         <? } ?>
-    </ul>
-    <ul>
-        <li></li>
     </ul>
 
     <!--    <button class="tablinks" onclick="getBranches(event, 'infin')" id="defaultOpen">Инфин банк</button>-->
@@ -34,34 +32,48 @@ $this->title = 'My Yii Application';
         <tr>
             <th><h4>№</h4></th>
             <th style=""><h4>
-                    <div class="col-md-11"><?= $getID->name; ?> Шартномалари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle', ['contracts/create', 'id' => $val->id], ['class' => 'material-icons']);?></div>
+                    <div ><?= $getID->name; ?>нинг банк филиаллари </div>
+<!--                    <div class="col-md-1">--><?//= Html::a('add_circle', ['/create', 'id' => $val->id], ['class' => 'material-icons']);?><!--</div>-->
                 </h4> </th>
-            <th><h4 style="width: 50px;">Шартнома вакти</h4></th>
+            <th><h4>
+                    <div class="col-md-9">
+                        ХИСОБ РАКАМ
+                    </div>
+
+                    <div class="col-md-3">
+                        <?= Html::a('add_circle', ['accountnumber/create', 'id' => $val->id], ['class' => 'material-icons']);?>
+
+                    </div>
+
+
+
+                </h4></th>
+<!--            <th><h4>МФО</h4></th>-->
         </tr>
         </thead>
         <tbody>
-        <?  foreach ($getContractID as $key => $val){  ?>
+        <?  foreach ( $companyone as $key => $val){  ?>
             <tr>
                 <th><?=$key+1?></th>
+                <th style="text-align: left; vertical-align: center !important;"><?=$val->bankbr->short_name?></th>
                 <th style="text-align: left">
-                    <button class="accordion"  style="color: darkgreen"><?= $val->contract_number; ?></button>
-                    <div class="panel">
+                    <button  class="accordion"  style="color: darkgreen; padding: 10px"><?= $val->account_number; ?></button>
+                    <div class="panels">
                         <br>
                         <table class="table" border="1" width="100%">
                             <tr>
-                                <td width="90%"><?= $val->contract_number; ?></td>
-                                <td width="5%" >
-                                    <?= Html::a('create', ['contracts/update', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                <td ><?= $val->account_number; ?></td>
+                                <td  >
+                                    <?= Html::a('create', ['accountnumber/update', 'id' => $val->id], ['class' => 'material-icons']);?>
                                 </td>
-                                <td width="5%">
-                                    <?= Html::a('delete_forever', ['contracts/view', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                <td >
+                                    <?= Html::a('delete_forever', ['accountnumber/view', 'id' => $val->id], ['class' => 'material-icons']);?>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </th>
-                <th><?=date("d-m-Y",$val->contract_date)?></th>
+<!--                <th>--><?//=$val->account_number?><!--</th>-->
 
             </tr>
         <?php } ?>
@@ -87,7 +99,7 @@ $this->title = 'My Yii Application';
     }
 
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+    document.getElementById("<?php echo ($getID->id == null) ? '?id=1' : ''; ?>").click();
 </script>
 
 <script>
@@ -107,7 +119,3 @@ $this->title = 'My Yii Application';
     }
 </script>
 
-
-
-</body>
-</html>

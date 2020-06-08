@@ -19,6 +19,7 @@ use app\models\Company;
 use app\models\Bank;
 use app\models\BankBranch;
 use app\models\Contracts;
+use app\models\AccountNumber;
 
 /**
  * Site controller.
@@ -138,17 +139,21 @@ class SiteController extends Controller
     {
         $company = Company::find()->all();
 
+
 //        if (Yii::$app->request->get('id')) {
             $id = Yii::$app->request->get('id');
             $idnew = empty($id) ? 1 : $id;
             $getID = Company::find()->where(['id' => $idnew])->one();
-            $getContractID = Contracts::find()->where(['company_id' => $id])->all();
+            $companyone = AccountNumber::find()->where(['company_id' =>$idnew])->all();
+//            $getBranchID = BankBranch::find()->where(['bank_id'=>$idnew])->all();
+//           $getBranchID = BankBranch::find()->where(['bank_id'=> 'bank_branch_id'])->where(['bank_id'=>$idnew])->all();
 //        }
 
         return $this->render('korxona',[
 
             'company' => $company,
-            'getContractID' =>  $getContractID,
+            'companyone' => $companyone,
+            'getBranchID' => $getBranchID,
             'getID' => $getID,
 
         ]);

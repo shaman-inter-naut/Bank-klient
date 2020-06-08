@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use dosamigos\datetimepicker\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ContractsSearch */
@@ -14,17 +15,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Contracts', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<!--    <p>-->
+<!--        --><?//= Html::a('Create Contracts', ['create'], ['class' => 'btn btn-success']) ?>
+<!--    </p>-->
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<!--    --><?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
 
 //            'id',
             'firstCompany.name',
@@ -35,9 +37,33 @@ $this->params['breadcrumbs'][] = $this->title;
 //        ],
 //            'second_company_id',
             'contract_number',
-            'contract_date',
+//            'contract_date',
+            [
+                'attribute' => 'contract_date',
+                'value' => 'contract_date',
+                'filter' =>  DateTimePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'contract_date',
+                    'template' => '{input}',
+                    'language' => 'ru',
+                    'size' => 'ms',
+                    'clientOptions' => [
+                        'startView' => 2,
+                        'minView' => 2,
+                        'maxView' => 0,
+                        'autoclose' => true,
+                        'format' => 'dd-M-yyyy',
+                        'todayBtn' => true
+                    ]
+                ]),
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ],
+
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                    'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger']),
+                    'headerOptions' => ['width' => '10'],
+            ],
         ],
     ]); ?>
 

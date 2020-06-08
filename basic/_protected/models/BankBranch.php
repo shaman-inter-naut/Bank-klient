@@ -80,4 +80,8 @@ class BankBranch extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Documents::className(), ['bank_branch_id' => 'id']);
     }
+    public function getCompany()
+        {
+            return $this->hasOne(Company::className(), ['bank_branch_id' => 'id']);
+        }
 }
