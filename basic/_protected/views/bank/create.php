@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Bank */
 
-$this->title = 'Create Bank';
+$this->title = 'Банк кошиш';
 $this->params['breadcrumbs'][] = ['label' => 'Banks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

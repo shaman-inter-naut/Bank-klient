@@ -11,20 +11,24 @@ use yii\helpers\ArrayHelper;
 
 <div class="bank-branch-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+//            'header' => 'Банк филиалини кошиш',
+    ]); ?>
 
-    <?= $form->field($model, 'name_branch')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'short_name')->textInput()->label('Филиал номи') ?>
 
-    <?= $form->field($model, 'mfo')->textInput() ?>
+    <?= $form->field($model, 'name_branch')->textInput(['maxlength' => true])->label('Филиал тўлиқ номи') ?>
 
-    <?= $form->field($model, 'short_name')->textInput() ?>
+    <?= $form->field($model, 'mfo')->textInput()->label('МФО') ?>
+
+
 
 <!--    --><?//= $form->field($model, 'bank_id')->dropDownList(
 //            ArrayHelper::map(\app\models\Bank::find()->all(),'id','name'),['prompt'=>'---Банкни танланг---'])->
 //        label('Банк номи') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сақлаш', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

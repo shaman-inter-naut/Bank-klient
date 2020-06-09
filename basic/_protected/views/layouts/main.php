@@ -82,7 +82,7 @@ AppAsset::register($this);
 //                    ['label' => 'Bank filiallari', 'url' => '/site/bank-filial'],
 //                    '<li class="divider"></li>',
 //                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Korxonalar', 'url' => '/site/korxona?id=1'],
+                    ['label' => 'Korxonalar', 'url' => '/company/info'],
                     '<li class="divider"></li>',
 //                '<li class="dropdown-header">Dropdown Header</li>',
                     ['label' => 'Korxona xisob raqamlari', 'url' => '/site/xr'],

@@ -52,7 +52,7 @@ class BankbranchController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->renderAjax('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -70,7 +70,7 @@ class BankbranchController extends Controller
 //            $model->bank_id = $this->bank->id;
 
 //            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['bank/info']);
+            return $this->redirect(['../bank/info']);
         }
 
         return $this->renderAjax('create', [
@@ -91,7 +91,7 @@ class BankbranchController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 //            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['/bank/info']);
+            return $this->redirect(['../bank/info']);
         }
 
         return $this->renderAjax('update', [
@@ -111,7 +111,7 @@ class BankbranchController extends Controller
         $this->findModel($id)->delete();
 
 //        return $this->redirect(['index']);
-        return $this->redirect(['bank/info']);
+        return $this->redirect(['../bank/info']);
     }
 
     /**

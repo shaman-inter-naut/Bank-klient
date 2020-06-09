@@ -1,22 +1,23 @@
 <?
-
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\Modal;
 
 $this->title = 'My Yii Application';
+
+
 ?>
 
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
-    <p><strong style="font-size: 24px">БАНКЛАР ВА ФИЛИАЛЛАР</strong></p>
+    <p><strong style="font-size: 24px">КОРХОНА ХИСОБ РАКАМЛАРИ</strong></p>
 </div>
 
 
 <div class="tab">
 
     <ul class="banks">
-        <?php  foreach($bank as $value) { ?>
-            <li class="tablinks"><a href='info?id=<?= $value->id; ?>'
+        <?php  foreach($company as $value) { ?>
+            <li class="tablinks"><a href='korxona?id=<?= $value->id; ?>'
                                     onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
         <? } ?>
     </ul>
@@ -31,57 +32,66 @@ $this->title = 'My Yii Application';
         <tr>
             <th><h4>№</h4></th>
             <th style=""><h4>
-                    <div class="col-md-11"><?= $getID->name; ?> филиаллари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle', ['bankbranch/create?bank_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
+                    <div ><?= $getID->name; ?>нинг банк филиаллари </div>
+                    <!--                    <div class="col-md-1">--><?//= Html::a('add_circle', ['/create', 'id' => $val->id], ['class' => 'material-icons']);?><!--</div>-->
                 </h4> </th>
-            <th><h4>МФО</h4></th>
+            <th><h4>
+                    <div class="col-md-9">
+                        ХИСОБ РАКАМ
+                    </div>
+
+                    <div class="col-md-3">
+                        <?= Html::a('add_circle', ['accountnumber/create?bank_id='.$getID->id, 'id' => $val->id], ['class' => 'kor material-icons']);?>
+
+                    </div>
+
+
+
+                </h4></th>
+            <!--            <th><h4>МФО</h4></th>-->
         </tr>
         </thead>
         <tbody>
-        <?  foreach ($getBranchID as $key => $val){  ?>
+        <?  foreach ( $companyone as $key => $val){  ?>
             <tr>
                 <th><?=$key+1?></th>
+                <th style="text-align: left; vertical-align: center !important;"><?=$val->bankbr->short_name?></th>
                 <th style="text-align: left">
-                    <button class="accordion"  style="color: darkgreen"><?= $val->short_name; ?></button>
-                    <div class="panel">
+                    <button  class="accordion"  style="color: darkgreen; padding: 10px"><?= $val->account_number; ?></button>
+                    <div class="panels">
                         <br>
                         <table class="table" border="1" width="100%">
                             <tr>
-                                <td width="90%"><?= $val->name_branch; ?></td>
-                                <td width="5%" >
-                                    <?= Html::a('create', ['bankbranch/update', 'id' => $val->id], ['class' => 'bankview material-icons']);?>
+                                <td ><?= $val->account_number; ?></td>
+                                <td  >
+                                    <?= Html::a('create', ['accountnumber/update', 'id' => $val->id], ['class' => 'kor material-icons']);?>
                                 </td>
-                                <td width="5%">
-<!--                                    --><?//= Html::a('delete_forever', ['bankbranch/delete', 'id' => $val->id], ['class' => ' material-icons']);?>
-<!--                                    <a href="--><?//=Url::to(['bankbranch/delete','id'=>$value->id]);?>
-<!--                                    " title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Ushbu bo`lim o`chirib tashlansinmi?" method="post">-->
-<!--                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"><i class="delete_forever"></i></span></a>-->
-                                    <?= Html::a('delete_forever', ['/bankbranch/delete', 'id' => $val->id], [
-                                        'class' => 'bankview material-icons',
+                                <td >
+<!--                                    --><?//= Html::a('delete_forever', ['accountnumber/view', 'id' => $val->id], ['class' => 'material-icons']);?>
+                                    <?= Html::a('delete_forever', ['/accountnumber/delete', 'id' => $val->id], [
+                                        'class' => 'material-icons',
                                         'data' => [
                                             'confirm' => 'Ўчириб юборилсинми?',
                                             'method' => 'post',
                                         ],
-                                 ]) ?>
+                                    ]) ?>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </th>
-                <th><?=$val->mfo?></th>
+                <!--                <th>--><?//=$val->account_number?><!--</th>-->
+
             </tr>
         <?php } ?>
         </tbody>
     </table>
 </div>
 
-
 <?
 Modal::begin([
-    'header' => $getID->name ,
+    'header' => $getID->name,
     'id' => 'modal',
-    'class'=> 'font'
-
 ]);
 ?>
 <div id="modalContent">
@@ -108,7 +118,7 @@ Modal::end();
     }
 
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+    document.getElementById("<?php echo ($getID->id == null) ? '?id=1' : ''; ?>").click();
 </script>
 
 <script>
@@ -128,8 +138,3 @@ Modal::end();
     }
 </script>
 
-<style>
-    .font{
-        font-size: 20px;
-    }
-</style>

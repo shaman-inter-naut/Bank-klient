@@ -8,6 +8,7 @@ use app\models\CompanySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\AccountNumber;
 
 /**
  * CompanyController implements the CRUD actions for Company model.
@@ -28,6 +29,29 @@ class CompanyController extends Controller
             ],
         ];
     }
+
+
+    public function actionInfo()
+    {
+        $company = Company::find()->all();
+        $id = Yii::$app->request->get('id');
+        $idnew = empty($id) ? 1 : $id;
+        $getID = Company::find()->where(['id' => $idnew])->one();
+        $companyone = AccountNumber::find()->where(['company_id' =>$idnew])->all();
+
+        return $this->render('info',[
+
+            'company' => $company,
+            'companyone' => $companyone,
+            'getID' => $getID,
+
+        ]);
+
+
+    }
+
+
+
 
     /**
      * Lists all Company models.
