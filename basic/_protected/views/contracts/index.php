@@ -8,7 +8,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 /* @var $searchModel app\models\ContractsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Contracts';
+$this->title = 'Шартномалар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contracts-index">
@@ -33,12 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             [
                     'attribute'=>'first_company_id',
-                    'value'=> 'firstCompany.name'
+                    'value'=> 'firstCompany.name',
+                    'header' => 'Корхона 1',
             ],
 //            'firstCompany.name',
             [
                     'attribute'=>'second_company_id',
-                    'value'=> 'secondCompany.name'
+                    'value'=> 'secondCompany.name',
+                    'header' => 'Корхона 2',
             ],
 //            'secondCompany.name',
 //        [
@@ -46,11 +48,20 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'label' => 'nomi',
 //        ],
 //            'second_company_id',
-            'contract_number',
+//            'contract_number',
+            [
+                'attribute' => 'contract_number',
+                'value' => 'contract_number',
+                'header' => 'Шартнома рақами',
+//                'options' => ['width'=>'100'],
+            ],
+
 //            'contract_date',
             [
                 'attribute' => 'contract_date',
                 'value' => 'contract_date',
+                'header' => 'Шартнома тузилган вақти',
+//                'options' => ['width'=>'100'],
                 'filter' =>  DateTimePicker::widget([
                     'model' => $searchModel,
                     'attribute' => 'contract_date',
@@ -68,6 +79,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]),
 
             ],
+            [
+                'attribute' => 'status',
+                'header' => 'Статус',
+                'value' => function ($data){
+                     return $data->status==1 ? "очиқ": ($data->status==NULL ? "ёпилган": "очиқ");
+                    },
+                'filter' => ['off','on'],
+//                'andFilterWhere'=> ['status' => 1],
+            ],
+//            'status',
 
             [
                     'class' => 'yii\grid\ActionColumn',

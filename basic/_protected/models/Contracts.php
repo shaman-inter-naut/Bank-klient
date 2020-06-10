@@ -35,7 +35,7 @@ class Contracts extends \yii\db\ActiveRecord
     {
         return [
             [['first_company_id', 'second_company_id'], 'required'],
-            [['first_company_id', 'second_company_id', 'contract_number'], 'integer'],
+            [['first_company_id', 'second_company_id', 'contract_number', 'status'], 'integer'],
             [['contract_date'], 'safe'],
 //            [['contract_date'], 'string'],
             [['first_company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['first_company_id' => 'id']],
@@ -53,6 +53,7 @@ class Contracts extends \yii\db\ActiveRecord
             'second_company_id' => 'Second Company ID',
             'contract_number' => 'Contract Number',
             'contract_date' => 'Contract Date',
+            'status' => 'Status'
         ];
     }
 

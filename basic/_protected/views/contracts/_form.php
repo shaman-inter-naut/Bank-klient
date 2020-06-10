@@ -28,6 +28,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'contract_number')->textInput() ?>
 
+
+
+
 <!--    --><?//= $form->field($model, 'contract_date')->textInput() ?>
 
     <?= $form->field($model, 'contract_date')->widget(DateTimePicker::className(), [
@@ -46,6 +49,10 @@ use yii\helpers\ArrayHelper;
             'todayBtn' => true
         ]
     ]);?>
+
+
+
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

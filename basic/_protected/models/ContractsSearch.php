@@ -19,7 +19,7 @@ class ContractsSearch extends Contracts
     public function rules()
     {
         return [
-            [['id', 'contract_number'], 'integer'],
+            [['id', 'contract_number', 'status'], 'integer'],
             [['contract_date', 'firstCompany', 'first_company_id', 'second_company_id'], 'safe'],
         ];
     }
@@ -41,48 +41,6 @@ class ContractsSearch extends Contracts
      * @return ActiveDataProvider
      */
 
-//
-//    public function search($params)
-//    {
-//        $query = Contracts::find()->leftJoin(Company::tableName(), 'expenses.iddepartment = departments.id')->where($params);
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => $query,
-//            'pagination' => [
-//                'pagesize' => 50,    //Alternate method of disabling paging
-//            ],
-//            'sort' => [
-//                'attributes' => [
-//                    'name' => [
-//                        'asc' => ['name' => SORT_ASC,],
-//                        'desc' => ['name' => SORT_DESC,],
-//                    ],
-//                    'type' => [
-//                        'asc' => ['type' => SORT_ASC,],
-//                        'desc' => ['type' => SORT_DESC,],
-//                    ],
-//                    'price' => [
-//                        'asc' => ['price' => SORT_ASC,],
-//                        'desc' => ['price' => SORT_DESC,],
-//                    ],
-//                    'departments.name' => [
-//                        'asc' => ['departments.name' => SORT_ASC,],
-//                        'desc' => ['departments.name' => SORT_DESC,],
-//                    ],
-////                    'expenses.name' => [
-////                        'asc' => ['expenses.name' => SORT_ASC,],
-////                        'desc' => ['expenses.name' => SORT_DESC,],
-////                    ],
-//                    'date' => [
-//                        'asc' => ['date' => SORT_ASC,],
-//                        'desc' => ['date' => SORT_DESC,],
-//                    ],
-//                ],
-//            ],
-//        ]);
-//
-//        return $dataProvider;
-//    }
-
 
 
     public function search($params)
@@ -96,6 +54,7 @@ class ContractsSearch extends Contracts
         ]);
 
         $this->load($params);
+//        $query->andFilterWhere(['status' => 1]);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -113,6 +72,7 @@ class ContractsSearch extends Contracts
 //            'second_company_id' => $this->second_company_id,
             'contract_number' => $this->contract_number,
             'contract_date' => $this->contract_date,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like','company.name', $this->first_company_id]);
