@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Contracts;
+use app\models\Company;
 use app\models\ContractsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -32,7 +33,9 @@ class ContractsController extends Controller
     /**
      * Lists all Contracts models.
      * @return mixed
-     */
+//     */
+
+
     public function actionIndex()
     {
         $searchModel = new ContractsSearch();
@@ -43,6 +46,25 @@ class ContractsController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+//
+//    public function actionIndex($nav = null)
+//    {
+//        $departments = Company::getAll();
+//        $searchModel = new Contracts();
+//        if ($nav == 'out') {
+//            $dataProvider = $searchModel->search(['type' => 1]);
+//        } else if ($nav == 'in') {
+//            $dataProvider = $searchModel->search(['type' => 0]);
+//        } else {
+//            $dataProvider = $searchModel->search([]);
+//        }
+//        return $this->render('index', [
+//            'departments' => $departments,
+//            'dataProvider' => $dataProvider,
+//            'searchModel' => $searchModel,
+//        ]);
+//    }
 
     /**
      * Displays a single Contracts model.

@@ -95,7 +95,7 @@ class CompanyController extends Controller
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }

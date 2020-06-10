@@ -4,7 +4,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
 
-$this->title = 'My Yii Application';
+$this->title = 'БАНКЛАР ВА ФИЛИАЛЛАР';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">

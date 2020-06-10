@@ -5,14 +5,16 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Bank */
 
-$this->title = 'Банк кошиш';
+//$this->title = 'Банк кошиш';
 $this->params['breadcrumbs'][] = ['label' => 'Banks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bank-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
+    <div style="text-align: center">
+        <?=$this->title?>
+    </div>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

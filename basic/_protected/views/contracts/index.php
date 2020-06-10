@@ -31,8 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 //            'id',
-            'firstCompany.name',
-            'secondCompany.name',
+            [
+                    'attribute'=>'first_company_id',
+                    'value'=> 'firstCompany.name'
+            ],
+//            'firstCompany.name',
+            [
+                    'attribute'=>'second_company_id',
+                    'value'=> 'secondCompany.name'
+            ],
+//            'secondCompany.name',
 //        [
 //                'attribute' => 'first_company_id',
 //                'label' => 'nomi',

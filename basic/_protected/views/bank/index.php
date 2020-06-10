@@ -9,27 +9,15 @@ use yii\bootstrap\Modal;
 /* @var $searchModel app\models\BankSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Banklar';
+$this->title = 'Банклар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<style>
-
-
-</style>
 <div class="bank-index">
 
     <div class="info" style="margin-bottom: 10px; padding: 5px;">
         <p><strong style=""><h1><?= Html::encode($this->title) ?></h1></strong></p>
     </div>
-
-
-
-<!--    <p>-->
-<!--        --><?//= Html::a(Yii::t('app', '+'), ['create'], ['title'=>'Yangi foydalanuvchi qo`shish', 'class' => 'btn btn-success']) ?>
-<!--    </p>-->
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -40,13 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                [
                 'attribute' => 'id',
-                'header' => 'ID:',
+                'header' => '№:',
                 'filter'=>false,
                 'options' => ['width' => '10', 'filterModel' => null]
                 ],
             [
                 'attribute' => 'name',
-                'header' => 'Nomi:',
+                'header' => 'НОМИ:',
 //                'filter'=>false,
 //                'options' => ['width' => '80', 'filterModel' => null]
             ],
@@ -76,10 +64,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]);
                     },
                     'my_action3' => function ($url, $model) {
-                        return Html::a('<span class="material-icons">delete_forever</span>', $url,
-                            [
-                                'title' => Yii::t('app', 'Ўчириш'),
-                            ]);
+                        return Html::a('delete_forever', ['/bank/delete', 'id' => $model->id], [
+                            'class' => 'material-icons',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
                     },
                     'my_action4' => function ($url, $model) {
                         return Html::a('<span class="material-icons">add</span>', $url,
@@ -114,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?
     Modal::begin([
-        'header' => '<h3>Банк кошиш</h3>',
+        'header' => '<h3>Банк қўшиш</h3>',
         'id' => 'modal',
     ]);
     ?>

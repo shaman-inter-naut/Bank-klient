@@ -45,48 +45,53 @@ AppAsset::register($this);
 
         // everyone can see Home page
         $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/bank/info']];
-        $menuItems[] =
-            [
-                'label' => 'Admin',
-                'items' => [
-                    ['label' => 'Bank', 'url' => '/bank/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Contrackt', 'url' => '/contracts/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Currency', 'url' => '/currency/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'FileTemplate', 'url' => '/filetemplate/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Branch', 'url' => '/bankbranch/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Xisob raqam', 'url' => '/accountnumber/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Files', 'url' => '/files/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Documents', 'url' => '/documents/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Company', 'url' => '/company/index'],
-                    '<li class="divider"></li>',
-
-                ],
-            ];
+//        $menuItems[] =
+//            [
+//                'label' => 'Admin',
+//                'items' => [
+//                    ['label' => 'Bank', 'url' => '/bank/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Contrackt', 'url' => '/contracts/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Currency', 'url' => '/currency/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'FileTemplate', 'url' => '/filetemplate/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Branch', 'url' => '/bankbranch/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Xisob raqam', 'url' => '/accountnumber/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Files', 'url' => '/files/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Documents', 'url' => '/documents/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Company', 'url' => '/company/index'],
+//                    '<li class="divider"></li>',
+//
+//                ],
+//            ];
 
 
         $menuItems[] =
             [
                 'label' => 'Ma`lumotlar',
                 'items' => [
-                    ['label' => 'Banklar', 'url' => '/bank/info'],
+                    ['label' => 'Банклар', 'url' => '/bank/index'],
+                    '<li class="divider"></li>',
+                    ['label' => 'Банклар ва филиаллар', 'url' => '/bank/info'],
+                    '<li class="divider"></li>',
+
+//                '<li class="dropdown-header">Dropdown Header</li>',
+                    ['label' => 'Корхоналар', 'url' => '/company/index'],
                     '<li class="divider"></li>',
 //                '<li class="dropdown-header">Dropdown Header</li>',
-//                    ['label' => 'Bank filiallari', 'url' => '/site/bank-filial'],
+                    ['label' => 'Корхоналар ва хисоб рақамлар', 'url' => '/company/info'],
+                    '<li class="divider"></li>',
+                    ['label' => 'Шартномалар', 'url' => '/contracts/index'],
+                    '<li class="divider"></li>',
+//                '<li class="dropdown-header">Dropdown Header</li>',
+//                    ['label' => 'Korxona xisob raqamlari', 'url' => '/site/xr'],
 //                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Korxonalar', 'url' => '/company/info'],
-                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Korxona xisob raqamlari', 'url' => '/site/xr'],
-                    '<li class="divider"></li>',
 //                '<li class="dropdown-header">Dropdown Header</li>',
 //                    ['label' => 'Shartnomalar', 'url' => '/site/shartnoma'],
 //                    '<li class="divider"></li>',
