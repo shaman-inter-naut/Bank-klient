@@ -41,6 +41,31 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
                 'headerOptions' => ['width' => '10'],
+                'template' => '{view}  {update}  {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('', ['view', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-eye-open bank',
+
+                        ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('', ['update', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-pencil bank',
+
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('', ['delete', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-trash',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
+
+                ],
 
             ],
 

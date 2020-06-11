@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="currency-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4 style="text-align: center"><?= Html::encode($this->title) ?></h4>
 
     <?= $this->render('_form', [
         'model' => $model,

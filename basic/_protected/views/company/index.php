@@ -74,6 +74,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'class' => 'bank'
                             ]);
                     },
+                    'delete' => function ($url, $model) {
+                        return Html::a('', ['delete', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-trash',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
 
                 ],
                 'urlCreator' => function ($action, $model, $key, $index) {

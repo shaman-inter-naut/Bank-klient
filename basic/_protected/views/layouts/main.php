@@ -56,8 +56,8 @@ AppAsset::register($this);
 
                     ['label' => 'Валюта', 'url' => '/currency/index'],
                     '<li class="divider"></li>',
-                    ['label' => 'Шаблонлар', 'url' => '/filetemplate/index'],
-                    '<li class="divider"></li>',
+//                    ['label' => 'Шаблонлар', 'url' => '/filetemplate/index'],
+//                    '<li class="divider"></li>',
 
 
                     ['label' => 'Файллар', 'url' => '/files/index'],

@@ -12,37 +12,37 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'inn_company')->textInput() ?>
+    <?= $form->field($model, 'inn_company')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'mfo_bank')->textInput() ?>
+    <?= $form->field($model, 'mfo_bank')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'account_number_company')->textInput() ?>
+    <?= $form->field($model, 'account_number_company')->textInput(['type'=>'number']) ?>
 
     <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'document_number')->textInput() ?>
+    <?= $form->field($model, 'document_number')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'mfo_branch')->textInput() ?>
+    <?= $form->field($model, 'mfo_branch')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'inn_branch')->textInput() ?>
+    <?= $form->field($model, 'inn_branch')->textInput(['type'=>'number']) ?>
 
     <?= $form->field($model, 'name_branch')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'account_number_branch')->textInput() ?>
+    <?= $form->field($model, 'account_number_branch')->textInput(['type'=>'number']) ?>
 
     <?= $form->field($model, 'purpose_branch')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'code_currency')->textInput() ?>
+    <?= $form->field($model, 'code_currency')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'kirim')->textInput() ?>
+    <?= $form->field($model, 'kirim')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'chiqim')->textInput() ?>
+    <?= $form->field($model, 'chiqim')->textInput(['type'=>'number']) ?>
 
     <?= $form->field($model, 'tip_k_ch')->textInput() ?>
 
     <?= $form->field($model, 'contract_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'contract_number')->textInput() ?>
+    <?= $form->field($model, 'contract_number')->textInput(['type'=>'number']) ?>
 
     <?= $form->field($model, 'contracts_id')->textInput() ?>
 

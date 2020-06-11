@@ -6,24 +6,18 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Currency */
 
-$this->title = $model->name;
+$this->title = $this->title = 'Батафсил '.$model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Currencies', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="currency-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4 style="text-align: center"><?= Html::encode($this->title) ?></h4>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+<!--        --><?//= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
     </p>
 
     <?= DetailView::widget([
@@ -32,6 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'code',
+        ],
+    ]) ?>
+
+    <?= Html::a('Ўчириш', ['delete', 'id' => $model->id], [
+        'class' => 'btn btn-danger',
+        'data' => [
+            'confirm' => 'Are you sure you want to delete this item?',
+            'method' => 'post',
         ],
     ]) ?>
 

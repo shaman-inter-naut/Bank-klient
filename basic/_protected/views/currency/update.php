@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="currency-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4 style="text-align: center"><?= Html::encode($this->title) ?></h4>
 
     <?= $this->render('_form', [
         'model' => $model,
