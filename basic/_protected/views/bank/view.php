@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -13,17 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bank-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4 style="text-align: center"><?= Html::encode($this->title) ?></h4>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+<!--        --><?//= Html::a('Ўгартириш', ['update', 'id' => $model->id], ['class' => 'bank btn btn-primary']) ?>
+
     </p>
 
     <?= DetailView::widget([
@@ -35,3 +30,24 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+
+<?= Html::a('Ўчириш', ['delete', 'id' => $model->id], [
+    'class' => 'btn btn-danger',
+    'data' => [
+        'confirm' => 'Are you sure you want to delete this item?',
+        'method' => 'post',
+    ],
+]) ?>
+<?
+Modal::begin([
+//        'header' => '<h3>Банк қўшиш</h3>',
+    'id' => 'modal',
+]);
+?>
+    <div id="modalContent">
+
+    </div>
+<?php
+Modal::end();
+?>

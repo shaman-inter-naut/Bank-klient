@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CompanySearch */
@@ -55,7 +56,35 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
-                'headerOptions' => ['width' => '10'],
+//                'headerOptions' => ['width' => '10'],
+                'template' => '{view}  {update}  {delete}',
+
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<i class="glyphicon glyphicon-eye-open"></i>', $url,
+                            [
+                                'title' => Yii::t('app', 'Кўриш'),
+                                'class' => 'bank'
+                            ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url,
+                            [
+                                'title' => Yii::t('app', 'Тахрирлаш'),
+                                'class' => 'bank'
+                            ]);
+                    },
+
+                ],
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'view') {
+                        return Url::to(['view','id' => $model->id]);
+                    }
+                    if ($action === 'update') {
+                        return Url::to(['update','id' => $model->id]);
+                    }
+
+                }
             ],
         ],
     ]); ?>
@@ -65,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?
 Modal::begin([
-    'header' => '<h3>Банк қўшиш</h3>',
+//    'header' => '<h3>Банк қўшиш</h3>',
     'id' => 'modal',
 ]);
 ?>
@@ -87,5 +116,8 @@ Modal::end();
     }
     thead tr a {
         color: white
+    }
+    .center{
+        text-align: center;
     }
 </style>

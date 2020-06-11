@@ -45,67 +45,65 @@ AppAsset::register($this);
 
         // everyone can see Home page
         $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/bank/info']];
-//        $menuItems[] =
-//            [
-//                'label' => 'Admin',
-//                'items' => [
-//                    ['label' => 'Bank', 'url' => '/bank/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Contrackt', 'url' => '/contracts/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Currency', 'url' => '/currency/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'FileTemplate', 'url' => '/filetemplate/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Branch', 'url' => '/bankbranch/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Xisob raqam', 'url' => '/accountnumber/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Files', 'url' => '/files/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Documents', 'url' => '/documents/index'],
-//                    '<li class="divider"></li>',
-//                    ['label' => 'Company', 'url' => '/company/index'],
-//                    '<li class="divider"></li>',
-//
-//                ],
-//            ];
+        $menuItems[] =
+            [
+                'label' => 'Тахрир',
+                'items' => [
+                    ['label' => 'Банклар', 'url' => '/bank/index'],
+                    '<li class="divider"></li>',
+                    ['label' => 'Корхоналар', 'url' => '/company/index'],
+                    '<li class="divider"></li>',
+
+                    ['label' => 'Валюта', 'url' => '/currency/index'],
+                    '<li class="divider"></li>',
+                    ['label' => 'Шаблонлар', 'url' => '/filetemplate/index'],
+                    '<li class="divider"></li>',
+
+
+                    ['label' => 'Файллар', 'url' => '/files/index'],
+                    '<li class="divider"></li>',
+                    ['label' => 'Хужжатлар', 'url' => '/documents/index'],
+                    '<li class="divider"></li>',
+
+
+                ],
+            ];
 
 
         $menuItems[] =
             [
                 'label' => 'Ma`lumotlar',
                 'items' => [
-                    ['label' => 'Банклар', 'url' => '/bank/index'],
-                    '<li class="divider"></li>',
+//                    ['label' => 'Банклар', 'url' => '/bank/index'],
+//                    '<li class="divider"></li>',
                     ['label' => 'Банклар ва филиаллар', 'url' => '/bank/info'],
                     '<li class="divider"></li>',
 
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Корхоналар', 'url' => '/company/index'],
-                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
+
+//                    ['label' => 'Корхоналар', 'url' => '/company/index'],
+//                    '<li class="divider"></li>',
+
                     ['label' => 'Корхоналар ва хисоб рақамлар', 'url' => '/company/info'],
                     '<li class="divider"></li>',
                     ['label' => 'Шартномалар', 'url' => '/contracts/index'],
                     '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
+
 //                    ['label' => 'Korxona xisob raqamlari', 'url' => '/site/xr'],
 //                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
+
 //                    ['label' => 'Shartnomalar', 'url' => '/site/shartnoma'],
 //                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Hujjatlar / Provodkalar', 'url' => '/site/hujjat'],
-                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Fayllar', 'url' => '/site/fayl'],
-                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Valyutalar', 'url' => '/site/valyuta'],
-                    '<li class="divider"></li>',
-//                '<li class="dropdown-header">Dropdown Header</li>',
-                    ['label' => 'Hisobotlar', 'url' => '/site/hisobot'],
+
+//                    ['label' => 'Hujjatlar / Provodkalar', 'url' => '/site/hujjat'],
+//                    '<li class="divider"></li>',
+
+//                    ['label' => 'Fayllar', 'url' => '/site/fayl'],
+//                    '<li class="divider"></li>',
+
+//                    ['label' => 'Valyutalar', 'url' => '/site/valyuta'],
+//                    '<li class="divider"></li>',
+
+//                    ['label' => 'Hisobotlar', 'url' => '/site/hisobot'],
                 ],
             ];
 

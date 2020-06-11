@@ -33,4 +33,3 @@ $(".kor").click(function(e){
         .load($(this).attr("href"));
 
 });
-

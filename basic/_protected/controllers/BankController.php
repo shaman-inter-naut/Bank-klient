@@ -75,7 +75,7 @@ class BankController extends Controller
     {
 //        $model = $this->findModel($id);
 
-        return $this->render('view', [
+        return $this->renderAjax('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -115,7 +115,7 @@ class BankController extends Controller
             return $this->redirect(['info']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }

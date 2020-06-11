@@ -55,12 +55,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a('<span class="material-icons">visibility</span>', $url,
                             [
                                 'title' => Yii::t('app', 'Кўриш'),
+                                'class' => 'bank'
                             ]);
                     },
                     'my_action2' => function ($url, $model) {
                         return Html::a('<span class="material-icons">create</span>', $url,
                             [
                                 'title' => Yii::t('app', 'Тахрирлаш'),
+                                'class' => 'bank'
                             ]);
                     },
                     'my_action3' => function ($url, $model) {
@@ -105,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?
     Modal::begin([
-        'header' => '<h3>Банк қўшиш</h3>',
+//        'header' => '<h3>Банк қўшиш</h3>',
         'id' => 'modal',
     ]);
     ?>

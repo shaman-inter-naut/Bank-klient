@@ -12,18 +12,18 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Корхона тўлиқ номи') ?>
 
-    <?= $form->field($model, 'short_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'short_name')->textInput(['maxlength' => true])->label('Корхона номи') ?>
 
-    <?= $form->field($model, 'inn')->textInput() ?>
+    <?= $form->field($model, 'inn')->textInput()->label('Инн') ?>
 
-    <?= $form->field($model, 'accaunt_begin')->textInput() ?>
+    <?= $form->field($model, 'accaunt_begin')->textInput()->label('Хисоб рақам бошланиши') ?>
 
-    <?= $form->field($model, 'unical_code')->textInput() ?>
+    <?= $form->field($model, 'unical_code')->textInput()->label('Униал код') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сақлаш', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
