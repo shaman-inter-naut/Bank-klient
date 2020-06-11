@@ -44,7 +44,7 @@ AppAsset::register($this);
         ]);
 
         // everyone can see Home page
-        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['/bank/info']];
+        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['site/index']];
         $menuItems[] =
             [
                 'label' => 'Тахрир',
