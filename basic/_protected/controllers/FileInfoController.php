@@ -276,7 +276,7 @@ class FileInfoController extends Controller
             ]);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
             'fileName' => $fileName,
         ]);

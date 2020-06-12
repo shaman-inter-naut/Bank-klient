@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\FileInfoSearch */
@@ -17,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr style="border: 5px solid darkslategrey">
 
     <p>
-        <?= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+', ['create'], ['class' => 'bank btn btn-primary']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -43,3 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
+<?
+Modal::begin([
+//    'header' => '<h3>Банк қўшиш</h3>',
+    'id' => 'modal',
+]);
+?>
+<div id="modalContent">
+
+</div>
+<?php
+Modal::end();
+?>
