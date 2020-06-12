@@ -41,6 +41,10 @@ class Documents extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+     public $file;
+
+
     public static function tableName()
     {
         return 'documents';
@@ -54,6 +58,7 @@ class Documents extends \yii\db\ActiveRecord
         return [
             [['inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id', 'company_id'], 'integer'],
             [['date', 'contract_date'], 'safe'],
+            [['file'], 'file'],
 //            [['company_name'], 'required'],
             [['name_branch', 'purpose_branch', 'company_name'], 'string', 'max' => 255],
             [['account_number_id'], 'exist', 'skipOnError' => true, 'targetClass' => AccountNumber::className(), 'targetAttribute' => ['account_number_id' => 'id']],

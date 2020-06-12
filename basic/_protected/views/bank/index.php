@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="info" style="margin-bottom: 10px; padding: 5px;">
         <p><strong style=""><h1><?= Html::encode($this->title) ?></h1></strong></p>
+        <?//= Html::a('+', ['create', 'id' => $model->id], ['class' => 'bank btn btn-success']) ?>
     </div>
 
     <?= GridView::widget([

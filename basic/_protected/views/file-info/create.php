@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Documents */
+/* @var $model app\models\FileInfo */
 
-$this->title = 'Create Documents';
-$this->params['breadcrumbs'][] = ['label' => 'Documents', 'url' => ['index']];
+$this->title = 'Create File Info';
+$this->params['breadcrumbs'][] = ['label' => 'File Infos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="documents-create">
+<div class="file-info-create">
 
     <h1><?= Html::encode("Файл юклаш") ?></h1>
 

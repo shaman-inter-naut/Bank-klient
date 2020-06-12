@@ -16,84 +16,40 @@ use dosamigos\datetimepicker\DateTimePicker;
 
 <!--    --><?//= $form->field($model, 'inn_company')->textInput() ?>
 
-    <?= $form->field($model, 'company_id')->dropDownList(
-        ArrayHelper::map(\app\models\Company::find()->all(),'id','short_name'),['prompt'=>'---Корхонани танланг---'])->
-    label('Корхонани номи') ?>
+    <?= $form->field($model, 'file')->fileInput()->label(false) ?>
 
-    <?= $form->field($model, 'inn_company')->dropDownList(
-        ArrayHelper::map(\app\models\Company::find()->all(),'id','inn'),['prompt'=>'---Inn танланг---'])->
-    label('INN') ?>
+    <?= $form->field($model, 'inn_company')->hiddenInput()->label(false)->error(false) ?>
 
+    <?= $form->field($model, 'mfo_bank')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'mfo_bank')->textInput() ?>
+    <?= $form->field($model, 'account_number_company')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'account_number_company')->textInput() ?>
+    <?= $form->field($model, 'date')->hiddenInput()->label(false)->error(false) ?>
 
-<!--    --><?//= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'document_number')->hiddenInput()->label(false)->error(false) ?>
 
+    <?= $form->field($model, 'mfo_branch')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'date')->widget(DateTimePicker::className(), [
-        'language' => 'ru',
-        'template' => '{input}',
-        'inline' => false,
-        'clientOptions' => [
-            'startView' => 2,
-            'minView' => 2,
-            'maxView' => 0,
-            'autoclose' => false,
-            'linkFormat' => false,
-            'format' => 'dd-M-yyyy',
-            'todayBtn' => true
-        ]
-    ]);?>
+    <?= $form->field($model, 'inn_branch')->hiddenInput()->label(false)->error(false) ?>
 
+    <?= $form->field($model, 'name_branch')->hiddenInput()->label(false)->error(false) ?>
 
+    <?= $form->field($model, 'account_number_branch')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'document_number')->textInput() ?>
+    <?= $form->field($model, 'purpose_branch')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'mfo_branch')->textInput() ?>
+    <?= $form->field($model, 'code_currency')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'inn_branch')->textInput() ?>
+    <?= $form->field($model, 'kirim')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'name_branch')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'chiqim')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'account_number_branch')->textInput() ?>
+    <?= $form->field($model, 'tip_k_ch')->hiddenInput()->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'purpose_branch')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'code_currency')->textInput() ?>
-
-    <?= $form->field($model, 'kirim')->textInput() ?>
-
-    <?= $form->field($model, 'chiqim')->textInput() ?>
-
-    <?= $form->field($model, 'tip_k_ch')->dropDownList([
-        '0' => 'kirim',
-        '1' => 'chiqim',
-
-    ],['prompt'=>'---Tip танланг---']); ?>
+    <?= $form->field($model, 'contract_date')->hiddenInput()->label(false)->error(false) ?>
 
 
-<!--    --><?//= $form->field($model, 'contract_date')->textInput(['maxlength' => true]) ?>
-
-
-    <?= $form->field($model, 'contract_date')->widget(DateTimePicker::className(), [
-        'language' => 'ru',
-        'template' => '{input}',
-        'inline' => false,
-        'clientOptions' => [
-            'startView' => 2,
-            'minView' => 2,
-            'maxView' => 0,
-            'autoclose' => false,
-            'linkFormat' => false,
-            'format' => 'dd-M-yyyy',
-            'todayBtn' => true
-        ]
-    ]);?>
-
-
-    <?= $form->field($model, 'contract_number')->textInput() ?>
+    <?= $form->field($model, 'contract_number')->hiddenInput()->label(false)->error(false) ?>
 
 <!--    --><?//= $form->field($model, 'contracts_id')->textInput() ?>
 
@@ -111,7 +67,8 @@ use dosamigos\datetimepicker\DateTimePicker;
 
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <hr style="border: 2px solid silver">
+        <?= Html::submitButton('Yuklash', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
