@@ -93,12 +93,12 @@ class FileInfoController extends Controller
 
 
 
-        return $this->render('view', [
+        return $this->renderAjax('view', [
             'model' => $this->findModel($id),
             'company' => $company,
             'get_company_name' => $get_company_name,
             'document' => $document,
-            'debet' => $debet,
+//            'debet' => $debet,
         ]);
     }
 
