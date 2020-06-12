@@ -47,6 +47,18 @@ class FileInfoController extends Controller
         ]);
     }
 
+    public function actionDoc()
+    {
+        $searchModel = new FileInfoSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
     /**
      * Displays a single FileInfo model.
      * @param integer $id
