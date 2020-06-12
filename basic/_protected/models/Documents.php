@@ -28,11 +28,13 @@ use Yii;
  * @property int|null $currency_id
  * @property int|null $account_number_id
  * @property int|null $bank_branch_id
+ * @property int|null $company_id
+ * @property string $company_name
  *
  * @property AccountNumber $accountNumber
  * @property BankBranch $bankBranch
+ * @property Company $company
  * @property Contracts $contracts
- * @property Currency $currency
  */
 class Documents extends \yii\db\ActiveRecord
 {
@@ -50,12 +52,14 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id'], 'integer'],
-            [['date', 'name_branch', 'purpose_branch', 'contract_date'], 'string', 'max' => 255],
+            [['inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id', 'company_id'], 'integer'],
+            [['date', 'contract_date'], 'safe'],
+//            [['company_name'], 'required'],
+            [['name_branch', 'purpose_branch', 'company_name'], 'string', 'max' => 255],
             [['account_number_id'], 'exist', 'skipOnError' => true, 'targetClass' => AccountNumber::className(), 'targetAttribute' => ['account_number_id' => 'id']],
             [['bank_branch_id'], 'exist', 'skipOnError' => true, 'targetClass' => BankBranch::className(), 'targetAttribute' => ['bank_branch_id' => 'id']],
+            [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
             [['contracts_id'], 'exist', 'skipOnError' => true, 'targetClass' => Contracts::className(), 'targetAttribute' => ['contracts_id' => 'id']],
-            [['currency_id'], 'exist', 'skipOnError' => true, 'targetClass' => Currency::className(), 'targetAttribute' => ['currency_id' => 'id']],
         ];
     }
 
@@ -86,6 +90,8 @@ class Documents extends \yii\db\ActiveRecord
             'currency_id' => 'Currency ID',
             'account_number_id' => 'Account Number ID',
             'bank_branch_id' => 'Bank Branch ID',
+            'company_id' => 'Company ID',
+            'company_name' => 'Company Name',
         ];
     }
 
@@ -110,6 +116,16 @@ class Documents extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[Company]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'company_id']);
+    }
+
+    /**
      * Gets query for [[Contracts]].
      *
      * @return \yii\db\ActiveQuery
@@ -117,15 +133,5 @@ class Documents extends \yii\db\ActiveRecord
     public function getContracts()
     {
         return $this->hasOne(Contracts::className(), ['id' => 'contracts_id']);
-    }
-
-    /**
-     * Gets query for [[Currency]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCurrency()
-    {
-        return $this->hasOne(Currency::className(), ['id' => 'currency_id']);
     }
 }

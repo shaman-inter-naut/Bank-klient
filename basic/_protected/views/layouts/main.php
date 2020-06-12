@@ -35,6 +35,7 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
     <div class="wrap">
         <?php
+        $active = ['active' => in_array(\Yii::$app->controller->id, ['tickets'])];
         NavBar::begin([
             'brandLabel' => "Bank-klient tizimi kirim-chiqim hisobotlari",
             'brandUrl' => Yii::$app->homeUrl,
@@ -44,7 +45,7 @@ AppAsset::register($this);
         ]);
 
         // everyone can see Home page
-        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['site/index']];
+        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['site/index'],$active];
         $menuItems[] =
             [
                 'label' => 'Тахрир',

@@ -52,7 +52,7 @@ class DocumentsController extends Controller
      */
     public function actionView($id)
     {
-        return $this->renderAjax('view', [
+        return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -67,6 +67,7 @@ class DocumentsController extends Controller
         $model = new Documents();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
             return $this->redirect(['index']);
         }
 
@@ -91,7 +92,7 @@ class DocumentsController extends Controller
             return $this->redirect(['index']);
         }
 
-        return $this->renderAjax('update', [
+        return $this->render('update', [
             'model' => $model,
         ]);
     }

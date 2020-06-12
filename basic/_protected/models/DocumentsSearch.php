@@ -17,8 +17,8 @@ class DocumentsSearch extends Documents
     public function rules()
     {
         return [
-            [['id', 'inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id'], 'integer'],
-            [['date', 'name_branch', 'purpose_branch', 'contract_date'], 'safe'],
+            [['id', 'inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id', 'company_id'], 'integer'],
+            [['date', 'name_branch', 'purpose_branch', 'contract_date', 'company_name'], 'safe'],
         ];
     }
 
@@ -62,6 +62,7 @@ class DocumentsSearch extends Documents
             'inn_company' => $this->inn_company,
             'mfo_bank' => $this->mfo_bank,
             'account_number_company' => $this->account_number_company,
+            'date' => $this->date,
             'document_number' => $this->document_number,
             'mfo_branch' => $this->mfo_branch,
             'inn_branch' => $this->inn_branch,
@@ -70,17 +71,18 @@ class DocumentsSearch extends Documents
             'kirim' => $this->kirim,
             'chiqim' => $this->chiqim,
             'tip_k_ch' => $this->tip_k_ch,
+            'contract_date' => $this->contract_date,
             'contract_number' => $this->contract_number,
             'contracts_id' => $this->contracts_id,
             'currency_id' => $this->currency_id,
             'account_number_id' => $this->account_number_id,
             'bank_branch_id' => $this->bank_branch_id,
+            'company_id' => $this->company_id,
         ]);
 
-        $query->andFilterWhere(['like', 'date', $this->date])
-            ->andFilterWhere(['like', 'name_branch', $this->name_branch])
+        $query->andFilterWhere(['like', 'name_branch', $this->name_branch])
             ->andFilterWhere(['like', 'purpose_branch', $this->purpose_branch])
-            ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
+            ->andFilterWhere(['like', 'company_name', $this->company_name]);
 
         return $dataProvider;
     }
