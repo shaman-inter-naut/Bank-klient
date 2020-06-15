@@ -51,23 +51,20 @@ class FileInfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'bank_mfo' => 'Bank MFO: ',
-            'company_account' => 'Korxonaning bankdagi hisob raqami:',
-            'company_inn' => 'Korxona INN: ',
-            'file_name' => 'Yuklab olingan fayl nomi:',
-            'file_date' => 'Fayl yaratilgan sana: ',
-            'data_period' => 'Kun oralig`i: ',
-            'file' => 'Fayl',
+            'bank_mfo' => 'Банк МФО: ',
+            'company_account' => 'Корхона хисоб рақами:',
+            'company_inn' => 'Корхона ИНН: ',
+            'file_name' => 'Юклаб олинган файллар:',
+            'file_date' => 'Хисобот олинган сана: ',
+            'data_period' => 'Оралиқ давр: ',
+            'file' => 'Файл',
         ];
     }
-    public function getCompany()
+
+
+    public function getCompanyName()
     {
         return $this->hasOne(Company::className(), ['inn' => 'company_inn']);
-    }
-
-    public function getDoc()
-    {
-        return $this->hasOne(Document::className(), ['file_id' => 'id']);
     }
 
 }
