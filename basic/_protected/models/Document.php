@@ -72,4 +72,13 @@ class Document extends \yii\db\ActiveRecord
             'tip_deb_kred' => 'Tip deb kred'
         ];
     }
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+
+            ($this->detail_debet == 0) ? $this->tip_deb_kred = 0 : $this->tip_deb_kred = 1;
+
+            return parent::beforeSave($insert);
+        }
+    }
 }

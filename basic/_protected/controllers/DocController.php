@@ -66,8 +66,6 @@ class DocController extends Controller
     {
         $model = new FileInfo();
 
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

@@ -25,7 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'layout' => '{items}{pager}',
         'options' => [
-                'class' => 'table table-responsive text-nowrap'
+                'class' => ' table-responsive '
+//                'class' => 'table table-responsive text-nowrap'
         ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -50,7 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=> 'id',
+//                'headerOptions' => ['style' => 'width:20px'],
                 'value'=> 'doc.detail_mfo',
+//                'options' => ['width' => '10'],
+//                'options' => ['style' => 'max-width:10px;'],
                 'header' => 'Хамкор банк МФО',
             ],
             [
@@ -74,7 +78,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=> 'id',
                 'value'=> 'doc.detail_purpose_of_payment',
                 'header' => 'Тўлов мақсади',
-                'options' => ['class' => 'eni']
+//                'options' => ['width' => '80px'],
+//                'options' => ['style' => 'max-width:100px;'],
+//                'contentOptions' => ['style' => ['max-width' => '100px']]
+//                'headerOptions' => ['style' => 'width:20%'],
+//                'contentOptions' => ['style' => ['max-width' => '100px;', 'height' => '100px', 'class' => 'text-wrap']]
             ],
 
             [
