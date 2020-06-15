@@ -97,6 +97,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Чиқим',
                 'options' => ['width' => '80']
             ],
+            [
+                'attribute' => 'id',
+                'header' => 'Статус',
+                'value' => function ($data){
+                    return $data->doc->tip_deb_kred==1 ? "очиқ": ($data->status==NULL ? "ёпилган": "очиқ");
+                },
+                'filter' => ['kirim','chiqim'],
+//                'andFilterWhere'=> ['status' => 1],
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
