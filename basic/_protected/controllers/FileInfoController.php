@@ -141,28 +141,29 @@ class FileInfoController extends Controller
 
                 $fields = mb_convert_encoding($s, "utf-8", "windows-1251");
                 $f1 = $fields;
+                if ($details == false) {
 
-                $patterns = array(
-                    "mfo" => "([()]\d{5})",   //mfo
-                    "main" => "([: ]\d{20})",   // main account
-                    "name" => '([\b\"]\w.{7})',   // main account
-                    "inn" => "(ИНН: \d{9})",   // inn
-                    "date" => "(Изг:\d{1,2}\.\d{1,2}\.\d{4})",         // date
-                    "interval" => "(Сведения о работе счета c \d{1,2}\.\d{1,2}\.\d{4} по \d{1,2}\.\d{1,2}\.\d{4})"         // date
-                );
+                    $patterns = array(
+                        "mfo" => "([()]\d{5})",   //mfo
+                        "main" => "([: ]\d{20})",   // main account
+                        "name" => '([\b\"]\w.{7})',   // main account
+                        "inn" => "(ИНН: \d{9})",   // inn
+                        "date" => "(Изг:\d{1,2}\.\d{1,2}\.\d{4})",         // date
+                        "interval" => "(Сведения о работе счета c \d{1,2}\.\d{1,2}\.\d{4} по \d{1,2}\.\d{1,2}\.\d{4})"         // date
+                    );
 
-                foreach ($patterns as $key => $pattern) {
-                    preg_match($pattern, $fields, $matches, PREG_OFFSET_CAPTURE, 0);
-                    if ($matches) {
+                    foreach ($patterns as $key => $pattern) {
+                        preg_match($pattern, $fields, $matches, PREG_OFFSET_CAPTURE, 0);
+                        if ($matches) {
 //                    echo "<pre>";
 //                    print_r($key . ": ");
 //                    print_r($matches);
 //                    echo "</pre>";
-                        $results[$key] = $matches[0][0];
+                            $results[$key] = $matches[0][0];
 
+                        }
                     }
                 }
-
 
 
 //              begin   Asosiy contentni ichini o`qish`
