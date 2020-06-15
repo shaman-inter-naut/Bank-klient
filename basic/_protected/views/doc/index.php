@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'layout' => '{items}{pager}',
         'options' => [
                 'class' => 'table table-responsive text-nowrap'
         ],
@@ -80,6 +81,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=> 'id',
                 'value'=> 'doc.code_currency',
                 'header' => 'Валюта коди',
+                'options' => ['width' => '80']
+            ],
+
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_debet',
+                'header' => 'Кирим',
+                'options' => ['width' => '80']
+            ],
+
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_kredit',
+                'header' => 'Чиқим',
                 'options' => ['width' => '80']
             ],
 
