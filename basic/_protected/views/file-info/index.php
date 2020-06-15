@@ -43,14 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'view' => function ($url, $model) {
                         return Html::a('', ['view', 'id' => $model->id], [
-                            'class' => 'glyphicon glyphicon-eye-open bank',
+                            'class' => 'glyphicon glyphicon-eye-open',
+//                            'class' => 'glyphicon glyphicon-eye-open bank',
 
                         ]);
                     },
                     'update' => function ($url, $model) {
                         return Html::a('', ['update', 'id' => $model->id], [
                             'class' => 'glyphicon glyphicon-pencil bank',
-
                         ]);
                     },
                     'delete' => function ($url, $model) {
@@ -75,9 +75,10 @@ $this->params['breadcrumbs'][] = $this->title;
 Modal::begin([
 //    'header' => '<h3>Банк қўшиш</h3>',
     'id' => 'modal',
+
 ]);
 ?>
-<div id="modalContent">
+<div  id="modalContent">
 
 </div>
 <?php

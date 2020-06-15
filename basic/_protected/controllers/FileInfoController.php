@@ -38,12 +38,15 @@ class FileInfoController extends Controller
      */
     public function actionIndex()
     {
+        $company = Company::find()->all();
+
         $searchModel = new FileInfoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'company' => $company,
         ]);
     }
 
@@ -83,22 +86,22 @@ class FileInfoController extends Controller
 
 
 
-//        begin Hujjat ichini k`orish uchun
+//        begin Hujjat ichini ko`rish uchun
             $document = Document::find()->where(['file_id' => $id])->all();
             $doc = Document::find()->one();
 
 //             $debet = $doc->sum('detail_debet');
 //        $cost = $silka->sum('click');
-//        end Hujjat ichini k`orish uchun
+//        end Hujjat ichini ko`rish uchun
 
 
 
-        return $this->renderAjax('view', [
+        return $this->render('view', [
             'model' => $this->findModel($id),
             'company' => $company,
             'get_company_name' => $get_company_name,
             'document' => $document,
-//            'debet' => $debet,
+            'debet' => $debet,
         ]);
     }
 
