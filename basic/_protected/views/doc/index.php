@@ -97,6 +97,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Чиқим',
                 'options' => ['width' => '80']
             ],
+
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.contract_date',
+                'header' => 'шартнома санаси',
+                'options' => ['width' => '80']
+            ],
+
             [
                 'attribute' => 'id',
                 'header' => 'Статус',
