@@ -132,7 +132,7 @@ thead tr a {
 }
 
 .accordion:after {
-    /*content: '\002B';*/
+    content: '\002B';
     color: #777;
     font-weight: bold;
     float: right;
@@ -140,7 +140,7 @@ thead tr a {
 }
 
 .active:after {
-    /*content: "\2212";*/
+    content: "\2212";
 }
 
 .panel {

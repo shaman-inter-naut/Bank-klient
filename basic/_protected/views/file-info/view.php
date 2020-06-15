@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\FileInfo */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'File Infos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Файллар ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -32,21 +32,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="file-info-view">
 
-    <h1><?= Html::encode("Файлдан ўқиб олинган маълумотлар") ?></h1>
+    <h1><?= Html::encode("Файлдан олинган маълумотлар: ") ?></h1>
 
     <hr style="border: 5px solid darkslategrey">
 
-    <p>
-        <?= Html::a('+', ['create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('!', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('-', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+    <div class="col-md-10"><?= Html::a('Файллар', [Yii::$app->controller->id.'/index']); ?></div>
+    <div class="col-md-2">
+        <p class="pull-right">
+            <?= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('!', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('-', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Сиз ушбу маълумотни чиндан хам ўчириб юбормоқчимисиз ?',
+                    'method' => 'post',
+                ],
+            ]) ?>
+        </p>
+    </div>
+
+
 
     <?= DetailView::widget([
         'model' => $model,
@@ -55,13 +60,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'bank_mfo',
             'company_account',
             'company_inn',
-            'file_name',
+//            'file_name',
+            ['attribute'=>'file_name',
+                'format'=>'raw',
+//                '' => '',
+                'value' => function($data)
+                {return Html::a($data->file_name, ['#']);}
+            ],
             'file_date',
             'data_period',
         ],
     ]) ?>
 
-    <hr style="border: 5px solid darkslategrey">
+    <br>
+    <hr style="border: 1px solid darkslategrey">
     <br>
     <br>
 

@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?
     Modal::begin([
-        'header' => '<h3>Хисоб ракам кошиш</h3>',
+        'header' => '<h3>Хисоб рақам қўшиш</h3>',
         'id' => 'modal',
     ]);
     ?>

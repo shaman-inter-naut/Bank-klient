@@ -78,4 +78,11 @@ class Company extends \yii\db\ActiveRecord
     {
         return $this->hasMany(BankBranch::className(), ['company_id' => 'id']);
     }
+
+
+//    public function getSecondCompany()
+//    {
+//        return $this->hasOne(Company::className(), ['id' => 'second_company_id']);
+//    }
+
 }
