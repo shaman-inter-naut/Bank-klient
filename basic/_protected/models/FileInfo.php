@@ -66,5 +66,14 @@ class FileInfo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Company::className(), ['inn' => 'company_inn']);
     }
+    public function getCompany()
+    {
+        return $this->hasOne(Company::className(), ['inn' => 'company_inn']);
+    }
+
+    public function getDoc()
+    {
+        return $this->hasOne(Document::className(), ['file_id' => 'id']);
+    }
 
 }
