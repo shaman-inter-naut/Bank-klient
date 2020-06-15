@@ -81,4 +81,9 @@ class Document extends \yii\db\ActiveRecord
             return parent::beforeSave($insert);
         }
     }
+
+    public function getFile()
+    {
+        return $this->hasOne(FileInfo::className(), ['id' => 'file_id']);
+    }
 }

@@ -30,67 +30,67 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-//            'id',
-            [
-                'attribute'=> 'company_inn',
-                'value'=> 'company.name',
-                'header' => 'Корхона 2',
-            ],
-            'company_inn',
-            'bank_mfo',
-            'company_account',
-
-            'file_name',
-            'file_date',
-            'data_period',
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_account',
-                'header' => 'Хисоб рақам',
-            ],
-            [
-                'attribute'=> 'id',
-//                'headerOptions' => ['style' => 'width:20px'],
-                'value'=> 'doc.detail_mfo',
-//                'options' => ['width' => '10'],
-//                'options' => ['style' => 'max-width:10px;'],
-                'header' => 'Хамкор банк МФО',
-            ],
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_inn',
-                'header' => 'Хамкор банк ИНН',
-            ],
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_name',
-                'header' => 'Хамкор банк номи',
-            ],
-
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_document_number',
-                'header' => 'Хамкор банк хужжат рақа',
-            ],
-
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_purpose_of_payment',
-                'header' => 'Тўлов мақсади',
-//                'options' => ['width' => '80px'],
-//                'options' => ['style' => 'max-width:100px;'],
-//                'contentOptions' => ['style' => ['max-width' => '100px']]
-//                'headerOptions' => ['style' => 'width:20%'],
-//                'contentOptions' => ['style' => ['max-width' => '100px;', 'height' => '100px', 'class' => 'text-wrap']]
-            ],
-
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.code_currency',
-                'header' => 'Валюта коди',
-                'options' => ['width' => '80']
-            ],
+//
+////            'id',
+//            [
+//                'attribute'=> 'company_inn',
+//                'value'=> 'company.name',
+//                'header' => 'Корхона 2',
+//            ],
+//            'company_inn',
+//            'bank_mfo',
+//            'company_account',
+//
+//            'file_name',
+//            'file_date',
+//            'data_period',
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_account',
+//                'header' => 'Хисоб рақам',
+//            ],
+//            [
+//                'attribute'=> 'id',
+////                'headerOptions' => ['style' => 'width:20px'],
+//                'value'=> 'doc.detail_mfo',
+////                'options' => ['width' => '10'],
+////                'options' => ['style' => 'max-width:10px;'],
+//                'header' => 'Хамкор банк МФО',
+//            ],
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_inn',
+//                'header' => 'Хамкор банк ИНН',
+//            ],
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_name',
+//                'header' => 'Хамкор банк номи',
+//            ],
+//
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_document_number',
+//                'header' => 'Хамкор банк хужжат рақа',
+//            ],
+//
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_purpose_of_payment',
+//                'header' => 'Тўлов мақсади',
+////                'options' => ['width' => '80px'],
+////                'options' => ['style' => 'max-width:100px;'],
+////                'contentOptions' => ['style' => ['max-width' => '100px']]
+////                'headerOptions' => ['style' => 'width:20%'],
+////                'contentOptions' => ['style' => ['max-width' => '100px;', 'height' => '100px', 'class' => 'text-wrap']]
+//            ],
+//
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.code_currency',
+//                'header' => 'Валюта коди',
+//                'options' => ['width' => '80']
+//            ],
 
             [
                 'attribute'=> 'id',
@@ -112,10 +112,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id',
                 'header' => 'Статус',
                 'value' => function ($data){
-                    return $data->doc->detail_debet==0 ? "chiqim" : "kirim";
+//                    return $data->doc->detail_debet==0 ? "chiqim" : "kirim";
+                    return $data->doc->detail_debet==1 ? "очиқ":  "ёпилган";
                 },
 
-                'filter' => ['chiqim','kirim'],
+                'filter' => ['1','0'],
 //                'andFilterWhere'=> ['status' => 1],
             ],
             [
