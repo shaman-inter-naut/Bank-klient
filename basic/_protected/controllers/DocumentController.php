@@ -56,6 +56,12 @@ class DocumentController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionViews($id)
+    {
+        return $this->renderAjax('views', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
     /**
      * Creates a new Document model.

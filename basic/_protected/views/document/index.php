@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\DocumentSearch */
@@ -23,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'layout' => '{items}{pager}',
         'options' => [
             'class' => ' table-responsive '
         ],
@@ -66,17 +68,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'detail_name',
                 'header' => 'Хамкор номи',
             ],
-            
+
             [
                 'attribute'=> 'detail_account',
                 'value'=> 'detail_account',
                 'header' => 'Хамкор Х-Р',
             ],
-            [
-                'attribute'=> 'detail_purpose_of_payment',
-                'value'=> 'detail_purpose_of_payment',
+
+            ['attribute'=>'detail_purpose_of_payment',
                 'header' => 'Тўлов мақсади',
+
+                'format'=>'raw',
+                'value' => function($data)
+                {return Html::a('Мақсад ', [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'bank',]);}
             ],
+
+//
+//            [
+//                'attribute'=> 'detail_purpose_of_payment',
+//                'header' => 'Тўлов мақсади',
+//                'format'=>'raw',
+//                'value' => function($model){
+//                    return Html::a($model->detail_purpose_of_payment, [Yii::$app->controller->id.'/purpose','id'=>$model->id,],['class'=>'bank']);
+//                }
+//            ],
             [
                 'attribute'=> 'code_currency',
                 'value'=> 'code_currency',
@@ -107,6 +122,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'contract_date',
                 'header' => 'Шартнома санаси',
             ],
+            [
+                'attribute'=> 'detail_document_number',
+                'value'=> 'detail_document_number',
+                'header' => 'Шартнома Рақами',
+            ],
 //            'detail_date',
 //            'detail_account',
 //            'detail_inn',
@@ -126,3 +146,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
+
+<?
+Modal::begin([
+
+    'id' => 'modal',
+]);
+?>
+<div id="modalContent">
+
+</div>
+<?php
+Modal::end();
+?>
+
