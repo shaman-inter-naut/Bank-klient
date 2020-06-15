@@ -143,6 +143,7 @@ class FileInfoController extends Controller
                 $f1 = $fields;
 
                 if ($details == false) {
+
                     $patterns = array(
                         "mfo" => "([()]\d{5})",   //mfo
                         "main" => "([: ]\d{20})",   // main account
@@ -164,6 +165,7 @@ class FileInfoController extends Controller
                         }
                     }
                 }
+
 
 
 //              begin   Asosiy contentni ichini o`qish`
