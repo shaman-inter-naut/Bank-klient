@@ -29,60 +29,60 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-//
-////            'id',
-//            [
-//                'attribute'=> 'company_inn',
-//                'value'=> 'company.name',
-//                'header' => 'Корхона 2',
-//            ],
-//            'company_inn',
-//            'bank_mfo',
-//            'company_account',
-//
-//            'file_name',
-//            'file_date',
-//            'data_period',
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.detail_account',
-//                'header' => 'Хисоб рақам',
-//            ],
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.detail_mfo',
-//                'header' => 'Хамкор банк МФО',
-//            ],
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.detail_inn',
-//                'header' => 'Хамкор банк ИНН',
-//            ],
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.detail_name',
-//                'header' => 'Хамкор банк номи',
-//            ],
-//
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.detail_document_number',
-//                'header' => 'Хамкор банк хужжат рақа',
-//            ],
-//
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.detail_purpose_of_payment',
-//                'header' => 'Тўлов мақсади',
-//                'options' => ['class' => 'eni']
-//            ],
-//
-//            [
-//                'attribute'=> 'id',
-//                'value'=> 'doc.code_currency',
-//                'header' => 'Валюта коди',
-//                'options' => ['width' => '80']
-//            ],
+
+//            'id',
+            [
+                'attribute'=> 'company_inn',
+                'value'=> 'company.name',
+                'header' => 'Корхона 2',
+            ],
+            'company_inn',
+            'bank_mfo',
+            'company_account',
+
+            'file_name',
+            'file_date',
+            'data_period',
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_account',
+                'header' => 'Хисоб рақам',
+            ],
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_mfo',
+                'header' => 'Хамкор банк МФО',
+            ],
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_inn',
+                'header' => 'Хамкор банк ИНН',
+            ],
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_name',
+                'header' => 'Хамкор банк номи',
+            ],
+
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_document_number',
+                'header' => 'Хамкор банк хужжат рақа',
+            ],
+
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.detail_purpose_of_payment',
+                'header' => 'Тўлов мақсади',
+                'options' => ['class' => 'eni']
+            ],
+
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.code_currency',
+                'header' => 'Валюта коди',
+                'options' => ['width' => '80']
+            ],
 
             [
                 'attribute'=> 'id',
