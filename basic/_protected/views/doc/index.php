@@ -29,60 +29,60 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-//            'id',
-            [
-                'attribute'=> 'company_inn',
-                'value'=> 'company.name',
-                'header' => 'Корхона 2',
-            ],
-            'company_inn',
-            'bank_mfo',
-            'company_account',
-
-            'file_name',
-            'file_date',
-            'data_period',
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_account',
-                'header' => 'Хисоб рақам',
-            ],
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_mfo',
-                'header' => 'Хамкор банк МФО',
-            ],
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_inn',
-                'header' => 'Хамкор банк ИНН',
-            ],
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_name',
-                'header' => 'Хамкор банк номи',
-            ],
-
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_document_number',
-                'header' => 'Хамкор банк хужжат рақа',
-            ],
-
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.detail_purpose_of_payment',
-                'header' => 'Тўлов мақсади',
-                'options' => ['class' => 'eni']
-            ],
-
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.code_currency',
-                'header' => 'Валюта коди',
-                'options' => ['width' => '80']
-            ],
+//
+////            'id',
+//            [
+//                'attribute'=> 'company_inn',
+//                'value'=> 'company.name',
+//                'header' => 'Корхона 2',
+//            ],
+//            'company_inn',
+//            'bank_mfo',
+//            'company_account',
+//
+//            'file_name',
+//            'file_date',
+//            'data_period',
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_account',
+//                'header' => 'Хисоб рақам',
+//            ],
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_mfo',
+//                'header' => 'Хамкор банк МФО',
+//            ],
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_inn',
+//                'header' => 'Хамкор банк ИНН',
+//            ],
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_name',
+//                'header' => 'Хамкор банк номи',
+//            ],
+//
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_document_number',
+//                'header' => 'Хамкор банк хужжат рақа',
+//            ],
+//
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.detail_purpose_of_payment',
+//                'header' => 'Тўлов мақсади',
+//                'options' => ['class' => 'eni']
+//            ],
+//
+//            [
+//                'attribute'=> 'id',
+//                'value'=> 'doc.code_currency',
+//                'header' => 'Валюта коди',
+//                'options' => ['width' => '80']
+//            ],
 
             [
                 'attribute'=> 'id',
@@ -98,21 +98,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['width' => '80']
             ],
 
-            [
-                'attribute'=> 'id',
-                'value'=> 'doc.contract_date',
-                'header' => 'шартнома санаси',
-                'options' => ['width' => '80']
-            ],
+
 
             [
                 'attribute' => 'id',
                 'header' => 'Статус',
                 'value' => function ($data){
-                    return $data->doc->tip_deb_kred==1 ? "очиқ": ($data->status==NULL ? "ёпилган": "очиқ");
+                    return $data->doc->detail_debet==0 ? "chiqim" : "kirim";
                 },
-                'filter' => ['kirim','chiqim'],
+
+                'filter' => ['chiqim','kirim'],
 //                'andFilterWhere'=> ['status' => 1],
+            ],
+            [
+                'attribute'=> 'id',
+                'value'=> 'doc.contract_date',
+                'header' => 'шартнома санаси',
+                'options' => ['width' => '80']
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -18,7 +18,7 @@ class FileInfoSearch extends FileInfo
     {
         return [
             [['id'], 'integer'],
-            [['bank_mfo', 'company_account', 'company_inn', 'file_name', 'file_date', 'data_period'], 'safe'],
+            [['bank_mfo', 'company_account', 'company_inn', 'file_name', 'file_date', 'doc','data_period'], 'safe'],
         ];
     }
 
@@ -56,9 +56,12 @@ class FileInfoSearch extends FileInfo
             return $dataProvider;
         }
 
+//        $query->joinWith('doc');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+//            'tip_deb_kred' => $this->tip_deb_kred,
         ]);
 
         $query->andFilterWhere(['like', 'bank_mfo', $this->bank_mfo])
@@ -67,6 +70,7 @@ class FileInfoSearch extends FileInfo
             ->andFilterWhere(['like', 'file_name', $this->file_name])
             ->andFilterWhere(['like', 'file_date', $this->file_date])
             ->andFilterWhere(['like', 'data_period', $this->data_period]);
+//        $query->andFilterWhere(['like','doc.tip_deb_kred', $this->id]);
 
         return $dataProvider;
     }
