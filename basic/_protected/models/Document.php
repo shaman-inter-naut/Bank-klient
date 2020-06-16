@@ -37,9 +37,9 @@ class Document extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['file_id', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
-            [['file_id'], 'string', 'max' => 10],
-            [['tip_deb_kred'], 'integer', 'max' => 11],
+            [[ 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
+//            [['file_id'], 'string', 'max' => 10],
+            [['tip_deb_kred','file_id'], 'integer', 'max' => 11],
             [['detail_date'], 'string', 'max' => 50],
             [['detail_account'], 'string', 'max' => 20],
             [['detail_inn'], 'string', 'max' => 15],

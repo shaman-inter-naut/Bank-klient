@@ -33,11 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
 //            'file_id',
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'file.company.short_name',
-                'header' => 'Корхона номи',
-            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'file.company.short_name',
+//                'header' => 'Корхона номи',
+//            ],
             [
                 'attribute'=> 'file_id',
                 'value'=> 'file.bank_mfo',
@@ -48,21 +48,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'file.company_account',
                 'header' => 'Х-Р',
             ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'file.file_date',
-                'header' => 'Сана',
-            ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'file.data_period',
-                'header' => 'Сана оралиқ',
-            ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'file.company_inn',
-                'header' => 'ИНН',
-            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'file.file_date',
+//                'header' => 'Сана',
+//            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'file.data_period',
+//                'header' => 'Сана оралиқ',
+//            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'file.company_inn',
+//                'header' => 'ИНН',
+//            ],
             [
                 'attribute'=> 'detail_name',
                 'value'=> 'detail_name',
@@ -143,7 +143,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
 //                'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
-                'headerOptions' => ['width' => '10'],
+                'headerOptions' => ['width' => '50'],
                 'template' => '{view}  {update}  {delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {

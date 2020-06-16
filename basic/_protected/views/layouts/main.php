@@ -72,10 +72,10 @@ AppAsset::register($this);
 //                    '<li class="divider"></li>',
 
 
-                    ['label' => 'Файллар', 'url' => '/files/index'],
-                    '<li class="divider"></li>',
-                    ['label' => 'Хужжатлар', 'url' => '/documents/index'],
-                    '<li class="divider"></li>',
+//                    ['label' => 'Файллар', 'url' => '/files/index'],
+//                    '<li class="divider"></li>',
+//                    ['label' => 'Хужжатлар', 'url' => '/documents/index'],
+//                    '<li class="divider"></li>',
 
 
                 ],

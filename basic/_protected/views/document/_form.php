@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'contract_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tip_deb_kred')->textInput() ?>
+<!--    --><?//= $form->field($model, 'tip_deb_kred')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сақлаш', ['class' => 'btn btn-success']) ?>

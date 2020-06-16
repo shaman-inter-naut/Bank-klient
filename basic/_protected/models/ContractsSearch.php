@@ -20,7 +20,7 @@ class ContractsSearch extends Contracts
     {
         return [
             [['id', 'contract_number', 'status'], 'integer'],
-            [['contract_date', 'firstCompany', 'first_company_id', 'second_company_id'], 'safe'],
+            [['contract_date',  'first_company_id', 'second_company_id'], 'safe'],
         ];
     }
 
