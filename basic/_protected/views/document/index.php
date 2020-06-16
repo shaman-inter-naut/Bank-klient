@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'file_id',
             [
                 'attribute'=> 'file_id',
-                'value'=> 'file.company.name',
+                'value'=> 'file.company.short_name',
                 'header' => 'Корхона номи',
             ],
             [
