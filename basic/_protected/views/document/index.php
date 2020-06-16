@@ -8,16 +8,16 @@ use yii\bootstrap\Modal;
 /* @var $searchModel app\models\DocumentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Documents';
+$this->title = 'Хужжатлар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="document-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Document', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<!--    <p>-->
+<!--        --><?//= Html::a('Create Document', ['create'], ['class' => 'btn btn-success']) ?>
+<!--    </p>-->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -140,7 +140,37 @@ $this->params['breadcrumbs'][] = $this->title;
             //'contract_date',
             //'tip_deb_kred',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+//                'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
+                'headerOptions' => ['width' => '10'],
+                'template' => '{view}  {update}  {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('', ['view', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-eye-open bank',
+
+                        ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('', ['update', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-pencil bank',
+
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('', ['delete', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-trash',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
+
+                ],
+
+            ],
         ],
     ]); ?>
 
@@ -150,7 +180,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?
 Modal::begin([
-
+//    'header' => 'Тўлов мақсади',
     'id' => 'modal',
 ]);
 ?>
