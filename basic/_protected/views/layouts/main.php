@@ -46,7 +46,17 @@ AppAsset::register($this);
 
         // everyone can see Home page
 //        $menuItems[] = ['label' => Yii::t('app', 'Bosh sahifa'), 'url' => ['site/index'],$active];
-        $menuItems[] = ['label' => Yii::t('app', 'Файл'), 'url' => ['file-info/index'],$active];
+//        $menuItems[] = ['label' => Yii::t('app', 'Файл'), 'url' => ['file-info/index'],$active];
+        $menuItems[] = [
+                        'label' => 'Файл',
+                          'items' => [
+                              ['label' => 'Файллар', 'url' => '/file-info/index'],
+                              '<li class="divider"></li>',
+                              ['label' => 'Умумий файллар', 'url' => '/document/index'],
+                              '<li class="divider"></li>',
+                          ]
+                 ];
+
         $menuItems[] =
             [
                 'label' => 'Тахрир',

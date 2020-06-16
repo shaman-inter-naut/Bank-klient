@@ -17,8 +17,8 @@ class DocumentSearch extends Document
     public function rules()
     {
         return [
-            [['id', 'file_id', 'tip_deb_kred'], 'integer'],
-            [['detail_date','file', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
+            [['id',  'tip_deb_kred'], 'integer'],
+            [['detail_date', 'file_id','file', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
     }
 
@@ -61,7 +61,7 @@ class DocumentSearch extends Document
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'file_id' => $this->file_id,
+//            'file_id' => $this->file_id,
             'tip_deb_kred' => $this->tip_deb_kred,
         ]);
 
@@ -76,7 +76,8 @@ class DocumentSearch extends Document
             ->andFilterWhere(['like', 'detail_purpose_of_payment', $this->detail_purpose_of_payment])
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
             ->andFilterWhere(['like', 'contract_date', $this->contract_date])
-            ->andFilterWhere(['like','file.company.short_name', $this->file_id]);
+            ->andFilterWhere(['like','file.company.short_name', $this->file_id])
+            ->andFilterWhere(['like','file.file.bank_mfo', $this->file_id]);
 
         return $dataProvider;
     }
