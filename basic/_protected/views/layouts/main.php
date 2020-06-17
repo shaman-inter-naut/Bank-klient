@@ -37,7 +37,7 @@ AppAsset::register($this);
         <?php
         $active = ['active' => in_array(\Yii::$app->controller->id, ['tickets'])];
         NavBar::begin([
-            'brandLabel' => "Bank-klient tizimi kirim-chiqim hisobotlari",
+            'brandLabel' => "Банк-клиент тизими кирим-чиқим хисоботлари",
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-default navbar-fixed-top',
@@ -127,7 +127,7 @@ AppAsset::register($this);
 
         // display Users to admin+ roles
         if (Yii::$app->user->can('admin')){
-            $menuItems[] = ['label' => Yii::t('app', 'Admin'), 'url' => ['/user/view', 'id' => Yii::$app->user->id]];
+            $menuItems[] = ['label' => Yii::t('app', 'Админ'), 'url' => ['/user/view', 'id' => Yii::$app->user->id]];
             $menuItems[] = ['label' => Yii::t('app', 'Foydalanuvchilar'), 'url' => ['/user/index']];
 
         }
@@ -143,8 +143,8 @@ AppAsset::register($this);
 
         // display Signup and Login pages to guests of the site
         if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => Yii::t('app', 'Ro`yxatdan o`tish'), 'url' => ['/site/signup']];
-            $menuItems[] = ['label' => Yii::t('app', 'Kirish'), 'url' => ['/site/login']];
+            $menuItems[] = ['label' => Yii::t('app', 'Рўйхатдан ўтиш'), 'url' => ['/site/signup']];
+            $menuItems[] = ['label' => Yii::t('app', 'Кириш'), 'url' => ['/site/login']];
         }
 
         echo Nav::widget([

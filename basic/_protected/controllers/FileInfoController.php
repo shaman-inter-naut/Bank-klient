@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Company;
-use app\models\DocumentEski;
+use app\models\Document;
 use app\models\Bank;
 use Yii;
 use app\models\FileInfo;
@@ -88,8 +88,8 @@ class FileInfoController extends Controller
 
 
 //        begin Hujjat ichini ko`rish uchun
-        $document = DocumentEski::find()->where(['file_id' => $id])->all();
-        $doc = DocumentEski::find()->one();
+        $document = Document::find()->where(['file_id' => $id])->all();
+        $doc = Document::find()->one();
 
 //             $debet = $doc->sum('detail_debet');
 //        $cost = $silka->sum('click');
@@ -322,7 +322,7 @@ class FileInfoController extends Controller
 
 
 
-                $document=new DocumentEski();
+                $document=new Document();
                 $document->file_id = $lastID;
                 $document->detail_date = $value[1];
                 $document->detail_document_number = $value[2];
