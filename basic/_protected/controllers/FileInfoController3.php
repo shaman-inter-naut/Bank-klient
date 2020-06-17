@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Company;
-use app\models\DocumentEski;
+use app\models\Document;
 use app\models\Bank;
 use Yii;
 use app\models\FileInfo;
@@ -88,8 +88,8 @@ class FileInfoController extends Controller
 
 
 //        begin Hujjat ichini ko`rish uchun
-        $document = DocumentEski::find()->where(['file_id' => $id])->all();
-        $doc = DocumentEski::find()->one();
+        $document = Document::find()->where(['file_id' => $id])->all();
+        $doc = Document::find()->one();
 
 //             $debet = $doc->sum('detail_debet');
 //        $cost = $silka->sum('click');
@@ -116,6 +116,11 @@ class FileInfoController extends Controller
 
 
 
+
+
+
+
+
     public function actionCreate()
     {
 
@@ -135,15 +140,15 @@ class FileInfoController extends Controller
 
             $filePath = $fileName . '.' . $model->file->extension;
 
-
-
             $fp = fopen('uploads/' . $filePath, 'r') or die ("can't open file");
 
             $details = false;
             $position = 0;
             $needed_detail = -1;
+            $detail_counter=0;
             $eee = [];
             $results = [];
+            $res = [];
             while ($s = fgets($fp)) {
 
 //                $fields = mb_convert_encoding ($s, "utf-8", 'Windows-1251');
@@ -152,12 +157,13 @@ class FileInfoController extends Controller
                 if ($details == false) {
 
                     $patterns = array(
-                        "acc" => "([счет № ]\d{20})",   //mfo
-                        "inn" => "((ИНН:\s)\d{9})",   // inn
-//                        "main" => "([: ]\d{20})",   // main account
-//                        "name" => '([\b\"]\w.{7})',   // main account
-                        "interval" => "(Выписка с \d{1,2}\.\d{1,2}\.\d{4} по \d{1,2}\.\d{1,2}\.\d{4})",         // date
-                        "date" => "((Входящий остаток на )\d{1,2}\.\d{1,2}\.\d{4})"         // date
+                        "acc" => "((Лицевой счет №\s+)\d{20})",   //acc
+                        "inn" => "((ИНН:\s+)\d{9})",   // inn
+//                        "mfo" => "(\d+)",   //mfo
+                        "date" => "((Входящий остаток на\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
+                        "interval1" => "((\s+Выписка с\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
+                        "interval2" => "((\s+по\s+)\d{1,2}\.\d{1,2}\.\d{4})"         // date
+
                     );
 
                     foreach ($patterns as $key => $pattern) {
@@ -173,25 +179,41 @@ class FileInfoController extends Controller
                     }
                 }
 
+//                echo "<pre>";
+//                print_r($s);
+//                echo "</pre>";
+
+                //   echo strpos($s,"Корреспондент:");
 
 
-//              begin   Asosiy contentni ichini o`qish`
 
-                if(strpos($fields,"│    ДАТА    │")){
+//              begin   Asosiy contentni ichini o`qish
+
+                if(strpos($s,"КОРРЕСПОНДЕНТ:")){
                     $details=true;
                     $position++;
+                    // echo strpos($s,"КОРРЕСПОНДЕНТ:");
                 }
 
                 if($details) $position++;
-                if($details & $position>3) {
-                    $rrr = explode("|", $fields);
+                if($details & $position>4) {
+                    $rrr = explode("│", $s);
 
+//                 echo "<pre>";
+//                 print_r(count($rrr));
+//                 "</pre>";
+                    if (count($rrr) == 1) {
+                        $detail_counter=1;
+
+                    }
                     if (count($rrr) == 8) {
-
-                        if (strlen(trim($rrr[0])) == 10) {
+                        if($detail_counter==1){
+                            $detail_counter++;
                             $needed_detail++;
                             $eee[$needed_detail] = $rrr;
-                        } else {
+                        }
+                        else {
+                            $detail_counter++;
                             $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
                             $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
                             $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
@@ -213,8 +235,8 @@ class FileInfoController extends Controller
 //                            $detail_kredit = $eee[$needed_detail][6];
 //                            $detail_purpose = $eee[$needed_detail][7];
 
-
                         }
+
                     }
                 }
 //              end     Asosiy contentni ichini o`qish
@@ -224,34 +246,39 @@ class FileInfoController extends Controller
             }
 
 
-//        echo "<pre>";
-//        print_r($results);
-//        "</pre>";
+//            echo "<pre>";
+//            print_r($results);
+//            "</pre>";
 
-            $acc = trim($results['acc']);
+            $acc = trim(str_replace("Лицевой счет №", "", $results['acc']));
             $inn = trim(str_replace("ИНН:", "", $results['inn']));
             $date = trim(str_replace("Входящий остаток на", "", $results['date']));
-            $interval = trim(str_replace("Выписка с", "", $results['interval']));
-            $interval = str_replace(" по ", " - ", $interval);
+//            $mfo = trim(str_replace("-", "", $results['mfo']));
+            $interval1 = trim(str_replace("Выписка с", "", $results['interval1']));
+            $interval2 = trim(str_replace("по", "", $results['interval2']));
+            $interval = $interval1.' - '.$interval2;
 
 //            echo "<pre>";
 //            print_r($acc.'<br>');
 //            print_r($inn.'<br>');
+////            print_r($inn.'<br>');
 //            print_r($date.'<br>');
 //            print_r($interval.'<br>');
 //            "</pre>";
 
 
-//        exit;
+
+
             $model->bank_mfo = '00014';
             $model->company_account = $acc;
+            $unikal = substr($acc, 10, 7);
+            //$company = Company::find()->where(['unical_code' => $unikal])->one();
             $model->company_inn = $inn;
             $model->file_name = $filePath;
             $model->file_date = $date;
             $model->data_period = $interval;
             $model->save(false);
             $lastID = Yii::$app->db->getLastInsertID();
-            // fclose($fp) or die("can't close file");
 
 
 
@@ -259,33 +286,65 @@ class FileInfoController extends Controller
 
 
 
-//        echo
-//            "<pre>";
-//                print_r($eee);
-//            "</pre>";
-//        die;
+            //    echo
+            //        "<pre>";
+            //            print_r($eee);
+            //        "</pre>";
+            //    die;
 
             foreach ($eee as $key =>$value)
             {
                 //$fileInfo=new FileInfo();
 
-                $document=new DocumentEski();
+//             echo   'DATE: '.$date = $value[1].'<br>';
+//             echo   'NUMBER: '.$doc_number = $value[2].'<br>';
+
+                // preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
+
+                $pat = array(
+                    "mfo" => "(\d{5})",   //mfo
+                    "acc" => "(\d{20})",   //mfo
+                    "inn" => "(\d{9})",   //mfo
+//                    "purpose" => "([ИНН:]\s+\D+)",   //mfo
+                );
+
+                foreach ($pat as $key => $p) {
+                    preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
+                    if ($m) {
+//                        echo "<pre>";
+//                        print_r($key . ": ");
+//                        print_r($m);
+//                        echo "</pre>";
+                        $res[$key] = $m[0][0];
+
+                    }
+                }
+
+//             echo    'MFO: '.$mfo     = $res['mfo'].'<br>';
+//             echo    'ACC: '.$acc     = $res['acc'].'<br>';
+
+//             echo   $purpose = $value[4].'<br>';
+//             echo   $debet = $value[5].'<br>';
+//             echo   $kredit = $value[6].'<hr>';
+
+
+
+                $document=new Document();
                 $document->file_id = $lastID;
-                $document->detail_date = $value[0];
-
-                preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
-
-                $document->detail_account = $matches['acc'];
-                $document->detail_inn = $matches['inn'];
-//                $document->detail_inn ='44444';// $eee[1];
-                $document->detail_name ='xxx-xxx-xxx';// $eee[1];
+                $document->detail_date = $value[1];
                 $document->detail_document_number = $value[2];
-                $document->detail_mfo =$value[4];
+
+                //  preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
+
+                $document->detail_inn = $res['inn'];
+                $document->detail_account = $res['acc'];
+                $document->detail_name ='-';// $eee[1];
+                $document->detail_mfo = $res['mfo'];
                 $document->detail_debet = $value[5];
                 $document->detail_kredit = $value[6];
-                $document->detail_purpose_of_payment =$value[7];
-                $document->code_currency = '000';
-                $document->contract_date = '111';
+                $document->detail_purpose_of_payment =$value[4];
+                $document->code_currency = '-';
+                $document->contract_date = '-';
 
                 $document->save(false);
             }

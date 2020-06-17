@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Company;
-use app\models\Document;
+use app\models\DocumentEski;
 use app\models\Bank;
 use Yii;
 use app\models\FileInfo;
@@ -88,8 +88,8 @@ class FileInfoController extends Controller
 
 
 //        begin Hujjat ichini ko`rish uchun
-        $document = Document::find()->where(['file_id' => $id])->all();
-        $doc = Document::find()->one();
+        $document = DocumentEski::find()->where(['file_id' => $id])->all();
+        $doc = DocumentEski::find()->one();
 
 //             $debet = $doc->sum('detail_debet');
 //        $cost = $silka->sum('click');
@@ -140,10 +140,8 @@ class FileInfoController extends Controller
             $details = false;
             $position = 0;
             $needed_detail = -1;
-            $detail_counter=0;
             $eee = [];
             $results = [];
-            $res = [];
             while ($s = fgets($fp)) {
 
 
@@ -202,94 +200,41 @@ class FileInfoController extends Controller
                     if ($bank->template == 2){
                         if ($details == false) {
                             $patterns = array(
-                                "mfo" => "(\d+[-])",   //mfo
+                                "mfo" => "(\d{5}\-\D+)",   //mfo
                                 "date" => "((Изг )\d{1,2}\.\d{1,2}\.\d{4})",         // date
                                 "acc" => "((Счет:\s+)\d{20})",   //mfo
-                                "inn" => "((ИНН:\s)\d{9})",   // inn
+//                                "inn" => "((ИНН:\s)\d{9})",   // inn
                                 "interval1" => "((СЧЕТА за\s+) \d{1,2}\.\d{1,2}\.\d{4})",         // date
                                 "interval2" => "((посл.проводки :)\d{1,2}\.\d{1,2}\.\d{4})"         // date
                             );
-
                             foreach ($patterns as $key => $pattern) {
                                 preg_match($pattern, $s, $matches, PREG_OFFSET_CAPTURE, 0);
                                 if ($matches) {
+//                        echo "<pre>";
+//                        print_r($key . ": ");
+//                        print_r($matches);
+//                        echo "</pre>";
                                     $results[$key] = $matches[0][0];
                                 }
                             }
-                        }
-                        //begin   Asosiy contentni ichini o`qish
 
-                        if(strpos($s,"Корреспондент:")){
-                            $details=true;
-                            $position++;
-                        }
+//              begin   Asosiy contentni ichini o`qish`
 
-                        if($details) $position++;
-                        if($details & $position>3) {
-                            $rrr = explode("|", $s);
-                            if (count($rrr) == 8) {
-                                if (strlen(trim($rrr[1])) == 10) {
-                                    $needed_detail++;
-                                    $eee[$needed_detail] = $rrr;
-                                } else {
-                                    $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
-                                    $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
-                                    $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
-                                    $eee[$needed_detail][3] = trim($eee[$needed_detail][3]) . ' ' . trim($rrr[3]);
-                                    $eee[$needed_detail][4] = trim($eee[$needed_detail][4]) . ' ' . trim($rrr[4]);
-                                    $eee[$needed_detail][5] = trim($eee[$needed_detail][5]) . ' ' . trim($rrr[5]);
-                                    $eee[$needed_detail][6] = trim($eee[$needed_detail][6]) . ' ' . trim($rrr[6]);
-                                    $eee[$needed_detail][7] = trim($eee[$needed_detail][7]) . ' ' . trim($rrr[7]);
-                                }
-                            }
-                        }
-                        //end     Asosiy contentni ichini o`qish
-                    }else
-
-
-
-                        if ($bank->template == 3){
-                                if ($details == false) {
-                                    $patterns = array(
-                                        "acc" => "((Лицевой счет №\s+)\d{20})",   //acc
-                                        "inn" => "((ИНН:\s+)\d{9})",   // inn
-                                        "date" => "((Входящий остаток на\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
-                                        "interval1" => "((\s+Выписка с\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
-                                        "interval2" => "((\s+по\s+)\d{1,2}\.\d{1,2}\.\d{4})"         // date
-                                    );
-
-                                    foreach ($patterns as $key => $pattern) {
-                                        preg_match($pattern, $s, $matches, PREG_OFFSET_CAPTURE, 0);
-                                        if ($matches) {
-                                            $results[$key] = $matches[0][0];
-                                        }
-                                    }
-                                }
-
-
-                            // begin   Asosiy contentni ichini o`qish
-
-                            if(strpos($s,"КОРРЕСПОНДЕНТ:")){
+                            if(strpos($fields,"|   Дата   |")){
                                 $details=true;
                                 $position++;
                             }
 
                             if($details) $position++;
-                            if($details & $position>4) {
-                                $rrr = explode("│", $s);
+                            if($details & $position>3) {
+                                $rrr = explode("|", $fields);
 
-                                if (count($rrr) == 1) {
-                                    $detail_counter=1;
-
-                                }
                                 if (count($rrr) == 8) {
-                                    if($detail_counter==1){
-                                        $detail_counter++;
+
+                                    if (strlen(trim($rrr[0])) == 10) {
                                         $needed_detail++;
                                         $eee[$needed_detail] = $rrr;
-                                    }
-                                    else {
-                                        $detail_counter++;
+                                    } else {
                                         $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
                                         $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
                                         $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
@@ -298,20 +243,35 @@ class FileInfoController extends Controller
                                         $eee[$needed_detail][5] = trim($eee[$needed_detail][5]) . ' ' . trim($rrr[5]);
                                         $eee[$needed_detail][6] = trim($eee[$needed_detail][6]) . ' ' . trim($rrr[6]);
                                         $eee[$needed_detail][7] = trim($eee[$needed_detail][7]) . ' ' . trim($rrr[7]);
+
+
+//                            $detail_date = $eee[$needed_detail][0] ;
+//                            $satr = $eee[$needed_detail][1];
+//                            $detail_account = substr($eee[$needed_detail][1], 0, 20) ;
+//                            $detail_find_pos_INN = strpos($satr, 'ИНН');
+//                            $detail_inn = substr($eee[$needed_detail][1], $detail_find_pos_INN+6,   10);
+//                            $detail_nomer = $eee[$needed_detail][2];
+//                            $detail_mfo = $eee[$needed_detail][4];
+//                            $detail_debet = $eee[$needed_detail][5];
+//                            $detail_kredit = $eee[$needed_detail][6];
+//                            $detail_purpose = $eee[$needed_detail][7];
+
+
                                     }
                                 }
                             }
-                            //              end     Asosiy contentni ichini o`qish
-
+//              end     Asosiy contentni ichini o`qish
 
                         }
+                    }else
 
-                if ($bank->template == 4){
-                    echo $bank->template;
-                }
+
+
+
+                        if ($bank->template == 3){
+                            echo $bank->template;
+                        }
             }
-
-
 
 
             if ($bank->template == 1){
@@ -335,7 +295,7 @@ class FileInfoController extends Controller
 
                 foreach ($eee as $key =>$value)
                 {
-                    $document=new Document();
+                    $document=new DocumentEski();
                     $document->file_id = $lastID;
                     $document->detail_date = $value[0];
 
@@ -357,119 +317,81 @@ class FileInfoController extends Controller
 
             }else
 
+
+
+
                 if ($bank->template == 2){
-//                    $pos = strpos($results['mfo'], '-');
-//                    $mfo = substr($results['mfo'], 0, $pos);
-                    $mfo = trim(str_replace("-", "", $results['mfo']));
+//                                echo "<pre>";
+//                                print_r($results);
+//                                "</pre>";
+                    $pos = strpos($results['mfo'], '-');
+                    $mfo = substr($results['mfo'], 0, $pos);
                     $acc = trim(str_replace("Счет:", "", $results['acc']));
                     $date = trim(str_replace("Изг", "", $results['date']));
                     $interval1 = trim(str_replace("СЧЕТА за", "", $results['interval1']));
                     $interval2 = trim(str_replace("посл.проводки :", "", $results['interval2']));
-                    $interval = $interval1.' - '.$interval2;
+                    $interval = $interval2.' - '.$interval1;
+
+//                                echo "<pre>";
+//                                print_r($mfo.'<br>');
+//                                print_r($acc.'<br>');
+//                    //            print_r($inn.'<br>');
+//                                print_r($date.'<br>');
+//                                print_r($interval.'<br>');
+//                                "</pre>";
+
 
                     $model->bank_mfo = $mfo;
                     $model->company_account = $acc;
-                    $unikal = substr($acc, 10, 7);
-                    $company = Company::find()->where(['unical_code' => $unikal])->one();
-                    $model->company_inn = $company->inn;
+                    $model->company_inn = '-';
                     $model->file_name = $filePath;
                     $model->file_date = $date;
                     $model->data_period = $interval;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
+//                    echo
+//                    "<pre>";
+//                    print_r($eee);
+//                    "</pre>";
+//                    die;
 
                     foreach ($eee as $key =>$value)
                     {
-                        $pat = array(
-                            "mfo" => "(\d{5})",   //mfo
-                            "acc" => "(\d{20})",   //mfo
-                        );
+                        //$fileInfo=new FileInfo();
 
-                        foreach ($pat as $key => $p) {
-                            preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
-                            if ($m) {
-                                $res[$key] = $m[0][0];
-                            }
-                        }
-
-                        $document=new Document();
+                        $document=new DocumentEski();
                         $document->file_id = $lastID;
-                        $document->detail_date = $value[1];
-                        $document->detail_document_number = $value[2];
+                        $document->detail_date = $value[0];
 
-                        $document->detail_inn = '-';
-                        $document->detail_account = $res['acc'];
-                        //$document->detail_inn ='44444';// $eee[1];
+                        preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
+
+                        $document->detail_account = $matches['acc'];
+                        $document->detail_inn = $matches['inn'];
+//                $document->detail_inn ='44444';// $eee[1];
                         $document->detail_name ='-';// $eee[1];
-                        $document->detail_mfo = $res['mfo'];
+                        $document->detail_document_number = $value[2];
+                        $document->detail_mfo =$value[4];
                         $document->detail_debet = $value[5];
                         $document->detail_kredit = $value[6];
-                        $document->detail_purpose_of_payment =$value[4];
+                        $document->detail_purpose_of_payment =$value[7];
                         $document->code_currency = '-';
                         $document->contract_date = '-';
 
                         $document->save(false);
                     }
 
+
+
+
+                    /* END Fayl import qilish va ma`lumotlarni bazaga saqlash */
+
+
                 }else
 
                     if ($bank->template == 3){
-                            $acc = trim(str_replace("Лицевой счет №", "", $results['acc']));
-                            $inn = trim(str_replace("ИНН:", "", $results['inn']));
-                            $date = trim(str_replace("Входящий остаток на", "", $results['date']));
-                            $interval1 = trim(str_replace("Выписка с", "", $results['interval1']));
-                            $interval2 = trim(str_replace("по", "", $results['interval2']));
-                            $interval = $interval1.' - '.$interval2;
-
-                            $model->bank_mfo = '00014';
-                            $model->company_account = $acc;
-                            $model->company_inn = $inn;
-                            $model->file_name = $filePath;
-                            $model->file_date = $date;
-                            $model->data_period = $interval;
-                            $model->save(false);
-                            $lastID = Yii::$app->db->getLastInsertID();
-
-
-                            foreach ($eee as $key =>$value)
-                            {
-                                $pat = array(
-                                    "mfo" => "(\d{5})",   //mfo
-                                    "acc" => "(\d{20})",   //mfo
-                                    "inn" => "(\d{9})",   //mfo
-                                );
-
-                                foreach ($pat as $key => $p) {
-                                    preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
-                                    if ($m) {
-                                        $res[$key] = $m[0][0];
-                                    }
-                                }
-
-                                $document=new Document();
-                                $document->file_id = $lastID;
-                                $document->detail_date = $value[1];
-                                $document->detail_document_number = $value[2];
-
-                                $document->detail_inn = $res['inn'];
-                                $document->detail_account = $res['acc'];
-                                $document->detail_name ='-';// $eee[1];
-                                $document->detail_mfo = $res['mfo'];
-                                $document->detail_debet = $value[5];
-                                $document->detail_kredit = $value[6];
-                                $document->detail_purpose_of_payment =$value[4];
-                                $document->code_currency = '-';
-                                $document->contract_date = '-';
-
-                                $document->save(false);
-                            }
-
+                        echo $bank->template;
                     }
-
-            if ($bank->template == 4){
-                echo $bank->template;
-            }
 
 
 
@@ -571,3 +493,4 @@ class FileInfoController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
+

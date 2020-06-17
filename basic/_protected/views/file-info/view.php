@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <br>
-    <hr style="border: 1px solid darkslategrey">
+    <hr style="border: 2px dotted darkslategrey">
     <br>
     <br>
 
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <thead  style="background: darkslategrey">
                     <th  width="5%">Сана: </th>
                     <th  width="15%">Хисоб рақам: </th>
-                    <th  width="10%">ИНН: </th>
+<!--                    <th  width="10%">ИНН: </th>-->
                     <th  width="10%">Хужжат номери: </th>
                     <th  width="5%">Банк МФО: </th>
                     <th  width="15%">Дебет: </th>
@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <tr>
                     <td><?= $value->detail_date;  ?></td>
                     <td><?= $value->detail_account;  ?></td>
-                    <td><?= $value->detail_inn;  ?></td>
+<!--                    <td>--><?//= $value->detail_inn;  ?><!--</td>-->
                     <td><?= $value->detail_document_number;  ?></td>
                     <td><?= $value->detail_mfo;  ?></td>
                     <td><?= $value->detail_debet;  ?></td>
@@ -110,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
     } ?>
 
                 <thead  style="background-color: gray">
-                    <th colspan="5" >ЖАМИ: </th>
+                    <th colspan="4" >ЖАМИ: </th>
                     <th  ><?=$debet; ?></th>
 <!--                    <th  >--><?//=$kredit; ?><!--</th>-->
                     <th  ></th>

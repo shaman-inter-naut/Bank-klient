@@ -49,17 +49,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 {return Html::a($data->file_name, [Yii::$app->controller->id.'/view','id'=>$data->id]);}
             ],
 
-            [
-//                'attribute'=>'company_inn',
-//                'value'=> 'companyName.name',
-                'header' => 'Дебет',
-            ],
-
-            [
-//                'attribute'=>'company_inn',
-//                'value'=> 'companyName.name',
-                'header' => 'Кредит',
-            ],
+//            [
+////                'attribute'=>'company_inn',
+////                'value'=> 'companyName.name',
+//                'header' => 'Дебет',
+//            ],
+//
+//            [
+////                'attribute'=>'company_inn',
+////                'value'=> 'companyName.name',
+//                'header' => 'Кредит',
+//            ],
 
             'data_period',
             'file_date',

@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <ul class="banks">
         <?php  foreach($bank as $value) { ?>
-            <li class="tablinks"><a href='info?id=<?= $value->id; ?>'
+            <li class="tablinks"><a href='/bank/info?id=<?= $value->id; ?>'
                                     onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
         <? } ?>
     </ul>
