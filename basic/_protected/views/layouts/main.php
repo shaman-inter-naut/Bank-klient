@@ -84,7 +84,7 @@ AppAsset::register($this);
 
         $menuItems[] =
             [
-                'label' => 'Ma`lumotlar',
+                'label' => 'Маълумотлар',
                 'items' => [
 //                    ['label' => 'Банклар', 'url' => '/bank/index'],
 //                    '<li class="divider"></li>',
@@ -128,7 +128,7 @@ AppAsset::register($this);
         // display Users to admin+ roles
         if (Yii::$app->user->can('admin')){
             $menuItems[] = ['label' => Yii::t('app', 'Админ'), 'url' => ['/user/view', 'id' => Yii::$app->user->id]];
-            $menuItems[] = ['label' => Yii::t('app', 'Foydalanuvchilar'), 'url' => ['/user/index']];
+            $menuItems[] = ['label' => Yii::t('app', 'Фойдаланувчилар'), 'url' => ['/user/index']];
 
         }
 
