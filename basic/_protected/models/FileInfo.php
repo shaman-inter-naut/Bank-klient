@@ -79,5 +79,9 @@ class FileInfo extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Document::className(), ['file_id' => 'id']);
     }
+    public function getDocuments()
+    {
+        return $this->hasMany(Documents::className(), ['file_id' => 'id']);
+    }
 
 }
