@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -11,6 +12,18 @@ use yii\widgets\ActiveForm;
 <div class="file-info-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?php
+        // получаем всех авторов
+        $bank = \app\models\Bank::find()->where(['in', 'template', [1,2,3]])->all();
+        // формируем массив, с ключем равным полю 'id' и значением равным полю 'name'
+        $items = ArrayHelper::map($bank,'id','name');
+        $params = [
+            'prompt' => 'Банк номини танланг:'
+        ];
+        echo $form->field($model, 'template')->dropDownList($items,$params);
+        echo "<br>";
+    ?>
 
     <?= $form->field($model, 'file')->fileInput()->label(false)->error(false) ?>
 

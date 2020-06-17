@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="file-info-create">
 
-    <h1><?= Html::encode("Файл юклаш") ?></h1>
+    <h1 align="center"><?= Html::encode("Файл юклаш") ?></h1>
 
     <hr style="border: 5px solid darkslategrey">
 
