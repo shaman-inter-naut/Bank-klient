@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\DocumentsSearch */
+/* @var $searchModel app\models\XujjatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Documents';
+$this->title = 'Xujjats';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="documents-index">
+<div class="xujjat-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Documents', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Xujjat', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,11 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'file_id',
-            'detail_date',
-            'detail_account',
-            'detail_inn',
+//            'id',
+//            'file_id',
+//            'file.bank_mfo',
+               [
+                   'attribute'=>'file_id',
+                   'value' => 'file.bank_mfo'
+               ],
+               [
+                   'attribute'=>'company_account_id',
+                   'value' => 'companyAccount.company_inn'
+               ],
+
+//            'expence_type_id',
+//            'detail_date',
+//            'detail_account',
+            //'detail_inn',
+            //'detail_partner_unique_code',
             //'detail_name',
             //'detail_document_number',
             //'detail_mfo',
@@ -40,6 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'code_currency',
             //'contract_date',
             //'tip_deb_kred',
+//            'company_account_id',
+//            'companyAccount.company_inn',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

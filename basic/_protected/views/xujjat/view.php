@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\FileInfo */
+/* @var $model app\models\Xujjat */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'File Infos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Xujjats', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="file-info-view">
+<div class="xujjat-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,12 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'bank_mfo',
-            'company_account',
-            'company_inn',
-            'file_name',
-            'file_date',
-            'data_period',
+            'file_id',
+            'expence_type_id',
+            'detail_date',
+            'detail_account',
+            'detail_inn',
+            'detail_partner_unique_code',
+            'detail_name',
+            'detail_document_number',
+            'detail_mfo',
+            'detail_debet',
+            'detail_kredit',
+            'detail_purpose_of_payment:ntext',
+            'code_currency',
+            'contract_date',
+            'tip_deb_kred',
+            'company_account_id',
         ],
     ]) ?>
 

@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Documents;
+use app\models\Xujjat;
 
 /**
- * DocumentsSearch represents the model behind the search form of `app\models\Documents`.
+ * XujjatSearch represents the model behind the search form of `app\models\Xujjat`.
  */
-class DocumentsSearch extends Documents
+class XujjatSearch extends Xujjat
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class DocumentsSearch extends Documents
     public function rules()
     {
         return [
-            [['id', 'file_id', 'tip_deb_kred'], 'integer'],
-            [['detail_date', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
+            [['id',  'expence_type_id', 'tip_deb_kred',], 'integer'],
+            [['detail_date','file_id',  'company_account_id','detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class DocumentsSearch extends Documents
      */
     public function search($params)
     {
-        $query = Documents::find();
+        $query = Xujjat::find()->joinWith(['companyAccount','file']);
 
         // add conditions that should always apply here
 
@@ -59,13 +59,16 @@ class DocumentsSearch extends Documents
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'file_id' => $this->file_id,
+//            'file_id' => $this->file_id,
+            'expence_type_id' => $this->expence_type_id,
             'tip_deb_kred' => $this->tip_deb_kred,
+            'company_account_id' => $this->company_account_id,
         ]);
 
         $query->andFilterWhere(['like', 'detail_date', $this->detail_date])
             ->andFilterWhere(['like', 'detail_account', $this->detail_account])
             ->andFilterWhere(['like', 'detail_inn', $this->detail_inn])
+            ->andFilterWhere(['like', 'detail_partner_unique_code', $this->detail_partner_unique_code])
             ->andFilterWhere(['like', 'detail_name', $this->detail_name])
             ->andFilterWhere(['like', 'detail_document_number', $this->detail_document_number])
             ->andFilterWhere(['like', 'detail_mfo', $this->detail_mfo])
@@ -74,6 +77,8 @@ class DocumentsSearch extends Documents
             ->andFilterWhere(['like', 'detail_purpose_of_payment', $this->detail_purpose_of_payment])
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
             ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
+            $query->andFilterWhere(['like', 'file_info.bank_mfo', $this->file_id]);
+
 
         return $dataProvider;
     }

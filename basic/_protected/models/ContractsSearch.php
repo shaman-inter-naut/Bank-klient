@@ -46,12 +46,18 @@ class ContractsSearch extends Contracts
     public function search($params)
     {
         $query = Contracts::find();
+//        $query = Contracts::find()->joinWith(['secondCompany','firstCompany']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+//        $dataProvider->sort->attributes['first_company_id']=[
+//          'asc'=>['company.name'=>SORT_ASC],
+//          'desc'=>['company.name'=>SORT_DESC],
+//        ];
 
         $this->load($params);
 //        $query->andFilterWhere(['status' => 1]);
@@ -64,6 +70,8 @@ class ContractsSearch extends Contracts
 
         $query->joinWith('firstCompany');
         $query->joinWith('secondCompany');
+//        $query->joinWith(['firstCompany','secondCompany']);
+
 
         // grid filtering conditions
         $query->andFilterWhere([

@@ -54,6 +54,8 @@ AppAsset::register($this);
                               '<li class="divider"></li>',
                               ['label' => 'Умумий файллар', 'url' => '/document/index'],
                               '<li class="divider"></li>',
+                              ['label' => 'meniki', 'url' => '/xujjat/index'],
+                              '<li class="divider"></li>',
                           ]
                  ];
 

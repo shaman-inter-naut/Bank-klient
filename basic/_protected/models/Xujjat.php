@@ -9,9 +9,11 @@ use Yii;
  *
  * @property int $id
  * @property int $file_id
+ * @property int|null $expence_type_id
  * @property string|null $detail_date
  * @property string $detail_account
  * @property string $detail_inn
+ * @property string $detail_partner_unique_code
  * @property string $detail_name
  * @property string $detail_document_number
  * @property string $detail_mfo
@@ -21,10 +23,12 @@ use Yii;
  * @property string $code_currency
  * @property string $contract_date
  * @property int|null $tip_deb_kred
+ * @property int|null $company_account_id
  *
+ * @property FileInfo $companyAccount
  * @property FileInfo $file
  */
-class Documents extends \yii\db\ActiveRecord
+class Xujjat extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -40,16 +44,18 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['file_id', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
-            [['file_id', 'tip_deb_kred'], 'integer'],
+            [['file_id', 'detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
+            [['file_id', 'expence_type_id', 'tip_deb_kred', 'company_account_id'], 'integer'],
             [['detail_purpose_of_payment'], 'string'],
             [['detail_date', 'detail_mfo'], 'string', 'max' => 50],
             [['detail_account'], 'string', 'max' => 20],
             [['detail_inn'], 'string', 'max' => 15],
+            [['detail_partner_unique_code'], 'string', 'max' => 8],
             [['detail_name'], 'string', 'max' => 255],
             [['detail_document_number', 'detail_debet', 'detail_kredit', 'contract_date'], 'string', 'max' => 25],
             [['code_currency'], 'string', 'max' => 3],
             [['file_id'], 'exist', 'skipOnError' => true, 'targetClass' => FileInfo::className(), 'targetAttribute' => ['file_id' => 'id']],
+            [['company_account_id'], 'exist', 'skipOnError' => true, 'targetClass' => FileInfo::className(), 'targetAttribute' => ['company_account_id' => 'id']],
         ];
     }
 
@@ -61,9 +67,11 @@ class Documents extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'file_id' => 'File ID',
+            'expence_type_id' => 'Expence Type ID',
             'detail_date' => 'Detail Date',
             'detail_account' => 'Detail Account',
             'detail_inn' => 'Detail Inn',
+            'detail_partner_unique_code' => 'Detail Partner Unique Code',
             'detail_name' => 'Detail Name',
             'detail_document_number' => 'Detail Document Number',
             'detail_mfo' => 'Detail Mfo',
@@ -73,7 +81,18 @@ class Documents extends \yii\db\ActiveRecord
             'code_currency' => 'Code Currency',
             'contract_date' => 'Contract Date',
             'tip_deb_kred' => 'Tip Deb Kred',
+            'company_account_id' => 'Company Account ID',
         ];
+    }
+
+    /**
+     * Gets query for [[CompanyAccount]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompanyAccount()
+    {
+        return $this->hasOne(FileInfo::className(), ['id' => 'company_account_id']);
     }
 
     /**

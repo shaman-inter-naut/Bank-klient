@@ -75,8 +75,12 @@ class DocumentSearch extends Document
             ->andFilterWhere(['like', 'detail_kredit', $this->detail_kredit])
             ->andFilterWhere(['like', 'detail_purpose_of_payment', $this->detail_purpose_of_payment])
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
+            ->andFilterWhere(['like', 'code_currency', $this->code_currency])
             ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
         $query->andFilterWhere(['like','fileInfo.bank_mfo', $this->file_id]);
+        $query->andFilterWhere(['like','fileInfo.company_account', $this->file_id]);
+//        $query->andFilterWhere(['like','fileInfo.company_account', $this->file_id]);
+//        $query->andFilterWhere(['like','company.short_name', $this->file_id]);
 
         return $dataProvider;
     }

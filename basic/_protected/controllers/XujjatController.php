@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Documents;
-use app\models\DocumentsSearch;
+use app\models\Xujjat;
+use app\models\XujjatSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DocumentsController implements the CRUD actions for Documents model.
+ * XujjatController implements the CRUD actions for Xujjat model.
  */
-class DocumentsController extends Controller
+class XujjatController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Lists all Documents models.
+     * Lists all Xujjat models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DocumentsSearch();
+        $searchModel = new XujjatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Displays a single Documents model.
+     * Displays a single Xujjat model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Creates a new Documents model.
+     * Creates a new Xujjat model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Documents();
+        $model = new Xujjat();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Updates an existing Documents model.
+     * Updates an existing Xujjat model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Deletes an existing Documents model.
+     * Deletes an existing Xujjat model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Finds the Documents model based on its primary key value.
+     * Finds the Xujjat model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Documents the loaded model
+     * @return Xujjat the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Documents::findOne($id)) !== null) {
+        if (($model = Xujjat::findOne($id)) !== null) {
             return $model;
         }
 
