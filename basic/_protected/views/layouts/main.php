@@ -37,7 +37,7 @@ AppAsset::register($this);
         <?php
         $active = ['active' => in_array(\Yii::$app->controller->id, ['tickets'])];
         NavBar::begin([
-            'brandLabel' => "Банк-клиент тизими кирим-чиқим хисоботлари",
+            'brandLabel' => "Банк-клиент тизими",
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-default navbar-fixed-top',
@@ -135,7 +135,7 @@ AppAsset::register($this);
         // display Logout to logged in users
         if (!Yii::$app->user->isGuest) {
             $menuItems[] = [
-                'label' => Yii::t('app', 'Chiqish'). ' (' . Yii::$app->user->identity->username . ')',
+                'label' => Yii::t('app', 'Чиқиш'). ' (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']
             ];
