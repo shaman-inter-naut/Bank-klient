@@ -96,6 +96,34 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['create'],
                         ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger contracts', 'id'=>'modalButton']),
                     'headerOptions' => ['width' => '10'],
+                'template' => '{view}  {update}  {delete}',
+
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<i class="glyphicon glyphicon-eye-open"></i>', $url,
+                            [
+                                'title' => Yii::t('app', 'Кўриш'),
+                                'class' => 'bank'
+                            ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url,
+                            [
+                                'title' => Yii::t('app', 'Тахрирлаш'),
+                                'class' => 'bank'
+                            ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('', ['delete', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-trash',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
+
+                ],
             ],
         ],
     ]); ?>

@@ -73,16 +73,16 @@ class Document extends \yii\db\ActiveRecord
         ];
     }
     public function beforeSave($insert)
-    {
-        if ($insert) {
+{
+    if ($insert) {
 
-            ($this->detail_debet == 0) ? $this->tip_deb_kred = 0 : $this->tip_deb_kred = 1;
+        ($this->detail_debet == 0) ? $this->tip_deb_kred = 0 : $this->tip_deb_kred = 1;
 
-            return parent::beforeSave($insert);
-        }
+        return parent::beforeSave($insert);
     }
+}
 
-    public function getFile()
+    public function getFileDoc()
     {
         return $this->hasOne(FileInfo::className(), ['id' => 'file_id']);
     }

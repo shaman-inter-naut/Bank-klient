@@ -57,7 +57,7 @@ class DocumentSearch extends Document
             return $dataProvider;
         }
 
-        $query->joinWith('file');
+        $query->joinWith('fileDoc');
 
         // grid filtering conditions
         $query->andFilterWhere([

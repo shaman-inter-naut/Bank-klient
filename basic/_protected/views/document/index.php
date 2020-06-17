@@ -33,36 +33,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
 //            'file_id',
-//            [
-//                'attribute'=> 'file_id',
-//                'value'=> 'file.company.short_name',
-//                'header' => 'Корхона номи',
-//            ],
             [
                 'attribute'=> 'file_id',
-                'value'=> 'file.bank_mfo',
+                'value'=> 'fileDoc.company.short_name',
+                'header' => 'Корхона номи',
+            ],
+            [
+                'attribute'=> 'file_id',
+                'value'=> 'fileDoc.bank_mfo',
                 'header' => 'МФО',
             ],
             [
                 'attribute'=> 'file_id',
-                'value'=> 'file.company_account',
+                'value'=> 'fileDoc.company_account',
                 'header' => 'Х-Р',
             ],
-//            [
-//                'attribute'=> 'file_id',
-//                'value'=> 'file.file_date',
-//                'header' => 'Сана',
-//            ],
-//            [
-//                'attribute'=> 'file_id',
-//                'value'=> 'file.data_period',
-//                'header' => 'Сана оралиқ',
-//            ],
-//            [
-//                'attribute'=> 'file_id',
-//                'value'=> 'file.company_inn',
-//                'header' => 'ИНН',
-//            ],
+            [
+                'attribute'=> 'file_id',
+                'value'=> 'fileDoc.file_date',
+                'header' => 'Сана',
+            ],
+            [
+                'attribute'=> 'file_id',
+                'value'=> 'fileDoc.data_period',
+                'header' => 'Сана оралиқ',
+            ],
+            [
+                'attribute'=> 'file_id',
+                'value'=> 'fileDoc.company_inn',
+                'header' => 'ИНН',
+            ],
             [
                 'attribute'=> 'detail_name',
                 'value'=> 'detail_name',
@@ -83,15 +83,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 {return Html::a('Мақсад ', [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'bank',]);}
             ],
 
-//
-//            [
-//                'attribute'=> 'detail_purpose_of_payment',
-//                'header' => 'Тўлов мақсади',
-//                'format'=>'raw',
-//                'value' => function($model){
-//                    return Html::a($model->detail_purpose_of_payment, [Yii::$app->controller->id.'/purpose','id'=>$model->id,],['class'=>'bank']);
-//                }
-//            ],
             [
                 'attribute'=> 'code_currency',
                 'value'=> 'code_currency',
