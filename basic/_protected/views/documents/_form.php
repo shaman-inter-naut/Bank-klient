@@ -12,49 +12,31 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'inn_company')->textInput() ?>
+    <?= $form->field($model, 'file_id')->textInput() ?>
 
-    <?= $form->field($model, 'mfo_bank')->textInput() ?>
+    <?= $form->field($model, 'detail_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'account_number_company')->textInput() ?>
+    <?= $form->field($model, 'detail_account')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'detail_inn')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'document_number')->textInput() ?>
+    <?= $form->field($model, 'detail_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'mfo_branch')->textInput() ?>
+    <?= $form->field($model, 'detail_document_number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'inn_branch')->textInput() ?>
+    <?= $form->field($model, 'detail_mfo')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'name_branch')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'detail_debet')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'account_number_branch')->textInput() ?>
+    <?= $form->field($model, 'detail_kredit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'purpose_branch')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'detail_purpose_of_payment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'code_currency')->textInput() ?>
-
-    <?= $form->field($model, 'kirim')->textInput() ?>
-
-    <?= $form->field($model, 'chiqim')->textInput() ?>
-
-    <?= $form->field($model, 'tip_k_ch')->textInput() ?>
+    <?= $form->field($model, 'code_currency')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'contract_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'contract_number')->textInput() ?>
-
-    <?= $form->field($model, 'contracts_id')->textInput() ?>
-
-    <?= $form->field($model, 'currency_id')->textInput() ?>
-
-    <?= $form->field($model, 'account_number_id')->textInput() ?>
-
-    <?= $form->field($model, 'bank_branch_id')->textInput() ?>
-
-    <?= $form->field($model, 'company_id')->textInput() ?>
-
-    <?= $form->field($model, 'company_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tip_deb_kred')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -17,8 +17,8 @@ class DocumentsSearch extends Documents
     public function rules()
     {
         return [
-            [['id', 'inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id', 'company_id'], 'integer'],
-            [['date', 'name_branch', 'purpose_branch', 'contract_date', 'company_name'], 'safe'],
+            [['id', 'file_id', 'tip_deb_kred'], 'integer'],
+            [['detail_date', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
     }
 
@@ -59,30 +59,21 @@ class DocumentsSearch extends Documents
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'inn_company' => $this->inn_company,
-            'mfo_bank' => $this->mfo_bank,
-            'account_number_company' => $this->account_number_company,
-            'date' => $this->date,
-            'document_number' => $this->document_number,
-            'mfo_branch' => $this->mfo_branch,
-            'inn_branch' => $this->inn_branch,
-            'account_number_branch' => $this->account_number_branch,
-            'code_currency' => $this->code_currency,
-            'kirim' => $this->kirim,
-            'chiqim' => $this->chiqim,
-            'tip_k_ch' => $this->tip_k_ch,
-            'contract_date' => $this->contract_date,
-            'contract_number' => $this->contract_number,
-            'contracts_id' => $this->contracts_id,
-            'currency_id' => $this->currency_id,
-            'account_number_id' => $this->account_number_id,
-            'bank_branch_id' => $this->bank_branch_id,
-            'company_id' => $this->company_id,
+            'file_id' => $this->file_id,
+            'tip_deb_kred' => $this->tip_deb_kred,
         ]);
 
-        $query->andFilterWhere(['like', 'name_branch', $this->name_branch])
-            ->andFilterWhere(['like', 'purpose_branch', $this->purpose_branch])
-            ->andFilterWhere(['like', 'company_name', $this->company_name]);
+        $query->andFilterWhere(['like', 'detail_date', $this->detail_date])
+            ->andFilterWhere(['like', 'detail_account', $this->detail_account])
+            ->andFilterWhere(['like', 'detail_inn', $this->detail_inn])
+            ->andFilterWhere(['like', 'detail_name', $this->detail_name])
+            ->andFilterWhere(['like', 'detail_document_number', $this->detail_document_number])
+            ->andFilterWhere(['like', 'detail_mfo', $this->detail_mfo])
+            ->andFilterWhere(['like', 'detail_debet', $this->detail_debet])
+            ->andFilterWhere(['like', 'detail_kredit', $this->detail_kredit])
+            ->andFilterWhere(['like', 'detail_purpose_of_payment', $this->detail_purpose_of_payment])
+            ->andFilterWhere(['like', 'code_currency', $this->code_currency])
+            ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
 
         return $dataProvider;
     }

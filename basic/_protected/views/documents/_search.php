@@ -17,49 +17,31 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'inn_company') ?>
+    <?= $form->field($model, 'file_id') ?>
 
-    <?= $form->field($model, 'mfo_bank') ?>
+    <?= $form->field($model, 'detail_date') ?>
 
-    <?= $form->field($model, 'account_number_company') ?>
+    <?= $form->field($model, 'detail_account') ?>
 
-    <?= $form->field($model, 'date') ?>
+    <?= $form->field($model, 'detail_inn') ?>
 
-    <?php // echo $form->field($model, 'document_number') ?>
+    <?php // echo $form->field($model, 'detail_name') ?>
 
-    <?php // echo $form->field($model, 'mfo_branch') ?>
+    <?php // echo $form->field($model, 'detail_document_number') ?>
 
-    <?php // echo $form->field($model, 'inn_branch') ?>
+    <?php // echo $form->field($model, 'detail_mfo') ?>
 
-    <?php // echo $form->field($model, 'name_branch') ?>
+    <?php // echo $form->field($model, 'detail_debet') ?>
 
-    <?php // echo $form->field($model, 'account_number_branch') ?>
+    <?php // echo $form->field($model, 'detail_kredit') ?>
 
-    <?php // echo $form->field($model, 'purpose_branch') ?>
+    <?php // echo $form->field($model, 'detail_purpose_of_payment') ?>
 
     <?php // echo $form->field($model, 'code_currency') ?>
 
-    <?php // echo $form->field($model, 'kirim') ?>
-
-    <?php // echo $form->field($model, 'chiqim') ?>
-
-    <?php // echo $form->field($model, 'tip_k_ch') ?>
-
     <?php // echo $form->field($model, 'contract_date') ?>
 
-    <?php // echo $form->field($model, 'contract_number') ?>
-
-    <?php // echo $form->field($model, 'contracts_id') ?>
-
-    <?php // echo $form->field($model, 'currency_id') ?>
-
-    <?php // echo $form->field($model, 'account_number_id') ?>
-
-    <?php // echo $form->field($model, 'bank_branch_id') ?>
-
-    <?php // echo $form->field($model, 'company_id') ?>
-
-    <?php // echo $form->field($model, 'company_name') ?>
+    <?php // echo $form->field($model, 'tip_deb_kred') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -5,36 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "documents".
+ * This is the model class for table "document".
  *
  * @property int $id
- * @property int|null $inn_company
- * @property int|null $mfo_bank
- * @property int|null $account_number_company
- * @property string|null $date
- * @property int|null $document_number
- * @property int|null $mfo_branch
- * @property int|null $inn_branch
- * @property string|null $name_branch
- * @property int|null $account_number_branch
- * @property string|null $purpose_branch
- * @property int|null $code_currency
- * @property int|null $kirim
- * @property int|null $chiqim
- * @property int|null $tip_k_ch
- * @property string|null $contract_date
- * @property int|null $contract_number
- * @property int|null $contracts_id
- * @property int|null $currency_id
- * @property int|null $account_number_id
- * @property int|null $bank_branch_id
- * @property int|null $company_id
- * @property string|null $company_name
+ * @property int $file_id
+ * @property string|null $detail_date
+ * @property string $detail_account
+ * @property string $detail_inn
+ * @property string $detail_name
+ * @property string $detail_document_number
+ * @property string $detail_mfo
+ * @property string $detail_debet
+ * @property string $detail_kredit
+ * @property string $detail_purpose_of_payment
+ * @property string $code_currency
+ * @property string $contract_date
+ * @property int|null $tip_deb_kred
  *
- * @property AccountNumber $accountNumber
- * @property BankBranch $bankBranch
- * @property Company $company
- * @property Contracts $contracts
+ * @property FileInfo $file
  */
 class Documents extends \yii\db\ActiveRecord
 {
@@ -43,7 +31,7 @@ class Documents extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'documents';
+        return 'document';
     }
 
     /**
@@ -52,13 +40,16 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['inn_company', 'mfo_bank', 'account_number_company', 'document_number', 'mfo_branch', 'inn_branch', 'account_number_branch', 'code_currency', 'kirim', 'chiqim', 'tip_k_ch', 'contract_number', 'contracts_id', 'currency_id', 'account_number_id', 'bank_branch_id', 'company_id'], 'integer'],
-            [['date', 'contract_date'], 'safe'],
-            [['name_branch', 'purpose_branch', 'company_name'], 'string', 'max' => 255],
-            [['account_number_id'], 'exist', 'skipOnError' => true, 'targetClass' => AccountNumber::className(), 'targetAttribute' => ['account_number_id' => 'id']],
-            [['bank_branch_id'], 'exist', 'skipOnError' => true, 'targetClass' => BankBranch::className(), 'targetAttribute' => ['bank_branch_id' => 'id']],
-            [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
-            [['contracts_id'], 'exist', 'skipOnError' => true, 'targetClass' => Contracts::className(), 'targetAttribute' => ['contracts_id' => 'id']],
+            [['file_id', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
+            [['file_id', 'tip_deb_kred'], 'integer'],
+            [['detail_purpose_of_payment'], 'string'],
+            [['detail_date', 'detail_mfo'], 'string', 'max' => 50],
+            [['detail_account'], 'string', 'max' => 20],
+            [['detail_inn'], 'string', 'max' => 15],
+            [['detail_name'], 'string', 'max' => 255],
+            [['detail_document_number', 'detail_debet', 'detail_kredit', 'contract_date'], 'string', 'max' => 25],
+            [['code_currency'], 'string', 'max' => 3],
+            [['file_id'], 'exist', 'skipOnError' => true, 'targetClass' => FileInfo::className(), 'targetAttribute' => ['file_id' => 'id']],
         ];
     }
 
@@ -69,68 +60,29 @@ class Documents extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'inn_company' => 'Inn Company',
-            'mfo_bank' => 'Mfo Bank',
-            'account_number_company' => 'Account Number Company',
-            'date' => 'Date',
-            'document_number' => 'Document Number',
-            'mfo_branch' => 'Mfo Branch',
-            'inn_branch' => 'Inn Branch',
-            'name_branch' => 'Name Branch',
-            'account_number_branch' => 'Account Number Branch',
-            'purpose_branch' => 'Purpose Branch',
+            'file_id' => 'File ID',
+            'detail_date' => 'Detail Date',
+            'detail_account' => 'Detail Account',
+            'detail_inn' => 'Detail Inn',
+            'detail_name' => 'Detail Name',
+            'detail_document_number' => 'Detail Document Number',
+            'detail_mfo' => 'Detail Mfo',
+            'detail_debet' => 'Detail Debet',
+            'detail_kredit' => 'Detail Kredit',
+            'detail_purpose_of_payment' => 'Detail Purpose Of Payment',
             'code_currency' => 'Code Currency',
-            'kirim' => 'Kirim',
-            'chiqim' => 'Chiqim',
-            'tip_k_ch' => 'Tip K Ch',
             'contract_date' => 'Contract Date',
-            'contract_number' => 'Contract Number',
-            'contracts_id' => 'Contracts ID',
-            'currency_id' => 'Currency ID',
-            'account_number_id' => 'Account Number ID',
-            'bank_branch_id' => 'Bank Branch ID',
-            'company_id' => 'Company ID',
-            'company_name' => 'Company Name',
+            'tip_deb_kred' => 'Tip Deb Kred',
         ];
     }
 
     /**
-     * Gets query for [[AccountNumber]].
+     * Gets query for [[File]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getAccountNumber()
+    public function getFile()
     {
-        return $this->hasOne(AccountNumber::className(), ['id' => 'account_number_id']);
-    }
-
-    /**
-     * Gets query for [[BankBranch]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBankBranch()
-    {
-        return $this->hasOne(BankBranch::className(), ['id' => 'bank_branch_id']);
-    }
-
-    /**
-     * Gets query for [[Company]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCompany()
-    {
-        return $this->hasOne(Company::className(), ['id' => 'company_id']);
-    }
-
-    /**
-     * Gets query for [[Contracts]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getContracts()
-    {
-        return $this->hasOne(Contracts::className(), ['id' => 'contracts_id']);
+        return $this->hasOne(FileInfo::className(), ['id' => 'file_id']);
     }
 }
