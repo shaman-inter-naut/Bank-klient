@@ -18,8 +18,7 @@ class DocumentSearch extends Document
     {
         return [
             [['id',  'tip_deb_kred'], 'integer'],
-            [['detail_date', 'file_id', 'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo',
-                'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
+            [['detail_date','file_id',  'detail_account', 'detail_inn', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
     }
 
@@ -55,13 +54,14 @@ class DocumentSearch extends Document
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
-        }
 
-        $query->joinWith('fileDoc');
+            $query->joinWith('fileDoc');
+        }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+//            'file_id' => $this->file_id,
             'tip_deb_kred' => $this->tip_deb_kred,
         ]);
 
@@ -75,12 +75,8 @@ class DocumentSearch extends Document
             ->andFilterWhere(['like', 'detail_kredit', $this->detail_kredit])
             ->andFilterWhere(['like', 'detail_purpose_of_payment', $this->detail_purpose_of_payment])
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
-            ->andFilterWhere(['like', 'contract_date', $this->contract_date])
-//            ->andFilterWhere(['like','file.company.short_name', $this->file_id])
-            ->andFilterWhere(['like','file.bank_mfo', $this->file_id]);
-//            ->andFilterWhere(['like','file.company_account', $this->file_id]);
-//            ->andFilterWhere(['like','file.company_account', $this->file_id]);
-//            ->andFilterWhere(['like','file.company_inn', $this->file_id]);
+            ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
+        $query->andFilterWhere(['like','fileInfo.bank_mfo', $this->file_id]);
 
         return $dataProvider;
     }

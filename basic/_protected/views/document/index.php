@@ -43,26 +43,26 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'fileDoc.bank_mfo',
                 'header' => 'МФО',
             ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'fileDoc.company_account',
-                'header' => 'Х-Р',
-            ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'fileDoc.file_date',
-                'header' => 'Сана',
-            ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'fileDoc.data_period',
-                'header' => 'Сана оралиқ',
-            ],
-            [
-                'attribute'=> 'file_id',
-                'value'=> 'fileDoc.company_inn',
-                'header' => 'ИНН',
-            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'fileDoc.company_account',
+//                'header' => 'Х-Р',
+//            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'fileDoc.file_date',
+//                'header' => 'Сана',
+//            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'fileDoc.data_period',
+//                'header' => 'Сана оралиқ',
+//            ],
+//            [
+//                'attribute'=> 'file_id',
+//                'value'=> 'fileDoc.company_inn',
+//                'header' => 'ИНН',
+//            ],
             [
                 'attribute'=> 'detail_name',
                 'value'=> 'detail_name',
