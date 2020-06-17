@@ -54,7 +54,7 @@ class FileInfo extends \yii\db\ActiveRecord
             'bank_mfo' => 'Банк МФО: ',
             'company_account' => 'Корхона хисоб рақами:',
             'company_inn' => 'Корхона ИНН: ',
-            'file_name' => 'Юклаб олинган файллар:',
+            'file_name' => 'Юклаб олинган файл:',
             'file_date' => 'Хисобот олинган сана: ',
             'data_period' => 'Оралиқ давр: ',
             'file' => 'Файл',
@@ -73,7 +73,7 @@ class FileInfo extends \yii\db\ActiveRecord
 
     public function getDoc()
     {
-        return $this->hasOne(Document::className(), ['file_id' => 'id']);
+        return $this->hasOne(DocumentEski::className(), ['file_id' => 'id']);
     }
 
 }
