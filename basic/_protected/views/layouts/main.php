@@ -52,9 +52,9 @@ AppAsset::register($this);
                           'items' => [
                               ['label' => 'Файллар', 'url' => '/file-info/index'],
                               '<li class="divider"></li>',
-                              ['label' => 'Умумий файллар', 'url' => '/document/index'],
-                              '<li class="divider"></li>',
-                              ['label' => 'meniki', 'url' => '/xujjat/index'],
+//                              ['label' => 'Умумий файллар', 'url' => '/document/index'],
+//                              '<li class="divider"></li>',
+                              ['label' => 'Умумий файллар', 'url' => '/xujjat/index'],
                               '<li class="divider"></li>',
                               ['label' => 'EXP', 'url' => '/expence-types/index'],
                               '<li class="divider"></li>',

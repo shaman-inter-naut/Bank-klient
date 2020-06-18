@@ -20,8 +20,8 @@ class ContractsSearch extends Contracts
     public function rules()
     {
         return [
-            [['id', 'contract_number', 'status'], 'integer'],
-            [['contract_date', 'file', 'secondCompany', 'companyAccount','first_company_id', 'second_company_id'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['contract_date', 'file', 'contract_number', 'secondCompany', 'companyAccount','first_company_id', 'second_company_id'], 'safe'],
         ];
     }
 
@@ -69,9 +69,10 @@ class ContractsSearch extends Contracts
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        $query->joinWith('firstCompany');
-        $query->joinWith('secondCompany');
+//        if ($this->first_company_id){
+            $query->joinWith('firstCompany');
+//        }
+//        $query->joinWith('secondCompany');
 //        $query->joinWith(['firstCompany','secondCompany']);
 
 

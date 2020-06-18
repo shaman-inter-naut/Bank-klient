@@ -16,11 +16,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'short_name')->textInput(['maxlength' => true])->label('Корхона номи') ?>
 
-    <?= $form->field($model, 'inn')->textInput(['type'=>'number'])->label('Инн') ?>
+    <?= $form->field($model, 'inn')->textInput()->label('Инн') ?>
 
-    <?= $form->field($model, 'accaunt_begin')->textInput(['type'=>'number'])->label('Хисоб рақам бошланиши') ?>
+    <?= $form->field($model, 'accaunt_begin')->textInput()->label('Хисоб рақам бошланиши') ?>
 
-    <?= $form->field($model, 'unical_code')->textInput(['type'=>'number'])->label('Униал код') ?>
+    <?= $form->field($model, 'unical_code')->textInput()->label('Униал код') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сақлаш', ['class' => 'btn btn-success']) ?>

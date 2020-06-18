@@ -6,6 +6,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Xujjat;
 
+
 /**
  * XujjatSearch represents the model behind the search form of `app\models\Xujjat`.
  */
@@ -17,13 +18,16 @@ class XujjatSearch extends Xujjat
      * {@inheritdoc}
      */
     public $file;
-    public $companyAccount;
+//    public $companyAccount;
+//    public $inn;
 
     public function rules()
     {
         return [
             [['id',  'expence_type_id', 'tip_deb_kred',], 'integer'],
-            [['detail_date','file_id', 'companyAccount','file', 'company_account_id','detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
+            [['detail_date','file_id','period_id','inn_id','data_id', 'company_account_id','detail_account',
+                'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo',
+                'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
     }
 
@@ -47,7 +51,12 @@ class XujjatSearch extends Xujjat
     {
         $query = Xujjat::find();
 
+//        $query->joinWith(['companyAccount']);
+//        $query->joinWith(['inn']);
+        $query->joinWith('file');
+
         // add conditions that should always apply here
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,13 +70,14 @@ class XujjatSearch extends Xujjat
             return $dataProvider;
         }
 
-        $query->joinWith(['companyAccount','file']);
-//        $query->joinWith('file');
+        $query->joinWith('file');
+//        $query->joinWith(['companyAccount']);
+//        $query->joinWith(['inn']);
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-//            'file_id' => $this->file_id,
+//            'file.company_inn' => $this->file_id,
             'expence_type_id' => $this->expence_type_id,
             'tip_deb_kred' => $this->tip_deb_kred,
 //            'company_account_id' => $this->company_account_id,
@@ -86,7 +96,10 @@ class XujjatSearch extends Xujjat
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
             ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
             $query->andFilterWhere(['like', 'file_info.bank_mfo', $this->file_id]);
-            $query->andFilterWhere(['like', 'file_info.company_inn', $this->company_account_id]);
+            $query->andFilterWhere(['like', 'file_info.company_account', $this->company_account_id]);
+            $query->andFilterWhere(['like', 'file_info.company_inn', $this->inn_id]);
+            $query->andFilterWhere(['like', 'file_info.file_date', $this->data_id]);
+            $query->andFilterWhere(['like', 'file_info.data_period', $this->period_id]);
 
 
         return $dataProvider;

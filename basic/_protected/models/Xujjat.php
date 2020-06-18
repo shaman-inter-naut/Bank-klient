@@ -44,8 +44,9 @@ class Xujjat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['file_id', 'detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
-            [['file_id', 'expence_type_id', 'tip_deb_kred', 'company_account_id'], 'integer'],
+            [['detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number',
+                'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
+            [['file_id', 'expence_type_id', 'tip_deb_kred', 'company_account_id','inn_id','data_id','period_id'], 'integer'],
             [['detail_purpose_of_payment'], 'string'],
             [['detail_date', 'detail_mfo'], 'string', 'max' => 50],
             [['detail_account'], 'string', 'max' => 20],
@@ -82,6 +83,9 @@ class Xujjat extends \yii\db\ActiveRecord
             'contract_date' => 'Contract Date',
             'tip_deb_kred' => 'Tip Deb Kred',
             'company_account_id' => 'Company Account ID',
+            'inn_id' => 'Inn ID',
+            'data_id' => 'Data ID',
+            'period_id' => 'Period ID',
         ];
     }
 
@@ -90,6 +94,7 @@ class Xujjat extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
+
     public function getCompanyAccount()
     {
         return $this->hasOne(FileInfo::className(), ['id' => 'company_account_id']);
@@ -104,4 +109,24 @@ class Xujjat extends \yii\db\ActiveRecord
     {
         return $this->hasOne(FileInfo::className(), ['id' => 'file_id']);
     }
+//    public function getInn()
+//    {
+//        return $this->hasOne(FileInfo::className(), ['id' => 'inn_id']);
+//    }
+//    public function getData()
+//    {
+//        return $this->hasOne(FileInfo::className(), ['id' => 'data_id']);
+//    }
+//    public function beforeSave($inser)
+//    {
+//        if ($inser) {
+//
+//            $this->company_account_id = $this->file_id;
+//            $this->inn_id = $this->file_id;
+//            $this->data_id = $this->file_id;
+//            $this->period_id = $this->file_id;
+//
+//            return parent::beforeSave($inser);
+//        }
+//    }
 }

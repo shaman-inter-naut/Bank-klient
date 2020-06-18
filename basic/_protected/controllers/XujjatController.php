@@ -52,10 +52,17 @@ class XujjatController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->renderAjax('view', [
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionViews($id)
+    {
+        return $this->renderAjax('views', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
 
     /**
      * Creates a new Xujjat model.
@@ -90,7 +97,7 @@ class XujjatController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
