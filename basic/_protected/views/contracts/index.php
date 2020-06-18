@@ -73,8 +73,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         'minView' => 2,
                         'maxView' => 0,
                         'autoclose' => true,
-                        'format' => 'dd-M-yyyy',
-                        'todayBtn' => true
+//                        'format' => 'dd-M-yyyy',
+                        'format' => 'd.mm.yyyy',
+                        'todayBtn' => true,
+                        'clearBtn' => true
                     ]
                 ]),
 
@@ -86,6 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                      return $data->status==1 ? "очиқ": ($data->status==NULL ? "ёпилган": "очиқ");
                     },
                 'filter' => ['off','on'],
+//                'defoult' => 'on'
 //                'andFilterWhere'=> ['status' => 1],
             ],
 //            'status',

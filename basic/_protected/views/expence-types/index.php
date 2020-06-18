@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ExpenceTypesSearch */
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Expence Types', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Expence Types', ['create'], ['class' => 'bank btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,9 +30,52 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}  {update}  {delete}',
+
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<i class="glyphicon glyphicon-eye-open"></i>', $url,
+                            [
+                                'title' => Yii::t('app', 'Кўриш'),
+                                'class' => 'bank'
+                            ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url,
+                            [
+                                'title' => Yii::t('app', 'Тахрирлаш'),
+                                'class' => 'bank'
+                            ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('', ['delete', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-trash',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
+
+                ],
+            ],
         ],
     ]); ?>
 
 
 </div>
+
+<?
+Modal::begin([
+//    'header' => 'Тўлов мақсади',
+    'id' => 'modal',
+]);
+?>
+<div id="modalContent">
+
+</div>
+<?php
+Modal::end();
+?>

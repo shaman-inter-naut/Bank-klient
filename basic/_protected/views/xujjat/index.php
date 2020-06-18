@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
+use dosamigos\datetimepicker\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\XujjatSearch */
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--    </p>-->
 
 <!--    --><?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-<? Pjax::begin(); ?>
+<?// Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -55,12 +56,47 @@ $this->params['breadcrumbs'][] = $this->title;
                    'attribute'=>'data_id',
                    'value' => 'file.file_date',
                    'header' => 'Сана',
+                   'filter' =>  DateTimePicker::widget([
+                       'model' => $searchModel,
+                       'attribute' => 'data_id',
+                       'template' => '{input}',
+                       'language' => 'ru',
+                       'size' => 'ms',
+                       'clientOptions' => [
+                           'startView' => 2,
+                           'minView' => 2,
+                           'maxView' => 0,
+                           'autoclose' => true,
+//                        'format' => 'dd-M-yyyy',
+                           'format' => 'd.mm.yyyy',
+                           'todayBtn' => true,
+                           'clearBtn' => true
+
+                       ]
+                   ]),
                ],
 
                [
                    'attribute'=>'period_id',
                    'value' => 'file.data_period',
                    'header' => 'Сана оралиқ',
+                   'filter' =>  DateTimePicker::widget([
+                       'model' => $searchModel,
+                       'attribute' => 'period_id',
+                       'template' => '{input}',
+                       'language' => 'ru',
+                       'size' => 'ms',
+                       'clientOptions' => [
+                           'startView' => 2,
+                           'minView' => 2,
+                           'maxView' => 0,
+                           'autoclose' => true,
+                           'format' => 'd.mm.yyyy',
+                           'todayBtn' => true,
+                           'clearBtn' => true
+
+                       ]
+                   ]),
                ],
 
                 [
@@ -78,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'format'=>'raw',
                 'value' => function($data)
-                {return Html::a('Мақсад ', [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'bank',]);}
+                {return Html::a('Кўриш ', [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'bank',]);}
             ],
             [
                 'attribute'=> 'code_currency',
@@ -138,20 +174,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
 //                'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
                 'headerOptions' => ['width' => '50'],
-                'template' => '{view}  {update}  {delete}',
+                'template' => ' {delete}',
                 'buttons' => [
-                    'view' => function ($url, $model) {
-                        return Html::a('', ['view', 'id' => $model->id], [
-                            'class' => 'glyphicon glyphicon-eye-open bank',
-
-                        ]);
-                    },
-                    'update' => function ($url, $model) {
-                        return Html::a('', ['update', 'id' => $model->id], [
-                            'class' => 'glyphicon glyphicon-pencil bank',
-
-                        ]);
-                    },
+//                    'view' => function ($url, $model) {
+//                        return Html::a('', ['view', 'id' => $model->id], [
+//                            'class' => 'glyphicon glyphicon-eye-open bank',
+//
+//                        ]);
+//                    },
+//                    'update' => function ($url, $model) {
+//                        return Html::a('', ['update', 'id' => $model->id], [
+//                            'class' => 'glyphicon glyphicon-pencil bank',
+//
+//                        ]);
+//                    },
                     'delete' => function ($url, $model) {
                         return Html::a('', ['delete', 'id' => $model->id], [
                             'class' => 'glyphicon glyphicon-trash',
@@ -167,7 +203,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-<? Pjax::end(); ?>
+<?// Pjax::end(); ?>
 
 </div>
 

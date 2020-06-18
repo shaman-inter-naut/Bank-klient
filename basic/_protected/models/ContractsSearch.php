@@ -69,10 +69,10 @@ class ContractsSearch extends Contracts
             // $query->where('0=1');
             return $dataProvider;
         }
-//        if ($this->first_company_id){
+        if ($this->first_company_id){
             $query->joinWith('firstCompany');
-//        }
-//        $query->joinWith('secondCompany');
+        }
+        $query->joinWith('secondCompany');
 //        $query->joinWith(['firstCompany','secondCompany']);
 
 
