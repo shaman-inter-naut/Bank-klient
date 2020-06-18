@@ -56,6 +56,8 @@ AppAsset::register($this);
                               '<li class="divider"></li>',
                               ['label' => 'meniki', 'url' => '/xujjat/index'],
                               '<li class="divider"></li>',
+                              ['label' => 'EXP', 'url' => '/expence-types/index'],
+                              '<li class="divider"></li>',
                           ]
                  ];
 

@@ -16,11 +16,12 @@ class ContractsSearch extends Contracts
      * {@inheritdoc}
      */
     public $firstCompany;
+    public $secondCompany;
     public function rules()
     {
         return [
             [['id', 'contract_number', 'status'], 'integer'],
-            [['contract_date',  'first_company_id', 'second_company_id'], 'safe'],
+            [['contract_date', 'file', 'secondCompany', 'companyAccount','first_company_id', 'second_company_id'], 'safe'],
         ];
     }
 
@@ -46,6 +47,7 @@ class ContractsSearch extends Contracts
     public function search($params)
     {
         $query = Contracts::find();
+//        $query->leftJoin('company', 'company');
 //        $query = Contracts::find()->joinWith(['secondCompany','firstCompany']);
 
         // add conditions that should always apply here
@@ -76,8 +78,8 @@ class ContractsSearch extends Contracts
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-//            'first_company_id' => $this->first_company_id,
-//            'second_company_id' => $this->second_company_id,
+//            'company.name' => $this->first_company_id,
+//            'secondCompany.name' => $this->second_company_id,
             'contract_number' => $this->contract_number,
             'contract_date' => $this->contract_date,
             'status' => $this->status,

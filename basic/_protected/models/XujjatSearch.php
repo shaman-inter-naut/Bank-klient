@@ -9,16 +9,21 @@ use app\models\Xujjat;
 /**
  * XujjatSearch represents the model behind the search form of `app\models\Xujjat`.
  */
+
+
 class XujjatSearch extends Xujjat
 {
     /**
      * {@inheritdoc}
      */
+    public $file;
+    public $companyAccount;
+
     public function rules()
     {
         return [
             [['id',  'expence_type_id', 'tip_deb_kred',], 'integer'],
-            [['detail_date','file_id',  'company_account_id','detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
+            [['detail_date','file_id', 'companyAccount','file', 'company_account_id','detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
     }
 
@@ -40,7 +45,7 @@ class XujjatSearch extends Xujjat
      */
     public function search($params)
     {
-        $query = Xujjat::find()->joinWith(['companyAccount','file']);
+        $query = Xujjat::find();
 
         // add conditions that should always apply here
 
@@ -56,13 +61,16 @@ class XujjatSearch extends Xujjat
             return $dataProvider;
         }
 
+        $query->joinWith(['companyAccount','file']);
+//        $query->joinWith('file');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
 //            'file_id' => $this->file_id,
             'expence_type_id' => $this->expence_type_id,
             'tip_deb_kred' => $this->tip_deb_kred,
-            'company_account_id' => $this->company_account_id,
+//            'company_account_id' => $this->company_account_id,
         ]);
 
         $query->andFilterWhere(['like', 'detail_date', $this->detail_date])
@@ -78,6 +86,7 @@ class XujjatSearch extends Xujjat
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
             ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
             $query->andFilterWhere(['like', 'file_info.bank_mfo', $this->file_id]);
+            $query->andFilterWhere(['like', 'file_info.company_inn', $this->company_account_id]);
 
 
         return $dataProvider;
