@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datetimepicker\DateTimePicker;
+use kartik\field\FieldRange;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\XujjatSearch */
@@ -15,41 +17,32 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'file_id') ?>
 
-    <?= $form->field($model, 'expence_type_id') ?>
 
-    <?= $form->field($model, 'detail_date') ?>
 
-    <?= $form->field($model, 'detail_account') ?>
+<!--    --><?//= $form->field($model, 'detail_date') ?>
+    <?= $form->field($model, 'detail_date')->widget(FieldRange::className(), [
+        'language' => 'ru',
+        'template' => '{input}',
+        'attribute' => 'detail_date',
+        'inline' => false,
+        'clientOptions' => [
+            'startView' => 2,
+            'minView' => 2,
+            'maxView' => 0,
+            'autoclose' => true,
+            'linkFormat' => false,
+            'format' => 'd.mm.yyyy',
+            'todayBtn' => true,
+            'clearBtn' => true
 
-    <?php // echo $form->field($model, 'detail_inn') ?>
+        ]
+    ]);?>
 
-    <?php // echo $form->field($model, 'detail_partner_unique_code') ?>
-
-    <?php // echo $form->field($model, 'detail_name') ?>
-
-    <?php // echo $form->field($model, 'detail_document_number') ?>
-
-    <?php // echo $form->field($model, 'detail_mfo') ?>
-
-    <?php // echo $form->field($model, 'detail_debet') ?>
-
-    <?php // echo $form->field($model, 'detail_kredit') ?>
-
-    <?php // echo $form->field($model, 'detail_purpose_of_payment') ?>
-
-    <?php // echo $form->field($model, 'code_currency') ?>
-
-    <?php // echo $form->field($model, 'contract_date') ?>
-
-    <?php // echo $form->field($model, 'tip_deb_kred') ?>
-
-    <?php // echo $form->field($model, 'company_account_id') ?>
 
     <div class="form-group">
+
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>

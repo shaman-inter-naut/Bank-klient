@@ -5,6 +5,11 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use dosamigos\datetimepicker\DateTimePicker;
+use kartik\daterange\DateRangePicker;
+use kartik\field\FieldRange;
+use kartik\datecontrol\Module;
+use kartik\datecontrol\DateControl;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\XujjatSearch */
@@ -36,7 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
 //            'file_id',
 //            'file.bank_mfo',
-                'file.company.short_name',
+//                'file.company.short_name',
+               [
+                       'attribute' => 'filecom_id',
+                       'value' => 'file.company.short_name',
+                        'header' => 'Kompany',
+               ],
+
                [
                    'attribute'=>'file_id',
                    'value' => 'file.bank_mfo',
@@ -109,6 +120,50 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'detail_account',
                 'header' => 'Хамкор Х-Р',
             ],
+//            'detail_date',
+//            [
+//                'attribute'=> 'detail_date',
+//                'value' => 'detail_date',
+//                'header' => '-Сана-',
+//                'filter' =>  DateTimePicker::widget([
+//                    'model' => $searchModel,
+//                    'attribute' =>  'detail_date',
+//                    'template' => '{input}',
+//                    'language' => 'ru',
+//                    'size' => 'ms',
+//                    'clientOptions' => [
+//                        'startView' => 2,
+//                        'minView' => 2,
+//                        'maxView' => 0,
+//                        'autoclose' => true,
+//                        'format' => 'd.mm.yyyy',
+//                        'todayBtn' => true,
+//                        'clearBtn' => true
+//
+//                    ]
+//                ]),
+//            ],
+            [
+                'attribute'=>'detail_date',
+//                'fotmat' => 'date',
+                'value' => 'detail_date',
+                'header' => '-Сана-',
+                'filter' =>   \kartik\field\FieldRange::widget([
+                    'model' => $searchModel,
+                    'type'=>\kartik\field\FieldRange::INPUT_WIDGET,
+                    'attribute1' => 'from_date',
+                    'attribute2' => 'to_date',
+//                    'template' => '{input}',
+                    'widgetClass'=> \kartik\datecontrol\DateControl::className(),
+//                    'widgetClass'=> \kartik\date\DatePicker::className(),
+                    'widgetOptions1'=>[
+                            'saveFormat' => 'php:U'
+                    ],
+                    'widgetOptions2'=>[
+                        'saveFormat' => 'php:U'
+                    ],
+                 ]),
+            ],
             ['attribute'=>'detail_purpose_of_payment',
                 'header' => 'Тўлов мақсади',
 
@@ -141,11 +196,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'andFilterWhere'=> ['status' => 1],
             ],
 
-            [
-                'attribute'=> 'contract_date',
-                'value'=> 'contract_date',
-                'header' => 'Шартнома санаси',
-            ],
+//            [
+//                'attribute'=> 'contract_date',
+//                'value'=> 'contract_date',
+//                'header' => 'Шартнома санаси',
+//            ],
             [
                 'attribute'=> 'detail_document_number',
                 'value'=> 'detail_document_number',

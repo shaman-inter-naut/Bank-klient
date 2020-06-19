@@ -18,6 +18,9 @@ class XujjatSearch extends Xujjat
      * {@inheritdoc}
      */
     public $file;
+    public $from_date;
+    public $to_date;
+
 //    public $companyAccount;
 //    public $inn;
 
@@ -25,7 +28,7 @@ class XujjatSearch extends Xujjat
     {
         return [
             [['id',  'expence_type_id', 'tip_deb_kred',], 'integer'],
-            [['detail_date','file_id','period_id','inn_id','data_id', 'company_account_id','detail_account',
+            [['from_date','to_date','detail_date','file_id', 'filecom_id', 'period_id','inn_id','data_id', 'company_account_id','detail_account',
                 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo',
                 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
         ];
@@ -83,8 +86,9 @@ class XujjatSearch extends Xujjat
 //            'company_account_id' => $this->company_account_id,
         ]);
 
-        $query->andFilterWhere(['like', 'detail_date', $this->detail_date])
-            ->andFilterWhere(['like', 'detail_account', $this->detail_account])
+//        $query->andFilterWhere(['like', 'detail_date', $this->detail_date])
+//            ->andFilterWhere(['like', 'detail_account', $this->detail_account])
+        $query->andFilterWhere(['like', 'detail_account', $this->detail_account])
             ->andFilterWhere(['like', 'detail_inn', $this->detail_inn])
             ->andFilterWhere(['like', 'detail_partner_unique_code', $this->detail_partner_unique_code])
             ->andFilterWhere(['like', 'detail_name', $this->detail_name])
@@ -95,11 +99,17 @@ class XujjatSearch extends Xujjat
             ->andFilterWhere(['like', 'detail_purpose_of_payment', $this->detail_purpose_of_payment])
             ->andFilterWhere(['like', 'code_currency', $this->code_currency])
             ->andFilterWhere(['like', 'contract_date', $this->contract_date]);
+
+
             $query->andFilterWhere(['like', 'file_info.bank_mfo', $this->file_id]);
             $query->andFilterWhere(['like', 'file_info.company_account', $this->company_account_id]);
             $query->andFilterWhere(['like', 'file_info.company_inn', $this->inn_id]);
             $query->andFilterWhere(['like', 'file_info.file_date', $this->data_id]);
             $query->andFilterWhere(['like', 'file_info.data_period', $this->period_id]);
+            $query->andFilterWhere(['like', 'file_info.file.company.short_name,', $this->filecom_id]);
+
+
+            $query->andFilterWhere(['and',['>','detail_date',$this->detail_date], ['<','detail_date', $this->detail_date]]);
 
 
         return $dataProvider;

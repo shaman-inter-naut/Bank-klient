@@ -46,7 +46,7 @@ class Xujjat extends \yii\db\ActiveRecord
         return [
             [['detail_account', 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number',
                 'detail_mfo', 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'required'],
-            [['file_id', 'expence_type_id', 'tip_deb_kred', 'company_account_id','inn_id','data_id','period_id'], 'integer'],
+            [['file_id', 'filecom_id','expence_type_id', 'tip_deb_kred', 'company_account_id','inn_id','data_id','period_id'], 'integer'],
             [['detail_purpose_of_payment'], 'string'],
             [['detail_date', 'detail_mfo'], 'string', 'max' => 50],
             [['detail_account'], 'string', 'max' => 20],
@@ -86,6 +86,7 @@ class Xujjat extends \yii\db\ActiveRecord
             'inn_id' => 'Inn ID',
             'data_id' => 'Data ID',
             'period_id' => 'Period ID',
+            'filecom_id' => 'FileCom ID'
         ];
     }
 
@@ -108,6 +109,10 @@ class Xujjat extends \yii\db\ActiveRecord
     public function getFile()
     {
         return $this->hasOne(FileInfo::className(), ['id' => 'file_id']);
+    }
+    public function getFilecom()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'filecom_id']);
     }
 //    public function getInn()
 //    {
