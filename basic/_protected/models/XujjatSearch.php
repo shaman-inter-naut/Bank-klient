@@ -57,6 +57,7 @@ class XujjatSearch extends Xujjat
 //        $query->joinWith(['companyAccount']);
 //        $query->joinWith(['inn']);
         $query->joinWith('file');
+        $query->joinWith('file');
 
         // add conditions that should always apply here
 
@@ -74,6 +75,7 @@ class XujjatSearch extends Xujjat
         }
 
         $query->joinWith('file');
+        $query->joinWith('file.company');
 //        $query->joinWith(['companyAccount']);
 //        $query->joinWith(['inn']);
 

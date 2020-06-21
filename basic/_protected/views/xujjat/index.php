@@ -143,27 +143,27 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    ]
 //                ]),
 //            ],
-            [
-                'attribute'=>'detail_date',
-//                'fotmat' => 'date',
-                'value' => 'detail_date',
-                'header' => '-Сана-',
-                'filter' =>   \kartik\field\FieldRange::widget([
-                    'model' => $searchModel,
-                    'type'=>\kartik\field\FieldRange::INPUT_WIDGET,
-                    'attribute1' => 'from_date',
-                    'attribute2' => 'to_date',
-//                    'template' => '{input}',
-                    'widgetClass'=> \kartik\datecontrol\DateControl::className(),
-//                    'widgetClass'=> \kartik\date\DatePicker::className(),
-                    'widgetOptions1'=>[
-                            'saveFormat' => 'php:U'
-                    ],
-                    'widgetOptions2'=>[
-                        'saveFormat' => 'php:U'
-                    ],
-                 ]),
-            ],
+//            [
+//                'attribute'=>'detail_date',
+////                'fotmat' => 'date',
+//                'value' => 'detail_date',
+//                'header' => '-Сана-',
+//                'filter' =>   \kartik\field\FieldRange::widget([
+//                    'model' => $searchModel,
+//                    'type'=>\kartik\field\FieldRange::INPUT_WIDGET,
+//                    'attribute1' => 'from_date',
+//                    'attribute2' => 'to_date',
+////                    'template' => '{input}',
+//                    'widgetClass'=> \kartik\datecontrol\DateControl::className(),
+////                    'widgetClass'=> \kartik\date\DatePicker::className(),
+//                    'widgetOptions1'=>[
+//                            'saveFormat' => 'php:U'
+//                    ],
+//                    'widgetOptions2'=>[
+//                        'saveFormat' => 'php:U'
+//                    ],
+//                 ]),
+//            ],
             ['attribute'=>'detail_purpose_of_payment',
                 'header' => 'Тўлов мақсади',
 
