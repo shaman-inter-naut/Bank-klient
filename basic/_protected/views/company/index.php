@@ -55,7 +55,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
-//                'headerOptions' => ['width' => '10'],
                 'template' => '{view}  {update}  {delete}',
 
                 'buttons' => [

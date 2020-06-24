@@ -34,7 +34,7 @@ class Contracts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_company_id', 'second_company_id'], 'required'],
+//            [['first_company_id', 'second_company_id'], 'required'],
             [['first_company_id', 'second_company_id', 'contract_number', 'status'], 'integer'],
             [['contract_date'], 'safe'],
 //            [['contract_date'], 'string'],
