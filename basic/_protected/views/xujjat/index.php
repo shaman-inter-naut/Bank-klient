@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                        'value' => 'file.companyName.short_name',
                         'header' => 'Kompany',
                ],
-            'detail_date',
+
 
 
 //            [
@@ -133,6 +133,12 @@ $this->params['breadcrumbs'][] = $this->title;
                        ]
                    ]),
                ],
+//            'detail_date',
+            [
+                'attribute'=>  'detail_date',
+                'value'=>  'detail_date',
+                'header' => 'Правотка сана',
+            ],
 
                 [
                     'attribute'=> 'detail_name',

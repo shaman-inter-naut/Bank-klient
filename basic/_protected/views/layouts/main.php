@@ -56,7 +56,7 @@ AppAsset::register($this);
 //                              '<li class="divider"></li>',
                               ['label' => 'Умумий файллар', 'url' => '/xujjat/index'],
                               '<li class="divider"></li>',
-                              ['label' => 'EXP', 'url' => '/expence-types/index'],
+                              ['label' => 'expence_types', 'url' => '/expence-types/index'],
                               '<li class="divider"></li>',
                           ]
                  ];
