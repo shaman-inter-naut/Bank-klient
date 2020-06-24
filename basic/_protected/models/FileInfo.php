@@ -35,7 +35,7 @@ class FileInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['file'], 'required'],
+            [['file', 'bank_id'], 'required'],
             [['bank_mfo'], 'string', 'max' => 10],
             [['company_account', 'data_period'], 'string', 'max' => 50],
             [['company_inn', 'file_date'], 'string', 'max' => 25],
@@ -59,7 +59,11 @@ class FileInfo extends \yii\db\ActiveRecord
             'file_date' => 'Хисобот олинган сана: ',
             'data_period' => 'Оралиқ давр: ',
             'file' => 'Файл',
+            'bank_id' => 'Банк ID',
             'template' => '',
+            'name' => 'Корхона номи:',
+            'depozitBefore' => 'Бошланғич депозит:',
+            'depozitAfter' => 'Якуний депозит:',
         ];
     }
 
@@ -75,7 +79,7 @@ class FileInfo extends \yii\db\ActiveRecord
 
     public function getDoc()
     {
-        return $this->hasOne(DocumentEski::className(), ['file_id' => 'id']);
+        return $this->hasOne(Document::className(), ['file_id' => 'id']);
     }
     public function getDocument()
     {

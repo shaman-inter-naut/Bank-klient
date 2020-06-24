@@ -19,9 +19,9 @@ use yii\widgets\ActiveForm;
         // формируем массив, с ключем равным полю 'id' и значением равным полю 'name'
         $items = ArrayHelper::map($bank,'id','name');
         $params = [
-            'prompt' => 'Банк номини танланг:'
+            'prompt' => '------------------------------'
         ];
-        echo $form->field($model, 'template')->dropDownList($items,$params);
+        echo $form->field($model, 'bank_id')->dropDownList($items,$params)->label('Банк номини танланг:');
         echo "<br>";
     ?>
 

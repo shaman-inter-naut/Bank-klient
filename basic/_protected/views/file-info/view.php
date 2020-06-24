@@ -58,6 +58,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'bank_mfo',
+            ['attribute'=>'name',
+                'format'=>'raw',
+//                '' => '',
+                'value' => $get_company_name
+            ],
             'company_account',
             'company_inn',
 //            'file_name',
@@ -69,6 +74,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'file_date',
             'data_period',
+            'depozitBefore',
+            'depozitAfter',
         ],
     ]) ?>
 

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Валюта номи') ?>
 
-    <?= $form->field($model, 'code')->textInput()->label('Валюта коди') ?>
+    <?= $form->field($model, 'code')->textInput(['type'=>'number'])->label('Валюта коди') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сақлаш', ['class' => 'btn btn-success']) ?>

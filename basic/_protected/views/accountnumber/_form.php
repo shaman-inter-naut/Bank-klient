@@ -14,7 +14,9 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'account_number')->textInput()->label('Хисоб рақам') ?>
+    <?= $form->field($model, 'account_number')->textInput([
+            'type'=>'number'
+    ])->label('Хисоб рақам') ?>
 
     <?= $form->field($model, 'bank_branch_id')->widget(Select2::classname(), [
         'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','short_name'),

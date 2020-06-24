@@ -40,7 +40,6 @@ class ContractsController extends Controller
     {
         $searchModel = new ContractsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//        $dataProvider->query->andFilterWhere(['status'=>1]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
