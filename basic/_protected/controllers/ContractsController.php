@@ -113,6 +113,7 @@ class ContractsController extends Controller
 //            return $this->redirect(['view', 'id' => $model->id]);
             return $this->redirect(['index']);
         }
+
         return $this->renderAjax('update', [
             'model' => $model,
         ]);
