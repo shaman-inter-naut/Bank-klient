@@ -16,11 +16,12 @@ class ContractsSearch extends Contracts
      * {@inheritdoc}
      */
     public $firstCompany;
+    public $secondCompany;
     public function rules()
     {
         return [
-            [['id', 'contract_number', 'status'], 'integer'],
-            [['contract_date',  'first_company_id', 'second_company_id'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['contract_date', 'file', 'contract_number', 'secondCompany', 'companyAccount','first_company_id', 'second_company_id'], 'safe'],
         ];
     }
 
@@ -46,12 +47,19 @@ class ContractsSearch extends Contracts
     public function search($params)
     {
         $query = Contracts::find();
+//        $query->leftJoin('company', 'company');
+//        $query = Contracts::find()->joinWith(['secondCompany','firstCompany']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+//        $dataProvider->sort->attributes['first_company_id']=[
+//          'asc'=>['company.name'=>SORT_ASC],
+//          'desc'=>['company.name'=>SORT_DESC],
+//        ];
 
         $this->load($params);
 //        $query->andFilterWhere(['status' => 1]);
@@ -61,15 +69,18 @@ class ContractsSearch extends Contracts
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        $query->joinWith('firstCompany');
+//        if ($this->first_company_id){
+            $query->joinWith('firstCompany');
+//        }
         $query->joinWith('secondCompany');
+//        $query->joinWith(['firstCompany','secondCompany']);
+
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-//            'first_company_id' => $this->first_company_id,
-//            'second_company_id' => $this->second_company_id,
+//            'company.name' => $this->first_company_id,
+//            'secondCompany.name' => $this->second_company_id,
             'contract_number' => $this->contract_number,
             'contract_date' => $this->contract_date,
             'status' => $this->status,
