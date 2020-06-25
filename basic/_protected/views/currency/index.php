@@ -11,7 +11,10 @@ use yii\bootstrap\Modal;
 $this->title = 'Валюта';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="currency-index">
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
+<div class="container currency-index">
     <div class="info" style="margin-bottom: 10px; padding: 5px;">
         <p><strong style=""><h1><?= Html::encode($this->title) ?></h1></strong></p>
     </div>

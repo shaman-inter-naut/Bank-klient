@@ -12,6 +12,10 @@ use yii\helpers\Url;
 $this->title = 'Корхона';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
 <div class="container company-index">
 
     <div class="info" style="margin-bottom: 10px; padding: 5px;">

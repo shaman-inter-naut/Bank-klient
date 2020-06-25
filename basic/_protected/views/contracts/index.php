@@ -11,6 +11,9 @@ use dosamigos\datetimepicker\DateTimePicker;
 $this->title = 'Шартномалар';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
 <div class="contracts-index container">
 
     <h1><?= Html::encode($this->title) ?></h1>

@@ -13,6 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
         text-align: center;
     }
 </style>
+
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
+
 <div class="container" >
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
     <p><strong style="font-size: 24px">БАНКЛАР ВА ФИЛИАЛЛАР</strong></p>
