@@ -29,7 +29,7 @@ use yii\helpers\Url;
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
         <h1>Welcome to Day</h1>
         <h2>We are team of talanted designers making websites with Bootstrap</h2>
-        <a href="#about" class="btn-get-started scrollto">Биз билан боғланиш</a>
+        <a href="<?=Url::to('/file-info/to-excel')?>" class="btn-get-started scrollto">to Ms Excel</a>
     </div>
 </section><!-- End Hero -->
 
@@ -72,6 +72,7 @@ use yii\helpers\Url;
 
 
 
+
             </div>
 
         </div>
@@ -91,7 +92,7 @@ use yii\helpers\Url;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                        <h4><a href="/bank/info">Банклар ва филиаллар</a></h4>
+                        <h4><a href="<?=Url::to('/bank/info')?>">Банклар ва филиаллар</a></h4>
                         <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                     </div>
                 </div>
@@ -99,7 +100,7 @@ use yii\helpers\Url;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-file"></i></div>
-                        <h4><a href="/company/info">Корхоналар ва хисоб рақамлар</a></h4>
+                        <h4><a href="<?=Url::to('/company/info')?>">Корхоналар ва хисоб рақамлар</a></h4>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                     </div>
                 </div>
@@ -107,7 +108,7 @@ use yii\helpers\Url;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-tachometer"></i></div>
-                        <h4><a href="/contracts/index">Шартномалар</a></h4>
+                        <h4><a href="<?=Url::to('/contracts/index')?>">Шартномалар</a></h4>
                         <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                     </div>
                 </div>
@@ -115,7 +116,7 @@ use yii\helpers\Url;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="450">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-world"></i></div>
-                        <h4><a href="">Nemo Enim</a></h4>
+                        <h4><a href="<?=Url::to('/file-info/index')?>">Файллар</a></h4>
                         <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                     </div>
                 </div>
@@ -123,7 +124,7 @@ use yii\helpers\Url;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-slideshow"></i></div>
-                        <h4><a href="">Dele cardo</a></h4>
+                        <h4><a href="<?=Url::to('/xujjat/index')?>">Умумий файллар</a></h4>
                         <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
                     </div>
                 </div>
@@ -131,7 +132,7 @@ use yii\helpers\Url;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-arch"></i></div>
-                        <h4><a href="">Divera don</a></h4>
+                        <h4><a href="<?=Url::to('/expence-types/index')?>">expence_types</a></h4>
                         <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
                     </div>
                 </div>
@@ -185,229 +186,79 @@ use yii\helpers\Url;
         </div>
     </section><!-- End About Section -->
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-        <div class="container" data-aos="zoom-in">
-
-            <div class="row d-flex align-items-center">
-
-                <div class="col-lg-2 col-md-4 col-6">
-                    <img src="themes/day/assets/img/clients/client-1.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6">
-                    <img src="themes/day/assets/img/clients/client-2.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6">
-                    <img src="themes/day/assets/img/clients/client-3.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6">
-                    <img src="themes/day/assets/img/clients/client-4.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6">
-                    <img src="themes/day/assets/img/clients/client-5.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6">
-                    <img src="themes/day/assets/img/clients/client-6.png" class="img-fluid" alt="">
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Clients Section -->
 
 
 
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-
-            <div class="section-title">
-                <span>Portfolio</span>
-                <h2>Portfolio</h2>
-                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-            </div>
-
-            <div class="row" data-aos="fade-up">
-                <div class="col-lg-12 d-flex justify-content-center">
-                    <ul id="portfolio-flters">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-card">Card</li>
-                        <li data-filter=".filter-web">Web</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <img src="themes/day/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 1</h4>
-                        <p>App</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <img src="themes/day/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <img src="themes/day/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 2</h4>
-                        <p>App</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="themes/day/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card 2</h4>
-                        <p>Card</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <img src="themes/day/assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Web 2</h4>
-                        <p>Web</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <img src="themes/day/assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 3</h4>
-                        <p>App</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="themes/day/assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card 1</h4>
-                        <p>Card</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="themes/day/assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card 3</h4>
-                        <p>Card</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <img src="themes/day/assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="themes/day/assets/img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Portfolio Section -->
 
     <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-
-            <div class="section-title">
-                <span>Pricing</span>
-                <h2>Pricing</h2>
-                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-            </div>
-
-            <div class="row">
-
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
-                    <div class="box">
-                        <h3>Free</h3>
-                        <h4><sup>$</sup>0<span> / month</span></h4>
-                        <ul>
-                            <li>Aida dere</li>
-                            <li>Nec feugiat nisl</li>
-                            <li>Nulla at volutpat dola</li>
-                            <li class="na">Pharetra massa</li>
-                            <li class="na">Massa ultricies mi</li>
-                        </ul>
-                        <div class="btn-wrap">
-                            <a href="#" class="btn-buy">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
-                    <div class="box featured">
-                        <h3>Business</h3>
-                        <h4><sup>$</sup>19<span> / month</span></h4>
-                        <ul>
-                            <li>Aida dere</li>
-                            <li>Nec feugiat nisl</li>
-                            <li>Nulla at volutpat dola</li>
-                            <li>Pharetra massa</li>
-                            <li class="na">Massa ultricies mi</li>
-                        </ul>
-                        <div class="btn-wrap">
-                            <a href="#" class="btn-buy">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-                    <div class="box">
-                        <h3>Developer</h3>
-                        <h4><sup>$</sup>29<span> / month</span></h4>
-                        <ul>
-                            <li>Aida dere</li>
-                            <li>Nec feugiat nisl</li>
-                            <li>Nulla at volutpat dola</li>
-                            <li>Pharetra massa</li>
-                            <li>Massa ultricies mi</li>
-                        </ul>
-                        <div class="btn-wrap">
-                            <a href="#" class="btn-buy">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Pricing Section -->
+<!--    <section id="pricing" class="pricing">-->
+<!--        <div class="container">-->
+<!---->
+<!--            <div class="section-title">-->
+<!--                <span>Pricing</span>-->
+<!--                <h2>Pricing</h2>-->
+<!--                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="row">-->
+<!---->
+<!--                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">-->
+<!--                    <div class="box">-->
+<!--                        <h3>Free</h3>-->
+<!--                        <h4><sup>$</sup>0<span> / month</span></h4>-->
+<!--                        <ul>-->
+<!--                            <li>Aida dere</li>-->
+<!--                            <li>Nec feugiat nisl</li>-->
+<!--                            <li>Nulla at volutpat dola</li>-->
+<!--                            <li class="na">Pharetra massa</li>-->
+<!--                            <li class="na">Massa ultricies mi</li>-->
+<!--                        </ul>-->
+<!--                        <div class="btn-wrap">-->
+<!--                            <a href="#" class="btn-buy">Buy Now</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">-->
+<!--                    <div class="box featured">-->
+<!--                        <h3>Business</h3>-->
+<!--                        <h4><sup>$</sup>19<span> / month</span></h4>-->
+<!--                        <ul>-->
+<!--                            <li>Aida dere</li>-->
+<!--                            <li>Nec feugiat nisl</li>-->
+<!--                            <li>Nulla at volutpat dola</li>-->
+<!--                            <li>Pharetra massa</li>-->
+<!--                            <li class="na">Massa ultricies mi</li>-->
+<!--                        </ul>-->
+<!--                        <div class="btn-wrap">-->
+<!--                            <a href="#" class="btn-buy">Buy Now</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">-->
+<!--                    <div class="box">-->
+<!--                        <h3>Developer</h3>-->
+<!--                        <h4><sup>$</sup>29<span> / month</span></h4>-->
+<!--                        <ul>-->
+<!--                            <li>Aida dere</li>-->
+<!--                            <li>Nec feugiat nisl</li>-->
+<!--                            <li>Nulla at volutpat dola</li>-->
+<!--                            <li>Pharetra massa</li>-->
+<!--                            <li>Massa ultricies mi</li>-->
+<!--                        </ul>-->
+<!--                        <div class="btn-wrap">-->
+<!--                            <a href="#" class="btn-buy">Buy Now</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+<!--    </section>-->
+    <!-- End Pricing Section -->
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
@@ -481,37 +332,12 @@ use yii\helpers\Url;
         <div class="container">
 
             <div class="section-title">
-                <span>Contact</span>
-                <h2>Contact</h2>
+                <span>Биз билан алоқа</span>
+                <h2>Биз билан алоқа</h2>
                 <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
             </div>
 
-            <div class="row" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <div class="info-box mb-4">
-                        <i class="bx bx-map"></i>
-                        <h3>Our Address</h3>
-                        <p>A108 Adam Street, New York, NY 535022</p>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="info-box  mb-4">
-                        <i class="bx bx-envelope"></i>
-                        <h3>Email Us</h3>
-                        <p>contact@example.com</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="info-box  mb-4">
-                        <i class="bx bx-phone-call"></i>
-                        <h3>Call Us</h3>
-                        <p>+1 5589 55488 55</p>
-                    </div>
-                </div>
-
-            </div>
 
             <div class="row" data-aos="fade-up">
 
@@ -520,32 +346,55 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="col-lg-6">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                        <div class="form-row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                                <div class="validate"></div>
+                    <div class="row" data-aos="fade-up">
+                        <div class="col-lg-6">
+                            <div class="info-box mb-4">
+                                <i class="bx bx-map"></i>
+                                <h3>Манзил</h3>
+                                <p>Андижон, Каттайўл , 128-уй</p>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                            <div class="validate"></div>
+                        <div class="col-lg-6">
+                            <div class="info-box mb-4">
+                                <i class="bx bx-envelope"></i>
+                                <h3>Email </h3>
+                                <p>admin@avtocompanent.uz</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                            <div class="validate"></div>
+                        <div class="col-lg-6">
+                            <div class="info-box mb-4">
+                                <a style="text-decoration: none" href="tel:+1 5589 55488 55">
+                                <i class="bx bx-phone-call"></i>
+                                <h3>Қўнғироқ қилинг</h3>
+                                <p>+1 5589 55488 55</p></a>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        <div class="col-lg-6">
+                            <div class="info-box mb-4">
+                                <a style="text-decoration: none" href="https://t.me/Avtokompanent">
+                                <i class="bx bxl-telegram"></i>
+                                <h3>Telegram</h3>
+                                <p> @Avtokompanent</p></a>
+                            </div>
                         </div>
-                        <div class="text-center"><button type="submit">Send Message</button></div>
-                    </form>
+<!---->
+<!--                        <div class="col-lg-3 col-md-6">-->
+<!--                            <div class="info-box  mb-4">-->
+<!--                                <i class="bx bx-envelope"></i>-->
+<!--                                <h3>Email Us</h3>-->
+<!--                                <p>contact@example.com</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!---->
+<!--                        <div class="col-lg-3 col-md-6">-->
+<!--                            <div class="info-box  mb-4">-->
+<!--                                <i class="bx bx-phone-call"></i>-->
+<!--                                <h3>Call Us</h3>-->
+<!--                                <p>+1 5589 55488 55</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                    </div>
                 </div>
 
             </div>

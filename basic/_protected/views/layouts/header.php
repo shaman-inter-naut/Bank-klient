@@ -27,7 +27,7 @@ use yii\helpers\Html;
                         <li><a href="<?=Url::to('/file-info/index')?>">Файллар</a></li>
                         <li><a href="<?=Url::to('/xujjat/index')?>">Умумий файллар</a></li>
                         <li><a href="<?=Url::to('/expence-types/index')?>">expence_types</a></li>
-                        <li><a href="<?=Url::to('/currency/index')?>">to Ms Excel</a></li>
+                        <li><a href="<?=Url::to('/file-info/to-excel')?>">to Ms Excel</a></li>
                     </ul>
                 </li>
 
