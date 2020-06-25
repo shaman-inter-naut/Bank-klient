@@ -71,9 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
     ){
 
         ?>
-        <div class="alert success">
+        <div class="alert">
             <span class="closebtn">&times;</span>
-            <strong>ДИҚҚАТ !</strong> <hr><b>Маълумотлар муваффаққиятли сақланди.</b><hr>Баъзи бир
+            <strong>ДИҚҚАТ !</strong> <hr><b><h2 style="color:darkgreen">Маълумотлар муваффаққиятли сақланди.</h2></b><hr>Баъзи бир
             маълумотлар базада аввалдан мавжуд бўлганлиги сабабли улар ўтказиб юборилди !
         </div>
         <?php session_destroy(); } ?>
