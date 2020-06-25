@@ -19,7 +19,7 @@ use yii\helpers\Html;
                     <ul>
                         <li><a href="<?=Url::to('/bank/index')?>">Банклар</a></li>
                         <li><a href="<?=Url::to('/company/index')?>">Корхоналар</a></li>
-                        <li><a href="<?=Url::to('/currency/index\'')?>">Валюта</a></li>
+                        <li><a href="<?=Url::to('/currency/index')?>">Валюта</a></li>
                     </ul>
                 </li>
                 <li class="drop-down"><a>Файл</a>

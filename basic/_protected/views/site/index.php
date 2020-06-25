@@ -50,8 +50,9 @@ use yii\bootstrap\Modal;
 <!-- ======= Hero Section ======= -->
 <section id="hero" style="height: 300px" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-        <h1>Welcome to Day</h1>
-        <h2>We are team of talanted designers making websites with Bootstrap</h2>
+
+        <h1>SHAVKAT MIRZIYOYEV:</h1>
+        <h2>TAYYOR MAHSULOTLAR ISHLAB CHIQARISHNI KO‘PAYTIRISH – DAVR TALABI</h2>
         <a href="<?=Url::to('/file-info/to-excel')?>" class="btn-get-started scrollto">to Ms Excel</a>
     </div>
 </section><!-- End Hero -->

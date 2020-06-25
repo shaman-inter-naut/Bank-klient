@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\LoginForm;
 use app\models\AccountNumber;
 use app\models\AccountNumberSearch;
 use yii\web\Controller;
@@ -17,6 +18,19 @@ class AccountnumberController extends Controller
     /**
      * {@inheritdoc}
      */
+
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            if((Yii::$app->controller->action->id!='login') &&
+                (Yii::$app->controller->action->id!='signup')){
+                $model = new LoginForm();
+                return $this->redirect(['/site/login', 'model' => $model]);
+            }
+        }
+        return parent::beforeAction($action);
+    }
     public function behaviors()
     {
         return [

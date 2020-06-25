@@ -8,6 +8,7 @@ use app\models\FilesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\LoginForm;
 
 /**
  * FilesController implements the CRUD actions for Files model.
@@ -17,6 +18,19 @@ class FilesController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            if((Yii::$app->controller->action->id!='login') &&
+                (Yii::$app->controller->action->id!='signup')){
+                $model = new LoginForm();
+                return $this->redirect(['/site/login', 'model' => $model]);
+            }
+        }
+        return parent::beforeAction($action);
+    }
+
     public function behaviors()
     {
         return [
