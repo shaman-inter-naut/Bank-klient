@@ -58,6 +58,8 @@ AppAsset::register($this);
                               '<li class="divider"></li>',
                               ['label' => 'expence_types', 'url' => '/expence-types/index'],
                               '<li class="divider"></li>',
+                              ['label' => 'to Ms Excel', 'url' => '/file-info/to-excel'],
+                              '<li class="divider"></li>',
                           ]
                  ];
 

@@ -27,8 +27,11 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpoffice/phpexcel" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpoffice/phpspreadsheet" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpspec/php-diff" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpspec/prophecy" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpspreadsheet/src" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpunit/php-code-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpunit/php-file-iterator" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpunit/php-text-template" />

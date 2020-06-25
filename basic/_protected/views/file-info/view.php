@@ -118,9 +118,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <thead  style="background-color: gray">
                     <th colspan="4" >ЖАМИ: </th>
-                    <th  ><?=$debet; ?></th>
+                    <th  ><?= round($allDebet, 2); ?></th>
 <!--                    <th  >--><?//=$kredit; ?><!--</th>-->
-                    <th  ></th>
+                    <th  ><?= round($allKredit, 2); ?></th>
                 </thead>
 
             </table>

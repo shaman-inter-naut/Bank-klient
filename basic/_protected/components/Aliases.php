@@ -7,7 +7,7 @@ use Yii;
 /**
  * Component where you can define your aliases.
  * 
- * This component is bootstrap-ed in your web.php configuration file.
+ * This component is bootstrap-ed in your web3.php configuration file.
  * It is good to make aliases here so we can use predefined aliases 
  * and other settings made by application configuration.
  *

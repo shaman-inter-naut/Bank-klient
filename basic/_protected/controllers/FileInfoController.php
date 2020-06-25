@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\BankBranch;
 use app\models\Company;
 use app\models\Document;
 use app\models\Bank;
@@ -72,15 +73,13 @@ class FileInfoController extends Controller
     public function actionView($id)
     {
 
-//        $lastID = $id;
+        $allDebet = Document::find()->where(['file_id' => $id])->sum('detail_debet');
+        $allKredit = Document::find()->where(['file_id' => $id])->sum('detail_kredit');
+
         $lastInserted = FileInfo::find()->where(['id' => $id])->one();
         $getCompanyINN = Company::find()->where(['inn' => $lastInserted->company_inn])->one();
 
-//        echo $lastInserted->file_inn.'<br>';
-//        echo $getCompanyINN->name;
-
         $get_company_name = $getCompanyINN->name;
-//        $lastInserted->save(false);
 
 
         $company = Company::find()->where(['id' => $id])->one();
@@ -103,6 +102,8 @@ class FileInfoController extends Controller
             'get_company_name' => $get_company_name,
             'document' => $document,
             'debet' => $debet,
+            'allDebet' => $allDebet,
+            'allKredit' => $allKredit,
         ]);
     }
 
@@ -163,18 +164,20 @@ class FileInfoController extends Controller
                     if($details & $position>3) {
                         $rrr = explode("|", $fields);
                         if (count($rrr) == 8) {
-                            if (strlen(trim($rrr[0])) == 10) {
-                                $needed_detail++;
-                                $eee[$needed_detail] = $rrr;
-                            } else {
-                                $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
-                                $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
-                                $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
-                                $eee[$needed_detail][3] = trim($eee[$needed_detail][3]) . ' ' . trim($rrr[3]);
-                                $eee[$needed_detail][4] = trim($eee[$needed_detail][4]) . ' ' . trim($rrr[4]);
-                                $eee[$needed_detail][5] = trim($eee[$needed_detail][5]) . ' ' . trim($rrr[5]);
-                                $eee[$needed_detail][6] = trim($eee[$needed_detail][6]) . ' ' . trim($rrr[6]);
-                                $eee[$needed_detail][7] = trim($eee[$needed_detail][7]) . ' ' . trim($rrr[7]);
+                            if (!(trim($rrr[1]) == 'Дата' || trim($rrr[1]) == 'проводки')) {
+                                if (strlen(trim($rrr[0])) == 10) {
+                                    $needed_detail++;
+                                    $eee[$needed_detail] = $rrr;
+                                } else {
+                                    $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
+                                    $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
+                                    $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
+                                    $eee[$needed_detail][3] = trim($eee[$needed_detail][3]) . ' ' . trim($rrr[3]);
+                                    $eee[$needed_detail][4] = trim($eee[$needed_detail][4]) . ' ' . trim($rrr[4]);
+                                    $eee[$needed_detail][5] = trim($eee[$needed_detail][5]) . ' ' . trim($rrr[5]);
+                                    $eee[$needed_detail][6] = trim($eee[$needed_detail][6]) . ' ' . trim($rrr[6]);
+                                    $eee[$needed_detail][7] = trim($eee[$needed_detail][7]) . ' ' . trim($rrr[7]);
+                                }
                             }
                         }
                     }
@@ -207,18 +210,21 @@ class FileInfoController extends Controller
                    if($details & $position>3) {
                        $rrr = explode("|", $s);
                        if (count($rrr) == 8) {
-                           if (strlen(trim($rrr[1])) == 10) {
-                               $needed_detail++;
-                               $eee[$needed_detail] = $rrr;
-                           } else {
-                               $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
-                               $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
-                               $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
-                               $eee[$needed_detail][3] = trim($eee[$needed_detail][3]) . ' ' . trim($rrr[3]);
-                               $eee[$needed_detail][4] = trim($eee[$needed_detail][4]) . ' ' . trim($rrr[4]);
-                               $eee[$needed_detail][5] = trim($eee[$needed_detail][5]) . ' ' . trim($rrr[5]);
-                               $eee[$needed_detail][6] = trim($eee[$needed_detail][6]) . ' ' . trim($rrr[6]);
-                               $eee[$needed_detail][7] = trim($eee[$needed_detail][7]) . ' ' . trim($rrr[7]);
+                           if (!(trim($rrr[1]) == 'Дата' || trim($rrr[1]) == 'проводки')) {
+
+                               if (strlen(trim($rrr[1])) == 10) {
+                                   $needed_detail++;
+                                   $eee[$needed_detail] = $rrr;
+                               } else {
+                                   $eee[$needed_detail][0] = trim($eee[$needed_detail][0]) . ' ' . trim($rrr[0]);
+                                   $eee[$needed_detail][1] = trim($eee[$needed_detail][1]) . ' ' . trim($rrr[1]);
+                                   $eee[$needed_detail][2] = trim($eee[$needed_detail][2]) . ' ' . trim($rrr[2]);
+                                   $eee[$needed_detail][3] = trim($eee[$needed_detail][3]) . ' ' . trim($rrr[3]);
+                                   $eee[$needed_detail][4] = trim($eee[$needed_detail][4]) . ' ' . trim($rrr[4]);
+                                   $eee[$needed_detail][5] = trim($eee[$needed_detail][5]) . ' ' . trim($rrr[5]);
+                                   $eee[$needed_detail][6] = trim($eee[$needed_detail][6]) . ' ' . trim($rrr[6]);
+                                   $eee[$needed_detail][7] = trim($eee[$needed_detail][7]) . ' ' . trim($rrr[7]);
+                               }
                            }
                        }
                    }
@@ -325,13 +331,13 @@ class FileInfoController extends Controller
                     $document->detail_document_number = $value[2];
                     $document->detail_mfo =$value[4];
                     $debet = trim(str_replace(",", "", $value[5]));
-                    $debet = trim(str_replace(".", ",", $debet));
+//                    $debet = trim(str_replace(".", ",", $debet));
                     $document->detail_debet = $debet;
                     $kredit = trim(str_replace(",", "", $value[6]));
-                    $kredit = trim(str_replace(".", ",", $kredit));
+//                    $kredit = trim(str_replace(".", ",", $kredit));
                     $document->detail_kredit = $kredit;
                     $document->detail_purpose_of_payment =$value[7];
-                    $document->code_currency = '-';
+                    $document->code_currency = substr($matches['acc'], 5, 3);
                     $document->contract_date = '-';
                     $document->save(false);
                 }
@@ -362,9 +368,9 @@ class FileInfoController extends Controller
                     foreach ($eee as $key =>$value)
                     {
                         $pat = array(
-                            "mfo" => "(\d{5})",   //mfo
-                            "acc" => "(\d{20})",   //mfo
-                            "inn" => "(\d{9})",   //mfo
+                            "mfo" => "((МФО:)\d{5})",     //mfo
+                            "acc" => "((Счет:)\d{20})",   //acc
+                            "inn" => "((ИНН:)\d{9})",     //inn
                         );
                         foreach ($pat as $k => $p) {
                             preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
@@ -390,25 +396,22 @@ class FileInfoController extends Controller
                         }
                         $document->detail_date = $ress['date'];
                         $document->detail_document_number = $value[2];
-                        $document->detail_inn = $res['inn'];
-                        $document->detail_account = $res['acc'];
+                        $document->detail_inn = trim(str_replace("ИНН:", "", $res['inn']));
+                        $document->detail_account = trim(str_replace("Счет:", "", $res['acc']));
                         $document->detail_name ='-';
-                        $document->detail_mfo = $res['mfo'];
+                        $document->detail_mfo = trim(str_replace("МФО:", "", $res['mfo']));
                         $debet = trim(str_replace(",", "", $value[5]));
-                        $debet = trim(str_replace(".", ",", $debet));
+//                        $debet = trim(str_replace(".", ",", $debet));
                         $document->detail_debet = $debet;
                         $kredit = trim(str_replace(",", "", $value[6]));
-                        $kredit = trim(str_replace(".", ",", $kredit));
+//                        $kredit = trim(str_replace(".", ",", $kredit));
                         $document->detail_kredit = $kredit;
                         $document->detail_purpose_of_payment =$value[4];
-                        $document->code_currency = '-';
+                        $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
                         $document->contract_date = '-';
 
                         $document->save(false);
                     }
-
-
-
                 }
 //*******************************************************************************************************************
             else  if ($getTemplate->template == 3){
@@ -463,13 +466,13 @@ class FileInfoController extends Controller
                                 $document->detail_name ='-';
                                 $document->detail_mfo = trim(str_replace("МФО:", "", $res['mfo']));
                                 $debet = trim(str_replace(",", "", $value[5]));
-                                $debet = trim(str_replace(".", ",", $debet));
+//                                $debet = trim(str_replace(".", ",", $debet));
                                 $document->detail_debet = $debet;
                                 $kredit = trim(str_replace(",", "", $value[6]));
-                                $kredit = trim(str_replace(".", ",", $kredit));
+//                                $kredit = trim(str_replace(".", ",", $kredit));
                                 $document->detail_kredit = $kredit;
                                 $document->detail_purpose_of_payment =$value[4];
-                                $document->code_currency = '-';
+                                $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
 
 //                                $patte = array(
 //                                    "date" => "((от\s+)\d{1,2}\.\d{1,2}\.\d{4})",   //mfo
@@ -577,231 +580,158 @@ class FileInfoController extends Controller
     public function actionToExcel()
     {
 
+//        if ($model->load(Yii::$app->request->post()) ) {
 //        composer require phpoffice/phpexcel
 //        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel.php';
 //        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel/Writer/Excel2007.php';
+        require_once(Yii::getAlias('@vendor/phpoffice/phpexcel/Classes/PHPExcel.php'));
 
-        //Создаем экземпляр класса PHPExcel.
-        $xls = new \PHPExcel();
+            //Создаем экземпляр класса PHPExcel.
+            $xls = new \PHPExcel();
 
-        // Писать будем в первый лист.
-        $xls->setActiveSheetIndex(0);
-        $sheet = $xls->getActiveSheet();
+            // Писать будем в первый лист.
+            $xls->setActiveSheetIndex(0);
+            $sheet = $xls->getActiveSheet();
 
-        // Ширина задается в количестве символов.
-        $sheet->getColumnDimension('A')->setWidth(5);//bank MFO
-        $sheet->getColumnDimension('B')->setWidth(10);//bank INN
-        $sheet->getColumnDimension('C')->setWidth(10);//Korxona nomi
-        $sheet->getColumnDimension('D')->setWidth(10);//Korxona INN
-        $sheet->getColumnDimension('E')->setWidth(30);//Korxona X/R
-        $sheet->getColumnDimension('F')->setWidth(20);//Dokument sanasi
-        $sheet->getColumnDimension('G')->setWidth(40);//Oraliq davr
-        $sheet->getColumnDimension('G')->setWidth(40);//Xamkor korxona nomi
-        $sheet->getColumnDimension('G')->setWidth(10);//Xamkor korxona X/R
-        $sheet->getColumnDimension('G')->setWidth(10);//Provodka sanasi
-        $sheet->getColumnDimension('G')->setWidth(10);//To`lov maqsadi
-        $sheet->getColumnDimension('G')->setWidth(10);//valyuta kodi
-        $sheet->getColumnDimension('G')->setWidth(10);//Debet
-        $sheet->getColumnDimension('G')->setWidth(10);//Kredit
-        $sheet->getColumnDimension('G')->setWidth(10);//Shartnoma sanasi
-        $sheet->getColumnDimension('G')->setWidth(10);//Shartnoma raqami
+            // Ширина задается в количестве символов.
+            $sheet->getColumnDimension('A')->setWidth(55);//bank номи
+            $sheet->getColumnDimension('B')->setWidth(15);//bank MFO
+            $sheet->getColumnDimension('C')->setWidth(35);//Korxona nomi
+            $sheet->getColumnDimension('D')->setWidth(20);//Korxona INN
+            $sheet->getColumnDimension('E')->setWidth(25);//Korxona X/R
+            $sheet->getColumnDimension('F')->setWidth(20);//Dokument sanasi
+            $sheet->getColumnDimension('G')->setWidth(40);//Oraliq davr
+            $sheet->getColumnDimension('H')->setWidth(20);//Бошланғич депозит
+            $sheet->getColumnDimension('I')->setWidth(20);//Якуний депозит
+            $sheet->getColumnDimension('J')->setWidth(30);//Xamkor korxona nomi
+            $sheet->getColumnDimension('K')->setWidth(25);//Xamkor korxona X/R
+            $sheet->getColumnDimension('L')->setWidth(20);//Provodka sanasi
+            $sheet->getColumnDimension('M')->setWidth(20);//Debet
+            $sheet->getColumnDimension('N')->setWidth(20);//Kredit
+            $sheet->getColumnDimension('O')->setWidth(50);//Тўлов мақсади
+            $sheet->getColumnDimension('P')->setWidth(15);//Valyuta kodi
+            $sheet->getColumnDimension('Q')->setWidth(20);//Шартнома рақами
+            $sheet->getColumnDimension('R')->setWidth(20);//Шартнома санаси
+//            $sheet->getColumnDimension('Q')->setWidth(10);//
 
-        //        Для удобства заводим переменную $line, в ней будем считать номер строки.
-        $line = 1;
-        $sheet->setCellValue("A{$line}", 'Корхонанинг банк хисоб рақамлари орқали кирим-чиқим хисоботлари № 1 от ' . date('d.m.Y H:i'));
+            //        Для удобства заводим переменную $line, в ней будем считать номер строки.
+            $line = 1;
+            $sheet->setCellValue("A{$line}", 'Корхонанинг банк хисоб рақамлари орқали кирим-чиқим хисоботлари № 1 от ' . date('d.m.Y H:i'));
 
-        //        Объединяем ячейки по горизонтали.
-        $sheet->mergeCells("A{$line}:G{$line}");
+            //        Объединяем ячейки по горизонтали.
+            $sheet->mergeCells("A{$line}:G{$line}");
 
 
-        //Делаем выравнивание по центру вертикали и горизонтали.
+            //Делаем выравнивание по центру вертикали и горизонтали.
 //        $sheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //        $sheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
-        //Делаем текст жирным и увеличиваем шрифт.
-        $sheet->getStyle("A{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("A{$line}")->getFont()->setSize(18);
+            //Делаем текст жирным и увеличиваем шрифт.
+            $sheet->getStyle("A{$line}")->getFont()->setBold(true);
+            $sheet->getStyle("A{$line}")->getFont()->setSize(14);
 
-        // Пропускаем строку после заголовка.
-        $line++;
-        $sheet->setCellValue("A{$line}", '');
-        $sheet->mergeCells("A{$line}:G{$line}");
-
-        //Информация о поставщике
-        $line++;
-        $sheet->setCellValue("A{$line}", 'Поставщик:');
-        $sheet->setCellValue("B{$line}", htmlspecialchars_decode('ООО Рога'));
-        $sheet->getStyle("B{$line}")->getFont()->setBold(true);
-        $sheet->mergeCells("B{$line}:G{$line}");
-
-        $line++;
-        $sheet->setCellValue("B{$line}", 'Адрес: г. Москва, ул. Тверская, д.24, тел: 8 (923) 123-45-67');
-        $sheet->mergeCells("B{$line}:G{$line}");
-
-        // Информация о покупателе
-        $line++;
-        $sheet->setCellValue("A{$line}", 'Покупатель:');
-        $sheet->setCellValue("B{$line}", 'Иванов Иван Иванович');
-        $sheet->getStyle("B{$line}")->getFont()->setBold(true);
-        $sheet->mergeCells("B{$line}:G{$line}");
-
-        $line++;
-        $sheet->setCellValue("B{$line}", 'Тел 9 (999) 999-99-99');
-        $sheet->mergeCells("B{$line}:G{$line}");
-
-        //Пропускаем строку.
-        $line++;
-        $sheet->setCellValue("A{$line}", '');
-        $sheet->mergeCells("A{$line}:G{$line}");
-
-        //Запоминаем строку с которой начинается таблица чтобы потом сделать рамку.
-        $line++;
-        $start_table = $line;
-
-        //Шапка таблицы
-        $sheet->setCellValue("A{$line}", 'п/п');
-        $sheet->setCellValue("B{$line}", 'Артикул');
-        $sheet->setCellValue("C{$line}", 'Название');
-        $sheet->setCellValue("D{$line}", 'Кол-во');
-        $sheet->setCellValue("E{$line}", 'Ед.');
-        $sheet->setCellValue("F{$line}", 'Цена');
-        $sheet->setCellValue("G{$line}", 'Сумма');
-
-        //Стили для текста в шапки таблицы.
-        $sheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("A{$line}:G{$line}")->getAlignment()->setWrapText(true);
-//        $sheet->getStyle("A{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-//        $sheet->getStyle("A{$line}:G{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-
-        //В данном примере товары представлены в виде массива.
-        $prods = array(
-            array(
-                'sku'   => '8545775',
-                'name'  => 'Боксерские перчатки GREEN HILL Super Star (без марки AIBA)',
-                'price' => '6060',
-                'count' => '2'
-            ),
-            array(
-                'sku'   => '865645',
-                'name'  => 'Боксерский мешок 120X35, 46 кг',
-                'price' => '9900',
-                'count' => '1'
-            ),
-            array(
-                'sku'   => '865643',
-                'name'  => 'Кронштейн для боксерского мешка',
-                'price' => '4800',
-                'count' => '3'
-            ),
-        );
-
-
-        // Далее в цикле выводим товары.
-
-        foreach ($prods as $i => $prod) {
+            // Пропускаем строку после заголовка.
             $line++;
-            $sheet->setCellValue("A{$line}", ++$i);
-            $sheet->setCellValue("B{$line}", $prod['sku']);
-            $sheet->setCellValue("C{$line}", $prod['name']);
-            $sheet->setCellValue("D{$line}", $prod['count']);
-            $sheet->setCellValue("E{$line}", 'шт.');
-            $sheet->setCellValue("F{$line}", number_format($prod['price'], 2, ',', ' '));
-            $sheet->setCellValue("G{$line}", number_format($prod['price'] * $prod['count'], 2, ',', ' '));
+            $sheet->setCellValue("A{$line}", '');
+            $sheet->mergeCells("A{$line}:P{$line}");
 
-            // Выравнивание текста в ячейках.
-//            $sheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-//            $sheet->getStyle("B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-//            $sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-//            $sheet->getStyle("D{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-//            $sheet->getStyle("E{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-//            $sheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-//            $sheet->getStyle("G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+            //Информация о поставщике
+            $line++;
+        $sheet->setCellValue("A{$line}", 'Банк номи:');
+        $sheet->setCellValue("B{$line}", 'Банк МФО');
+        $sheet->setCellValue("C{$line}", 'Корхона номи');
+        $sheet->setCellValue("D{$line}", 'Корхона ИНН');
+        $sheet->setCellValue("E{$line}", 'Корхона Х/Р');
+        $sheet->setCellValue("F{$line}", 'Документ санаси');
+        $sheet->setCellValue("G{$line}", 'Оралиқ давр');
+        $sheet->setCellValue("H{$line}", 'Бошланғич депозит');
+        $sheet->setCellValue("I{$line}", 'Якуний депозит');
+        $sheet->setCellValue("J{$line}", 'Хамкор корхона номи');
+        $sheet->setCellValue("K{$line}", 'Хамкор корхона х/р');
+        $sheet->setCellValue("L{$line}", 'Документ рақами');
+        $sheet->setCellValue("M{$line}", 'Дебет');
+        $sheet->setCellValue("N{$line}", 'Кредит');
+        $sheet->setCellValue("O{$line}", 'Тўлов мақсади');
+        $sheet->setCellValue("P{$line}", 'Валюта коди');
+        $sheet->setCellValue("Q{$line}", 'Шартнома рақами');
+        $sheet->setCellValue("R{$line}", 'Шартнома санаси');
 
-            // Подсчет "Итого".
-            @$total += $prod['price'] * $prod['count'];
-        }
-
-
-        //Добавляем рамку к таблице.
-//        $sheet->getStyle("A{$start_table}:G{$line}")->applyFromArray(
-//            array(
-//                'borders' => array(
-//                    'allborders' => array(
-//                        'style' => PHPExcel_Style_Border::BORDER_THIN
-//                    )
-//                )
-//            )
-//        );
-
-
-        //Итого
-        $line++;
-        $sheet->setCellValue("A{$line}", 'Итого:');
-        $sheet->mergeCells("A{$line}:F{$line}");
-
-        $sheet->setCellValue("G{$line}", number_format($total, 2, ',', ' '));
-        $sheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
-//        $sheet->getStyle("A{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-
-
-        // НДС (20% от итого)
-        $line++;
-        $sheet->setCellValue("A{$line}", 'В том числе НДС:');
-        $sheet->mergeCells("A{$line}:F{$line}");
-
-        $sheet->setCellValue("G{$line}", number_format(($total / 100) * 20, 2, ',', ' '));
-        $sheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
-//        $sheet->getStyle("A{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-
-
-        // Всего наименований
-        $line++;
-        $sheet->setCellValue(
-            "A{$line}",
-            'Всего наименований ' . count($prods) . ', на сумму ' . number_format($total, 2, ',', ' ') . ' руб.'
-        );
-        $sheet->mergeCells("A{$line}:G{$line}");
-
-
-
-        //Сумма прописью
-        //Здесь используется функция num2str() для получение суммы прописью, взято с https://habrahabr.ru/post/53210/.
-
-        //Еще нужно у суммы прописью сделать первую букву заглавной. Т.к. скрипт в UTF-8 функция ucfirst не работает, поэтому используется аналог – mb_ucfirst().
-
-        $line++;
-        $sheet->setCellValue("A{$line}", '123');
         $sheet->getStyle("A{$line}")->getFont()->setBold(true);
-        $sheet->mergeCells("A{$line}:G{$line}");
+        $sheet->getStyle("B{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("C{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("D{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("E{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("F{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("G{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("H{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("I{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("J{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("K{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("L{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("M{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("N{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("O{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("P{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("Q{$line}")->getFont()->setBold(true);
+        $sheet->getStyle("R{$line}")->getFont()->setBold(true);
+        //  $sheet->mergeCells("B{$line}:G{$line}");
 
 
-        //Файл готов
-        //Отдаем его браузеру на скачивание
-        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
-        header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        header("Content-type: application/vnd.ms-excel" );
-        header("Content-Disposition: attachment; filename=order.xlsx");
+
+            // Далее в цикле выводим товары.
+        $fileinfo = FileInfo::find()->indexBy('id')->all();
+
+            foreach ($fileinfo as $i => $info){
+                $line++;
+                $bankName = BankBranch::find()->where(['mfo' => $info['bank_mfo']])->one();
+                $getDetailData = Document::find()->where(['file_id' => $info['id']])->all();
+                $line++;
+                $sheet->setCellValue("A{$line}", $bankName->short_name);
+                $sheet->setCellValue("B{$line}", $info['bank_mfo']);
+
+                foreach ($getDetailData as $j => $getDD) {
+                    $companyName = Company::find()->where(['inn' => $getDD->detail_inn])->one();
+                    $sheet->setCellValue("C{$line}", $companyName->name);
+                    $sheet->setCellValue("D{$line}", $getDD->detail_inn);
+                    $sheet->setCellValue("E{$line}", $getDD->detail_account);
+
+
+                    $sheet->setCellValue("F{$line}", $getDD->detail_date);
+                    $sheet->setCellValue("G{$line}", $info['data_period']);
+                    $sheet->setCellValue("H{$line}", '01.01.2020');
+                    $sheet->setCellValue("I{$line}", '31.12.2020');
+                    $sheet->setCellValue("J{$line}", 'Хамкор корхона номи');
+                    $sheet->setCellValue("K{$line}", 'Хамкор корхона х/р');
+                    $sheet->setCellValue("L{$line}", $getDD->detail_document_number);
+                    $sheet->setCellValue("M{$line}", $getDD->detail_debet);
+                    $sheet->setCellValue("N{$line}", $getDD->detail_kredit);
+                    $sheet->setCellValue("O{$line}", $getDD->detail_purpose_of_payment);
+                    $sheet->setCellValue("P{$line}", $getDD->code_currency);
+                    $sheet->setCellValue("Q{$line}", 'Контракт рақами');
+                    $sheet->setCellValue("R{$line}", $getDD->contract_date);
+                    $line++;
+                }
+            }
+
+
+            //Файл готов
+            //Отдаем его браузеру на скачивание
+            header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
+            header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
+            header("Cache-Control: no-cache, must-revalidate");
+            header("Pragma: no-cache");
+        $date = date('d.m.Y H:m:s');
+        header("Content-type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=order (".$date.").xlsx");
 
         $objWriter = new \PHPExcel_Writer_Excel2007($xls);
         $objWriter->save('php://output');
 
-        $date = date('dd.mm.YYYY H:m:s');
 
         // Или сохраняем на сервере
-        $objWriter = new \PHPExcel_Writer_Excel2007($xls);
-        $objWriter->save('downloads/order( '.$date.').xlsx');
-        exit;
+            $objWriter = new \PHPExcel_Writer_Excel2007($xls);
+            $objWriter->save('downloads/order( ' . $date . ').xlsx');
 
-
-
-//        echo "to EXCEL";
-
-//        $company = Company::find()->where(['id' => $id])->one();
-//
-//        $searchModel = new FileInfoSearch();
-//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('to-excel');
     }
