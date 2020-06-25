@@ -1,6 +1,6 @@
 <?
 use yii\helpers\Url;
-
+use yii\helpers\Html;
 ?>
 
 
@@ -13,12 +13,24 @@ use yii\helpers\Url;
             <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
             <i class="icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
         </div>
-        <div class="social-links">
-            <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-            <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-            <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-            <a href="#" class="skype"><i class="icofont-skype"></i></a>
-            <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+<!--        <div class="social-links">-->
+        <div >
+            <? if (Yii::$app->user->isGuest) {?>
+                <a href="#" class="twitter btn btn-success btn-xs">Кириш</a>
+                <a href="#" class="twitter btn btn-info btn-xs">Рўйхатдан ўтиш</a>
+<!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
+<!--                --><?//= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
+            <?}?>
+            <? if (!Yii::$app->user->isGuest) {?>
+                <a href="/site/logout" class="twitter btn btn-danger btn-xs">Чиқиш</a>
+<!--                --><?//= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
+
+
+            <?}?>
+<!--            <a href="#" class="twitter btn btn-success btn-xs">Кириш</a>-->
+<!--            <a href="#" class="twitter btn btn-danger btn-xs">Чиқиш</a>-->
+<!--            <a href="#" class="twitter btn btn-info btn-xs">Рўйхатдан ўтиш</a>-->
+
         </div>
     </div>
 </div>

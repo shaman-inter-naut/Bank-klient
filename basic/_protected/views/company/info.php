@@ -18,7 +18,7 @@ $this->title = 'My Yii Application';
 
     <ul class="banks">
         <?php  foreach($company as $value) { ?>
-            <li class="tablinks"><a href='korxona?id=<?= $value->id; ?>'
+            <li class="tablinks"><a href='/company/info?id=<?= $value->id; ?>'
                                     onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
         <? } ?>
     </ul>
