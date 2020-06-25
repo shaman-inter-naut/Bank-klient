@@ -1,6 +1,7 @@
 <?
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 ?>
 
 
@@ -16,14 +17,19 @@ use yii\helpers\Html;
 <!--        <div class="social-links">-->
         <div >
             <? if (Yii::$app->user->isGuest) {?>
-                <a href="#" class="twitter btn btn-success btn-xs">Кириш</a>
-                <a href="#" class="twitter btn btn-info btn-xs">Рўйхатдан ўтиш</a>
-<!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
+
+                <?= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'btn-success']]) ?>
 <!--                --><?//= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
+                <?= Html::a('Кириш', ['site/login'], [
+                    'class' => 'login btn-success btn-xs',
+//                    'id'=>'modalButton',
+                    'data' => [
+                        'method' => 'post']])?>
+
             <?}?>
             <? if (!Yii::$app->user->isGuest) {?>
-                <a href="/site/logout" class="twitter btn btn-danger btn-xs">Чиқиш</a>
-<!--                --><?//= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
+
+                <?= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
 
 
             <?}?>
@@ -451,4 +457,54 @@ use yii\helpers\Html;
 <!--<script src="themes/day/assets/js/main.js"></script>-->
 
 
+<div class="modal fade" id="login-modal" data-open-onload="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div style="padding: unset !important;" class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div style="background-color: white !important; padding: unset;" class="col-lg-6 bg-primary nop">
 
+                            <div style="padding: 20px; background-color: " class="p-40">
+                                <h2 >'kirolmaydi'</h2>
+
+                            </div>
+                        </div>
+                        <div style="padding: 20px" class="col-lg-6 p-40 bg-white">
+
+                            <form id="login-form" action="/site/login" method="post">
+                                <?=Html::hiddenInput(Yii::$app->getRequest()->csrfParam, Yii::$app->getRequest()->getCsrfToken(), []);?>
+                                <div class="form-group">
+                                    <label>'Login'</label>
+                                    <input id="login-id" type="text" class="form-control"name="LoginForm[username]">
+                                </div>
+                                <div class="form-group">
+                                    <label>Parol</label>
+                                    <input id="login-pass" type="password" class="form-control" name="LoginForm[password]">
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary" style="background-color: red; border-color: red"><('kirish'</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+<?//
+//Modal::begin([
+//        'header' => '<h3>Кириш</h3>',
+//    'id' => 'modal',
+//]);
+//?>
+<!--    <div id="modalContent">-->
+<!---->
+<!--    </div>-->
+<?php
+//Modal::end();
+//?>
