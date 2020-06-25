@@ -18,7 +18,11 @@ use kartik\datecontrol\DateControl;
 $this->title = 'Хужжатлар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="xujjat-index">
+
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
+<div class="container xujjat-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 <!---->

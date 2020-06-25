@@ -13,6 +13,9 @@ use yii\bootstrap\Modal;
 $this->title = 'Файллар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
 
 <style>
     .alert {
@@ -44,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 </style>
 
-<div class="file-info-index">
+<div class="container file-info-index">
 
 
 
