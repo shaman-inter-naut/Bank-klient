@@ -28,6 +28,33 @@ $this->params['breadcrumbs'][] = $this->title;
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+        opacity: 1;
+        transition: opacity 0.6s;
+        margin-bottom: 15px;
+    }
+
+    .alert.success {background-color: #4CAF50;}
+    .alert.info {background-color: #2196F3;}
+    .alert.warning {background-color: #ff9800;}
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: black;
+    }
 </style>
 
 <div class="file-info-view">
@@ -35,6 +62,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode("Файлдан олинган маълумотлар: ") ?></h1>
 
     <hr style="border: 5px solid darkslategrey">
+    <?php if (
+            isset($_SESSION['file_date'])
+            && isset($_SESSION['detail_document_number'])
+            && isset($_SESSION['detail_purpose_of_payment'])
+            && isset($_SESSION['detail_debet'])
+            && isset($_SESSION['detail_kredit'])
+    ){
+
+        ?>
+        <div class="alert success">
+            <span class="closebtn">&times;</span>
+            <strong>ДИҚҚАТ !</strong> <hr><b>Маълумотлар муваффаққиятли сақланди.</b><hr>Баъзи бир
+            маълумотлар базада аввалдан мавжуд бўлганлиги сабабли улар ўтказиб юборилди !
+        </div>
+        <?php session_destroy(); } ?>
 
     <div class="col-md-10"><?= Html::a('Файллар', [Yii::$app->controller->id.'/index']); ?></div>
     <div class="col-md-2">
@@ -127,3 +169,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+    }
+</script>
