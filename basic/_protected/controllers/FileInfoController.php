@@ -391,7 +391,6 @@ class FileInfoController extends Controller
                     $model->depozitAfter = $endDeposit;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
-//                }
 
                 foreach ($eee as $key =>$value)
                 {
