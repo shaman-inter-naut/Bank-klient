@@ -1,6 +1,7 @@
 <?
 use yii\helpers\Url;
-
+use yii\helpers\Html;
+use yii\bootstrap\Modal;
 ?>
 
 
@@ -13,12 +14,34 @@ use yii\helpers\Url;
             <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
             <i class="icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
         </div>
-        <div class="social-links">
-            <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-            <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-            <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-            <a href="#" class="skype"><i class="icofont-skype"></i></a>
-            <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+<!--        <div class="social-links">-->
+        <div >
+            <? if (Yii::$app->user->isGuest) {?>
+                <?= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
+                    'class' => 'btn-success btn-xs',
+                    'data' => [
+                        'method' => 'post']])?>
+<!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'btn-success']]) ?>
+<!--                --><?//= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
+                <?= Html::a('Кириш', ['site/login'], [
+                    'class' => 'btn-success btn-xs',
+                    'data' => [
+                        'method' => 'post']])?>
+
+            <?}?>
+            <? if (!Yii::$app->user->isGuest) {?>
+                <?= Html::a('Чиқиш', ['/site/logout'], [
+                    'class' => 'btn-danger btn-xs',
+                    'data' => [
+                        'method' => 'post']])?>
+<!--                --><?//= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
+
+
+            <?}?>
+<!--            <a href="#" class="twitter btn btn-success btn-xs">Кириш</a>-->
+<!--            <a href="#" class="twitter btn btn-danger btn-xs">Чиқиш</a>-->
+<!--            <a href="#" class="twitter btn btn-info btn-xs">Рўйхатдан ўтиш</a>-->
+
         </div>
     </div>
 </div>
@@ -27,8 +50,9 @@ use yii\helpers\Url;
 <!-- ======= Hero Section ======= -->
 <section id="hero" style="height: 300px" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-        <h1>Welcome to Day</h1>
-        <h2>We are team of talanted designers making websites with Bootstrap</h2>
+
+        <h1>SHAVKAT MIRZIYOYEV:</h1>
+        <h2>TAYYOR MAHSULOTLAR ISHLAB CHIQARISHNI KO‘PAYTIRISH – DAVR TALABI</h2>
         <a href="<?=Url::to('/file-info/to-excel')?>" class="btn-get-started scrollto">to Ms Excel</a>
     </div>
 </section><!-- End Hero -->
@@ -439,4 +463,54 @@ use yii\helpers\Url;
 <!--<script src="themes/day/assets/js/main.js"></script>-->
 
 
+<div class="modal fade" id="login-modal" data-open-onload="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div style="padding: unset !important;" class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div style="background-color: white !important; padding: unset;" class="col-lg-6 bg-primary nop">
 
+                            <div style="padding: 20px; background-color: " class="p-40">
+                                <h2 >'kirolmaydi'</h2>
+
+                            </div>
+                        </div>
+                        <div style="padding: 20px" class="col-lg-6 p-40 bg-white">
+
+                            <form id="login-form" action="/site/login" method="post">
+                                <?=Html::hiddenInput(Yii::$app->getRequest()->csrfParam, Yii::$app->getRequest()->getCsrfToken(), []);?>
+                                <div class="form-group">
+                                    <label>'Login'</label>
+                                    <input id="login-id" type="text" class="form-control"name="LoginForm[username]">
+                                </div>
+                                <div class="form-group">
+                                    <label>Parol</label>
+                                    <input id="login-pass" type="password" class="form-control" name="LoginForm[password]">
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary" style="background-color: red; border-color: red"><('kirish'</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+<?//
+//Modal::begin([
+//        'header' => '<h3>Кириш</h3>',
+//    'id' => 'modal',
+//]);
+//?>
+<!--    <div id="modalContent">-->
+<!---->
+<!--    </div>-->
+<?php
+//Modal::end();
+//?>

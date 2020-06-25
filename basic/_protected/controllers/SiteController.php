@@ -33,6 +33,20 @@ class SiteController extends Controller
      *
      * @return array
      */
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            if((Yii::$app->controller->action->id!='login') &&
+                (Yii::$app->controller->action->id!='signup')){
+                $model = new LoginForm();
+                return $this->redirect(['login', 'model' => $model]);
+            }
+        }
+        return parent::beforeAction($action);
+    }
+
+
     public function behaviors()
     {
         return [

@@ -8,6 +8,8 @@ use app\models\CurrencySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\LoginForm;
+use yii\web\User;
 
 /**
  * CurrencyController implements the CRUD actions for Currency model.
@@ -17,6 +19,19 @@ class CurrencyController extends Controller
     /**
      * {@inheritdoc}
      */
+
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            if((Yii::$app->controller->action->id!='login') &&
+                (Yii::$app->controller->action->id!='signup')){
+                $model = new LoginForm();
+                return $this->redirect(['/site/login', 'model' => $model]);
+            }
+        }
+        return parent::beforeAction($action);
+    }
     public function behaviors()
     {
         return [
@@ -35,13 +50,19 @@ class CurrencyController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CurrencySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->user->can('admin'))
+        {
+            $searchModel = new CurrencySearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        } else {
+            echo "Ruxsat yo'q";
+        }
+
     }
 
     /**

@@ -5,6 +5,7 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use Yii;
+use app\models\LoginForm;
 
 /**
  * AppController extends Controller and implements the behaviors() method

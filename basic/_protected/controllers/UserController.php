@@ -6,6 +6,7 @@ use app\models\UserSearch;
 use yii\web\NotFoundHttpException;
 use yii\web\ServerErrorHttpException;
 use Yii;
+use app\models\LoginForm;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -16,6 +17,19 @@ class UserController extends AppController
      * How many users we want to display per page.
      * @var int
      */
+
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            if((Yii::$app->controller->action->id!='login') &&
+                (Yii::$app->controller->action->id!='signup')){
+                $model = new LoginForm();
+                return $this->redirect(['/site/login', 'model' => $model]);
+            }
+        }
+        return parent::beforeAction($action);
+    }
     protected $_pageSize = 11;
 
     /**

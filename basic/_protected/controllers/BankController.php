@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\BankBranch;
+use app\models\LoginForm;
 use Yii;
 use app\models\Bank;
 use app\models\BankSearch;
@@ -19,6 +20,20 @@ class BankController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            if((Yii::$app->controller->action->id!='login') &&
+                (Yii::$app->controller->action->id!='signup')){
+                $model = new LoginForm();
+                return $this->redirect(['/site/login', 'model' => $model]);
+            }
+        }
+        return parent::beforeAction($action);
+    }
+
+
     public function behaviors()
     {
         return [
