@@ -9,7 +9,10 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
+<div class="container site-login">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="col-md-4" ></div>

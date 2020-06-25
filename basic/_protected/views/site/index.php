@@ -17,19 +17,24 @@ use yii\bootstrap\Modal;
 <!--        <div class="social-links">-->
         <div >
             <? if (Yii::$app->user->isGuest) {?>
-
-                <?= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'btn-success']]) ?>
+                <?= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
+                    'class' => 'btn-success btn-xs',
+                    'data' => [
+                        'method' => 'post']])?>
+<!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'btn-success']]) ?>
 <!--                --><?//= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
                 <?= Html::a('Кириш', ['site/login'], [
-                    'class' => 'login btn-success btn-xs',
-//                    'id'=>'modalButton',
+                    'class' => 'btn-success btn-xs',
                     'data' => [
                         'method' => 'post']])?>
 
             <?}?>
             <? if (!Yii::$app->user->isGuest) {?>
-
-                <?= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
+                <?= Html::a('Чиқиш', ['/site/logout'], [
+                    'class' => 'btn-danger btn-xs',
+                    'data' => [
+                        'method' => 'post']])?>
+<!--                --><?//= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
 
 
             <?}?>
