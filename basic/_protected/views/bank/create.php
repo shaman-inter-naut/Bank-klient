@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bank-create">
 
-    <h4  style="text-align: center"><?= Html::encode($this->title) ?></h4>
+    <h4  ><?= Html::encode($this->title) ?></h4>
 <!--    <div style="text-align: center">-->
 <!--        --><?//=$this->title?>
 <!--    </div>-->

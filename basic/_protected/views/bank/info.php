@@ -8,6 +8,12 @@ $this->title = 'БАНКЛАР ВА ФИЛИАЛЛАР';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<style>
+    .center{
+        text-align: center;
+    }
+</style>
+<div class="container" >
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
     <p><strong style="font-size: 24px">БАНКЛАР ВА ФИЛИАЛЛАР</strong></p>
 </div>
@@ -75,13 +81,21 @@ $this->params['breadcrumbs'][] = $this->title;
         </tbody>
     </table>
 </div>
-
+</div>
 
 <?
 Modal::begin([
-    'header' => $getID->name ,
+//    'header' => $getID->name ,
+//        [
+//            'name'=>$getID->name ,
+//            'align' => 'center',
+//    ],
+
+
     'id' => 'modal',
-    'class'=> 'font'
+    'class'=> ' center font',
+//    'text align' => 'center'
+//    'options' => ['style' => 'align="center"'],
 
 ]);
 ?>
@@ -129,8 +143,3 @@ Modal::end();
     }
 </script>
 
-<style>
-    .font{
-        font-size: 20px;
-    }
-</style>

@@ -7,7 +7,7 @@ $this->title = 'My Yii Application';
 
 
 ?>
-
+<div class="container" >
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
     <p><strong style="font-size: 24px">КОРХОНА ХИСОБ РАКАМЛАРИ</strong></p>
 </div>
@@ -87,10 +87,10 @@ $this->title = 'My Yii Application';
         </tbody>
     </table>
 </div>
-
+</div>
 <?
 Modal::begin([
-    'header' => $getID->name,
+//    'header' => $getID->name,
     'id' => 'modal',
 ]);
 ?>

@@ -9,7 +9,7 @@ $this->title = 'Корхона қўшиш';
 $this->params['breadcrumbs'][] = ['label' => 'Companies', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="company-create">
+<div class=" company-create">
 
     <h4 style="text-align: center"><?= Html::encode($this->title) ?></h4>
 

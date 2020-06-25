@@ -12,7 +12,7 @@ use yii\helpers\Url;
 $this->title = 'Корхона';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="company-index">
+<div class="container company-index">
 
     <div class="info" style="margin-bottom: 10px; padding: 5px;">
         <p><strong style=""><h1><?= Html::encode($this->title) ?></h1></strong></p>

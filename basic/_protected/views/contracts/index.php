@@ -11,7 +11,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 $this->title = 'Шартномалар';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="contracts-index container-fluid">
+<div class="contracts-index container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -133,7 +133,7 @@ $this->title = 'Шартномалар';
 
     <?
     Modal::begin([
-        'header' => '<h3>Хисоб рақам қўшиш</h3>',
+//        'header' => '<h3>Хисоб рақам қўшиш</h3>',
         'id' => 'modal',
     ]);
     ?>

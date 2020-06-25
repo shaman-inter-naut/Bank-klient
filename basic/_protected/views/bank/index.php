@@ -13,7 +13,9 @@ $this->title = 'Банклар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="bank-index">
+<?=Yii::$app->controller->renderPartial("//layouts/header")?>
+<?//=$header?>
+<div style="padding-top: 30px" class="container bank-index">
 
     <div class="info" style="margin-bottom: 10px; padding: 5px;">
         <p><strong style=""><h1><?= Html::encode($this->title) ?></h1></strong></p>
