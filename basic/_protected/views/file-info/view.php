@@ -11,7 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Файллар ', 'url' => ['index
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
 <style>
     table {
         font-family: arial, sans-serif;
@@ -57,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 </style>
 
-<div class="file-info-view">
+<div class="container file-info-view">
 
     <h1><?= Html::encode("Файлдан олинган маълумотлар: ") ?></h1>
 
