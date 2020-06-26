@@ -32,6 +32,7 @@ class BankBranch extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['mfo'], 'required'],
             [['mfo', 'bank_id'], 'integer'],
             [['name_branch'], 'string', 'max' => 255],
             [['short_name'], 'string', 'max' => 255],

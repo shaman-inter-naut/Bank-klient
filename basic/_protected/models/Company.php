@@ -33,7 +33,7 @@ class Company extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-//            [['short_name', 'accaunt_begin'], 'required'],
+            [['short_name', 'accaunt_begin'], 'required'],
             [['inn', 'accaunt_begin', 'unical_code'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['short_name'], 'string', 'max' => 50],

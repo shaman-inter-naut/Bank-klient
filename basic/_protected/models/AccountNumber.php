@@ -34,6 +34,7 @@ class AccountNumber extends \yii\db\ActiveRecord
     {
         return [
             [['account_number', 'company_id', 'bank_branch_id'], 'integer'],
+            [['account_number'], 'required'],
             [['bank_branch_id'], 'exist', 'skipOnError' => true, 'targetClass' => BankBranch::className(), 'targetAttribute' => ['bank_branch_id' => 'id']],
             [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
         ];
