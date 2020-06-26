@@ -17,10 +17,10 @@ use yii\bootstrap\Modal;
 <!--        <div class="social-links">-->
         <div >
             <? if (Yii::$app->user->isGuest) {?>
-                <?= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
-                    'class' => 'btn-success btn-xs',
-                    'data' => [
-                        'method' => 'post']])?>
+<!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
+//                    'class' => 'btn-success btn-xs',
+//                    'data' => [
+//                        'method' => 'post']])?>
 <!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'btn-success']]) ?>
 <!--                --><?//= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
                 <?= Html::a('Кириш', ['site/login'], [
@@ -30,6 +30,9 @@ use yii\bootstrap\Modal;
 
             <?}?>
             <? if (!Yii::$app->user->isGuest) {?>
+                <? if(Yii::$app->user->can('admin')) {?>
+                <a href="<?=Url::to('/user/index')?>" class="btn-success btn-xs" >Фойдаланувчилар</a>
+                <?}?>
                 <?= Html::a('Чиқиш', ['/site/logout'], [
                     'class' => 'btn-danger btn-xs',
                     'data' => [

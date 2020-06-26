@@ -169,7 +169,8 @@ class UserController extends AppController
             Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error while saving user role.'));
         }
 
-        return $this->redirect(['view', 'id' => $user->id]);
+//        return $this->redirect(['view', 'id' => $user->id]);
+        return $this->redirect(['index']);
     }
 
     /**
