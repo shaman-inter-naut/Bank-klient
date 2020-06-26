@@ -21,7 +21,7 @@ use kartik\select2\Select2;
     <?= $form->field($model, 'bank_branch_id')->widget(Select2::classname(), [
         'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','mfo'),
         'language' => 'ru',
-        'options' => ['placeholder' => '---Банкни мфо танланг---'],
+        'options' => ['placeholder' => '---Банк МФО киритинг ёки танланг---'],
         'pluginOptions' => [
             'allowClear' => true
         ],
