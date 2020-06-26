@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d04ad7c21cf78b5b41672ec346258a9",
+    "content-hash": "9e2501cd17cecac71841f69306b86a37",
     "packages": [
         {
             "name": "2amigos/yii2-date-time-picker-widget",
@@ -1151,16 +1151,16 @@
         },
         {
             "name": "phpoffice/phpexcel",
-            "version": "dev-develop",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPExcel.git",
-                "reference": "2b601574975acfb9d4378a788ed5f2b747958095"
+                "reference": "1441011fb7ecdd8cc689878f54f8b58a6805f870"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/2b601574975acfb9d4378a788ed5f2b747958095",
-                "reference": "2b601574975acfb9d4378a788ed5f2b747958095",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/1441011fb7ecdd8cc689878f54f8b58a6805f870",
+                "reference": "1441011fb7ecdd8cc689878f54f8b58a6805f870",
                 "shasum": ""
             },
             "require": {
@@ -1210,7 +1210,7 @@
                 "xlsx"
             ],
             "abandoned": "phpoffice/phpspreadsheet",
-            "time": "2018-11-22T22:50:50+00:00"
+            "time": "2018-11-22T23:07:24+00:00"
         },
         {
             "name": "select2/select2",
@@ -3952,7 +3952,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-password": 20,
-        "phpoffice/phpexcel": 20,
         "kartik-v/yii2-widget-select2": 20,
         "kartik-v/yii2-field-range": 20,
         "kartik-v/yii2-datecontrol": 20,

@@ -10,7 +10,11 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Foydalanuvchilar');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
+
+<div class="container user-index">
 
     <h1>
         <?= Html::encode($this->title) ?>

@@ -47,7 +47,7 @@ use yii\helpers\Html;
 
                 <?}?>
                 <? if (Yii::$app->user->isGuest) {?>
-                    <li > <?= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post']]) ?></li>
+<!--                    <li > --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post']]) ?><!--</li>-->
                     <li > <?= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post']]) ?></li>
                 <?}?>
                 <? if (!Yii::$app->user->isGuest) {?>
