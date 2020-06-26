@@ -33,7 +33,7 @@ $this->title = 'My Yii Application';
         <tr>
             <th><h4>№</h4></th>
             <th style=""><h4>
-                    <div ><?= $getID->name; ?>нинг банк филиаллари </div>
+                    <div ><?= $getID->name; ?>нинг хисоб рақамлари </div>
                     <!--                    <div class="col-md-1">--><?//= Html::a('add_circle', ['/create', 'id' => $val->id], ['class' => 'material-icons']);?><!--</div>-->
                 </h4> </th>
             <th><h4>
