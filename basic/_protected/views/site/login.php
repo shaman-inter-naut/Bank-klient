@@ -14,10 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <div class="container site-login">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
     <div class="col-md-4" ></div>
     <div class="col-md-4" >
         <div class=" well bs-component">
+<!--            <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
 
             <p><?= Yii::t('app', 'Please fill out the following fields to login:') ?></p>
 
