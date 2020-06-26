@@ -169,7 +169,8 @@ class UserController extends AppController
             Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error while saving user role.'));
         }
 
-        return $this->redirect(['view', 'id' => $user->id]);
+//        return $this->redirect(['view', 'id' => $user->id]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -183,33 +184,38 @@ class UserController extends AppController
      */
     public function actionDelete($id)
     {
-        // delete user or throw exception if could not
-        if (!$this->findModel($id)->delete()) {
-            throw new ServerErrorHttpException(Yii::t('app', 'We could not delete this user.'));
-        }
+        if(Yii::$app->user->can('theCreator')) {
+            // delete user or throw exception if could not
+            if (!$this->findModel($id)->delete()) {
+                throw new ServerErrorHttpException(Yii::t('app', 'We could not delete this user.'));
+            }
 
-        $auth = Yii::$app->authManager;
-        $info = true; // monitor info status
+            $auth = Yii::$app->authManager;
+            $info = true; // monitor info status
 
-        // get user role if he has one  
-        if ($roles = $auth->getRolesByUser($id)) {
-            // it's enough for us the get first assigned role name
-            $role = array_keys($roles)[0]; 
-        }
+            // get user role if he has one
+            if ($roles = $auth->getRolesByUser($id)) {
+                // it's enough for us the get first assigned role name
+                $role = array_keys($roles)[0];
+            }
 
-        // remove role if user had it
-        if (isset($role)) {
-            $info = $auth->revoke($auth->getRole($role), $id);
-        }
+            // remove role if user had it
+            if (isset($role)) {
+                $info = $auth->revoke($auth->getRole($role), $id);
+            }
 
-        if (!$info) {
-            Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error while deleting user role.'));
+            if (!$info) {
+                Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error while deleting user role.'));
+                return $this->redirect(['index']);
+            }
+
+            Yii::$app->session->setFlash('success', Yii::t('app', 'You have successfuly deleted user and his role.'));
+
             return $this->redirect(['index']);
         }
-
-        Yii::$app->session->setFlash('success', Yii::t('app', 'You have successfuly deleted user and his role.'));
-        
-        return $this->redirect(['index']);
+        else{
+            echo "Ruxsat yo'q";
+        }
     }
 
     /**

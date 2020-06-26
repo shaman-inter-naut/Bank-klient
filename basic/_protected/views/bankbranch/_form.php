@@ -19,7 +19,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'name_branch')->textInput(['maxlength' => true])->label('Филиал тўлиқ номи') ?>
 
-    <?= $form->field($model, 'mfo')->textInput(['type'=>'number'])->label('МФО') ?>
+    <?= $form->field($model, 'mfo')->textInput([])->label('МФО') ?>
 
 
 

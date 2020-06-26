@@ -14,6 +14,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
+
 /**
  * FileInfoController implements the CRUD actions for FileInfo model.
  */
@@ -617,11 +618,28 @@ class FileInfoController extends Controller
     public function actionToExcel()
     {
 
+      //  date_default_timezone_set('Europe/London');
+     //   if (PHP_SAPI == 'cli') die('This example should only be run from a Web Browser');
+      //  require_once $_SERVER['DOCUMENT_ROOT']."/_protected/vendor/phpoffice/phpexcel/Classes/PHPExcel.php";/* подключаем класс */
+        //$objPHPExcel = new PHPExcel();
+
+
+//        $app = Yii::createWebApplication($config);
+//        // adding PHPExcel autoloader
+//        Yii::import('application.vendors.*');
+//        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel.php';
+//        require_once __DIR__ . '/PHPExcel/Classes/Autoloader.php';
+//        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel/Writer/Excel2007.php';
+//        Yii::registerAutoloader(array('PHPExcel_Autoloader','Load'), true);
+//        $app->run();
+
 //        if ($model->load(Yii::$app->request->post()) ) {
 //        composer require phpoffice/phpexcel
 //        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel.php';
 //        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel/Writer/Excel2007.php';
-        require_once(Yii::getAlias('@vendor/phpoffice/phpexcel/Classes/PHPExcel.php'));
+       // require_once(Yii::getAlias('@vendor/phpoffice/phpexcel/Classes/PHPExcel.php'));
+
+        //require( __DIR__ . '\protected\extensions\PHPExcel/Autoloader.php');
 
         //Создаем экземпляр класса PHPExcel.
         $xls = new \PHPExcel();
@@ -631,37 +649,35 @@ class FileInfoController extends Controller
         $sheet = $xls->getActiveSheet();
 
         // Ширина задается в количестве символов.
-        $sheet->getColumnDimension('A')->setWidth(55);//bank номи
-        $sheet->getColumnDimension('B')->setWidth(15);//bank MFO
-        $sheet->getColumnDimension('C')->setWidth(35);//Korxona nomi
-        $sheet->getColumnDimension('D')->setWidth(20);//Korxona INN
-        $sheet->getColumnDimension('E')->setWidth(25);//Korxona X/R
-        $sheet->getColumnDimension('F')->setWidth(20);//Dokument sanasi
-        $sheet->getColumnDimension('G')->setWidth(40);//Oraliq davr
-        $sheet->getColumnDimension('H')->setWidth(20);//Бошланғич депозит
-        $sheet->getColumnDimension('I')->setWidth(20);//Якуний депозит
-        $sheet->getColumnDimension('J')->setWidth(30);//Xamkor korxona nomi
-        $sheet->getColumnDimension('K')->setWidth(25);//Xamkor korxona X/R
-        $sheet->getColumnDimension('L')->setWidth(20);//Provodka sanasi
-        $sheet->getColumnDimension('M')->setWidth(20);//Debet
-        $sheet->getColumnDimension('N')->setWidth(20);//Kredit
-        $sheet->getColumnDimension('O')->setWidth(50);//Тўлов мақсади
-        $sheet->getColumnDimension('P')->setWidth(15);//Valyuta kodi
-        $sheet->getColumnDimension('Q')->setWidth(20);//Шартнома рақами
-        $sheet->getColumnDimension('R')->setWidth(20);//Шартнома санаси
+        $sheet->getColumnDimension('A')->setWidth(5);//№
+        $sheet->getColumnDimension('B')->setWidth(33);//Корхоналар
+        $sheet->getColumnDimension('C')->setWidth(18);//Уникальный код
+        $sheet->getColumnDimension('D')->setWidth(27);//UZS
+        $sheet->getColumnDimension('E')->setWidth(27);//USD
+        $sheet->getColumnDimension('F')->setWidth(27);//EUR
+        $sheet->getColumnDimension('G')->setWidth(27);//RUB
+        $sheet->getColumnDimension('H')->setWidth(27);//Аккредитив (USD)
+        $sheet->getColumnDimension('I')->setWidth(27);//Аккредитив (EUR)
+        $sheet->getColumnDimension('J')->setWidth(27);//Аккредитив (RUB)
+        $sheet->getColumnDimension('K')->setWidth(27);//Блок счёт (UZS)
+        $sheet->getColumnDimension('L')->setWidth(27);//Блок счёт (USD)
+        $sheet->getColumnDimension('M')->setWidth(27);//Блок счёт (RUB)
+        $sheet->getColumnDimension('N')->setWidth(27);//Блок счёт (EUR)Депозит (UZS)
+        $sheet->getColumnDimension('O')->setWidth(27);//Депозит (UZS)
+        $sheet->getColumnDimension('P')->setWidth(27);//Депозит (USD)
+        $sheet->getColumnDimension('Q')->setWidth(27);//Депозит (EUR)
+        $sheet->getColumnDimension('R')->setWidth(27);//Депозит (RUB)
+        $sheet->getColumnDimension('S')->setWidth(35);//Корпоратив карта
 //            $sheet->getColumnDimension('Q')->setWidth(10);//
 
         //        Для удобства заводим переменную $line, в ней будем считать номер строки.
         $line = 1;
-        $sheet->setCellValue("A{$line}", 'Корхонанинг банк хисоб рақамлари орқали кирим-чиқим хисоботлари № 1 от ' . date('d.m.Y H:i'));
+        $sheet->setCellValue("A{$line}", 'Информация о  потребности в сумовых денежных средствах предприятий локализации ' . date('d.m.Y H:i'));
 
         //        Объединяем ячейки по горизонтали.
-        $sheet->mergeCells("A{$line}:G{$line}");
+        $sheet->mergeCells("A{$line}:R{$line}");
+        $sheet->getStyle("A{$line}:R{$line}")->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
-
-        //Делаем выравнивание по центру вертикали и горизонтали.
-//        $sheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-//        $sheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
         //Делаем текст жирным и увеличиваем шрифт.
         $sheet->getStyle("A{$line}")->getFont()->setBold(true);
@@ -674,81 +690,182 @@ class FileInfoController extends Controller
 
         //Информация о поставщике
         $line++;
-        $sheet->setCellValue("A{$line}", 'Банк номи:');
-        $sheet->setCellValue("B{$line}", 'Банк МФО');
-        $sheet->setCellValue("C{$line}", 'Корхона номи');
-        $sheet->setCellValue("D{$line}", 'Корхона ИНН');
-        $sheet->setCellValue("E{$line}", 'Корхона Х/Р');
-        $sheet->setCellValue("F{$line}", 'Документ санаси');
-        $sheet->setCellValue("G{$line}", 'Оралиқ давр');
-        $sheet->setCellValue("H{$line}", 'Бошланғич депозит');
-        $sheet->setCellValue("I{$line}", 'Якуний депозит');
-        $sheet->setCellValue("J{$line}", 'Хамкор корхона номи');
-        $sheet->setCellValue("K{$line}", 'Хамкор корхона х/р');
-        $sheet->setCellValue("L{$line}", 'Документ рақами');
-        $sheet->setCellValue("M{$line}", 'Дебет');
-        $sheet->setCellValue("N{$line}", 'Кредит');
-        $sheet->setCellValue("O{$line}", 'Тўлов мақсади');
-        $sheet->setCellValue("P{$line}", 'Валюта коди');
-        $sheet->setCellValue("Q{$line}", 'Шартнома рақами');
-        $sheet->setCellValue("R{$line}", 'Шартнома санаси');
+        $sheet->mergeCells('A'.(1).':A'.(6));
+        $sheet->setCellValue("A{$line}", '№:');
+        $sheet->mergeCells('B'.(1).':B'.(6));
+        $sheet->setCellValue("B{$line}", 'Корхоналар');
+        $sheet->mergeCells('C'.(1).':C'.(6));
+        $sheet->setCellValue("C{$line}", 'Уникальный код');
+        $sheet->setCellValue("D{$line}", 'ОСТАТОК');
+        $sheet->mergeCells("D{$line}:R{$line}");
+        $sheet->getStyle("D{$line}:R{$line}")->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
-        $sheet->getStyle("A{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("B{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("C{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("D{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("E{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("F{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("G{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("H{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("I{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("J{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("K{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("L{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("M{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("N{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("O{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("P{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("Q{$line}")->getFont()->setBold(true);
-        $sheet->getStyle("R{$line}")->getFont()->setBold(true);
-        //  $sheet->mergeCells("B{$line}:G{$line}");
+
+//        Информация о поставщике
+            $line++;
+            $sheet->setCellValue("A{$line}", '');
+            $sheet->setCellValue("B{$line}", '');
+            $sheet->setCellValue("C{$line}", '');
+            $sheet->setCellValue("D{$line}", 'Асосий хисоб рақам');
+            $sheet->mergeCells("D{$line}:G{$line}");
+//            $sheet->setCellValue("E{$line}", 'Корхона Х/Р');
+//            $sheet->setCellValue("F{$line}", 'Документ санаси');
+//            $sheet->setCellValue("G{$line}", 'Оралиқ давр');
+//            $sheet->setCellValue("H{$line}", 'Бошланғич депозит');
+            $sheet->setCellValue("H{$line}", 'Махсус хисоб рақам');
+ //           $sheet->setCellValue("J{$line}", 'Хамкор корхона номи');
+ //           $sheet->setCellValue("K{$line}", 'Хамкор корхона х/р');
+ //           $sheet->setCellValue("L{$line}", 'Документ рақами');
+ //           $sheet->setCellValue("M{$line}", 'Дебет');
+ //           $sheet->setCellValue("N{$line}", 'Кредит');
+ //           $sheet->setCellValue("O{$line}", 'Тўлов мақсади');
+            $sheet->mergeCells("H{$line}:N{$line}");
+            $sheet->setCellValue("O{$line}", 'Депозит хисоб рақам');
+ //           $sheet->setCellValue("Q{$line}", 'Шартнома рақами');
+ //           $sheet->setCellValue("R{$line}", 'Шартнома санаси');
+ //           $sheet->setCellValue("R{$line}", 'Шартнома санаси');
+            $sheet->mergeCells("O{$line}:R{$line}");
+            $sheet->setCellValue("S{$line}", 'Корпоратив карта');
+
+        $line++;
+        $sheet->setCellValue("A{$line}", '');
+        $sheet->setCellValue("B{$line}", '');
+        $sheet->setCellValue("C{$line}", '');
+        $sheet->setCellValue("D{$line}", 'UZS');
+        $sheet->setCellValue("E{$line}", 'USD');
+        $sheet->setCellValue("F{$line}", 'EUR');
+        $sheet->setCellValue("G{$line}", 'RUB');
+        $sheet->setCellValue("H{$line}", 'Акккредитив (USD)');
+        $sheet->setCellValue("I{$line}", 'Акккредитив (EUR)');
+        $sheet->setCellValue("J{$line}", 'Акккредитив (RUB)');
+        $sheet->setCellValue("K{$line}", 'Блок счёт (UZS)');
+        $sheet->setCellValue("L{$line}", 'Блок счёт (USD)');
+        $sheet->setCellValue("M{$line}", 'Блок счёт (EUR)');
+        $sheet->setCellValue("N{$line}", 'Блок счёт (RUB)');
+        $sheet->setCellValue("O{$line}", 'Депозит (UZS)');
+        $sheet->setCellValue("P{$line}", 'Депозит (USD)');
+        $sheet->setCellValue("Q{$line}", 'Депозит (EUR)');
+        $sheet->setCellValue("R{$line}", 'Депозит (RUB)');
+        $sheet->setCellValue("S{$line}", '');
+        //   $sheet->mergeCells("B{$line}:G{$line}");
+
+
+        $line++;
+            $sheet->setCellValue("A{$line}", '');
+            $sheet->setCellValue("B{$line}", '');
+            $sheet->setCellValue("C{$line}", '');
+            $sheet->setCellValue("D{$line}", '20208000/20210000/20214000');
+            $sheet->setCellValue("E{$line}", '20208840/20210840/20214840');
+            $sheet->setCellValue("F{$line}", '20208978/20210978/20214978');
+            $sheet->setCellValue("G{$line}", '20208643/20210643/20214643');
+            $sheet->setCellValue("H{$line}", '22602000');
+            $sheet->setCellValue("I{$line}", '22602840');
+            $sheet->setCellValue("J{$line}", '22602978');
+            $sheet->setCellValue("K{$line}", '22613000');
+            $sheet->setCellValue("L{$line}", '22618840');
+            $sheet->setCellValue("M{$line}", '22614978');
+            $sheet->setCellValue("N{$line}", '22614978');
+            $sheet->setCellValue("O{$line}", '20614000');
+            $sheet->setCellValue("P{$line}", '20614840');
+            $sheet->setCellValue("Q{$line}", '20614978');
+            $sheet->setCellValue("R{$line}", '20614643');
+            $sheet->setCellValue("S{$line}", '22620');
+       //   $sheet->mergeCells("B{$line}:G{$line}");
+
+
+//         Далее в цикле выводим товары.
+            $companyName = Company::find()->indexBy('id')->all();
+            $getUnikal = Document::find()->indexBy('id')->all();
+            //$getUnikal = substr($getUnikal->detail_account,9, 8);
+//        echo "<pre>";
+//            print_r($getUnikal);
+//        echo "<pre>";
+//            $getUZS = Document::find()->where('')->all();
+        $row = (new \yii\db\Query())
+            ->from('document')
+            ->where(['like', 'detail_account', '20208'])
+            ->orwhere(['like', 'detail_account', '20210'])
+            ->orwhere(['like', 'detail_account', '20214'])
+            ->andWhere(['like', 'detail_account', '20214'])
+            ->all();
+
+        foreach ($getUnikal as $key => $value){
+            echo "<pre>";
+//                print_r($value);
+                print_r(substr($value['detail_account'], 9,8));
+            echo "<pre>";
+
+        }
+
+        $line++;
+            foreach ($companyName as $i => $cName) {
+                if($i < 24) {
+                    $sheet->setCellValue("A{$line}", $i);
+                    $sheet->setCellValue("B{$line}", $cName->name);
+                    $sheet->setCellValue("C{$line}", $cName->unical_code);
+                    $line++;
+                }
+            }
+
+
+
+        $line++;
+        $sheet->setCellValue("A{$line}", '');
+        $sheet->setCellValue("B{$line}", 'Итого');
+        $sheet->setCellValue("C{$line}", '');
+        $sheet->setCellValue("D{$line}", '0');
+        $sheet->setCellValue("E{$line}", '0');
+        $sheet->setCellValue("F{$line}", '0');
+        $sheet->setCellValue("G{$line}", '0');
+        $sheet->setCellValue("H{$line}", '0');
+        $sheet->setCellValue("I{$line}", '0');
+        $sheet->setCellValue("J{$line}", '0');
+        $sheet->setCellValue("K{$line}", '0');
+        $sheet->setCellValue("L{$line}", '0');
+        $sheet->setCellValue("M{$line}", '0');
+        $sheet->setCellValue("N{$line}", '0');
+        $sheet->setCellValue("O{$line}", '0');
+        $sheet->setCellValue("P{$line}", '0');
+        $sheet->setCellValue("Q{$line}", '0');
+        $sheet->setCellValue("R{$line}", '0');
+        $sheet->setCellValue("S{$line}", '0');
 
 
 
         // Далее в цикле выводим товары.
-        $fileinfo = FileInfo::find()->indexBy('id')->all();
+        //    $fileinfo = FileInfo::find()->indexBy('id')->all();
 
-        foreach ($fileinfo as $i => $info){
-            $line++;
-            $bankName = BankBranch::find()->where(['mfo' => $info['bank_mfo']])->one();
-            $getDetailData = Document::find()->where(['file_id' => $info['id']])->all();
-            $line++;
-            $sheet->setCellValue("A{$line}", $bankName->short_name);
-            $sheet->setCellValue("B{$line}", $info['bank_mfo']);
+        //    foreach ($fileinfo as $i => $info){
+        //        $line++;
+        //        $bankName = BankBranch::find()->where(['mfo' => $info['bank_mfo']])->one();
+        //        $getDetailData = Document::find()->where(['file_id' => $info['id']])->all();
+        //        $line++;
+        //        $sheet->setCellValue("A{$line}", $bankName->short_name);
+        //        $sheet->setCellValue("B{$line}", $info['bank_mfo']);
 
-            foreach ($getDetailData as $j => $getDD) {
-                $companyName = Company::find()->where(['inn' => $getDD->detail_inn])->one();
-                $sheet->setCellValue("C{$line}", $companyName->name);
-                $sheet->setCellValue("D{$line}", $getDD->detail_inn);
-                $sheet->setCellValue("E{$line}", $getDD->detail_account);
+        //        foreach ($getDetailData as $j => $getDD) {
+        //            $companyName = Company::find()->where(['inn' => $getDD->detail_inn])->one();
+        //            $sheet->setCellValue("C{$line}", $companyName->name);
+        //            $sheet->setCellValue("D{$line}", $getDD->detail_inn);
+        //            $sheet->setCellValue("E{$line}", $getDD->detail_account);
 
 
-                $sheet->setCellValue("F{$line}", $getDD->detail_date);
-                $sheet->setCellValue("G{$line}", $info['data_period']);
-                $sheet->setCellValue("H{$line}", '01.01.2020');
-                $sheet->setCellValue("I{$line}", '31.12.2020');
-                $sheet->setCellValue("J{$line}", 'Хамкор корхона номи');
-                $sheet->setCellValue("K{$line}", 'Хамкор корхона х/р');
-                $sheet->setCellValue("L{$line}", $getDD->detail_document_number);
-                $sheet->setCellValue("M{$line}", $getDD->detail_debet);
-                $sheet->setCellValue("N{$line}", $getDD->detail_kredit);
-                $sheet->setCellValue("O{$line}", $getDD->detail_purpose_of_payment);
-                $sheet->setCellValue("P{$line}", $getDD->code_currency);
-                $sheet->setCellValue("Q{$line}", 'Контракт рақами');
-                $sheet->setCellValue("R{$line}", $getDD->contract_date);
-                $line++;
-            }
-        }
+        //            $sheet->setCellValue("F{$line}", $getDD->detail_date);
+        //            $sheet->setCellValue("G{$line}", $info['data_period']);
+        //            $sheet->setCellValue("H{$line}", '01.01.2020');
+        //            $sheet->setCellValue("I{$line}", '31.12.2020');
+        //            $sheet->setCellValue("J{$line}", 'Хамкор корхона номи');
+        //            $sheet->setCellValue("K{$line}", 'Хамкор корхона х/р');
+        //            $sheet->setCellValue("L{$line}", $getDD->detail_document_number);
+        //            $sheet->setCellValue("M{$line}", $getDD->detail_debet);
+        //            $sheet->setCellValue("N{$line}", $getDD->detail_kredit);
+        //            $sheet->setCellValue("O{$line}", $getDD->detail_purpose_of_payment);
+        //            $sheet->setCellValue("P{$line}", $getDD->code_currency);
+        //            $sheet->setCellValue("Q{$line}", 'Контракт рақами');
+        //            $sheet->setCellValue("R{$line}", $getDD->contract_date);
+        //            $line++;
+        //        }
+        //    }
 
 
         //Файл готов

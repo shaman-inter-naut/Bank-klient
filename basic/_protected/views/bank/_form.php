@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Банк номи') ?>
+    <?= $form->field($model, 'name')->textInput(['required' => true])->label('Банк номи') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сақлаш', ['class' => 'btn btn-success']) ?>

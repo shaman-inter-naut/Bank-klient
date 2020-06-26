@@ -140,6 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'detail_date',
             [
                 'attribute'=>  'detail_date',
+                'format' => ['date', 'dd.mm.yyyy H:i:s'],
                 'value'=>  'detail_date',
                 'header' => 'Правотка сана',
             ],
@@ -154,7 +155,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'detail_account',
                 'header' => 'Хамкор Х-Р',
             ],
-            'detail_date',
+//            'detail_date',
 //            [
 //                'attribute'=> 'detail_date',
 //                'value' => 'detail_date',

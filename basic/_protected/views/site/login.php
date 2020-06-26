@@ -9,17 +9,18 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div  style="padding-bottom: 30px">
-    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
-</div>
-<div class="container site-login">
+<!--<div  style="padding-bottom: 30px">-->
+<!--    --><?//=Yii::$app->controller->renderPartial("//layouts/header")?>
+<!--</div>-->
+<div style="padding-top: 50px;" class="container site-login">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
     <div class="col-md-4" ></div>
     <div class="col-md-4" >
         <div class=" well bs-component">
+<!--            <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
 
-            <p><?= Yii::t('app', 'Please fill out the following fields to login:') ?></p>
+            <p><?= Yii::t('app', 'Илтимос, логин ва паролни киритинг:') ?></p>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
@@ -32,11 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php else: ?>
 
                 <?= $form->field($model, 'username')->textInput(
-                    ['placeholder' => Yii::t('app', 'Enter your username'), 'autofocus' => true]) ?>
+                    ['placeholder' => Yii::t('app', 'Фойдаланувчини киритинг'), 'autofocus' => true]) ?>
 
             <?php endif ?>
 
-            <?= $form->field($model, 'password')->passwordInput(['placeholder' => Yii::t('app', 'Enter your password')]) ?>
+            <?= $form->field($model, 'password')->passwordInput(['placeholder' => Yii::t('app', 'Паролни киритинг')]) ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
@@ -46,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= Html::submitButton(Yii::t('app', 'Кириш'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

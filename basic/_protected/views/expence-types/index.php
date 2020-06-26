@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Expence Types', ['create'], ['class' => 'bank btn btn-success']) ?>
+        <?= Html::a('Қўшиш', ['create'], ['class' => 'bank btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -26,7 +26,7 @@ use yii\helpers\ArrayHelper;
         ArrayHelper::map(\app\models\Company::find()->all(),'id','name'),['prompt'=>'---Корхонани танланг---'])->
     label('Корхонани номи') ?>
 
-    <?= $form->field($model, 'contract_number')->textInput() ?>
+    <?= $form->field($model, 'contract_number')->textInput(['required'=>true]) ?>
 
 
 

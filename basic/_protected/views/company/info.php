@@ -17,10 +17,10 @@ $this->title = 'My Yii Application';
 <div class="tab">
 
     <ul class="banks">
-        <?php  foreach($company as $value) { ?>
+        <?php  foreach($company as $value) { if ($value->id < 24){?>
             <li class="tablinks"><a href='/company/info?id=<?= $value->id; ?>'
                                     onclick="getBranches(event, '<?= $value->id; ?>')"><b><?= $value->name . '<br>'; ?></b></a></li>
-        <? } ?>
+        <? }} ?>
     </ul>
 
     <!--    <button class="tablinks" onclick="getBranches(event, 'infin')" id="defaultOpen">Инфин банк</button>-->

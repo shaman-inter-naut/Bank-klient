@@ -50,8 +50,8 @@ class CurrencyController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->can('admin'))
-        {
+//        if(Yii::$app->user->can('admin'))
+//        {
             $searchModel = new CurrencySearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -59,9 +59,9 @@ class CurrencyController extends Controller
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
             ]);
-        } else {
-            echo "Ruxsat yo'q";
-        }
+//        } else {
+//            echo "Ruxsat yo'q";
+//        }
 
     }
 
