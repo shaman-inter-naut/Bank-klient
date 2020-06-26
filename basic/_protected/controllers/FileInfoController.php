@@ -14,6 +14,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
+
 /**
  * FileInfoController implements the CRUD actions for FileInfo model.
  */
@@ -617,11 +618,28 @@ class FileInfoController extends Controller
     public function actionToExcel()
     {
 
+      //  date_default_timezone_set('Europe/London');
+     //   if (PHP_SAPI == 'cli') die('This example should only be run from a Web Browser');
+      //  require_once $_SERVER['DOCUMENT_ROOT']."/_protected/vendor/phpoffice/phpexcel/Classes/PHPExcel.php";/* подключаем класс */
+        //$objPHPExcel = new PHPExcel();
+
+
+//        $app = Yii::createWebApplication($config);
+//        // adding PHPExcel autoloader
+//        Yii::import('application.vendors.*');
+//        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel.php';
+//        require_once __DIR__ . '/PHPExcel/Classes/Autoloader.php';
+//        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel/Writer/Excel2007.php';
+//        Yii::registerAutoloader(array('PHPExcel_Autoloader','Load'), true);
+//        $app->run();
+
 //        if ($model->load(Yii::$app->request->post()) ) {
 //        composer require phpoffice/phpexcel
 //        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel.php';
 //        require_once __DIR__ . '/PHPExcel/Classes/PHPExcel/Writer/Excel2007.php';
        // require_once(Yii::getAlias('@vendor/phpoffice/phpexcel/Classes/PHPExcel.php'));
+
+        //require( __DIR__ . '\protected\extensions\PHPExcel/Autoloader.php');
 
         //Создаем экземпляр класса PHPExcel.
         $xls = new \PHPExcel();
@@ -633,7 +651,7 @@ class FileInfoController extends Controller
         // Ширина задается в количестве символов.
         $sheet->getColumnDimension('A')->setWidth(5);//№
         $sheet->getColumnDimension('B')->setWidth(33);//Корхоналар
-        $sheet->getColumnDimension('C')->setWidth(15);//Уникальный код
+        $sheet->getColumnDimension('C')->setWidth(18);//Уникальный код
         $sheet->getColumnDimension('D')->setWidth(27);//UZS
         $sheet->getColumnDimension('E')->setWidth(27);//USD
         $sheet->getColumnDimension('F')->setWidth(27);//EUR
@@ -672,12 +690,15 @@ class FileInfoController extends Controller
 
         //Информация о поставщике
         $line++;
+        $sheet->mergeCells('A'.(1).':A'.(6));
         $sheet->setCellValue("A{$line}", '№:');
+        $sheet->mergeCells('B'.(1).':B'.(6));
         $sheet->setCellValue("B{$line}", 'Корхоналар');
+        $sheet->mergeCells('C'.(1).':C'.(6));
         $sheet->setCellValue("C{$line}", 'Уникальный код');
         $sheet->setCellValue("D{$line}", 'ОСТАТОК');
         $sheet->mergeCells("D{$line}:R{$line}");
-        $sheet->getStyle("D{$line}:R{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        $sheet->getStyle("D{$line}:R{$line}")->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
 
 //        Информация о поставщике
@@ -754,14 +775,60 @@ class FileInfoController extends Controller
 
 //         Далее в цикле выводим товары.
             $companyName = Company::find()->indexBy('id')->all();
-            $line++;
+            $getUnikal = Document::find()->indexBy('id')->all();
+            //$getUnikal = substr($getUnikal->detail_account,9, 8);
+//        echo "<pre>";
+//            print_r($getUnikal);
+//        echo "<pre>";
+//            $getUZS = Document::find()->where('')->all();
+        $row = (new \yii\db\Query())
+            ->from('document')
+            ->where(['like', 'detail_account', '20208'])
+            ->orwhere(['like', 'detail_account', '20210'])
+            ->orwhere(['like', 'detail_account', '20214'])
+            ->andWhere(['like', 'detail_account', '20214'])
+            ->all();
+
+        foreach ($getUnikal as $key => $value){
+            echo "<pre>";
+//                print_r($value);
+                print_r(substr($value['detail_account'], 9,8));
+            echo "<pre>";
+
+        }
+
+        $line++;
             foreach ($companyName as $i => $cName) {
                 if($i < 24) {
                     $sheet->setCellValue("A{$line}", $i);
                     $sheet->setCellValue("B{$line}", $cName->name);
+                    $sheet->setCellValue("C{$line}", $cName->unical_code);
                     $line++;
                 }
             }
+
+
+
+        $line++;
+        $sheet->setCellValue("A{$line}", '');
+        $sheet->setCellValue("B{$line}", 'Итого');
+        $sheet->setCellValue("C{$line}", '');
+        $sheet->setCellValue("D{$line}", '0');
+        $sheet->setCellValue("E{$line}", '0');
+        $sheet->setCellValue("F{$line}", '0');
+        $sheet->setCellValue("G{$line}", '0');
+        $sheet->setCellValue("H{$line}", '0');
+        $sheet->setCellValue("I{$line}", '0');
+        $sheet->setCellValue("J{$line}", '0');
+        $sheet->setCellValue("K{$line}", '0');
+        $sheet->setCellValue("L{$line}", '0');
+        $sheet->setCellValue("M{$line}", '0');
+        $sheet->setCellValue("N{$line}", '0');
+        $sheet->setCellValue("O{$line}", '0');
+        $sheet->setCellValue("P{$line}", '0');
+        $sheet->setCellValue("Q{$line}", '0');
+        $sheet->setCellValue("R{$line}", '0');
+        $sheet->setCellValue("S{$line}", '0');
 
 
 
