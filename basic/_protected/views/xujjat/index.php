@@ -18,11 +18,17 @@ use kartik\datecontrol\DateControl;
 $this->title = 'Хужжатлар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+    .stil{
+        /*position:fixed;*/
+        overflow-x:auto;
+    }
+</style>
 
 <div  style="padding-bottom: 30px">
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
-<div class="container xujjat-index">
+<div class="xujjat-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 <!---->
@@ -37,10 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'layout' => '{items}{pager}',
         'options' => [
-            'class' => ' table-responsive '
+//            'class' => ' table-responsive '
+            'class' => 'stil',
+            'id' => 'stil',
         ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn',
+
+                ],
 
 //            'id',
 //            'file_id',
@@ -262,10 +272,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
 
-//            'expence_type_id',
-//            'detail_date',
-//            'detail_account',
-//            'detail_inn',
+            'expence_type_id',
+            'detail_date',
+            'detail_account',
+            'detail_inn',
 //            'detail_partner_unique_code',
 //            'detail_name',
 //            'detail_document_number',
@@ -279,12 +289,12 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'company_account_id',
 //            'companyAccount.company_inn',
 
-            [
-                'class' => 'yii\grid\ActionColumn',
+//            [
+//                'class' => 'yii\grid\ActionColumn',
 //                'header'=>Html::a(Yii::t('yii', 'Қўшиш'), ['create'], ['title'=>'Янги банк номини киритиш', 'class' => 'btn btn-danger bank']),
-                'headerOptions' => ['width' => '50'],
-                'template' => ' {delete}',
-                'buttons' => [
+//                'headerOptions' => ['width' => '50'],
+//                'template' => ' {delete}',
+//                'buttons' => [
 //                    'view' => function ($url, $model) {
 //                        return Html::a('', ['view', 'id' => $model->id], [
 //                            'class' => 'glyphicon glyphicon-eye-open bank',
@@ -297,19 +307,19 @@ $this->params['breadcrumbs'][] = $this->title;
 //
 //                        ]);
 //                    },
-                    'delete' => function ($url, $model) {
-                        return Html::a('', ['delete', 'id' => $model->id], [
-                            'class' => 'glyphicon glyphicon-trash',
-                            'data' => [
-                                'confirm' => 'Ўчириб юборилсинми?',
-                                'method' => 'post',
-                            ],
-                        ]);
-                    },
+//                    'delete' => function ($url, $model) {
+//                        return Html::a('', ['delete', 'id' => $model->id], [
+//                            'class' => 'glyphicon glyphicon-trash',
+//                            'data' => [
+//                                'confirm' => 'Ўчириб юборилсинми?',
+//                                'method' => 'post',
+//                            ],
+//                        ]);
+//                    },
 
-                ],
+//                ],
 
-            ],
+//            ],
         ],
     ]); ?>
 <?// Pjax::end(); ?>
@@ -328,3 +338,8 @@ Modal::begin([
 <?php
 Modal::end();
 ?>
+<script>
+    var w = window.innerWidth;
+    var h = window.innerHeight-220;
+    document.getElementById("stil").style.height = h+"px";
+</script>

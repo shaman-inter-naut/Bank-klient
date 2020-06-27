@@ -5,7 +5,7 @@ use yii\helpers\Html;
 <link href="../../../themes/day/assets/css/style.css" rel="stylesheet">
 <!-- ======= Header ======= -->
 
-<header id="header" style="background-color: #52af50">
+<header id="header" style="background-color: #52af50; ">
     <div class="container d-flex align-items-center">
 
         <h1 class="logo mr-auto"><a style="font-size: 20px" href="<?=Url::home()?>">Банк-клиент тизими</a></h1>
