@@ -19,7 +19,7 @@ use kartik\select2\Select2;
     ])->label('Хисоб рақам') ?>
 
     <?= $form->field($model, 'bank_branch_id')->widget(Select2::classname(), [
-        'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','mfo'),
+        'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','short_name'),
         'language' => 'ru',
         'options' => ['placeholder' => '---Банк МФО киритинг ёки танланг---'],
         'pluginOptions' => [
