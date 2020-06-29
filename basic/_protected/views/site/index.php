@@ -15,12 +15,12 @@ use yii\bootstrap\Modal;
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
 
     <div class="cen container d-flex">
-        <div style="padding-top: 2.5px" class="contact-info mr-auto">
+        <div style="padding-top: 20px" class="contact-info mr-auto">
 <!--            <img style="height: 20px" src="themes/logo.jpg">-->
 <!--            themes/day/assets/img/team/team-3.jpg-->
 <!--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
             <a style="color:#4d90fe; padding: 0 2.5px;  font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>
-            <i style="padding-left: 80px" class="cen icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
+<!--            <i style="padding-left: 80px" class="cen icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>-->
         </div>
 <!--        <div class="social-links">-->
         <div >
@@ -32,17 +32,17 @@ use yii\bootstrap\Modal;
 <!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post'],['class'=>'btn-success']]) ?>
 <!--                --><?//= Html::a('Кириш', ['site/login'], ['data' => ['method' => 'post'],['class'=>'buy-tickets']]) ?>
                 <?= Html::a('Кириш', ['site/login'], [
-                    'class' => 'btn-success btn-xs',
+                    'class' => 'btn-success btn',
                     'data' => [
                         'method' => 'post']])?>
 
             <?}?>
             <? if (!Yii::$app->user->isGuest) {?>
                 <? if(Yii::$app->user->can('admin')) {?>
-                <a href="<?=Url::to('/user/index')?>" class="btn-success btn-xs" >Фойдаланувчилар</a>
+                <a href="<?=Url::to('/user/index')?>" class="btn-success btn " >Фойдаланувчилар</a>
                 <?}?>
                 <?= Html::a('Чиқиш', ['/site/logout'], [
-                    'class' => 'btn-danger btn-xs',
+                    'class' => 'btn-danger btn',
                     'data' => [
                         'method' => 'post']])?>
 <!--                --><?//= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post'],['class'=>'btn btn-danger btn-xs']]) ?>
@@ -58,73 +58,32 @@ use yii\bootstrap\Modal;
 </div>
 
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" style="height: 350px" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-        <div class="col-md-6">
-            <h2>SHAVKAT MIRZIYOYEV:</h2>
-            <h2>TAYYOR MAHSULOTLAR ISHLAB CHIQARISHNI KO‘PAYTIRISH – DAVR TALABI</h2>
-            <a href="<?=Url::to('/file-info/to-excel')?>" class="btn-get-started scrollto">to Ms Excel</a>
-        </div>
-        <div class="col-md-6">
-<!--            <img style="height: 120px; float: right; " src="themes/logo.jpg">-->
-        </div>
-
-    </div>
-</section><!-- End Hero -->
+<!---->
+<!--<section id="hero" style="height: 350px" class="d-flex align-items-center">-->
+<!--    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">-->
+<!--        <div class="col-md-6">-->
+<!--            <h2>SHAVKAT MIRZIYOYEV:</h2>-->
+<!--            <h2>TAYYOR MAHSULOTLAR ISHLAB CHIQARISHNI KO‘PAYTIRISH – DAVR TALABI</h2>-->
+<!--            <a href="--><?//=Url::to('/file-info/to-excel')?><!--" class="btn-get-started scrollto">to Ms Excel</a>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!---->
+<!--        </div>-->
+<!---->
+<!--    </div>-->
+<!--</section>-->
 
 <main id="main">
 
 
-    <!-- ======= Why Us Section ======= -->
-    <section id="why-us" style="padding-top: 50px" class="why-us">
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-4" data-aos="fade-up">
-                    <div style="background-image: url('themes/day/assets/img/bank.jpg'); background-size: cover; "  class="box">
-                        <a style="text-decoration: none" href="<?=Url::to('/bank/index')?>">
-                        <span style="color: white" >Банклар</span>
-                        <h4 style="color: white">Lorem Ipsum</h4>
-                        <p style="color: white">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4" data-aos="fade-up">
-                    <div style="background-image: url('themes/day/assets/img/company.jpg'); background-size: cover; "  class="box">
-                        <a style="text-decoration: none" href="<?=Url::to('/company/index')?>">
-                        <span style="color: white" >Корхоналар</span>
-                        <h4 style="color: white">Lorem Ipsum</h4>
-                        <p style="color: white">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4" data-aos="fade-up">
-                    <div style="background-image: url('themes/day/assets/img/valyuta.jpg'); background-size: cover; "  class="box">
-                        <a style="text-decoration: none" href="<?=Url::to('/currency/index')?>">
-                        <span style="color: white" >Валюталар</span>
-                        <h4 style="color: white">Lorem Ipsum</h4>
-                        <p style="color: white">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
-                    </div>
-                </div>
-
-
-
-
-
-            </div>
-
-        </div>
-    </section><!-- End Why Us Section -->
 
     <!-- ======= Services Section ======= -->
     <section style="padding-top: 0" id="services" class="services">
         <div class="container">
 
             <div class="section-title">
-                <span>Services</span>
-                <h2>Services</h2>
+                <span>Менюлар</span>
+                <h2>Менюлар</h2>
                 <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
             </div>
 
@@ -181,6 +140,76 @@ use yii\bootstrap\Modal;
 
         </div>
     </section><!-- End Services Section -->
+
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" style="padding-top: 50px" class="why-us">
+        <div class="container">
+
+            <div class="row">
+
+
+
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div   class="box">
+                        <a style="text-decoration: none" href="<?=Url::to('/bank/index')?>">
+                            <span  >Банклар</span>
+                            <h4 >Lorem Ipsum</h4>
+                            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div   class="box">
+                        <a style="text-decoration: none" href="<?=Url::to('/bank/index')?>">
+                            <span  >Банклар</span>
+                            <h4 >Lorem Ipsum</h4>
+                            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div   class="box">
+                        <a style="text-decoration: none" href="<?=Url::to('/bank/index')?>">
+                            <span  >Банклар</span>
+                            <h4 >Lorem Ipsum</h4>
+                            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
+                    </div>
+                </div>
+                <!---->
+                <!--                <div class="col-lg-4" data-aos="fade-up">-->
+                <!--                    <div style="background-image: url('themes/day/assets/img/bank.jpg'); background-size: cover; "  class="box">-->
+                <!--                        <a style="text-decoration: none" href="--><?//=Url::to('/bank/index')?><!--">-->
+                <!--                        <span style="color: white" >Банклар</span>-->
+                <!--                        <h4 style="color: white">Lorem Ipsum</h4>-->
+                <!--                        <p style="color: white">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!---->
+                <!--                <div class="col-lg-4" data-aos="fade-up">-->
+                <!--                    <div style="background-image: url('themes/day/assets/img/company.jpg'); background-size: cover; "  class="box">-->
+                <!--                        <a style="text-decoration: none" href="--><?//=Url::to('/company/index')?><!--">-->
+                <!--                        <span style="color: white" >Корхоналар</span>-->
+                <!--                        <h4 style="color: white">Lorem Ipsum</h4>-->
+                <!--                        <p style="color: white">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!---->
+                <!--                <div class="col-lg-4" data-aos="fade-up">-->
+                <!--                    <div style="background-image: url('themes/day/assets/img/valyuta.jpg'); background-size: cover; "  class="box">-->
+                <!--                        <a style="text-decoration: none" href="--><?//=Url::to('/currency/index')?><!--">-->
+                <!--                        <span style="color: white" >Валюталар</span>-->
+                <!--                        <h4 style="color: white">Lorem Ipsum</h4>-->
+                <!--                        <p style="color: white">Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+
+
+
+
+            </div>
+
+        </div>
+    </section><!-- End Why Us Section -->
 
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
