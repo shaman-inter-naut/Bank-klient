@@ -880,7 +880,7 @@ class FileInfoController extends Controller
                     $sum_new_arrayEUR += array_sum($new_arrayEUR);    
 
                     $new_arrayRUB = $summaRUB[$cName->unical_code] ? $summaRUB[$cName->unical_code] : []; 
-                    $sheet->setCellValue("F{$line}", array_sum($new_arrayRUB));
+                    $sheet->setCellValue("G{$line}", array_sum($new_arrayRUB));
                     $sum_new_arrayRUB += array_sum($new_arrayRUB);                                      
 
                     $line++;
