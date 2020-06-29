@@ -782,7 +782,7 @@ class FileInfoController extends Controller
        //   $sheet->mergeCells("B{$line}:G{$line}");
 
 
-// ****************************************************************** 20208 + 20210 + 20214
+// ****************************************************************** 20208000 + 20210000 + 20214000
             $companyName = Company::find()->limit(23)->all();
 
             $nUZS = ['20208000', '20210000', '20214000'];
@@ -803,7 +803,7 @@ class FileInfoController extends Controller
             // echo array_sum($dk20214);
             // echo '<hr><hr>';
 
-// ****************************************************************** 20208 + 20210 + 20214            
+// ****************************************************************** 20208840 + 20210840 + 20214840            
 
             $nUSD = ['20208840', '20210840', '20214840'];
 
@@ -822,6 +822,44 @@ class FileInfoController extends Controller
             // echo '<hr><hr>';
 
 
+// ****************************************************************** 20208978 + 20210978 + 20214978            
+
+            $nEUR = ['20208978', '20210978', '20214978'];
+
+            foreach ($nEUR as $key_nEUR => $value_nEUR) {
+                $fileEUR = FileInfo::find()->where(['like', 'company_account', $value_nEUR])->all();
+                foreach ($fileEUR as $key_fileEUR => $value_fileEUR) {
+                    $company_unikalEUR = substr($value_fileEUR->company_account, 9, 8);
+                    $documentEUR = Document::find()->where(['file_id' => $value_fileEUR->id])->all();
+                    foreach ($documentEUR as $kEUR => $valEUR) {
+                        $summaEUR[$company_unikalEUR][$value_nEUR] += $valEUR->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';       
+
+
+// ****************************************************************** 20208643 + 20210643 + 20214643            
+
+            $nRUB = ['20208643', '20210643', '20214643'];
+
+            foreach ($nRUB as $key_nRUB => $value_nRUB) {
+                $fileRUB = FileInfo::find()->where(['like', 'company_account', $value_nRUB])->all();
+                foreach ($fileRUB as $key_fileRUB => $value_fileRUB) {
+                    $company_unikalRUB = substr($value_fileRUB->company_account, 9, 8);
+                    $documentRUB = Document::find()->where(['file_id' => $value_fileRUB->id])->all();
+                    foreach ($documentRUB as $kRUB => $valRUB) {
+                        $summaRUB[$company_unikalRUB][$value_nRUB] += $valRUB->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';    
+
+
         $line++;        
 
             foreach ($companyName as $i => $cName) {
@@ -837,6 +875,14 @@ class FileInfoController extends Controller
                     $sheet->setCellValue("E{$line}", array_sum($new_arrayUSD));
                     $sum_new_arrayUSD += array_sum($new_arrayUSD);
 
+                    $new_arrayEUR = $summaEUR[$cName->unical_code] ? $summaEUR[$cName->unical_code] : []; 
+                    $sheet->setCellValue("F{$line}", array_sum($new_arrayEUR));
+                    $sum_new_arrayEUR += array_sum($new_arrayEUR);    
+
+                    $new_arrayRUB = $summaRUB[$cName->unical_code] ? $summaRUB[$cName->unical_code] : []; 
+                    $sheet->setCellValue("F{$line}", array_sum($new_arrayRUB));
+                    $sum_new_arrayRUB += array_sum($new_arrayRUB);                                      
+
                     $line++;
             }
 
@@ -848,8 +894,8 @@ class FileInfoController extends Controller
         $sheet->setCellValue("C{$line}", '');
         $sheet->setCellValue("D{$line}", round($sum_new_arrayUZS, 2));
         $sheet->setCellValue("E{$line}", round($sum_new_arrayUSD, 2));
-        $sheet->setCellValue("F{$line}", '0');
-        $sheet->setCellValue("G{$line}", '0');
+        $sheet->setCellValue("F{$line}", round($sum_new_arrayEUR, 2));
+        $sheet->setCellValue("G{$line}", round($sum_new_arrayRUB, 2));
         $sheet->setCellValue("H{$line}", '0');
         $sheet->setCellValue("I{$line}", '0');
         $sheet->setCellValue("J{$line}", '0');
