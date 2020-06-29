@@ -4,19 +4,23 @@ use yii\helpers\Html;
 use yii\bootstrap\Modal;
 ?>
 
-
+<style>
+    .cen{
+        align-items: center;
+    }
+</style>
 
 
 <!-- ======= Top Bar ======= -->
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
 
-    <div class="container d-flex">
-        <div class="contact-info mr-auto">
+    <div class="cen container d-flex">
+        <div style="padding-top: 2.5px" class="contact-info mr-auto">
 <!--            <img style="height: 20px" src="themes/logo.jpg">-->
 <!--            themes/day/assets/img/team/team-3.jpg-->
 <!--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
-            <a style="padding-right: 80px" >UzAutoComponents <br> <span>Design Corre</span></a>
-            <i class="icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
+            <a style="color:#4d90fe; padding: 0 2.5px;  font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>
+            <i style="padding-left: 80px" class="icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
         </div>
 <!--        <div class="social-links">-->
         <div >
