@@ -9,9 +9,13 @@ use yii\bootstrap\Modal;
 
 <!-- ======= Top Bar ======= -->
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
+
     <div class="container d-flex">
         <div class="contact-info mr-auto">
-            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+<!--            <img style="height: 20px" src="themes/logo.jpg">-->
+<!--            themes/day/assets/img/team/team-3.jpg-->
+<!--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
+            <a style="padding-right: 80px" >UzAutoComponents <br> <span>Design Corre</span></a>
             <i class="icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
         </div>
 <!--        <div class="social-links">-->
@@ -51,12 +55,17 @@ use yii\bootstrap\Modal;
 
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" style="height: 300px" class="d-flex align-items-center">
+<section id="hero" style="height: 350px" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <div class="col-md-6">
+            <h2>SHAVKAT MIRZIYOYEV:</h2>
+            <h2>TAYYOR MAHSULOTLAR ISHLAB CHIQARISHNI KO‘PAYTIRISH – DAVR TALABI</h2>
+            <a href="<?=Url::to('/file-info/to-excel')?>" class="btn-get-started scrollto">to Ms Excel</a>
+        </div>
+        <div class="col-md-6">
+<!--            <img style="height: 120px; float: right; " src="themes/logo.jpg">-->
+        </div>
 
-        <h1>SHAVKAT MIRZIYOYEV:</h1>
-        <h2>TAYYOR MAHSULOTLAR ISHLAB CHIQARISHNI KO‘PAYTIRISH – DAVR TALABI</h2>
-        <a href="<?=Url::to('/file-info/to-excel')?>" class="btn-get-started scrollto">to Ms Excel</a>
     </div>
 </section><!-- End Hero -->
 
