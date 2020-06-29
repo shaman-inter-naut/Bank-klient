@@ -20,7 +20,7 @@ use yii\bootstrap\Modal;
 <!--            themes/day/assets/img/team/team-3.jpg-->
 <!--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
             <a style="color:#4d90fe; padding: 0 2.5px;  font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>
-            <i style="padding-left: 80px" class="icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
+            <i style="padding-left: 80px" class="cen icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>
         </div>
 <!--        <div class="social-links">-->
         <div >
