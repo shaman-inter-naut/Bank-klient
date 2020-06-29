@@ -307,6 +307,9 @@ class FileInfoController extends Controller
                 $model->bank_mfo = $mfo;
                 $model->company_account = $main;
                 $model->company_inn = $inn;
+                $unikal = substr($main, 9, 8);
+                $company = Company::find()->where(['unical_code' => $unikal])->one();
+                $model->company_id = $company->id;
                 $model->file_name = $filePath;
                 $model->file_date = $date;
                 $model->data_period = $interval;
@@ -355,6 +358,7 @@ class FileInfoController extends Controller
                         $document->detail_purpose_of_payment = $value[7];
                         $document->code_currency = substr($matches['acc'], 5, 3);
                         $document->contract_date = $contract_date;
+                        $document->company_unikal = substr($main, 9, 8);
                         $document->save(false);
                     } else if ($document) {
                         session_start();
@@ -382,10 +386,12 @@ class FileInfoController extends Controller
                 $beginDeposit = trim(str_replace(",", "", $beginDeposit));
                 $endDeposit = trim(str_replace("Конец дня Пассив", "", $results['endDeposit']));
 
+
+
                 $model->bank_id = $_POST['FileInfo']['bank_id'];
                 $model->bank_mfo = $mfo;
                 $model->company_account = $acc;
-                $unikal = substr($acc, 10, 7);
+                $unikal = substr($acc, 9, 8);
                 $company = Company::find()->where(['unical_code' => $unikal])->one();
                 $model->company_inn = $company->inn;
                 $model->file_name = $filePath;
@@ -410,6 +416,7 @@ class FileInfoController extends Controller
                             $res[$k] = $m[0][0];
                         }
                     }
+
                     $inn = trim(str_replace("ИНН:", "", $res['inn']));
                     $account = trim(str_replace("Счет:", "", $res['acc']));
                     $mfo = trim(str_replace("МФО:", "", $res['mfo']));
@@ -439,6 +446,7 @@ class FileInfoController extends Controller
                         $document->detail_purpose_of_payment = $value[4];
                         $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
                         $document->contract_date = $contract_date;
+                        $document->company_unikal = substr($acc, 9, 8);
 
                         $document->save(false);
                     } else if ($document) {
@@ -515,6 +523,7 @@ class FileInfoController extends Controller
                         $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
 
                         $document->contract_date = $contract_date;
+                        $document->company_unikal = substr($acc, 9, 8);
                         $document->save(false);
                     } else if ($document) {
                         session_start();
@@ -774,46 +783,49 @@ class FileInfoController extends Controller
 
 
 //         Далее в цикле выводим товары.
-            $companyName = Company::find()->indexBy('id')->all();
-            $getUnikal = Document::find()->indexBy('id')->all();
-            //$getUnikal = substr($getUnikal->detail_account,9, 8);
-//        echo "<pre>";
-//            print_r($getUnikal);
-//        echo "<pre>";
-//            $getUZS = Document::find()->where('')->all();
-        $row = (new \yii\db\Query())
-            ->from('document')
-            ->where(['like', 'detail_account', '20208'])
-            ->orwhere(['like', 'detail_account', '20210'])
-            ->orwhere(['like', 'detail_account', '20214'])
-            ->andWhere(['like', 'detail_account', '20214'])
-            ->all();
+            $companyName = Company::find()->limit(23)->all();
 
-        foreach ($getUnikal as $key => $value){
-            echo "<pre>";
-//                print_r($value);
-                print_r(substr($value['detail_account'], 9,8));
-            echo "<pre>";
+            $n = ['20208', '20210', '20214'];
 
-        }
+            foreach ($n as $key_n => $value_n) {
+                $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
+                foreach ($file as $key_file => $value_file) {
+                    $company_unikal = substr($value_file->company_account, 9, 8);
+                    //echo $company_unikal."<br>";
+                    $document = Document::find()->where(['file_id' => $value_file->id])->all();
+                    foreach ($document as $k => $val) {
+                        // $val->detail_kredit.'<br>';
+                        $summa[$company_unikal][$value_n] += $val->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';
 
-        $line++;
+
+        $line++;        
+
             foreach ($companyName as $i => $cName) {
-                if($i < 24) {
                     $sheet->setCellValue("A{$line}", $i);
                     $sheet->setCellValue("B{$line}", $cName->name);
                     $sheet->setCellValue("C{$line}", $cName->unical_code);
+                    // echo $cName->unical_code.' => ';
+                    // echo $summa[$cName->unical_code].'<br>';
+                    $new_array = $summa[$cName->unical_code] ? $summa[$cName->unical_code] : []; 
+                    // echo array_sum($new_array).'<br>';
+                    $sheet->setCellValue("D{$line}", array_sum($new_array));
+                    $sum_new_array += array_sum($new_array);
                     $line++;
-                }
             }
 
-
+        $sheet->setCellValue("D{$line}", $dk20208);
 
         $line++;
         $sheet->setCellValue("A{$line}", '');
         $sheet->setCellValue("B{$line}", 'Итого');
         $sheet->setCellValue("C{$line}", '');
-        $sheet->setCellValue("D{$line}", '0');
+        $sheet->setCellValue("D{$line}", round($sum_new_array,2));
         $sheet->setCellValue("E{$line}", '0');
         $sheet->setCellValue("F{$line}", '0');
         $sheet->setCellValue("G{$line}", '0');
