@@ -226,34 +226,35 @@ use yii\bootstrap\Modal;
 
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-                    <img src="themes/day/assets/img/about.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                    <p class="font-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                    </p>
-                    <ul>
-                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                        <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                    </ul>
-                    <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End About Section -->
+<!--    <section id="about" class="about">-->
+<!--        <div class="container">-->
+<!---->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">-->
+<!--                    <img src="themes/day/assets/img/about.jpg" class="img-fluid" alt="">-->
+<!--                </div>-->
+<!--                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">-->
+<!--                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>-->
+<!--                    <p class="font-italic">-->
+<!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--                        magna aliqua.-->
+<!--                    </p>-->
+<!--                    <ul>-->
+<!--                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+<!--                        <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>-->
+<!--                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>-->
+<!--                    </ul>-->
+<!--                    <p>-->
+<!--                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate-->
+<!--                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in-->
+<!--                        culpa qui officia deserunt mollit anim id est laborum-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+<!--    </section>-->
+    <!-- End About Section -->
 
 
 
@@ -330,71 +331,72 @@ use yii\bootstrap\Modal;
     <!-- End Pricing Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-        <div class="container">
-
-            <div class="section-title">
-                <span>Team</span>
-                <h2>Team</h2>
-                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
-                    <div class="member">
-                        <img src="themes/day/assets/img/team/team-1.jpg" alt="">
-                        <h4>Walter White</h4>
-                        <span>Chief Executive Officer</span>
-                        <p>
-                            Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-                        </p>
-                        <div class="social">
-                            <a href=""><i class="icofont-twitter"></i></a>
-                            <a href=""><i class="icofont-facebook"></i></a>
-                            <a href=""><i class="icofont-instagram"></i></a>
-                            <a href=""><i class="icofont-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
-                    <div class="member">
-                        <img src="themes/day/assets/img/team/team-2.jpg" alt="">
-                        <h4>Sarah Jhinson</h4>
-                        <span>Product Manager</span>
-                        <p>
-                            Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                        </p>
-                        <div class="social">
-                            <a href=""><i class="icofont-twitter"></i></a>
-                            <a href=""><i class="icofont-facebook"></i></a>
-                            <a href=""><i class="icofont-instagram"></i></a>
-                            <a href=""><i class="icofont-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
-                    <div class="member">
-                        <img src="themes/day/assets/img/team/team-3.jpg" alt="">
-                        <h4>William Anderson</h4>
-                        <span>CTO</span>
-                        <p>
-                            Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                        </p>
-                        <div class="social">
-                            <a href=""><i class="icofont-twitter"></i></a>
-                            <a href=""><i class="icofont-facebook"></i></a>
-                            <a href=""><i class="icofont-instagram"></i></a>
-                            <a href=""><i class="icofont-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Team Section -->
+<!--    <section id="team" class="team">-->
+<!--        <div class="container">-->
+<!---->
+<!--            <div class="section-title">-->
+<!--                <span>Team</span>-->
+<!--                <h2>Team</h2>-->
+<!--                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">-->
+<!--                    <div class="member">-->
+<!--                        <img src="themes/day/assets/img/team/team-1.jpg" alt="">-->
+<!--                        <h4>Walter White</h4>-->
+<!--                        <span>Chief Executive Officer</span>-->
+<!--                        <p>-->
+<!--                            Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut-->
+<!--                        </p>-->
+<!--                        <div class="social">-->
+<!--                            <a href=""><i class="icofont-twitter"></i></a>-->
+<!--                            <a href=""><i class="icofont-facebook"></i></a>-->
+<!--                            <a href=""><i class="icofont-instagram"></i></a>-->
+<!--                            <a href=""><i class="icofont-linkedin"></i></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">-->
+<!--                    <div class="member">-->
+<!--                        <img src="themes/day/assets/img/team/team-2.jpg" alt="">-->
+<!--                        <h4>Sarah Jhinson</h4>-->
+<!--                        <span>Product Manager</span>-->
+<!--                        <p>-->
+<!--                            Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus-->
+<!--                        </p>-->
+<!--                        <div class="social">-->
+<!--                            <a href=""><i class="icofont-twitter"></i></a>-->
+<!--                            <a href=""><i class="icofont-facebook"></i></a>-->
+<!--                            <a href=""><i class="icofont-instagram"></i></a>-->
+<!--                            <a href=""><i class="icofont-linkedin"></i></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">-->
+<!--                    <div class="member">-->
+<!--                        <img src="themes/day/assets/img/team/team-3.jpg" alt="">-->
+<!--                        <h4>William Anderson</h4>-->
+<!--                        <span>CTO</span>-->
+<!--                        <p>-->
+<!--                            Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara-->
+<!--                        </p>-->
+<!--                        <div class="social">-->
+<!--                            <a href=""><i class="icofont-twitter"></i></a>-->
+<!--                            <a href=""><i class="icofont-facebook"></i></a>-->
+<!--                            <a href=""><i class="icofont-instagram"></i></a>-->
+<!--                            <a href=""><i class="icofont-linkedin"></i></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+<!--    </section>-->
+    <!-- End Team Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
