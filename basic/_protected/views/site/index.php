@@ -312,11 +312,11 @@ use yii\bootstrap\Modal;
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <div>
                         <h4>Манзил</h4>
-                        <p><i  class="icon bx bx-map"></i>Андижон, Лермонтов кўча , 128-уй</p>
+                        <p><i  class="icon bx bx-map"></i>Андижон шахар, Янги айланма кўчаси, 1-уй</p>
                     </div>
                     <div>
                         <h4>Email</h4>
-                        <p> <i  class="icon bx bx-envelope"></i>admin@avtocompanent.uz</p>
+                        <p> <i  class="icon bx bx-envelope"></i>info@uzautocomponents.uz</p>
                     </div>
 
                 </div>
@@ -332,8 +332,8 @@ use yii\bootstrap\Modal;
                     <div>
 
                         <h4>Қўнғироқ қилинг</h4>
-                        <a style="text-decoration: none" href="tel:+1 5589 55488 55">
-                            <p> <i class="icon bx bx-phone-call"></i>+998973216549</p>
+                        <a style="text-decoration: none" href="tel:+ 998 93 983 85 00">
+                            <p> <i class="icon bx bx-phone-call"></i>+ 998 93 983 85 00</p>
                         </a>
                     </div>
 
