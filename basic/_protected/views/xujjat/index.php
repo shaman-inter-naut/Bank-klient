@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
     /*}*/
 </style>
 
-<div  style="padding-bottom: 30px">
+<div  ">
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
 <div class="xujjat-index">
@@ -60,38 +60,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 ],
 
-//            'id',
-//            'file_id',
-//            'file.bank_mfo',
-//                'file.company.short_name',
                [
                        'attribute' => 'filecom_id',
                        'value' => 'file.companyName.short_name',
-                        'header' => 'Kompany',
+                        'header' => 'Корхона',
                ],
 
-
-
-//            [
-//                'attribute'=> 'detail_date',
-//                'value' => 'detail_date',
-//                'header' => 'detail_date',
-//                'filter' =>  DateRangePicker::widget([
-//                        'model'=>$searchModel,
-//                        'attribute'=>'detail_date',
-//                        'convertFormat'=>true,
-//                        'startAttribute'=>'datetime_min',
-//                        'endAttribute'=>'datetime_max',
-//                        'pluginOptions'=>[
-//                    //        'timePicker'=>true,
-//                            'timePickerIncrement'=>30,
-//                             'format'=>'d.mm.yyyy',
-//                            'locale'=>[
-//                                'format'=>'d.mm.yyyy'
-//                            ]
-//                        ]
-//                    ])
-//            ],
 
                [
                    'attribute'=>'file_id',
@@ -131,37 +105,22 @@ $this->params['breadcrumbs'][] = $this->title;
                        ]
                    ]),
                ],
-//
-//               [
-//                   'attribute'=>'period_id',
-//                   'value' => 'file.data_period',
-//                   'header' => 'Сана оралиқ',
-//
-//                   'filter' =>  DateTimePicker::widget([
-//                       'model' => $searchModel,
-//                       'attribute' => 'period_id',
-//                       'template' => '{input}',
-//                       'language' => 'ru',
-//                       'size' => 'ms',
-//                       'clientOptions' => [
-//                           'startView' => 2,
-//                           'minView' => 2,
-//                           'maxView' => 0,
-//                           'autoclose' => true,
-//                           'format' => 'd.mm.yyyy',
-//                           'todayBtn' => true,
-//                           'clearBtn' => true
-//
-//                       ]
-//                   ]),
-//               ],
-//            'detail_date',
             [
                 'attribute'=>  'detail_date',
                 'value'=>  'detail_date',
-                'header' => 'Проводка сана',
+                'header' => 'Проводканинг сана',
+                'contentOptions' => ['style' => 'width: 200px;'],
+                'headerOptions' => ['style' => 'width:200px !important'],
             ],
-
+//            [
+//                'attribute'=>  'detail_date',
+//                'format' => 'text',
+//                'header' => 'Проводка сана',
+//                'filter'=>false,
+//                'contentOptions' => ['style' => ['max-width' => '300px;', 'height' => '100px', 'overflow' => 'auto',
+//                    'word-wrap' => 'break-word']]
+//
+//            ],
                 [
                     'attribute'=> 'detail_name',
                     'value'=> 'detail_name',
@@ -172,50 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'detail_account',
                 'header' => 'Хамкор Х-Р',
             ],
-//            'detail_date',
-//            [
-//                'attribute'=> 'detail_date',
-//                'value' => 'detail_date',
-//                'header' => '-Сана-',
-//                'filter' =>  DateTimePicker::widget([
-//                    'model' => $searchModel,
-//                    'attribute' =>  'detail_date',
-//                    'template' => '{input}',
-//                    'language' => 'ru',
-//                    'size' => 'ms',
-//                    'clientOptions' => [
-//                        'startView' => 2,
-//                        'minView' => 2,
-//                        'maxView' => 0,
-//                        'autoclose' => true,
-//                        'format' => 'd.mm.yyyy',
-//                        'todayBtn' => true,
-//                        'clearBtn' => true
-//
-//                    ]
-//                ]),
-//            ],
-//            [
-//                'attribute'=>'detail_date',
-////                'fotmat' => 'date',
-//                'value' => 'detail_date',
-//                'header' => '-Сана-',
-//                'filter' =>   \kartik\field\FieldRange::widget([
-//                    'model' => $searchModel,
-//                    'type'=>\kartik\field\FieldRange::INPUT_WIDGET,
-//                    'attribute1' => 'from_date',
-//                    'attribute2' => 'to_date',
-////                    'template' => '{input}',
-//                    'widgetClass'=> \kartik\datecontrol\DateControl::className(),
-////                    'widgetClass'=> \kartik\date\DatePicker::className(),
-//                    'widgetOptions1'=>[
-//                            'saveFormat' => 'php:U'
-//                    ],
-//                    'widgetOptions2'=>[
-//                        'saveFormat' => 'php:U'
-//                    ],
-//                 ]),
-//            ],
+
             ['attribute'=>'detail_purpose_of_payment',
                 'header' => 'Тўлов мақсади',
 
@@ -248,28 +164,32 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'andFilterWhere'=> ['status' => 1],
             ],
 
+//            [
+//                'attribute'=> 'contract_date',
+//                'value'=> 'contract_date',
+//                'header' => 'Шартнома санаси',
+//            ],
             [
-                'attribute'=> 'contract_date',
-                'value'=> 'contract_date',
+                'attribute'=>'contract_date',
+                'value' => 'contract_date',
                 'header' => 'Шартнома санаси',
+                'filter' =>  DateTimePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'contract_date',
+                    'template' => '{input}',
+                    'language' => 'ru',
+                    'size' => 'ms',
+                    'clientOptions' => [
+                        'startView' => 2,
+                        'minView' => 2,
+                        'maxView' => 0,
+                        'autoclose' => true,
+                        'format' => 'd.mm.yyyy',
+                        'todayBtn' => true,
+                        'clearBtn' => true
 
-//                    'filter' =>  DateTimePicker::widget([
-//                        'model' => $searchModel,
-//                        'attribute' => 'contract_date',
-//                        'template' => '{input}',
-//                        'language' => 'ru',
-//                        'size' => 'ms',
-//                        'clientOptions' => [
-//                            'startView' => 2,
-//                            'minView' => 2,
-//                            'maxView' => 0,
-//                            'autoclose' => true,
-//                            'format' => 'd.mm.yyyy',
-//                            'todayBtn' => true,
-//                            'clearBtn' => true
-//
-//                        ]
-//                    ]),
+                    ]
+                ]),
             ],
 
             [

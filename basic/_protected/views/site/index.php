@@ -132,15 +132,15 @@ use yii\bootstrap\Modal;
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-slideshow"></i></div>
                         <h4><a href="<?=Url::to('/xujjat/index')?>">Барча проводкалар</a></h4>
-                        <p>Барча корхоналарнинг барча ҳисоб рақамларидаги кирим чиқим амалиётлариr</p>
+                        <p>Барча корхоналарнинг барча ҳисоб рақамларидаги кирим чиқим амалиётлари</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-arch"></i></div>
-                        <h4><a href="<?=Url::to('/expence-types/index')?>">expence_types</a></h4>
-                        <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                        <h4><a href="<?=Url::to('/expence-types/index')?>">Харажатлар тури</a></h4>
+                        <p>Барча турдаги шартномвлвр харажатлари тури</p>
                     </div>
                 </div>
 
