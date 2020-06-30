@@ -307,6 +307,9 @@ class FileInfoController extends Controller
                 $model->bank_mfo = $mfo;
                 $model->company_account = $main;
                 $model->company_inn = $inn;
+                $unikal = substr($main, 9, 8);
+                $company = Company::find()->where(['unical_code' => $unikal])->one();
+                $model->company_id = $company->id;
                 $model->file_name = $filePath;
                 $model->file_date = $date;
                 $model->data_period = $interval;
@@ -355,6 +358,7 @@ class FileInfoController extends Controller
                         $document->detail_purpose_of_payment = $value[7];
                         $document->code_currency = substr($matches['acc'], 5, 3);
                         $document->contract_date = $contract_date;
+                        $document->company_unikal = substr($main, 9, 8);
                         $document->save(false);
                     } else if ($document) {
                         session_start();
@@ -382,10 +386,12 @@ class FileInfoController extends Controller
                 $beginDeposit = trim(str_replace(",", "", $beginDeposit));
                 $endDeposit = trim(str_replace("Конец дня Пассив", "", $results['endDeposit']));
 
+
+
                 $model->bank_id = $_POST['FileInfo']['bank_id'];
                 $model->bank_mfo = $mfo;
                 $model->company_account = $acc;
-                $unikal = substr($acc, 10, 7);
+                $unikal = substr($acc, 9, 8);
                 $company = Company::find()->where(['unical_code' => $unikal])->one();
                 $model->company_inn = $company->inn;
                 $model->file_name = $filePath;
@@ -410,6 +416,7 @@ class FileInfoController extends Controller
                             $res[$k] = $m[0][0];
                         }
                     }
+
                     $inn = trim(str_replace("ИНН:", "", $res['inn']));
                     $account = trim(str_replace("Счет:", "", $res['acc']));
                     $mfo = trim(str_replace("МФО:", "", $res['mfo']));
@@ -439,6 +446,7 @@ class FileInfoController extends Controller
                         $document->detail_purpose_of_payment = $value[4];
                         $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
                         $document->contract_date = $contract_date;
+                        $document->company_unikal = substr($acc, 9, 8);
 
                         $document->save(false);
                     } else if ($document) {
@@ -515,6 +523,7 @@ class FileInfoController extends Controller
                         $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
 
                         $document->contract_date = $contract_date;
+                        $document->company_unikal = substr($acc, 9, 8);
                         $document->save(false);
                     } else if ($document) {
                         session_start();
@@ -577,7 +586,7 @@ class FileInfoController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
 //            'fayl' => $fayl,
         ]);
@@ -773,62 +782,422 @@ class FileInfoController extends Controller
        //   $sheet->mergeCells("B{$line}:G{$line}");
 
 
-//         Далее в цикле выводим товары.
-            $companyName = Company::find()->indexBy('id')->all();
-            $getUnikal = Document::find()->indexBy('id')->all();
-            //$getUnikal = substr($getUnikal->detail_account,9, 8);
-//        echo "<pre>";
-//            print_r($getUnikal);
-//        echo "<pre>";
-//            $getUZS = Document::find()->where('')->all();
-        $row = (new \yii\db\Query())
-            ->from('document')
-            ->where(['like', 'detail_account', '20208'])
-            ->orwhere(['like', 'detail_account', '20210'])
-            ->orwhere(['like', 'detail_account', '20214'])
-            ->andWhere(['like', 'detail_account', '20214'])
-            ->all();
+// ****************************************************************** 20208000 + 20210000 + 20214000
+            $companyName = Company::find()->limit(23)->all();
 
-        foreach ($getUnikal as $key => $value){
-            echo "<pre>";
-//                print_r($value);
-                print_r(substr($value['detail_account'], 9,8));
-            echo "<pre>";
+            $nUZS = ['20208000', '20210000', '20214000'];
 
-        }
+            foreach ($nUZS as $key_nUZS => $value_nUZS) {
+                $fileUZS = FileInfo::find()->where(['like', 'company_account', $value_nUZS])->all();
+                foreach ($fileUZS as $key_fileUZS => $value_fileUZS) {
+                    $company_unikalUZS = substr($value_fileUZS->company_account, 9, 8);
+                    //echo $company_unikal."<br>";
+                    $documentUZS = Document::find()->where(['file_id' => $value_fileUZS->id])->all();
+                    foreach ($documentUZS as $kUZS => $valUZS) {
+                        // $val->detail_kredit.'<br>';
+                        $summaUZS[$company_unikalUZS][$value_nUZS] += $valUZS->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';
 
-        $line++;
+// ****************************************************************** 20208840 + 20210840 + 20214840            
+
+            $nUSD = ['20208840', '20210840', '20214840'];
+
+            foreach ($nUSD as $key_nUSD => $value_nUSD) {
+                $fileUSD = FileInfo::find()->where(['like', 'company_account', $value_nUSD])->all();
+                foreach ($fileUSD as $key_fileUSD => $value_fileUSD) {
+                    $company_unikalUSD = substr($value_fileUSD->company_account, 9, 8);
+                    $documentUSD = Document::find()->where(['file_id' => $value_fileUSD->id])->all();
+                    foreach ($documentUSD as $kUSD => $valUSD) {
+                        $summaUSD[$company_unikalUSD][$value_nUSD] += $valUSD->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';
+
+
+// ****************************************************************** 20208978 + 20210978 + 20214978            
+
+            $nEUR = ['20208978', '20210978', '20214978'];
+
+            foreach ($nEUR as $key_nEUR => $value_nEUR) {
+                $fileEUR = FileInfo::find()->where(['like', 'company_account', $value_nEUR])->all();
+                foreach ($fileEUR as $key_fileEUR => $value_fileEUR) {
+                    $company_unikalEUR = substr($value_fileEUR->company_account, 9, 8);
+                    $documentEUR = Document::find()->where(['file_id' => $value_fileEUR->id])->all();
+                    foreach ($documentEUR as $kEUR => $valEUR) {
+                        $summaEUR[$company_unikalEUR][$value_nEUR] += $valEUR->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';       
+
+
+// ****************************************************************** 20208643 + 20210643 + 20214643            
+
+            $nRUB = ['20208643', '20210643', '20214643'];
+
+            foreach ($nRUB as $key_nRUB => $value_nRUB) {
+                $fileRUB = FileInfo::find()->where(['like', 'company_account', $value_nRUB])->all();
+                foreach ($fileRUB as $key_fileRUB => $value_fileRUB) {
+                    $company_unikalRUB = substr($value_fileRUB->company_account, 9, 8);
+                    $documentRUB = Document::find()->where(['file_id' => $value_fileRUB->id])->all();
+                    foreach ($documentRUB as $kRUB => $valRUB) {
+                        $summaRUB[$company_unikalRUB][$value_nRUB] += $valRUB->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';    
+
+
+// ****************************************************************** 22602000            
+
+            $nAkkrUZS = ['22602000'];
+
+            foreach ($nAkkrUZS as $key_nAkkrUZS => $value_nAkkrUZS) {
+                $fileAkkrUZS = FileInfo::find()->where(['like', 'company_account', $value_nAkkrUZS])->all();
+                foreach ($fileAkkrUZS as $key_fileAkkrUZS => $value_fileAkkrUZS) {
+                    $company_unikalAkkrUZS = substr($value_fileAkkrUZS->company_account, 9, 8);
+                    $documentAkkrUZS = Document::find()->where(['file_id' => $value_fileAkkrUZS->id])->all();
+                    foreach ($documentAkkrUZS as $kAkkrUZS => $valAkkrUZS) {
+                        $summaAkkrUZS[$company_unikalAkkrUZS][$value_nAkkrUZS] += $valAkkrUZS->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';     
+
+
+// ****************************************************************** 22602840            
+
+            $nAkkrEUR = ['22602840'];
+
+            foreach ($nAkkrEUR as $key_nAkkrEUR => $value_nAkkrEUR) {
+                $fileAkkrEUR = FileInfo::find()->where(['like', 'company_account', $value_nAkkrEUR])->all();
+                foreach ($fileAkkrEUR as $key_fileAkkrEUR => $value_fileAkkrEUR) {
+                    $company_unikalAkkrEUR = substr($value_fileAkkrEUR->company_account, 9, 8);
+                    $documentAkkrEUR = Document::find()->where(['file_id' => $value_fileAkkrEUR->id])->all();
+                    foreach ($documentAkkrEUR as $kAkkrEUR => $valAkkrEUR) {
+                        $summaAkkrEUR[$company_unikalAkkrEUR][$value_nAkkrEUR] += $valAkkrEUR->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';  
+
+
+
+// ****************************************************************** 22602978            
+
+            $nAkkrRUB = ['22602978'];
+
+            foreach ($nAkkrRUB as $key_nAkkrRUB => $value_nAkkrRUB) {
+                $fileAkkrRUB = FileInfo::find()->where(['like', 'company_account', $value_nAkkrRUB])->all();
+                foreach ($fileAkkrRUB as $key_fileAkkrRUB => $value_fileAkkrRUB) {
+                    $company_unikalAkkrRUB = substr($value_fileAkkrRUB->company_account, 9, 8);
+                    $documentAkkrRUB = Document::find()->where(['file_id' => $value_fileAkkrRUB->id])->all();
+                    foreach ($documentAkkrRUB as $kAkkrRUB => $valAkkrRUB) {
+                        $summaAkkrRUB[$company_unikalAkkrRUB][$value_nAkkrRUB] += $valAkkrRUB->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';       
+
+
+// ****************************************************************** 22613000            
+
+            $nBlokUZS = ['22613000'];
+
+            foreach ($nBlokUZS as $key_nBlokUZS => $value_nBlokUZS) {
+                $fileBlokUZS = FileInfo::find()->where(['like', 'company_account', $value_nBlokUZS])->all();
+                foreach ($fileBlokUZS as $key_fileBlokUZS => $value_fileBlokUZS) {
+                    $company_unikalBlokUZS = substr($value_fileBlokUZS->company_account, 9, 8);
+                    $documentBlokUZS = Document::find()->where(['file_id' => $value_fileBlokUZS->id])->all();
+                    foreach ($documentBlokUZS as $kBlokUZS => $valBlokUZS) {
+                        $summaBlokUZS[$company_unikalBlokUZS][$value_nBlokUZS] += $valBlokUZS->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';     
+
+
+// ****************************************************************** 22613840            
+
+            $nBlokUSD = ['22613840'];
+
+            foreach ($nBlokUSD as $key_nBlokUSD => $value_nBlokUSD) {
+                $fileBlokUSD = FileInfo::find()->where(['like', 'company_account', $value_nBlokUSD])->all();
+                foreach ($fileBlokUSD as $key_fileBlokUSD => $value_fileBlokUSD) {
+                    $company_unikalBlokUSD = substr($value_fileBlokUSD->company_account, 9, 8);
+                    $documentBlokUSD = Document::find()->where(['file_id' => $value_fileBlokUSD->id])->all();
+                    foreach ($documentBlokUSD as $kBlokUSD => $valBlokUSD) {
+                        $summaBlokUSD[$company_unikalBlokUSD][$value_nBlokUSD] += $valBlokUSD->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';     
+
+
+// ****************************************************************** 22613978            
+
+            $nBlokEUR = ['22613978'];
+
+            foreach ($nBlokEUR as $key_nBlokEUR => $value_nBlokEUR) {
+                $fileBlokEUR = FileInfo::find()->where(['like', 'company_account', $value_nBlokEUR])->all();
+                foreach ($fileBlokEUR as $key_fileBlokEUR => $value_fileBlokEUR) {
+                    $company_unikalBlokEUR = substr($value_fileBlokEUR->company_account, 9, 8);
+                    $documentBlokEUR = Document::find()->where(['file_id' => $value_fileBlokEUR->id])->all();
+                    foreach ($documentBlokEUR as $kBlokEUR => $valBlokEUR) {
+                        $summaBlokEUR[$company_unikalBlokEUR][$value_nBlokEUR] += $valBlokEUR->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';     
+
+
+// ****************************************************************** 22613643            
+
+            $nBlokRUB = ['22613643'];
+
+            foreach ($nBlokRUB as $key_nBlokRUB => $value_nBlokRUB) {
+                $fileBlokRUB = FileInfo::find()->where(['like', 'company_account', $value_nBlokRUB])->all();
+                foreach ($fileBlokRUB as $key_fileBlokRUB => $value_fileBlokRUB) {
+                    $company_unikalBlokRUB = substr($value_fileBlokRUB->company_account, 9, 8);
+                    $documentBlokRUB = Document::find()->where(['file_id' => $value_fileBlokRUB->id])->all();
+                    foreach ($documentBlokRUB as $kBlokRUB => $valBlokRUB) {
+                        $summaBlokRUB[$company_unikalBlokRUB][$value_nBlokRUB] += $valBlokRUB->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';     
+
+
+
+// ****************************************************************** 20614000            
+
+            $nDepUZS = ['20614000'];
+
+            foreach ($nDepUZS as $key_nDepUZS => $value_nDepUZS) {
+                $fileDepUZS = FileInfo::find()->where(['like', 'company_account', $value_nDepUZS])->all();
+                foreach ($fileDepUZS as $key_fileDepUZS => $value_fileDepUZS) {
+                    $company_unikalDepUZS = substr($value_fileDepUZS->company_account, 9, 8);
+                    $documentDepUZS = Document::find()->where(['file_id' => $value_fileDepUZS->id])->all();
+                    foreach ($documentDepUZS as $kDepUZS => $valDepUZS) {
+                        $summaDepUZS[$company_unikalDepUZS][$value_nDepUZS] += $valDepUZS->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';     
+
+
+
+// ****************************************************************** 20614840            
+
+            $nDepUSD = ['20614840'];
+
+            foreach ($nDepUSD as $key_nDepUSD => $value_nDepUSD) {
+                $fileDepUSD = FileInfo::find()->where(['like', 'company_account', $value_nDepUSD])->all();
+                foreach ($fileDepUSD as $key_fileDepUSD => $value_fileDepUSD) {
+                    $company_unikalDepUSD = substr($value_fileDepUSD->company_account, 9, 8);
+                    $documentDepUSD = Document::find()->where(['file_id' => $value_fileDepUSD->id])->all();
+                    foreach ($documentDepUSD as $kDepUSD => $valDepUSD) {
+                        $summaDepUSD[$company_unikalDepUSD][$value_nDepUSD] += $valDepUSD->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';        
+
+// ****************************************************************** 20614978            
+
+            $nDepEUR = ['20614978'];
+
+            foreach ($nDepEUR as $key_nDepEUR => $value_nDepEUR) {
+                $fileDepEUR = FileInfo::find()->where(['like', 'company_account', $value_nDepEUR])->all();
+                foreach ($fileDepEUR as $key_fileDepEUR => $value_fileDepEUR) {
+                    $company_unikalDepEUR = substr($value_fileDepEUR->company_account, 9, 8);
+                    $documentDepEUR = Document::find()->where(['file_id' => $value_fileDepEUR->id])->all();
+                    foreach ($documentDepEUR as $kDepEUR => $valDepEUR) {
+                        $summaDepEUR[$company_unikalDepEUR][$value_nDepEUR] += $valDepEUR->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';   
+
+
+// ****************************************************************** 20614643            
+
+            $nDepRUB = ['20614643'];
+
+            foreach ($nDepRUB as $key_nDepRUB => $value_nDepRUB) {
+                $fileDepRUB = FileInfo::find()->where(['like', 'company_account', $value_nDepRUB])->all();
+                foreach ($fileDepRUB as $key_fileDepRUB => $value_fileDepRUB) {
+                    $company_unikalDepRUB = substr($value_fileDepRUB->company_account, 9, 8);
+                    $documentDepRUB = Document::find()->where(['file_id' => $value_fileDepRUB->id])->all();
+                    foreach ($documentDepRUB as $kDepRUB => $valDepRUB) {
+                        $summaDepRUB[$company_unikalDepRUB][$value_nDepRUB] += $valDepRUB->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>'; 
+
+
+// ****************************************************************** 22620            
+
+            $nKorpKarta = ['22620'];
+
+            foreach ($nKorpKarta as $key_nKorpKarta => $value_nKorpKarta) {
+                $fileKorpKarta = FileInfo::find()->where(['like', 'company_account', $value_nKorpKarta])->all();
+                foreach ($fileKorpKarta as $key_fileKorpKarta => $value_fileKorpKarta) {
+                    $company_unikalKorpKarta = substr($value_fileKorpKarta->company_account, 9, 8);
+                    $documentKorpKarta = Document::find()->where(['file_id' => $value_fileKorpKarta->id])->all();
+                    foreach ($documentKorpKarta as $kKorpKarta => $valKorpKarta) {
+                        $summaKorpKarta[$company_unikalKorpKarta][$value_nKorpKarta] += $valKorpKarta->detail_kredit;
+                    }
+                }
+            }
+            
+            // echo array_sum($dk20214);
+            // echo '<hr><hr>';             
+
+
+
+
+
+        $line++;        
+
             foreach ($companyName as $i => $cName) {
-                if($i < 24) {
                     $sheet->setCellValue("A{$line}", $i);
                     $sheet->setCellValue("B{$line}", $cName->name);
                     $sheet->setCellValue("C{$line}", $cName->unical_code);
+                    
+                    $new_arrayUZS = $summaUZS[$cName->unical_code] ? $summaUZS[$cName->unical_code] : []; 
+                    $sheet->setCellValue("D{$line}", array_sum($new_arrayUZS));
+                    $sum_new_arrayUZS += array_sum($new_arrayUZS);
+
+                    $new_arrayUSD = $summaUSD[$cName->unical_code] ? $summaUSD[$cName->unical_code] : []; 
+                    $sheet->setCellValue("E{$line}", array_sum($new_arrayUSD));
+                    $sum_new_arrayUSD += array_sum($new_arrayUSD);
+
+                    $new_arrayEUR = $summaEUR[$cName->unical_code] ? $summaEUR[$cName->unical_code] : []; 
+                    $sheet->setCellValue("F{$line}", array_sum($new_arrayEUR));
+                    $sum_new_arrayEUR += array_sum($new_arrayEUR);    
+
+                    $new_arrayRUB = $summaRUB[$cName->unical_code] ? $summaRUB[$cName->unical_code] : []; 
+                    $sheet->setCellValue("G{$line}", array_sum($new_arrayRUB));
+                    $sum_new_arrayRUB += array_sum($new_arrayRUB);     
+
+                    $new_arrayAkkrUZS = $summaAkkrUZS[$cName->unical_code] ? $summaAkkrUZS[$cName->unical_code] : []; 
+                    $sheet->setCellValue("H{$line}", array_sum($new_arrayAkkrUZS));
+                    $sum_new_arrayAkkrUZS += array_sum($new_arrayAkkrUZS);   
+
+                    $new_arrayAkkrEUR = $summaAkkrEUR[$cName->unical_code] ? $summaAkkrEUR[$cName->unical_code] : []; 
+                    $sheet->setCellValue("I{$line}", array_sum($new_arrayAkkrEUR));
+                    $sum_new_arrayAkkrEUR += array_sum($new_arrayAkkrEUR);
+
+                    $new_arrayAkkrRUB = $summaAkkrRUB[$cName->unical_code] ? $summaAkkrRUB[$cName->unical_code] : []; 
+                    $sheet->setCellValue("J{$line}", array_sum($new_arrayAkkrRUB));
+                    $sum_new_arrayAkkrRUB += array_sum($new_arrayAkkrRUB);
+
+
+                    $new_arrayBlokUZS = $summaBlokUZS[$cName->unical_code] ? $summaBlokUZS[$cName->unical_code] : []; 
+                    $sheet->setCellValue("K{$line}", array_sum($new_arrayBlokUZS));
+                    $sum_new_arrayBlokUZS += array_sum($new_arrayBlokUZS);   
+
+
+                    $new_arrayBlokUSD = $summaBlokUSD[$cName->unical_code] ? $summaBlokUSD[$cName->unical_code] : []; 
+                    $sheet->setCellValue("L{$line}", array_sum($new_arrayBlokUSD));
+                    $sum_new_arrayBlokUSD += array_sum($new_arrayBlokUSD);       
+
+
+                    $new_arrayBlokEUR = $summaBlokEUR[$cName->unical_code] ? $summaBlokEUR[$cName->unical_code] : []; 
+                    $sheet->setCellValue("M{$line}", array_sum($new_arrayBlokEUR));
+                    $sum_new_arrayBlokEUR += array_sum($new_arrayBlokEUR);   
+
+
+                    $new_arrayBlokRUB = $summaBlokRUB[$cName->unical_code] ? $summaBlokRUB[$cName->unical_code] : []; 
+                    $sheet->setCellValue("N{$line}", array_sum($new_arrayBlokRUB));
+                    $sum_new_arrayBlokRUB += array_sum($new_arrayBlokRUB);    
+
+
+                    $new_arrayDepUZS = $summaDepUZS[$cName->unical_code] ? $summaDepUZS[$cName->unical_code] : []; 
+                    $sheet->setCellValue("O{$line}", array_sum($new_arrayDepUZS));
+                    $sum_new_arrayDepUZS += array_sum($new_arrayDepUZS);   
+
+
+                    $new_arrayDepUSD = $summaDepUSD[$cName->unical_code] ? $summaDepUSD[$cName->unical_code] : []; 
+                    $sheet->setCellValue("P{$line}", array_sum($new_arrayDepUSD));
+                    $sum_new_arrayDepUSD += array_sum($new_arrayDepUSD);       
+
+
+                    $new_arrayDepEUR = $summaDepEUR[$cName->unical_code] ? $summaDepEUR[$cName->unical_code] : []; 
+                    $sheet->setCellValue("Q{$line}", array_sum($new_arrayDepEUR));
+                    $sum_new_arrayDepEUR += array_sum($new_arrayDepEUR);   
+
+
+                    $new_arrayDepRUB = $summaDepRUB[$cName->unical_code] ? $summaDepRUB[$cName->unical_code] : []; 
+                    $sheet->setCellValue("R{$line}", array_sum($new_arrayDepRUB));
+                    $sum_new_arrayDepRUB += array_sum($new_arrayDepRUB);    
+
+
+                    $new_arrayKorpKarta = $summaKorpKarta[$cName->unical_code] ? $summaKorpKarta[$cName->unical_code] : []; 
+                    $sheet->setCellValue("S{$line}", array_sum($new_arrayKorpKarta));
+                    $sum_new_arrayKorpKarta += array_sum($new_arrayKorpKarta);                                                                                                                                                                                                                                                                                                        
+
                     $line++;
-                }
             }
 
-
+        $sheet->setCellValue("D{$line}", $dk20208);
 
         $line++;
         $sheet->setCellValue("A{$line}", '');
         $sheet->setCellValue("B{$line}", 'Итого');
         $sheet->setCellValue("C{$line}", '');
-        $sheet->setCellValue("D{$line}", '0');
-        $sheet->setCellValue("E{$line}", '0');
-        $sheet->setCellValue("F{$line}", '0');
-        $sheet->setCellValue("G{$line}", '0');
-        $sheet->setCellValue("H{$line}", '0');
-        $sheet->setCellValue("I{$line}", '0');
-        $sheet->setCellValue("J{$line}", '0');
-        $sheet->setCellValue("K{$line}", '0');
-        $sheet->setCellValue("L{$line}", '0');
-        $sheet->setCellValue("M{$line}", '0');
-        $sheet->setCellValue("N{$line}", '0');
-        $sheet->setCellValue("O{$line}", '0');
-        $sheet->setCellValue("P{$line}", '0');
-        $sheet->setCellValue("Q{$line}", '0');
-        $sheet->setCellValue("R{$line}", '0');
-        $sheet->setCellValue("S{$line}", '0');
+        $sheet->setCellValue("D{$line}", round($sum_new_arrayUZS, 2));
+        $sheet->setCellValue("E{$line}", round($sum_new_arrayUSD, 2));
+        $sheet->setCellValue("F{$line}", round($sum_new_arrayEUR, 2));
+        $sheet->setCellValue("G{$line}", round($sum_new_arrayRUB, 2));
+        $sheet->setCellValue("H{$line}", round($sum_new_arrayAkkrUZS, 2));
+        $sheet->setCellValue("I{$line}", round($sum_new_arrayAkkrEUR, 2));
+        $sheet->setCellValue("J{$line}", round($sum_new_arrayAkkrRUB, 2));
+        $sheet->setCellValue("K{$line}", round($sum_new_arrayBlokUZS, 2));
+        $sheet->setCellValue("L{$line}", round($sum_new_arrayBlokUSD, 2));
+        $sheet->setCellValue("M{$line}", round($sum_new_arrayBlokEUR, 2));
+        $sheet->setCellValue("N{$line}", round($sum_new_arrayBlokRUB, 2));
+        $sheet->setCellValue("O{$line}", round($sum_new_arrayDepUZS, 2));
+        $sheet->setCellValue("P{$line}", round($sum_new_arrayDepUSD, 2));
+        $sheet->setCellValue("Q{$line}", round($sum_new_arrayDepEUR, 2));
+        $sheet->setCellValue("R{$line}", round($sum_new_arrayDepRUB, 2));
+        $sheet->setCellValue("S{$line}", round($sum_new_arrayKorpKarta, 2));
 
 
 

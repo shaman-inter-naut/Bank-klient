@@ -45,7 +45,7 @@ use yii\helpers\ArrayHelper;
             'maxView' => 0,
             'autoclose' => false,
             'linkFormat' => false,
-             'format' => 'dd-M-yyyy',
+             'format' => 'd.mm.yyyy',
             'todayBtn' => true
         ]
     ]);?>

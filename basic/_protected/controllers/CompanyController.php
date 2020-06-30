@@ -48,13 +48,13 @@ class CompanyController extends Controller
     public function actionInfo()
     {
         $company = Company::find()->all();
+
         $id = Yii::$app->request->get('id');
         $idnew = empty($id) ? 1 : $id;
         $getID = Company::find()->where(['id' => $idnew])->one();
         $companyone = AccountNumber::find()->where(['company_id' =>$idnew])->all();
 
         return $this->render('info',[
-
             'company' => $company,
             'companyone' => $companyone,
             'getID' => $getID,
@@ -126,7 +126,7 @@ class CompanyController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->renderAjax('update', [

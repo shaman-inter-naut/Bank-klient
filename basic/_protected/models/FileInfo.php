@@ -40,6 +40,7 @@ class FileInfo extends \yii\db\ActiveRecord
             [['company_account', 'data_period'], 'string', 'max' => 50],
             [['company_inn', 'file_date'], 'string', 'max' => 25],
             [['file_name'], 'string', 'max' => 255],
+            [['company_unikal'], 'string', 'max' => 8],
             [['template'], 'string', 'max' => 5],
             [['file'], 'file'],
         ];

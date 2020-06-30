@@ -127,7 +127,7 @@ class BankController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
            // return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['info']);
+            return $this->redirect(['index']);
         }
 
         return $this->renderAjax('update', [

@@ -103,7 +103,35 @@ $this->params['breadcrumbs'][] = $this->title;
             'data_period',
             'file_date',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                                    'template' => '{view}  {update}  {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('', ['view', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-eye-open',
+
+                        ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('', ['update', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-pencil bank',
+
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('', ['delete', 'id' => $model->id], [
+                            'class' => 'glyphicon glyphicon-trash',
+                            'data' => [
+                                'confirm' => 'Ўчириб юборилсинми?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
+
+                ],
+
+            ],
         ],
     ]); ?>
 
@@ -119,9 +147,6 @@ Modal::begin([
 <div id="modalContent">
 
 </div>
-
-
-
 <?php
 Modal::end();
 ?>

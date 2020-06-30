@@ -3,8 +3,14 @@ use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+$this->title = 'Корхона ва хисоб рақамлар';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+    .center{
+        text-align: center;
+    }
+</style>
 <div  style="padding-bottom: 30px">
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
@@ -29,27 +35,17 @@ $this->title = 'My Yii Application';
 
 <div id='<?= $getID->id; ?>' class="tabcontent">
     <table class="table table-striped">
+
+
         <thead class="thed">
         <tr>
             <th><h4>№</h4></th>
             <th style=""><h4>
-                    <div ><?= $getID->name; ?>нинг банк филиаллари </div>
-                    <!--                    <div class="col-md-1">--><?//= Html::a('add_circle', ['/create', 'id' => $val->id], ['class' => 'material-icons']);?><!--</div>-->
+                    <div class="col-md-11"><?= $getID->name; ?> нинг хисоб рақамлари</div>
+                    <div class="col-md-1"><?= Html::a('add_circle',
+                            ['accountnumber/create?company_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
                 </h4> </th>
-            <th><h4>
-                    <div class="col-md-9">
-                        ХИСОБ РАКАМ
-                    </div>
-
-                    <div class="col-md-3">
-                        <?= Html::a('add_circle', ['accountnumber/create?bank_id='.$getID->id, 'id' => $val->id], ['class' => 'kor material-icons']);?>
-
-                    </div>
-
-
-
-                </h4></th>
-            <!--            <th><h4>МФО</h4></th>-->
+            <th><h4> ХИСОБ РАКАМ</h4></th>
         </tr>
         </thead>
         <tbody>

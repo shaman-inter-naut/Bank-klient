@@ -1,5 +1,4 @@
 <?
-
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
@@ -7,17 +6,14 @@ use yii\bootstrap\Modal;
 $this->title = 'БАНКЛАР ВА ФИЛИАЛЛАР';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <style>
     .center{
         text-align: center;
     }
 </style>
-
 <div  style="padding-bottom: 30px">
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
-
 <div class="container" >
 <div class="info" style="margin-bottom: 15px; text-align: center; padding: 20px;">
     <p><strong style="font-size: 24px">БАНКЛАР ВА ФИЛИАЛЛАР</strong></p>
@@ -39,16 +35,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div id='<?= $getID->id; ?>' class="tabcontent">
     <table class="table table-striped">
+
+
         <thead class="thed">
         <tr>
             <th><h4>№</h4></th>
             <th style=""><h4>
                     <div class="col-md-11"><?= $getID->name; ?> филиаллари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle', ['bankbranch/create?bank_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
+                    <div class="col-md-1"><?= Html::a('add_circle',
+                            ['bankbranch/create?bank_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
                 </h4> </th>
             <th><h4>МФО</h4></th>
         </tr>
         </thead>
+
+
         <tbody>
         <?  foreach ($getBranchID as $key => $val){  ?>
             <tr>
