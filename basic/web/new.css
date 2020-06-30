@@ -18,14 +18,29 @@
     color: white;
     padding: 8px;
     border-spacing: 2px;
+
+
+    /*position: -webkit-sticky !important;*/
+    /*position: sticky !important;*/
+    /*top: 0 !important;*/
+
 }
+
+
+
 thead tr th {
     border: 1px solid #ddd !important;
     text-align: center;
+
+
+
 }
 tbody tr th {
     border: 1px solid #ddd !important;
     text-align: center;
+
+
+
 }
 tbody tr td {
     border: 1px solid #ddd !important;
@@ -36,7 +51,9 @@ thead  tr {
     background-color: #4CAF50
 }
 thead {
-    color: white
+    color: white;
+
+
 }
 thead tr a {
     color: white
