@@ -20,32 +20,32 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class=" well bs-component">
 <!--            <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
 
-            <p><?= Yii::t('app', 'Илтимос, логин ва паролни киритинг:') ?></p>
-
+            <h4 style="text-align: center"><?= Yii::t('app', 'Илтимос,<br>логин ва паролни киритинг:') ?></h4>
+            <hr>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <?php //-- use email or username field depending on model scenario --// ?>
             <?php if ($model->scenario === 'lwe'): ?>
 
                 <?= $form->field($model, 'email')->input('email',
-                    ['placeholder' => Yii::t('app', 'Enter your e-mail'), 'autofocus' => true]) ?>
+                    ['placeholder' => Yii::t('app', 'e-mail киритинг'), 'autofocus' => true])->label(false)->error(false) ?>
 
             <?php else: ?>
 
                 <?= $form->field($model, 'username')->textInput(
-                    ['placeholder' => Yii::t('app', 'Фойдаланувчини киритинг'), 'autofocus' => true]) ?>
+                    ['placeholder' => Yii::t('app', 'Фойдаланувчини киритинг'), 'autofocus' => true])->label(false)->error(false) ?>
 
             <?php endif ?>
 
-            <?= $form->field($model, 'password')->passwordInput(['placeholder' => Yii::t('app', 'Паролни киритинг')]) ?>
+            <?= $form->field($model, 'password')->passwordInput(['placeholder' => Yii::t('app', 'Паролни киритинг')])->label(false)->error(false) ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+            <?= $form->field($model, 'rememberMe')->checkbox()->label('Эслаб қолиш') ?>
 
-            <div style="color:#999;margin:1em 0">
+  <!--          <div style="color:#999;margin:1em 0">
                 <?= Yii::t('app', 'If you forgot your password you can') ?>
                 <?= Html::a(Yii::t('app', 'reset it'), ['site/request-password-reset']) ?>.
             </div>
-
+-->
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('app', 'Кириш'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
@@ -56,7 +56,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="col-md-4" ></div>
 
-
-
-  
 </div>
