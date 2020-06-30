@@ -21,38 +21,29 @@ use kartik\daterange\DateRangePicker;
     ]); ?>
 
 
+   
     <div class="col-md-4">
         <?= $form->field($model, 'startDT')->widget(DatePicker::classname(), [
-            'attribute'=>'detail_date',
-//            'convertFormat'=>true,
-            'options' => ['placeholder' => 'Санани киритинг ...',
-                'value' =>$_GET['XujjatSearch']['startDT']?$_GET['startDT'] : date("d.m.yy"),
-//                'value' =>'detail_date',
-            ],
-            'pluginOptions' => [
-                'autoclose' => true,
-                'timePicker'=>true,
-                'format' =>'dd.mm.yyyy'
-            ]
-//            ,'disabled' => $disabledField
-        ])->label(false); ?>
-    </div>
-    <div class="col-md-4">
+                'options' => ['placeholder' => 'Проводка(Дан...)',
+                // 'value' => date('Y-m-d')
+                ],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' =>'yyyy-mm-dd'
+                ]
+            ])->label(false); ?>
+        </div>
+        <div class="col-md-4">
         <?= $form->field($model, 'endDT')->widget(DatePicker::classname(), [
-            'attribute'=>'detail_date',
-//            'convertFormat'=>true,
-            'options' => ['placeholder' => 'Санани киритинг ...',
-                'value' =>$_GET['XujjatSearch']['endDT']?$_GET['endDT'] : date("d.m.yy",strtotime('+1 days')),
-//                'value' =>'detail_date',
-            ],
-            'pluginOptions' => [
-                'autoclose' => true,
-                'timePicker'=>true,
-                'format' =>'dd.mm.yyyy'
-            ]
-//            ,'disabled' => $disabledField
-        ])->label(false); ?>
-    </div>
+                'options' => ['placeholder' => 'Проводка(...Гача)',
+                // 'value' => date('Y-m-d')
+                ],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' =>'yyyy-mm-dd'
+                ]
+            ])->label(false); ?>
+        </div>
 
 
 <!--    --><?//= $form->field($model, 'detail_date') ?>
@@ -62,8 +53,8 @@ use kartik\daterange\DateRangePicker;
 
     <div class="form-group">
 
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Тозалаш', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

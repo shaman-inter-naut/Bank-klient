@@ -48,6 +48,7 @@ class XujjatSearch extends Xujjat
     {
         return [
             [['id',  'expence_type_id', 'tip_deb_kred','from_date','to_date' ], 'integer'],
+            //[['startDT','endDT'],'date'],
             [['datetime_min','datetime_max','startDT','endDT','detail_date','file_id', 'filecom_id', 'period_id','inn_id','data_id', 'company_account_id','detail_account',
                 'detail_inn', 'detail_partner_unique_code', 'detail_name', 'detail_document_number', 'detail_mfo',
                 'detail_debet', 'detail_kredit', 'detail_purpose_of_payment', 'code_currency', 'contract_date'], 'safe'],
@@ -73,6 +74,10 @@ class XujjatSearch extends Xujjat
      */
     public function search($params)
     {
+        // echo "<pre>";
+        // print_r($params);
+        // echo "</pre>";
+        // die;
         $query = Xujjat::find();
         $qu = Company::find();
 
@@ -154,8 +159,8 @@ class XujjatSearch extends Xujjat
 
 
 //            $query->andFilterWhere(['and',['>','detail_date',$this->startDT], ['<','detail_date',$this->endDT]]);
-            $query->andFilterWhere(['>', 'detail_date', $this->startDT]);
-            $query   ->andFilterWhere(['<', 'detail_date',$this->endDT]);
+if(isset($this->endDT))
+            $query->andFilterWhere(['between', 'detail_date', $this->startDT,$this->endDT.' 23:59:59']);
 
 
         return $dataProvider;
