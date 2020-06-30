@@ -109,8 +109,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>  'detail_date',
                 'value'=>  'detail_date',
                 'header' => 'Проводканинг сана',
-                'contentOptions' => ['style' => 'width: 200px;'],
-                'headerOptions' => ['style' => 'width:200px !important'],
+//                'contentOptions' => ['style' => 'width: 200px;'],
+//                'headerOptions' => ['style' => 'width:200px !important'],
             ],
 //            [
 //                'attribute'=>  'detail_date',
@@ -269,6 +269,6 @@ Modal::end();
 ?>
 <script>
     var w = window.innerWidth;
-    var h = window.innerHeight-220;
+    var h = window.innerHeight-190;
     document.getElementById("stil").style.height = h+"px";
 </script>
