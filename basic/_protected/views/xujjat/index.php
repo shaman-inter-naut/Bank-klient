@@ -20,9 +20,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
     .stil{
-        /*position:fixed;*/
+
         overflow-x:auto;
     }
+    /*.stil table{*/
+    /*    position: relative;*/
+    /*}*/
+    /*.stil table thead{*/
+    /*    position: -webkit-sticky;*/
+    /*    position: absolute;*/
+    /*    top: 0;*/
+    /*}*/
 </style>
 
 <div  style="padding-bottom: 30px">
@@ -123,30 +131,30 @@ $this->params['breadcrumbs'][] = $this->title;
                        ]
                    ]),
                ],
-
-               [
-                   'attribute'=>'period_id',
-                   'value' => 'file.data_period',
-                   'header' => 'Сана оралиқ',
-
-                   'filter' =>  DateTimePicker::widget([
-                       'model' => $searchModel,
-                       'attribute' => 'period_id',
-                       'template' => '{input}',
-                       'language' => 'ru',
-                       'size' => 'ms',
-                       'clientOptions' => [
-                           'startView' => 2,
-                           'minView' => 2,
-                           'maxView' => 0,
-                           'autoclose' => true,
-                           'format' => 'd.mm.yyyy',
-                           'todayBtn' => true,
-                           'clearBtn' => true
-
-                       ]
-                   ]),
-               ],
+//
+//               [
+//                   'attribute'=>'period_id',
+//                   'value' => 'file.data_period',
+//                   'header' => 'Сана оралиқ',
+//
+//                   'filter' =>  DateTimePicker::widget([
+//                       'model' => $searchModel,
+//                       'attribute' => 'period_id',
+//                       'template' => '{input}',
+//                       'language' => 'ru',
+//                       'size' => 'ms',
+//                       'clientOptions' => [
+//                           'startView' => 2,
+//                           'minView' => 2,
+//                           'maxView' => 0,
+//                           'autoclose' => true,
+//                           'format' => 'd.mm.yyyy',
+//                           'todayBtn' => true,
+//                           'clearBtn' => true
+//
+//                       ]
+//                   ]),
+//               ],
 //            'detail_date',
             [
                 'attribute'=>  'detail_date',
@@ -271,10 +279,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
 
-            'expence_type_id',
-            'detail_date',
-            'detail_account',
-            'detail_inn',
+
+//            olingan
+//            'expence_type_id',
+//            'detail_date',
+//            'detail_account',
+//            'detail_inn',
 //            'detail_partner_unique_code',
 //            'detail_name',
 //            'detail_document_number',
