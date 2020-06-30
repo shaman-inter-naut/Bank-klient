@@ -346,7 +346,7 @@ use yii\bootstrap\Modal;
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>GM&nbsp;&nbsp;</span></strong>UzAuto
+            &copy; Copyright <strong><span>GM&nbsp;&nbsp;</span></strong>UzAuto<br> <?=date('d.m.yy')?>
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
