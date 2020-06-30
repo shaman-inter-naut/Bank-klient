@@ -150,7 +150,6 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'detail_date',
             [
                 'attribute'=>  'detail_date',
-                'format' => ['date', 'dd.mm.yyyy H:i:s'],
                 'value'=>  'detail_date',
                 'header' => 'Правотка сана',
             ],

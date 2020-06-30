@@ -21,38 +21,29 @@ use kartik\daterange\DateRangePicker;
     ]); ?>
 
 
+   
     <div class="col-md-4">
         <?= $form->field($model, 'startDT')->widget(DatePicker::classname(), [
-            'attribute'=>'detail_date',
-//            'convertFormat'=>true,
-            'options' => ['placeholder' => 'Санани киритинг ...',
-                'value' =>$_GET['XujjatSearch']['startDT']?$_GET['startDT'] : date("d.m.yy"),
-//                'value' =>'detail_date',
-            ],
-            'pluginOptions' => [
-                'autoclose' => true,
-                'timePicker'=>true,
-                'format' =>'dd.mm.yyyy'
-            ]
-//            ,'disabled' => $disabledField
-        ])->label(false); ?>
-    </div>
-    <div class="col-md-4">
+                'options' => ['placeholder' => 'Бошлаш вақти(Дан...)', 
+                // 'value' => date('Y-m-d')
+                ],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' =>'yyyy-mm-dd'
+                ]
+            ])->label(false); ?>
+        </div>
+        <div class="col-md-4">
         <?= $form->field($model, 'endDT')->widget(DatePicker::classname(), [
-            'attribute'=>'detail_date',
-//            'convertFormat'=>true,
-            'options' => ['placeholder' => 'Санани киритинг ...',
-                'value' =>$_GET['XujjatSearch']['endDT']?$_GET['endDT'] : date("d.m.yy",strtotime('+1 days')),
-//                'value' =>'detail_date',
-            ],
-            'pluginOptions' => [
-                'autoclose' => true,
-                'timePicker'=>true,
-                'format' =>'dd.mm.yyyy'
-            ]
-//            ,'disabled' => $disabledField
-        ])->label(false); ?>
-    </div>
+                'options' => ['placeholder' => 'Бошлаш вақти(...Гача)', 
+                // 'value' => date('Y-m-d')
+                ],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' =>'yyyy-mm-dd'
+                ]
+            ])->label(false); ?>
+        </div>
 
 
 <!--    --><?//= $form->field($model, 'detail_date') ?>
