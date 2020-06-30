@@ -13,19 +13,19 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(['id' => 'form-user']); ?>
 
         <?= $form->field($user, 'username')->textInput(
-                ['placeholder' => Yii::t('app', 'Create username'), 'autofocus' => true]) ?>
+                ['placeholder' => Yii::t('app', 'Create username'), 'autofocus' => true]) ->label(false)->error(false)?>
         
-        <?= $form->field($user, 'email')->input('email', ['placeholder' => Yii::t('app', 'Enter e-mail')]) ?>
+        <?= $form->field($user, 'email')->input('email', ['placeholder' => Yii::t('app', 'Enter e-mail')])->label(false)->error(false) ?>
 
         <?php if ($user->scenario === 'create'): ?>
 
             <?= $form->field($user, 'password')->widget(PasswordInput::classname(), 
-                ['options' => ['placeholder' => Yii::t('app', 'Create password')]]) ?>
+                ['options' => ['placeholder' => Yii::t('app', 'Create password')]])->label(false)->error(false) ?>
 
         <?php else: ?>
 
             <?= $form->field($user, 'password')->widget(PasswordInput::classname(),
-                     ['options' => ['placeholder' => Yii::t('app', 'Change password ( if you want )')]]) ?> 
+                     ['options' => ['placeholder' => Yii::t('app', 'Change password ( if you want )')]]) ->label(false)->error(false)?>
 
         <?php endif ?>
 
