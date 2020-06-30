@@ -324,7 +324,7 @@ use yii\bootstrap\Modal;
                         <h4>Telegram</h4>
                         <a style="text-decoration: none" href="https://t.me/Avtokompanent">
                         <p><i  class="icon bx bxl-telegram"></i>@Avtokompanent</p>
-                            
+
                         </a>
                     </div>
                     <div>

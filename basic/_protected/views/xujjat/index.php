@@ -159,7 +159,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>  'detail_date',
                 'value'=>  'detail_date',
-                'header' => 'Правотка сана',
+                'header' => 'Проводка сана',
             ],
 
                 [

@@ -12,7 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--<div  style="padding-bottom: 30px">-->
 <!--    --><?//=Yii::$app->controller->renderPartial("//layouts/header")?>
 <!--</div>-->
-<div style="padding-top: 50px;" class="container site-login">
+<!--<div style="background-image: url('/themes/123.gif'); height: 100%" >-->
+<div style="background-color: #3f4079; height: 100%" >
+
+
+<div style="padding-top: 150px;" class="container site-login">
 
 <!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
     <div class="col-md-4" ></div>
@@ -20,7 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class=" well bs-component">
 <!--            <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
 
-            <h4 style="text-align: center"><?= Yii::t('app', 'Илтимос,<br>логин ва паролни киритинг:') ?></h4>
+            <h3 style="text-align: center">Банк-клиент тизими</h3>
+            <h5 style="text-align: center"><?= Yii::t('app', 'Илтимос, логин ва паролни киритинг:') ?></h5>
             <hr>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
@@ -56,4 +61,5 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="col-md-4" ></div>
 
+</div>
 </div>

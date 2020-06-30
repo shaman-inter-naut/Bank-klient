@@ -24,7 +24,7 @@ use kartik\daterange\DateRangePicker;
    
     <div class="col-md-4">
         <?= $form->field($model, 'startDT')->widget(DatePicker::classname(), [
-                'options' => ['placeholder' => 'Бошлаш вақти(Дан...)', 
+                'options' => ['placeholder' => 'Проводка(Дан...)',
                 // 'value' => date('Y-m-d')
                 ],
                 'pluginOptions' => [
@@ -35,7 +35,7 @@ use kartik\daterange\DateRangePicker;
         </div>
         <div class="col-md-4">
         <?= $form->field($model, 'endDT')->widget(DatePicker::classname(), [
-                'options' => ['placeholder' => 'Бошлаш вақти(...Гача)', 
+                'options' => ['placeholder' => 'Проводка(...Гача)',
                 // 'value' => date('Y-m-d')
                 ],
                 'pluginOptions' => [
@@ -53,8 +53,8 @@ use kartik\daterange\DateRangePicker;
 
     <div class="form-group">
 
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Тозалаш', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
