@@ -216,9 +216,13 @@ use yii\bootstrap\Modal;
         <div class="container" data-aos="zoom-in">
 
             <div class="text-center">
-                <h3>Call To Action</h3>
-                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a class="cta-btn" href="#">Call To Action</a>
+                <h3>to Ms Excel</h3>
+                <p>Хужжатларни ушбу ҳавола орқали кўчириб олинг</p>
+<!--                <a class="cta-btn" href="#">Call To Action</a>-->
+                <a href="<?=Url::to('/file-info/to-excel')?>">
+                    <img style="height: 50px" src="themes/Excel-icon.png">
+<!--                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>-->
+                </a>
             </div>
 
         </div>
@@ -563,3 +567,4 @@ use yii\bootstrap\Modal;
 <?php
 //Modal::end();
 //?>
+
