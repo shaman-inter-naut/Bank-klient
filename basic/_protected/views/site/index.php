@@ -22,12 +22,14 @@ use yii\bootstrap\Modal;
 <!--            <img style="height: 20px" src="themes/logo.jpg">-->
 <!--            themes/day/assets/img/team/team-3.jpg-->
 <!--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
+<!--            <a style="color:#4d90fe;   font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>-->
             <a style="color:#4d90fe;   font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>
 <!--            <i style="padding-left: 80px" class="cen icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>-->
         </div>
 <!--        <div class="social-links">-->
         <div >
-            <a href="<?=Url::to('/file-info/to-excel')?>">
+            <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-excel')?>">
+                <span style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
                 <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
             </a>
             <? if (Yii::$app->user->isGuest) {?>
