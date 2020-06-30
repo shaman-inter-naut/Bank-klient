@@ -12,14 +12,14 @@ use yii\bootstrap\Modal;
 
 
 <!-- ======= Top Bar ======= -->
-<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
+<div style="background-color: #4a4b8e; height: 8%" id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
 
     <div class="cen container d-flex">
-        <div style="padding-top: 20px" class="contact-info mr-auto">
+        <div class="contact-info mr-auto">
 <!--            <img style="height: 20px" src="themes/logo.jpg">-->
 <!--            themes/day/assets/img/team/team-3.jpg-->
 <!--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
-            <a style="color:#4d90fe; padding: 0 2.5px;  font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>
+            <a style="color:#4d90fe;   font-size: 20px; border: 1px solid #4d90fe;" >UzAutoComponents</a> <br> <i style="color: orange; ">CASH FLOW INFO</i>
 <!--            <i style="padding-left: 80px" class="cen icofont-phone"></i><a href="tel:+1 5589 55488 55">+1 5589 55488 55</a>-->
         </div>
 <!--        <div class="social-links">-->
@@ -78,7 +78,7 @@ use yii\bootstrap\Modal;
 
 
     <!-- ======= Services Section ======= -->
-    <section style="padding-top: 0" id="services" class="services">
+    <section style="padding-top: 60px" id="services" class="services">
         <div class="container">
 
             <div class="section-title">
@@ -160,16 +160,16 @@ use yii\bootstrap\Modal;
                 </div>
                 <div class="col-lg-4" data-aos="fade-up">
                     <div   class="box">
-                        <a style="text-decoration: none" href="<?=Url::to('/bank/index')?>">
-                            <span  >Банклар</span>
+                        <a style="text-decoration: none" href="<?=Url::to('/company/index')?>">
+                            <span  >Корхоналар</span>
                             <h4 >Lorem Ipsum</h4>
                             <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
                     </div>
                 </div>
                 <div class="col-lg-4" data-aos="fade-up">
                     <div   class="box">
-                        <a style="text-decoration: none" href="<?=Url::to('/bank/index')?>">
-                            <span  >Банклар</span>
+                        <a style="text-decoration: none" href="<?=Url::to('/currency/index')?>">
+                            <span  >Валюталар</span>
                             <h4 >Lorem Ipsum</h4>
                             <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p></a>
                     </div>
