@@ -30,7 +30,7 @@ class Currency extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code'], 'integer'],
+//            [['code'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];
     }
