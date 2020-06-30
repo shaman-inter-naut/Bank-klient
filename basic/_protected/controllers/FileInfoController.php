@@ -1135,42 +1135,42 @@ class FileInfoController extends Controller
 
 
                     $new_arrayBlokUSD = $summaBlokUSD[$cName->unical_code] ? $summaBlokUSD[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayBlokUSD));
+                    $sheet->setCellValue("L{$line}", array_sum($new_arrayBlokUSD));
                     $sum_new_arrayBlokUSD += array_sum($new_arrayBlokUSD);       
 
 
                     $new_arrayBlokEUR = $summaBlokEUR[$cName->unical_code] ? $summaBlokEUR[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayBlokEUR));
+                    $sheet->setCellValue("M{$line}", array_sum($new_arrayBlokEUR));
                     $sum_new_arrayBlokEUR += array_sum($new_arrayBlokEUR);   
 
 
                     $new_arrayBlokRUB = $summaBlokRUB[$cName->unical_code] ? $summaBlokRUB[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayBlokRUB));
+                    $sheet->setCellValue("N{$line}", array_sum($new_arrayBlokRUB));
                     $sum_new_arrayBlokRUB += array_sum($new_arrayBlokRUB);    
 
 
                     $new_arrayDepUZS = $summaDepUZS[$cName->unical_code] ? $summaDepUZS[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayDepUZS));
+                    $sheet->setCellValue("O{$line}", array_sum($new_arrayDepUZS));
                     $sum_new_arrayDepUZS += array_sum($new_arrayDepUZS);   
 
 
                     $new_arrayDepUSD = $summaDepUSD[$cName->unical_code] ? $summaDepUSD[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayDepUSD));
+                    $sheet->setCellValue("P{$line}", array_sum($new_arrayDepUSD));
                     $sum_new_arrayDepUSD += array_sum($new_arrayDepUSD);       
 
 
                     $new_arrayDepEUR = $summaDepEUR[$cName->unical_code] ? $summaDepEUR[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayDepEUR));
+                    $sheet->setCellValue("Q{$line}", array_sum($new_arrayDepEUR));
                     $sum_new_arrayDepEUR += array_sum($new_arrayDepEUR);   
 
 
                     $new_arrayDepRUB = $summaDepRUB[$cName->unical_code] ? $summaDepRUB[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayDepRUB));
+                    $sheet->setCellValue("R{$line}", array_sum($new_arrayDepRUB));
                     $sum_new_arrayDepRUB += array_sum($new_arrayDepRUB);    
 
 
                     $new_arrayKorpKarta = $summaKorpKarta[$cName->unical_code] ? $summaKorpKarta[$cName->unical_code] : []; 
-                    $sheet->setCellValue("K{$line}", array_sum($new_arrayKorpKarta));
+                    $sheet->setCellValue("S{$line}", array_sum($new_arrayKorpKarta));
                     $sum_new_arrayKorpKarta += array_sum($new_arrayKorpKarta);                                                                                                                                                                                                                                                                                                        
 
                     $line++;
