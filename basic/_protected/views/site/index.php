@@ -397,5 +397,5 @@ use yii\bootstrap\Modal;
 
 <div class="btns" id="btns">
     <a href="tel:+ 998 93 983 85 00" class="wh"><img alt="Napa Phone" src="/themes/phone.svg" width="60"/></a>
-    <a href="https://t.me/Avtokompanent" target="_blank" class="tg" ><img alt="Bank-klient" src="/themes/telegram.svg" width="60"/></a>
+    <a href="https://t.me/USFabduqaxxorov" target="_blank" class="tg" ><img alt="Bank-klient" src="/themes/telegram.svg" width="60"/></a>
 </div>
