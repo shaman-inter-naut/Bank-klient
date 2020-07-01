@@ -12,7 +12,7 @@ use yii\bootstrap\Modal;
         padding-right: 10px;
     }
 </style>
-<link href="web/tg_call.css" rel="stylesheet">
+
 
 <!-- ======= Top Bar ======= -->
 <div style="background-color: #4a4b8e; height: 8%" id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
@@ -82,16 +82,6 @@ use yii\bootstrap\Modal;
 <!--</section>-->
 
 <main id="main">
-
-    <?php
-    if (isset($spreed)){ ?>
-        <script language="JavaScript">
-            alert("<?= $spreed; ?>");
-        </script>
-        <?php session_destroy();
-        $s = 'Refresh:0; url='.Url::home(true);
-        header($s);
-    } ?>
 
     <!-- ======= Services Section ======= -->
     <section style="padding-top: 60px" id="services" class="services">
@@ -396,14 +386,3 @@ use yii\bootstrap\Modal;
 <!-- Template Main JS File -->
 <!--<script src="themes/day/assets/js/main.js"></script>-->
 
-
-
-
-
-
-
-
-<div class="btns" id="btns">
-    <a href="tel:+ 998 93 983 85 00" class="wh"><img alt="Napa Phone" src="/themes/phone.svg" width="60"/></a>
-    <a href="https://t.me/USFabduqaxxorov" target="_blank" class="tg" ><img alt="Bank-klient" src="/themes/telegram.svg" width="60"/></a>
-</div>

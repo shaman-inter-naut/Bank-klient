@@ -110,15 +110,9 @@ class SiteController extends Controller
 
         $company = Company::find()->all();
 
-        if (isset($_SESSION['spreed'])){
-            $spreed = $_SESSION['spreed'];
-        }
-
-
         return $this->render('index',[
             'bank' => $bank,
-            'company'=> $company,
-            'spreed'=> $spreed
+            'company'=> $company
         ]);
     }
 

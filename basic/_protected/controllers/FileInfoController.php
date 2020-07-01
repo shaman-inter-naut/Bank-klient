@@ -1188,11 +1188,9 @@ class FileInfoController extends Controller
         $date = date('d.m.Y - H.m.s');
         $writer->save($path_name . "Сводный отчёт (" . $date . ").xlsx");
 
-        session_start();
+        $info = "Ms Excel га юкланган файл ушбу манзилга сақланди: " . $path_name . "Сводный отчёт (" . $date . ").xlsx";
 
-        $_SESSION['spreed'] = "Ms Excel га юкланган файл ушбу манзилга сақланди: " . $path_name . "Сводный отчёт (" . $date . ").xlsx";
-
-        return $this->goHome();
+        return $this->goHome(['info' => $info]);
 
 
     }
