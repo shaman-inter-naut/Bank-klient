@@ -1174,18 +1174,6 @@ class FileInfoController extends Controller
 
 
 
-
-        //Файл готов
-        //Отдаем его браузеру на скачивание
-        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
-        header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        $date = date('d.m.Y H:m:s');
-        header("Content-type: application/vnd.ms-excel");
-        header("Content-Disposition: attachment; filename=order.xlsx");
-    
-
         function getName($n) {
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $randomString = '';
@@ -1195,6 +1183,28 @@ class FileInfoController extends Controller
             }
             return $randomString;
         }
+
+
+
+        //Файл готов
+        //Отдаем его браузеру на скачивание
+//        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
+//        header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
+//        header("Cache-Control: no-cache, must-revalidate");
+//        header("Pragma: no-cache");
+//        $date = date('d.m.Y H:m:s');
+//        header("Content-type: application/vnd.ms-excel");
+//        header("Content-Disposition: attachment; filename=order.xlsx");
+
+
+        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
+        header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Pragma: no-cache");
+        header("Content-type: application/vnd.ms-excel" );
+        header("Content-Disposition: attachment; filename=order.xlsx");
+
+//        return $this->render('to-spreed');
 
         //  $sheet->setCellValue('A1', 'Hello World !');
         $writer = new Xlsx($spreadsheet);
