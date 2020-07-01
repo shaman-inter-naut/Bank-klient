@@ -4,55 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Modal;
 ?>
 
-<style>
-    .cen{
-        align-items: center;
-    }
-    .icon{
-        padding-right: 10px;
-    }
-
-     #tooltip {
-         position: relative;
-         display: inline-block;
-         /*border-bottom: 1px dotted black;*/
-     }
-
-    #tooltip .tooltiptext {
-        visibility: hidden;
-        width: 300px;
-        background-color: #4a4b8e;
-        color: white;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        top: 125%;
-        left: 0%;
-        margin-left: -60px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        margin-top: 30px;
-    }
-
-    #tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        /*bottom: 100%;*/
-        left: 100%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-
-    #tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-</style>
-
+<link href="web/tg_call.css" rel="stylesheet">
 
 <!-- ======= Top Bar ======= -->
 <div style="background-color: #4a4b8e; height: 8%" id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
@@ -344,6 +296,10 @@ use yii\bootstrap\Modal;
     <!-- End Contact Section -->
 
 </main><!-- End #main -->
+<div class="btns" id="btns">
+    <a href="tel:+ 998 93 983 85 00" target="_blank" class="wh"><img alt="Napa Phone" src="/themes/phone.svg" width="60"/></a>
+    <a href="https://t.me/USFabduqaxxorov" class="tg" ><img alt="Napa Telegram" src="/themes/telegram.svg" width="60"/></a>
+</div>
 
 
 <footer id="footer">
@@ -403,7 +359,6 @@ use yii\bootstrap\Modal;
         </div>
     </div>
 </footer><!-- End Footer -->
-
 
 
 <!-- ======= Footer ======= -->
