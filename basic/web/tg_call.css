@@ -134,12 +134,19 @@
     position: relative;
     z-index: 99;
 }
+
+
+/*site/indexdagi*/
+
 .cen{
     align-items: center;
 }
 .icon{
     padding-right: 10px;
 }
+
+/*tooltip*/
+
 
 #tooltip {
     position: relative;
