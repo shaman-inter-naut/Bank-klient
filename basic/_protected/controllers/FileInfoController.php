@@ -1207,10 +1207,18 @@ class FileInfoController extends Controller
 //        return $this->render('to-spreed');
 
         //  $sheet->setCellValue('A1', 'Hello World !');
+
+
+
+        $path_name = 'C:/Сводные отчёты/';
+
+        if ( ! is_dir($path_name)) {
+            mkdir($path_name);
+        }
+
         $writer = new Xlsx($spreadsheet);
         $date = date('d.m.Y');
-        $writer->save("downloads/Сводный отчёт (".getName(6).").xlsx");
-
+        $writer->save($path_name."/Сводный отчёт (".getName(6).").xlsx");
 
 
         return $this->goHome();
