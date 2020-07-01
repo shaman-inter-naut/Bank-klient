@@ -1196,20 +1196,6 @@ class FileInfoController extends Controller
 //        header("Content-type: application/vnd.ms-excel");
 //        header("Content-Disposition: attachment; filename=order.xlsx");
 
-
-        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
-        header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
-        header("Cache-Control: no-cache, must-revalidate");
-        header("Pragma: no-cache");
-        header("Content-type: application/vnd.ms-excel" );
-        header("Content-Disposition: attachment; filename=order.xlsx");
-
-//        return $this->render('to-spreed');
-
-        //  $sheet->setCellValue('A1', 'Hello World !');
-
-
-
         $path_name = 'C:/Сводные отчёты/';
 
         if ( ! is_dir($path_name)) {
@@ -1218,7 +1204,7 @@ class FileInfoController extends Controller
 
         $writer = new Xlsx($spreadsheet);
         $date = date('d.m.Y');
-        $writer->save($path_name."/Сводный отчёт (".getName(6).").xlsx");
+        $writer->save($path_name."/Сводный отчёт ".$date." (".getName(6).").xlsx");
 
 
         return $this->goHome();
