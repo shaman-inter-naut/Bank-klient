@@ -346,7 +346,7 @@ use yii\bootstrap\Modal;
 
     <div class="container">
         <div class="copyright">
-            &copy;  <strong><span>GM&nbsp;&nbsp;</span></strong>UzAutoComponents<br> <?=date('d.m.yy')?>
+            &copy;  UzAutoComponents<br> <?=date('d.m.yy')?>
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
