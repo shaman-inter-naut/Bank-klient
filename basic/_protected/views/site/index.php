@@ -28,7 +28,7 @@ use yii\bootstrap\Modal;
         </div>
 <!--        <div class="social-links">-->
         <div >
-            <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-excel')?>">
+            <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-spreed')?>">
                 <span style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
                 <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
             </a>
@@ -346,7 +346,7 @@ use yii\bootstrap\Modal;
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>GM&nbsp;&nbsp;</span></strong>UzAuto<br> <?=date('d.m.yy')?>
+            &copy;  UzAutoComponents<br> <?=date('d.m.yy')?>
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->

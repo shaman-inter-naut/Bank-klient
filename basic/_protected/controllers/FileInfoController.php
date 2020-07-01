@@ -690,7 +690,7 @@ class FileInfoController extends Controller
         $sheet->getStyle("A{$line}:R{$line}")->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
 
-        //Делаем текст жирным и увеличиваем шрифт.
+        //
         $sheet->getStyle("A{$line}")->getFont()->setBold(true);
         $sheet->getStyle("A{$line}")->getFont()->setSize(14);
 
