@@ -1177,14 +1177,14 @@ class FileInfoController extends Controller
 
         //Файл готов
         //Отдаем его браузеру на скачивание
-    /*    header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
+        header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
         header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
         header("Cache-Control: no-cache, must-revalidate");
         header("Pragma: no-cache");
         $date = date('d.m.Y H:m:s');
         header("Content-type: application/vnd.ms-excel");
         header("Content-Disposition: attachment; filename=order.xlsx");
-    */
+    
 
         function getName($n) {
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -1200,6 +1200,8 @@ class FileInfoController extends Controller
         $writer = new Xlsx($spreadsheet);
         $date = date('d.m.Y');
         $writer->save("downloads/Сводный отчёт (".getName(6).").xlsx");
+
+
 
         return $this->goHome();
     }
