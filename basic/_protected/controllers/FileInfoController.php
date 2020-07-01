@@ -343,7 +343,7 @@ class FileInfoController extends Controller
                     if (!$document) {
                         $document = new Document();
                         $document->file_id = $lastID;
-                        $document->detail_date = $value[0];
+                        $document->detail_date = date_format(date_create($value[0]), 'Y-m-d H:i:s');
                         preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
                         $document->detail_account = $matches['acc'];
                         $document->detail_inn = $matches['inn'];
@@ -431,7 +431,7 @@ class FileInfoController extends Controller
                     if (!$document) {
                         $document = new Document();
                         $document->file_id = $lastID;
-                        $document->detail_date = $value[1];
+                        $document->detail_date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
                         $document->detail_document_number = $value[2];
                         $document->detail_inn = $inn;
                         $document->detail_account = $account;
@@ -507,7 +507,7 @@ class FileInfoController extends Controller
                     if (!$document) {
                         $document = new Document();
                         $document->file_id = $lastID;
-                        $document->detail_date = $value[1];
+                        $document->detail_date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
                         $document->detail_document_number = $value[2];
                         $document->detail_inn = trim(str_replace("ИНН:", "", $res['inn']));
                         $document->detail_account = trim(str_replace("Счет:", "", $res['acc']));
