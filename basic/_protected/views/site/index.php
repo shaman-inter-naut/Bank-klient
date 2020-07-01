@@ -83,7 +83,15 @@ use yii\bootstrap\Modal;
 
 <main id="main">
 
-
+    <?php
+    if (isset($spreed)){ ?>
+        <script language="JavaScript">
+            alert("<?= $spreed; ?>");
+        </script>
+        <?php session_destroy();
+        $s = 'Refresh:0; url=http://bank-klient/';
+        header($s);
+    } ?>
 
     <!-- ======= Services Section ======= -->
     <section style="padding-top: 60px" id="services" class="services">
