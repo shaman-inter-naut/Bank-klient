@@ -17,12 +17,13 @@
         "yiisoft/yii2-jui": "^2.0",
         "kartik-v/yii2-password": "@dev",
         "2amigos/yii2-date-time-picker-widget": "~1.0",
-        "phpoffice/phpexcel": "^1.8",
+        "phpoffice/phpexcel": "*",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-field-range": "dev-master",
         "kartik-v/yii2-datecontrol": "@dev",
         "kartik-v/yii2-widget-datepicker": "@dev",
-        "kartik-v/yii2-date-range": "dev-master"
+        "kartik-v/yii2-date-range": "dev-master",
+        "phpoffice/phpspreadsheet": "^1.12"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

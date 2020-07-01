@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use app\models\BankBranch;
 use app\models\Company;
 use app\models\Document;
@@ -651,7 +653,7 @@ class FileInfoController extends Controller
         //require( __DIR__ . '\protected\extensions\PHPExcel/Autoloader.php');
 
         //Создаем экземпляр класса PHPExcel.
-        $xls = new \PHPExcel();
+        $xls = new Spreadsheet();
 
         // Писать будем в первый лист.
         $xls->setActiveSheetIndex(0);
