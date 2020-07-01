@@ -388,3 +388,152 @@ use yii\bootstrap\Modal;
 <!-- Template Main JS File -->
 <!--<script src="themes/day/assets/js/main.js"></script>-->
 
+
+<style>
+
+    @-webkit-keyframes neon {
+        from {
+            text-shadow:
+                    0 0 6px rgba(255, 255, 255, 0.92),
+                    0 0 12px rgba(255, 255, 255, 0.34),
+                    0 0 24px rgba(255, 255, 255, 0.52),
+                    0 0 36px rgba(255, 255, 255, 0.92),
+                    0 0 34px rgba(255, 255, 255, 0.78),
+                    0 0 44px rgba(255, 255, 255, 0.92);
+        }
+
+        to {
+            text-shadow:
+                    0 0 6px rgba(228, 202, 202, 0.92),
+                    0 0 30px rgba(202, 228, 225, 0.34),
+                    0 0 14px rgba(242, 30, 30, 0.52),
+                    0 0 21px rgba(242, 30, 30, 0.92),
+                    0 0 35px rgba(242, 30, 30, 0.78),
+                    0 0 44px rgba(242, 30, 30, 0.92);
+        }
+    }
+
+    @keyframes neon {
+        from {
+            text-shadow:
+                    0 0 6px rgba(255, 255, 255, 0.92),
+                    0 0 12px rgba(255, 255, 255, 0.34),
+                    0 0 24px rgba(255, 255, 255, 0.52),
+                    0 0 36px rgba(255, 255, 255, 0.92),
+                    0 0 34px rgba(255, 255, 255, 0.78),
+                    0 0 44px rgba(255, 255, 255, 0.92);
+        }
+
+        to {
+            text-shadow:
+                    0 0 6px rgba(228, 202, 202, 0.92),
+                    0 0 30px rgba(202, 228, 225, 0.34),
+                    0 0 14px rgba(242, 30, 30, 0.52),
+                    0 0 21px rgba(242, 30, 30, 0.92),
+                    0 0 35px rgba(242, 30, 30, 0.78),
+                    0 0 44px rgba(242, 30, 30, 0.92);
+        }
+    }
+
+    @-webkit-keyframes anbtn {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+            opacity: 0;
+        }
+    }
+
+    @keyframes anbtn {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+            opacity: 0;
+        }
+    }
+
+    .btns {
+        position: fixed;
+        left: 0;
+        bottom: 40px;
+        width: 100%;
+        text-align: left;
+        padding: 0px 30px;
+        z-index: 9999;
+    }
+
+    .btns a:focus {
+        outline: 0;
+    }
+
+    .btns a {
+        position: absolute;
+        bottom: 0;
+        width: 60px;
+        height: 60px;
+        display: block;
+        margin: 10px auto;
+        border: unset;
+        background: unset;
+        display: inline-block;
+    }
+
+    .btns a:before {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        content: '';
+        -webkit-animation: anbtn 2s infinite;
+        animation: anbtn 2s infinite;
+    }
+
+    .btns a.wh {
+        right: 20px;
+        bottom: 170px;
+    }
+
+    .btns a.wh:before {
+        background: #4caf50;
+    }
+
+    .btns a.tg {
+        right: 20px;
+        bottom: 80px;
+    }
+
+    .btns a.tg:before {
+        background: #41b4e6;
+    }
+
+    .btns a img {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 99;
+    }
+</style>
+
+
+
+
+
+<div class="btns" id="btns">
+    <a href="tel:+ 998 93 983 85 00" class="wh"><img alt="Napa Phone" src="/themes/phone.svg" width="60"/></a>
+    <a href="https://t.me/Avtokompanent" target="_blank" class="tg" ><img alt="Bank-klient" src="/themes/telegram.svg" width="60"/></a>
+</div>
