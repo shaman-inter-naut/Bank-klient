@@ -1200,6 +1200,8 @@ class FileInfoController extends Controller
         $writer = new Xlsx($spreadsheet);
         $date = date('d.m.Y');
         $writer->save("downloads/Сводный отчёт (".getName(6).").xlsx");
+
+        return $this->render('to-spreed');
     }
 
 
