@@ -89,7 +89,7 @@ use yii\bootstrap\Modal;
             alert("<?= $spreed; ?>");
         </script>
         <?php session_destroy();
-        $s = 'Refresh:0; url=http://bank-klient/';
+        $s = 'Refresh:0; url='.Url::home(true);
         header($s);
     } ?>
 
