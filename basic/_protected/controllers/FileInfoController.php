@@ -1201,7 +1201,7 @@ class FileInfoController extends Controller
         $date = date('d.m.Y');
         $writer->save("downloads/Сводный отчёт (".getName(6).").xlsx");
 
-        return $this->render('to-spreed');
+        return $this->goHome();
     }
 
 
