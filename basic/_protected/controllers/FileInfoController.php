@@ -1190,7 +1190,7 @@ class FileInfoController extends Controller
 
         $info = "Ms Excel га юкланган файл ушбу манзилга сақланди: " . $path_name . "Сводный отчёт (" . $date . ").xlsx";
 
-        return $this->goHome(['info' => $info]);
+        return $this->goHome();
 
 
     }

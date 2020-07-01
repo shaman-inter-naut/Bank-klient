@@ -11,6 +11,46 @@ use yii\bootstrap\Modal;
     .icon{
         padding-right: 10px;
     }
+
+     #tooltip {
+         position: relative;
+         display: inline-block;
+         /*border-bottom: 1px dotted black;*/
+     }
+
+    #tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        background-color: #4a4b8e;
+        color: white;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 125%;
+        left: 0%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        margin-top: 30px;
+    }
+
+    #tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        /*bottom: 100%;*/
+        left: 100%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+    #tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
 </style>
 
 
@@ -28,10 +68,18 @@ use yii\bootstrap\Modal;
         </div>
 <!--        <div class="social-links">-->
         <div >
-            <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-spreed')?>">
-                <span style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
-                <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
-            </a>
+
+
+            <div id="tooltip" style="text-decoration: none;">
+
+                <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-spreed')?>">
+
+                    <span id="tooltip" style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
+                    <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
+                </a>
+                <span class="tooltiptext">Ms Excel га юкланган файллар ушбу манзилга сақланади: <br><br><b>С:/Сводные отчёты</b></span>
+            </div>
+
             <? if (Yii::$app->user->isGuest) {?>
 <!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
 //                    'class' => 'btn-success btn-xs',
