@@ -111,7 +111,6 @@ class SiteController extends Controller
         $company = Company::find()->all();
 
         return $this->render('index',[
-
             'bank' => $bank,
             'company'=> $company
         ]);

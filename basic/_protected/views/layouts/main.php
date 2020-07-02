@@ -22,12 +22,16 @@ AppAsset::register($this);
         <meta content="GM, Корхоналар, Банклар, Хисоб рақамлар, " name="keywords">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
+        <link rel="icon" type="image/png" sizes="32x32" href="/themes/logo.jpg">
+        <link rel="icon" type="image/png" sizes="96x96" href="/themes/logo.jpg">
+        <link rel="icon" type="image/png" sizes="16x16" href="/themes/logo.jpg">
         <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
         <link href="themes/day/assets/css/style.css" rel="stylesheet">
+
 
         <!--<link rel="stylesheet" href="../../web/new.css"> -->
 

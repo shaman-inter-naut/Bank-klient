@@ -44,16 +44,14 @@
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {
-            "setPermission": [
-                {
-                    "_protected/runtime": "0777",
-                    "_protected/runtime/mail": "0777",
-                    "_protected/runtime/session": "0777",
-                    "_protected/yii": "0755",
-                    "assets": "0777",
-                    "uploads": "0777"
-                }
-            ],
+            "setPermission": [{
+                "_protected/runtime": "0777",
+                "_protected/runtime/mail": "0777",
+                "_protected/runtime/session": "0777",
+                "_protected/yii": "0755",
+                "assets": "0777",
+                "uploads": "0777"
+            }],
             "generateCookieValidationKey": [
                 "_protected/config/web.php"
             ]

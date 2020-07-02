@@ -4,15 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Modal;
 ?>
 
-<style>
-    .cen{
-        align-items: center;
-    }
-    .icon{
-        padding-right: 10px;
-    }
-</style>
-
+<link href="web/tg_call.css" rel="stylesheet">
 
 <!-- ======= Top Bar ======= -->
 <div style="background-color: #4a4b8e; height: 8%" id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
@@ -28,10 +20,18 @@ use yii\bootstrap\Modal;
         </div>
 <!--        <div class="social-links">-->
         <div >
-            <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-spreed')?>">
-                <span style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
-                <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
-            </a>
+
+
+            <div id="tooltip" style="text-decoration: none;">
+
+                <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-spreed')?>">
+
+                    <span id="tooltip" style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
+                    <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
+                </a>
+                <span class="tooltiptext">Ms Excel га юкланган файллар ушбу манзилга сақланади: <br><br><b>С:/Сводные отчёты</b></span>
+            </div>
+
             <? if (Yii::$app->user->isGuest) {?>
 <!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
 //                    'class' => 'btn-success btn-xs',
@@ -82,8 +82,6 @@ use yii\bootstrap\Modal;
 <!--</section>-->
 
 <main id="main">
-
-
 
     <!-- ======= Services Section ======= -->
     <section style="padding-top: 60px" id="services" class="services">
@@ -298,6 +296,10 @@ use yii\bootstrap\Modal;
     <!-- End Contact Section -->
 
 </main><!-- End #main -->
+<div class="btns" id="btns">
+    <a href="tel:+ 998 93 983 85 00" target="_blank" class="wh"><img alt="Napa Phone" src="/themes/phone.svg" width="60"/></a>
+    <a href="https://t.me/USFabduqaxxorov" class="tg" ><img alt="Napa Telegram" src="/themes/telegram.svg" width="60"/></a>
+</div>
 
 
 <footer id="footer">
@@ -357,7 +359,6 @@ use yii\bootstrap\Modal;
         </div>
     </div>
 </footer><!-- End Footer -->
-
 
 
 <!-- ======= Footer ======= -->
