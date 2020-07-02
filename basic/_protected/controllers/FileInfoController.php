@@ -762,9 +762,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 // ****************************************************************** 20208840 + 20210840 + 20214840
 
         $nUSD = ['20208840', '20210840', '20214840'];
@@ -779,10 +776,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 20208978 + 20210978 + 20214978
 
@@ -799,11 +792,7 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
-
-// ****************************************************************** 20208643 + 20210643 + 20214643
+        // ****************************************************************** 20208643 + 20210643 + 20214643
 
         $nRUB = ['20208643', '20210643', '20214643'];
 
@@ -817,10 +806,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 22602000
 
@@ -836,9 +821,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 
 // ****************************************************************** 22602840
@@ -856,9 +838,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 22602978
 
@@ -874,9 +853,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 
 // ****************************************************************** 22613000
@@ -894,9 +870,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 22613840
 
@@ -912,9 +885,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 
 // ****************************************************************** 22613978
@@ -932,9 +902,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 22613643
 
@@ -950,9 +917,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 
 // ****************************************************************** 20614000
@@ -970,9 +934,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 20614840
 
@@ -989,8 +950,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 // ****************************************************************** 20614978
 
@@ -1006,9 +965,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 
 // ****************************************************************** 20614643
@@ -1026,9 +982,6 @@ class FileInfoController extends Controller
             }
         }
 
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
-
 
 // ****************************************************************** 22620
 
@@ -1044,9 +997,6 @@ class FileInfoController extends Controller
                 }
             }
         }
-
-        // echo array_sum($dk20214);
-        // echo '<hr><hr>';
 
 
         $line++;
@@ -1178,6 +1128,7 @@ class FileInfoController extends Controller
 //        header("Content-type: application/vnd.ms-excel");
 //        header("Content-Disposition: attachment; filename=order.xlsx");
 
+
         $path_name = 'C:/Сводные отчёты/';
 
         if (!is_dir($path_name)) {
@@ -1188,11 +1139,78 @@ class FileInfoController extends Controller
         $date = date('d.m.Y - H.m.s');
         $writer->save($path_name . "Сводный отчёт (" . $date . ").xlsx");
 
-        $info = "Ms Excel га юкланган файл ушбу манзилга сақланди: " . $path_name . "Сводный отчёт (" . $date . ").xlsx";
-
         return $this->goHome();
 
 
+    }
+
+    public function actionToHtmlTable(){
+
+        $companyName = Company::find()->limit(23)->all();
+
+        $massiv = [
+            $n = ['20208000', '20210000', '20214000'],
+            $nUSD = ['20208840', '20210840', '20214840'],
+            $nEUR = ['20208978', '20210978', '20214978'],
+            $nRUB = ['20208643', '20210643', '20214643'],
+            $nAkkrUZS = ['22602000'],
+            $nAkkrEUR = ['22602840'],
+            $nAkkrRUB = ['22602978'],
+            $nBlokUZS = ['22613000'],
+            $nBlokUSD = ['22613840'],
+            $nBlokEUR = ['22613978'],
+            $nBlokRUB = ['22613643'],
+            $nDepUZS = ['20614000'],
+            $nDepUSD = ['20614840'],
+            $nDepEUR = ['20614978'],
+            $nDepRUB = ['20614643'],
+            $nKorpKarta = ['22620'],
+        ];
+
+        foreach ($massiv as $key_massiv => $value_massiv){
+//            print_r($value_massiv);
+            foreach ($value_massiv as $key_n => $value_n) {
+//                print_r($key_massiv." | ".$value_n."<br>");
+                $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
+//                print_r( $file);
+                foreach ($file as $key_file => $value_file) {
+//                    print_r( $value_file);
+                    $company_unikal = substr($value_file->company_account, 9, 8);
+//                    print_r($company_unikal);
+                    $document = Document::find()->where(['file_id' => $value_file->id])->all();
+//                    print_r($document);
+                    foreach ($document as $k => $val) {
+//                        print_r($val);
+                        $val->detail_kredit = $val->detail_kredit ? $val->detail_kredit : 0;
+                        $summa[$company_unikal][$key_massiv][$value_n] += $val->detail_kredit;
+                    }
+                }
+            }
+        }
+
+//        print_r($summa);
+
+
+//        foreach ($companyName as $i => $cName) {
+//            $new_array = $summa[$cName->unical_code] ? $summa[$cName->unical_code] : [];
+//            print_r(array_sum($new_array));
+//            echo "<hr>";
+//            $sum_new_array += array_sum($new_array);
+//        }
+//        print_r($sum_new_array."<br>");
+
+
+
+
+
+
+
+
+        return $this->render('to-html-table', [
+            'companyName' => $companyName,
+            'nUZS' => $nUZS,
+            'summa' => $summa
+        ]);
     }
 
 }
