@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         echo "<br>";
     ?>
 
-    <?= $form->field($model, 'file')->fileInput()->label(false)->error(false) ?>
+    <?= $form->field($model, 'file')->fileInput(['required'=>true])->label(false)->error(false) ?>
 
     <?= $form->field($model, 'bank_mfo')->hiddenInput(['maxlength' => true, 'value' => $fileMFO])->label(false)->error(false) ?>
 
