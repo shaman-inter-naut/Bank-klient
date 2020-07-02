@@ -22,7 +22,10 @@ use yii\bootstrap\Modal;
         <div >
 
 
+
+
             <div id="tooltip" style="text-decoration: none;">
+
 
                 <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-html-table')?>">
 
