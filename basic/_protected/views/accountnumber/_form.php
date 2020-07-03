@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+use dosamigos\datetimepicker\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AccountNumber */
@@ -14,10 +15,6 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'account_number')->textInput([
-
-    ])->label('Хисоб рақам') ?>
-
     <?= $form->field($model, 'bank_branch_id')->widget(Select2::classname(), [
         'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','short_name'),
         'language' => 'ru',
@@ -25,8 +22,33 @@ use kartik\select2\Select2;
         'pluginOptions' => [
             'allowClear' => true
         ],
-    ]);
+    ])->label('Банк филиаллари:');
     ?>
+
+    <?= $form->field($model, 'account_number')->textInput([])->label('Хисоб рақам') ?>
+
+    <?= $form->field($model, 'is_main')->radioList(['1'=>'асосий', '0'=>'иккиламчи'])->label(false) ?>
+
+    <?= $form->field($model, 'stock')->textInput([])->label('stock') ?>
+
+    <?= $form->field($model, 'stock_date')->widget(DateTimePicker::className(), [
+        'language' => 'ru',
+//        'size' => 'ms',
+        'template' => '{input}',
+//        'pickButtonIcon' => 'glyphicon glyphicon-time',
+        'inline' => false,
+        'clientOptions' => [
+            'startView' => 2,
+            'minView' => 2,
+            'maxView' => 0,
+            'autoclose' => false,
+            'linkFormat' => false,
+            'format' => 'yyyy-mm-dd',
+            'todayBtn' => true
+        ]
+    ]);?>
+
+
 <!---->
 <!--    --><?//= $form->field($model, 'bank_branch_id')->dropDownList(
 //        ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','short_name'),['prompt'=>'---Банкни танланг---'])->

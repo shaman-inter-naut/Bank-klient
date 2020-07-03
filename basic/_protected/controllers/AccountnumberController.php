@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\LoginForm;
 use app\models\AccountNumber;
+use app\models\AccountNumber123;
 use app\models\AccountNumberSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -78,7 +79,7 @@ class AccountnumberController extends Controller
      */
     public function actionCreate()
     {
-        $model = new AccountNumber();
+        $model = new AccountNumber123();
         $model->company_id = empty(Yii::$app->request->get('company_id')) ? 1 : Yii::$app->request->get('company_id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 //            return $this->redirect(['view', 'id' => $model->id]);
