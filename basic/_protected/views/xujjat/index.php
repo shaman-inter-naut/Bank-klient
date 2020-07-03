@@ -124,6 +124,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                  'attribute'=> 'detail_name',
                  'value'=> 'detail_name',
+//                 'value'=> htmlspecialchars_decode('detail_name', ENT_QUOTES),
+
                  'header' => 'Хамкор номи',
             ],
 
