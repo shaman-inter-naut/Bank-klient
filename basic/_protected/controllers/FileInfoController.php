@@ -390,6 +390,10 @@ class FileInfoController extends Controller
                 $unikal = substr($acc, 9, 8);
                 $company = Company::find()->where(['unical_code' => $unikal])->one();
                 $model->company_inn = $company->inn;
+                // echo "<pre>";
+                // print_r($unikal);
+                // echo "</pre>";
+                // die;
                 $model->file_name = $filePath;
                 $model->file_date = $date;
                 $model->data_period = $interval;
