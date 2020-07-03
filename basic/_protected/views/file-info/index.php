@@ -52,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
+
     <h1><?= Html::encode("ФАЙЛЛАР") ?></h1>
 
     <hr style="border: 5px solid darkslategrey">
@@ -59,6 +60,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('+', ['create'], ['class' => 'bank btn btn-primary']) ?>
     </p>
+
+    <?php if (
+        isset($_SESSION['mfo'])
+        && isset($_SESSION['main'])
+        && isset($_SESSION['inn'])
+    ){
+
+        ?>
+        <div class="alert info" style="text-align: center">
+            <span class="closebtn">&times;</span>
+            <b><h4 style="color:white">Сиз юклаган файлда ушбу маълумотлар мавжуд ЭМАС:</h4></b><hr>
+
+            <table style="text-align: left" border="0" width="100%">
+                <tr style="border: 0px solid red; color:black">
+                    <td width="25%">Банк МФО:</td>
+                    <td width="75%"><?= $_SESSION['mfo']; ?></td>
+                </tr>
+                <tr style="border: 0px solid red; color:black">
+                    <td width="25%">Корхона хисоб рақами:</td>
+                    <td width="75%"><?= $_SESSION['main']; ?></td>
+                </tr>
+                <tr style="border: 0px solid red; color:black">
+                    <td width="25%">Корхона ИНН: </td>
+                    <td width="75%"><?= $_SESSION['inn']; ?></td>
+                </tr>
+            </table>
+            <br>
+            <h6 style="color:white">Шу сабабли ушбу файлдаги маълумотлар базага сақланмади !</h6>
+        </div>
+        <?php session_destroy(); } ?>
+
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
