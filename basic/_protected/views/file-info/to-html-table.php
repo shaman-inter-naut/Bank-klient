@@ -82,60 +82,60 @@ use app\models\FileInfo;
     <h4 style="text-align: center; width: auto" >Информация о  потребности в сумовых денежных средствах предприятий локализации (<?= $currentDate; ?>)</h4>
     <table id="" border="1">
         <thead>
-        <tr>
+        <tr style="color: white; background-color: darkslategray">
             <th rowspan="4">№:</th>
             <th rowspan="4">Корхоналар</th>
-            <th rowspan="4">Уникальный код</th>
-            <th colspan="16" style="text-align: center">ОСТАТОК</th>
+            <th rowspan="4">Уникаль коди</th>
+            <th colspan="16" style="text-align: center">Хисоб рақамлардаги қолдиқлар</th>
         </tr>
-        <tr>
-            <td colspan="4" style="text-align: center"> Асосий хисоб рақам</td>
-            <td colspan="7" style="text-align: center">Махсус хисоб рақам</td>
-            <td colspan="4" style="text-align: center">Депозит хисоб рақам</td>
-            <td >Корпоратив карта</td>
+        <tr style="color: white; background-color: darkslategray">
+            <th colspan="4" style="text-align: center"> Асосий хисоб рақам</th>
+            <th colspan="7" style="text-align: center">Махсус хисоб рақам</th>
+            <th colspan="4" style="text-align: center">Депозит хисоб рақам</th>
+            <th rowspan="2">Корпоратив карта</th>
         </tr>
-        <tr>
-            <td>UZS</td>
-            <td>USD</td>
-            <td>EUR</td>
-            <td>RUB</td>
-            <td>Акккредитив (USD)</td>
-            <td>Акккредитив (EUR)</td>
-            <td>Акккредитив (RUB)</td>
-            <td>Блок счёт (UZS)</td>
-            <td>Блок счёт (USD)</td>
-            <td>Блок счёт (EUR)</td>
-            <td>Блок счёт (RUB)</td>
-            <td>Депозит (UZS)</td>
-            <td>Депозит (USD)</td>
-            <td>Депозит (EUR)</td>
-            <td>Депозит (RUB)</td>
+        <tr style="color: white; background-color: darkslategray">
+            <th>UZS</th>
+            <th>USD</th>
+            <th>EUR</th>
+            <th>RUB</th>
+            <th>Акккредитив (USD)</th>
+            <th>Акккредитив (EUR)</th>
+            <th>Акккредитив (RUB)</th>
+            <th>Блок счёт (UZS)</th>
+            <th>Блок счёт (USD)</th>
+            <th>Блок счёт (EUR)</th>
+            <th>Блок счёт (RUB)</th>
+            <th>Депозит (UZS)</th>
+            <th>Депозит (USD)</th>
+            <th>Депозит (EUR)</th>
+            <th>Депозит (RUB)</th>
         </tr>
-        <tr>
-            <td>20208000/20210000/20214000</td>
-            <td>20208840/20210840/20214840</td>
-            <td>20208978/20210978/20214978</td>
-            <td>20208643/20210643/20214643</td>
-            <td>22602000</td>
-            <td>22602840</td>
-            <td>22602978</td>
-            <td>22613000</td>
-            <td>22618840</td>
-            <td>22614978</td>
-            <td>22614978</td>
-            <td>20614000</td>
-            <td>20614840</td>
-            <td>20614978</td>
-            <td>20614643</td>
-            <td>22620</td>
+        <tr style="color: white; background-color: darkslategray; font:italic 12px Arial;">
+            <th >20208000 / 20210000 / 20214000</th>
+            <th>20208840 / 20210840 / 20214840</th>
+            <th>20208978 / 20210978 / 20214978</th>
+            <th>20208643 / 20210643 / 20214643</th>
+            <th>22602000</th>
+            <th>22602840</th>
+            <th>22602978</th>
+            <th>22613000</th>
+            <th>22618840</th>
+            <th>22614978</th>
+            <th>22614978</th>
+            <th>20614000</th>
+            <th>20614840</th>
+            <th>20614978</th>
+            <th>20614643</th>
+            <th>22620</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($companyName as $i => $cName) {  ?>
          <tr>
             <td><?= $i; ?></td>
-            <td><?= $cName->name; ?></td>
-            <td><?= $cName->unical_code; ?></td>
+            <td><b><?= $cName->name; ?></b></td>
+            <td style="color: darkblue"><?= $cName->unical_code; ?></td>
         <?php for($j=0; $j<16; $j++){
                 $arr = $summa[$cName->unical_code][$j] ? $summa[$cName->unical_code][$j] : [];
                 $sum_new_array[$j] += array_sum($arr);?>
@@ -143,8 +143,8 @@ use app\models\FileInfo;
         <?php } ?>
         </tr>
         <?php } ?>
-        <tr>
-            <td colspan="3">Жами:</td>
+        <tr style="color: white; background-color: darkslategray; font:bold 14px Arial;">
+            <td colspan="3" style="text-align: center">Жами:</td>
             <?php for($j=0; $j<16; $j++){?>
             <td><?= $sum_new_array[$j]; ?></td>
             <?php } ?>
