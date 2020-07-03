@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\AccountNumber;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use app\models\BankBranch;
@@ -11,6 +12,7 @@ use app\models\Bank;
 use Yii;
 use app\models\FileInfo;
 use app\models\FileInfoSearch;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -234,13 +236,16 @@ class FileInfoController extends Controller
 //              end     Asosiy contentni ichini o`qish
                 } //*******************************************************************************************************************
                 else if ($getTemplate->template == 3) {
+
                     if ($details == false) {
                         $patterns = array(
                             "acc" => "((Лицевой счет №\s+)\d{20})",   //acc
                             "inn" => "((ИНН:\s+)\d{9})",   // inn
+                            "toMFO" => "((ЖИЗЗАХ Ш.,\s+)\D+)",   // inn
                             "date" => "((Входящий остаток на\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
                             "interval1" => "((\s+Выписка с\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
-                            "interval2" => "((\s+по\s+)\d{1,2}\.\d{1,2}\.\d{4})"         // date
+                            "interval2" => "((\s+по\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
+                            "toMFO" => '(/ТИФ МИЛЛИЙ БАНКИ/)'         // toMFO
                         );
                         foreach ($patterns as $key => $pattern) {
                             preg_match($pattern, $s, $matches, PREG_OFFSET_CAPTURE, 0);
@@ -248,6 +253,17 @@ class FileInfoController extends Controller
                                 $results[$key] = $matches[0][0];
                             }
                         }
+
+
+                        
+                        
+
+//
+//
+//                        echo "<pre>";
+//                            print_r($results);
+//                        echo "<pre>";
+
                     }
                     // begin   Asosiy contentni ichini o`qish
                     if (strpos($s, "КОРРЕСПОНДЕНТ:")) {
@@ -281,6 +297,17 @@ class FileInfoController extends Controller
                         }
                     }
                     //              end     Asosiy contentni ichini o`qish
+//                    if ($details & $position > 10) {
+//                        //$text = 'ЖИЗЗАХ Ш., "ТИФ МИЛЛИЙ БАНКИ" АЖ ЖИЗЗАХ ВИЛОЯТИ ФИЛИАЛИ';
+//                        $regexp = '/ТИФ МИЛЛИЙ БАНКИ/';
+//                        $result = preg_match($regexp, $s, $match);
+//                        var_dump(
+//                            $result,
+//                            $match
+//                        );
+//                        if (strpos($s, "ТИФ МИЛЛИЙ БАНКИ"))
+//                            echo "Positsiya: ".(strpos($s, "ТИФ МИЛЛИЙ БАНКИ"));
+//                    }
                 }
 //*******************************************************************************************************************
             }
@@ -299,77 +326,96 @@ class FileInfoController extends Controller
                 $interval = trim(str_replace("Сведения о работе счета c ", "", $results['interval']));
                 $interval = str_replace(" по ", " - ", $interval);
 
+                $mfoTest = BankBranch::find()->where(['mfo' => $mfo])->one();
+                $innTest = Company::find()->where(['inn' => $inn])->one();
+                $mainTest = AccountNumber::find()->where(['account_number' => $main])->one();
 
-                $model->bank_id = $_POST['FileInfo']['bank_id'];
-                $model->bank_mfo = $mfo;
-                $model->company_account = $main;
-                $model->company_inn = $inn;
-                $unikal = substr($main, 9, 8);
-                $company = Company::find()->where(['unical_code' => $unikal])->one();
-                $model->company_id = $company->id;
-                $model->file_name = $filePath;
-                $model->file_date = $date;
-                $model->data_period = $interval;
-                $model->depozitBefore = $beginDeposit;
-                $endDeposit = trim(str_replace(",", "", $endDeposit));
-                $model->depozitAfter = $endDeposit;
-                $model->save(false);
-                $lastID = Yii::$app->db->getLastInsertID();
+                if (isset($mainTest)) {
+                //******************************* begin save to db ********************
+                    $model->bank_id = $_POST['FileInfo']['bank_id'];
+                    $model->bank_mfo = $mfo;
+                    $model->company_account = $main;
+                    $model->company_inn = $inn;
+                    $unikal = substr($main, 9, 8);
+                    $company = Company::find()->where(['unical_code' => $unikal])->one();
+                    $model->company_id = $company->id;
+                    $model->file_name = $filePath;
+                    $model->file_date = $date;
+                    $model->data_period = $interval;
+                    $model->depozitBefore = $beginDeposit;
+                    $endDeposit = trim(str_replace(",", "", $endDeposit));
+                    $model->depozitAfter = $endDeposit;
+                    $model->save(false);
+                    $lastID = Yii::$app->db->getLastInsertID();
 
+                    foreach ($eee as $key => $value) {
+                        $pat = array(
+                            "contract_date" => "((от )\d{1,2}\.\d{1,2}\.\d{4})",     //contract_date
+                        );
+                        foreach ($pat as $k => $p) {
+                            preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
+                            if ($m) {
+                                $res[$k] = $m[0][0];
+                            }
+                        }
 
-                foreach ($eee as $key => $value) {
-                    $pat = array(
-                        "contract_date" => "((от )\d{1,2}\.\d{1,2}\.\d{4})",     //contract_date
-                    );
-                    foreach ($pat as $k => $p) {
-                        preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
-                        if ($m) {
-                            $res[$k] = $m[0][0];
+                        $debet = trim(str_replace(",", "", $value[5]));
+                        $kredit = trim(str_replace(",", "", $value[6]));
+                        $contract_date = trim(str_replace("от", "", $res['contract_date']));
+                        $date = date_format(date_create($value[0]), 'Y-m-d H:i:s');
+
+                        $document = Document::find()->where(
+                            [
+                                'detail_date' => $date,
+                                'detail_document_number' => $value[2],
+                                'detail_purpose_of_payment' => $value[7],
+                                'detail_debet' => $debet,
+                                'detail_kredit' => $kredit,
+                            ])->all();
+
+                        if (!$document) {
+                            $document = new Document();
+                            $document->file_id = $lastID;
+                            $document->detail_date = $date;
+                            preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
+                            $document->detail_account = $matches['acc'];
+                            $document->detail_inn = $matches['inn'];
+                            $document->detail_document_number = $value[2];
+                            $unikalCode = substr($matches['acc'], 9, 8);
+                            $company = Company::find()->where(['unical_code' => $unikalCode])->one();
+                            $document->detail_name = htmlspecialchars($company->name, ENT_QUOTES);
+                            $document->detail_mfo = $value[4];
+                            $document->detail_debet = $debet;
+                            $document->detail_kredit = $kredit;
+                            $document->detail_purpose_of_payment = $value[7];
+                            $document->code_currency = substr($matches['acc'], 5, 3);
+                            $document->contract_date = $contract_date;
+                            $document->company_unikal = substr($main, 9, 8);
+                            $document->save(false);
+                        } else if ($document) {
+                            session_start();
+                            $_SESSION['file_date'] = $value[0];
+                            $_SESSION['detail_document_number'] = $value[2];
+                            $_SESSION['detail_purpose_of_payment'] = $value[4];
+                            $_SESSION['detail_debet'] = $debet;
+                            $_SESSION['detail_kredit'] = $kredit;
+                            $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
+                            header($s);
                         }
                     }
-
-                    $debet = trim(str_replace(",", "", $value[5]));
-                    $kredit = trim(str_replace(",", "", $value[6]));
-                    $contract_date = trim(str_replace("от", "", $res['contract_date']));
-                    $date = date_format(date_create($value[0]), 'Y-m-d H:i:s');
-
-                    $document = Document::find()->where(
-                        [
-                            'detail_date' => $date,
-                            'detail_document_number' => $value[2],
-                            'detail_purpose_of_payment' => $value[7],
-                            'detail_debet' => $debet,
-                            'detail_kredit' => $kredit,
-                        ])->all();
-
-                    if (!$document) {
-                        $document = new Document();
-                        $document->file_id = $lastID;
-                        $document->detail_date = $date;
-                        preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
-                        $document->detail_account = $matches['acc'];
-                        $document->detail_inn = $matches['inn'];
-                        $document->detail_name = '-';// $eee[1];
-                        $document->detail_document_number = $value[2];
-                        $document->detail_mfo = $value[4];
-                        $document->detail_debet = $debet;
-                        $document->detail_kredit = $kredit;
-                        $document->detail_purpose_of_payment = $value[7];
-                        $document->code_currency = substr($matches['acc'], 5, 3);
-                        $document->contract_date = $contract_date;
-                        $document->company_unikal = substr($main, 9, 8);
-                        $document->save(false);
-                    } else if ($document) {
-                        session_start();
-                        $_SESSION['file_date'] = $value[0];
-                        $_SESSION['detail_document_number'] = $value[2];
-                        $_SESSION['detail_purpose_of_payment'] = $value[4];
-                        $_SESSION['detail_debet'] = $debet;
-                        $_SESSION['detail_kredit'] = $kredit;
-                        $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
-                        header($s);
-//                            exit;
-                    }
+                //******************************* end save to db **********************
+                }else{
+                    $s = 'Refresh:15; url='.Url::home(true).'file-info/index';
+                    header($s);
+                    echo '<div style="border: 0px solid gray; border-radius: 2px; background-color: silver; margin: 50px; padding: 30px; box-shadow: 5px 5px 20px;">';
+                    echo '<b><h3 style="text-align: center; color:red;">Ушбу корхонанинг реквизитлари МБ га киритилмаганлиги сабабли дастур томонидан қабул қилинмади: </h3></b><br><br>';
+                    echo 'Банк МФО: <b>'.$mfoTest.'</b><br><br>';
+                    echo 'Корхона номи: <b>'.$innTest->name.'</b><br><br>';
+                    echo 'Корхона ИНН: <b>'.$innTest->inn.'</b><br><br>';
+                    echo 'Уникаль коди: <b>'.$innTest->unical_code.'</b><br><br><br>';
+                    echo '<h3>Корхонанинг реквизитларини киритиш учун <a href="'.Url::home(true).'company/info" ><b> "Корхона ва хисоб рақамлар"</b> сахифасига ўтиш</a></h3><br>';
+                    echo "</div>";
+                    exit;
                 }
                 /* END Fayl import qilish va ma`lumotlarni bazaga saqlash */
 
@@ -385,81 +431,115 @@ class FileInfoController extends Controller
                 $beginDeposit = trim(str_replace(",", "", $beginDeposit));
                 $endDeposit = trim(str_replace("Конец дня Пассив", "", $results['endDeposit']));
 
+                $mfoTest = BankBranch::find()->where(['mfo' => $mfo])->one();
+                $unikalTest = substr($acc, 9, 8);
+                $companyTest = Company::find()->where(['unical_code' => $unikalTest])->one();
+//                echo $companyTest->inn."<br>";
+//                echo $companyTest->name."<br>";
+//                echo $companyTest->unical_code."<br>";
+//                echo $acc;
+                $accTest = AccountNumber::find()->where(['account_number' => $acc])->one();
 
-                $model->bank_id = $_POST['FileInfo']['bank_id'];
-                $model->bank_mfo = $mfo;
-                $model->company_account = $acc;
-                $unikal = substr($acc, 9, 8);
-                $company = Company::find()->where(['unical_code' => $unikal])->one();
-                $model->company_inn = $company->inn;
-                $model->file_name = $filePath;
-                $model->file_date = $date;
-                $model->data_period = $interval;
-                $model->depozitBefore = $beginDeposit;
-                $endDeposit = trim(str_replace(",", "", $endDeposit));
-                $model->depozitAfter = $endDeposit;
-                $model->save(false);
-                $lastID = Yii::$app->db->getLastInsertID();
+//                print_r($accTest);
 
-                foreach ($eee as $key => $value) {
-                    $pat = array(
-                        "mfo" => "((МФО:)\d{5})",     //mfo
-                        "acc" => "((Счет:)\d{20})",   //acc
-                        "inn" => "((ИНН:)\d{9})",     //inn
-                        "contract_date" => "((от )\d{1,2}\.\d{1,2}\.\d{4})",     //contract_date
-                    );
-                    foreach ($pat as $k => $p) {
-                        preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
-                        if ($m) {
-                            $res[$k] = $m[0][0];
+                if (isset($accTest)) {
+                    //******************************* begin save to db ********************
+                    $model->bank_id = $_POST['FileInfo']['bank_id'];
+                    $model->bank_mfo = $mfo;
+                    $model->company_account = $acc;
+                    $unikal = substr($acc, 9, 8);
+                    $company = Company::find()->where(['unical_code' => $unikal])->one();
+                    $model->company_inn = $company->inn;
+                    $model->file_name = $filePath;
+                    $model->file_date = $date;
+                    $model->data_period = $interval;
+                    $model->depozitBefore = $beginDeposit;
+                    $endDeposit = trim(str_replace(",", "", $endDeposit));
+                    $model->depozitAfter = $endDeposit;
+                    $model->save(false);
+                    $lastID = Yii::$app->db->getLastInsertID();
+
+                    foreach ($eee as $key => $value) {
+                        $pat = array(
+                            "mfo" => "((МФО:)\d{5})",     //mfo
+                            "acc" => "((Счет:)\d{20})",   //acc
+                            "inn" => "((ИНН:)\d{9})",     //inn
+                            "contract_date" => "((от )\d{1,2}\.\d{1,2}\.\d{4})",     //contract_date
+                        );
+                        foreach ($pat as $k => $p) {
+                            preg_match($p, $value[4], $m, PREG_OFFSET_CAPTURE, 0);
+                            if ($m) {
+                                $res[$k] = $m[0][0];
+                            }
+                        }
+
+                        $inn = trim(str_replace("ИНН:", "", $res['inn']));
+                        $account = trim(str_replace("Счет:", "", $res['acc']));
+                        $mfo = trim(str_replace("МФО:", "", $res['mfo']));
+                        $debet = trim(str_replace(",", "", $value[5]));
+                        $kredit = trim(str_replace(",", "", $value[6]));
+                        $contract_date = trim(str_replace("от", "", $res['contract_date']));
+                        $date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
+
+                        $document = Document::find()->where(
+                            [
+                                'detail_date' => $date,
+                                'detail_document_number' => $value[2],
+                                'detail_purpose_of_payment' => $value[4],
+                                'detail_debet' => $debet,
+                                'detail_kredit' => $kredit,
+                            ])->all();
+                        if (!$document) {
+                            $document = new Document();
+                            $document->file_id = $lastID;
+                            $document->detail_date = $date;
+                            $document->detail_document_number = $value[2];
+                            $document->detail_inn = $inn;
+                            $document->detail_account = $account;
+//                            echo $account;
+                            $unikalCode = substr($account, 9, 8);
+                            $company = Company::find()->where(['unical_code' => $unikalCode])->one();
+//                            echo $company->name;
+                            $document->detail_name = htmlspecialchars($company->name, ENT_QUOTES);
+                            $document->detail_mfo = $mfo;
+                            $document->detail_debet = $debet;
+                            $document->detail_kredit = $kredit;
+                            $document->detail_purpose_of_payment = $value[4];
+                            $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
+                            $document->contract_date = $contract_date;
+                            $document->company_unikal = substr($acc, 9, 8);
+
+                            $document->save(false);
+                        } else if ($document) {
+                            session_start();
+                            $_SESSION['file_date'] = $value[0];
+                            $_SESSION['detail_document_number'] = $value[2];
+                            $_SESSION['detail_purpose_of_payment'] = $value[4];
+                            $_SESSION['detail_debet'] = $debet;
+                            $_SESSION['detail_kredit'] = $kredit;
+                            $s = 'Refresh:0; url='.Url::home(true).'file-info/view?id=' . $lastID;
+                            header($s);
                         }
                     }
-
-                    $inn = trim(str_replace("ИНН:", "", $res['inn']));
-                    $account = trim(str_replace("Счет:", "", $res['acc']));
-                    $mfo = trim(str_replace("МФО:", "", $res['mfo']));
-                    $debet = trim(str_replace(",", "", $value[5]));
-                    $kredit = trim(str_replace(",", "", $value[6]));
-                    $contract_date = trim(str_replace("от", "", $res['contract_date']));
-                    $date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
-
-                    $document = Document::find()->where(
-                        [
-                            'detail_date' => $date,
-                            'detail_document_number' => $value[2],
-                            'detail_purpose_of_payment' => $value[4],
-                            'detail_debet' => $debet,
-                            'detail_kredit' => $kredit,
-                        ])->all();
-                    if (!$document) {
-                        $document = new Document();
-                        $document->file_id = $lastID;
-                        $document->detail_date = $date;
-                        $document->detail_document_number = $value[2];
-                        $document->detail_inn = $inn;
-                        $document->detail_account = $account;
-                        $document->detail_name = '-';
-                        $document->detail_mfo = $mfo;
-                        $document->detail_debet = $debet;
-                        $document->detail_kredit = $kredit;
-                        $document->detail_purpose_of_payment = $value[4];
-                        $document->code_currency = substr(trim(str_replace("Счет:", "", $res['acc'])), 5, 3);
-                        $document->contract_date = $contract_date;
-                        $document->company_unikal = substr($acc, 9, 8);
-
-                        $document->save(false);
-                    } else if ($document) {
-                        session_start();
-                        $_SESSION['file_date'] = $value[0];
-                        $_SESSION['detail_document_number'] = $value[2];
-                        $_SESSION['detail_purpose_of_payment'] = $value[4];
-                        $_SESSION['detail_debet'] = $debet;
-                        $_SESSION['detail_kredit'] = $kredit;
-                        $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
-                        header($s);
-//                            exit;
-                    }
+                    //******************************* end save to db ********************
+                    echo $mainTest->account_number;
+                }else{
+                    $s = 'Refresh:15; url='.Url::home(true).'file-info/index';
+                    header($s);
+                    echo '<div style="border: 0px solid gray; border-radius: 2px; background-color: silver; margin: 50px; padding: 30px; box-shadow: 5px 5px 20px;">';
+                    echo '<b><h3 style="text-align: center; color:red;">Ушбу корхонанинг реквизитлари МБ га киритилмаганлиги сабабли дастур томонидан қабул қилинмади: </h3></b><br><br>';
+                    echo 'Банк МФО: <b>'.$mfoTest->mfo.'</b><br><br>';
+                    echo 'Корхона номи: <b>'.$companyTest->name.'</b><br><br>';
+                    echo 'Корхона ИНН: <b>'.$companyTest->inn.'</b><br><br>';
+                    echo 'Уникаль коди: <b>'.$unikalTest.'</b><br><br><br>';
+                    echo '<h3>Корхонанинг реквизитларини киритиш учун <a href="'.Url::home(true).'company/info" ><b> "Корхона ва хисоб рақамлар"</b> сахифасига ўтиш</a></h3><br>';
+                    echo "</div>";
+                    exit;
                 }
+
+
+
+
             } //*******************************************************************************************************************
             else if ($getTemplate->template == 3) {
                 $acc = trim(str_replace("Лицевой счет №", "", $results['acc']));
@@ -468,6 +548,32 @@ class FileInfoController extends Controller
                 $interval1 = trim(str_replace("Выписка с", "", $results['interval1']));
                 $interval2 = trim(str_replace("по", "", $results['interval2']));
                 $interval = $interval1 . ' - ' . $interval2;
+                $toMFO =
+                   // ТИФ МИЛЛИЙ БАНКИ
+
+//                $mfoTest = BankBranch::find()->where(['mfo' => $mfo])->one();
+                $mfoTest = "00014";
+                $innTest = Company::find()->where(['inn' => $inn])->one();
+//                echo $innTest->inn."<br>";
+//                echo $innTest->name."<br>";
+//                echo $innTest->unical_code."<br>";
+//                echo $acc;
+                $mainTest = AccountNumber::find()->where(['account_number' => $acc])->one();
+                if (isset($mainTest)) {
+                    echo $mainTest->account_number;
+                }else{
+                    $s = 'Refresh:15; url='.Url::home(true).'file-info/index';
+                    header($s);
+                    echo '<div style="border: 0px solid gray; border-radius: 2px; background-color: silver; margin: 50px; padding: 30px; box-shadow: 5px 5px 20px;">';
+                    echo '<b><h3 style="text-align: center; color:red;">Ушбу корхонанинг реквизитлари МБ га киритилмаганлиги сабабли дастур томонидан қабул қилинмади: </h3></b><br><br>';
+                    echo 'Банк МФО: <b>'.$mfoTest.'</b><br><br>';
+                    echo 'Корхона номи: <b>'.$innTest->name.'</b><br><br>';
+                    echo 'Корхона ИНН: <b>'.$innTest->inn.'</b><br><br>';
+                    echo 'Уникаль коди: <b>'.$innTest->unical_code.'</b><br><br><br>';
+                    echo '<h3>Корхонанинг реквизитларини киритиш учун <a href="'.Url::home(true).'company/info" ><b> "Корхона ва хисоб рақамлар"</b> сахифасига ўтиш</a></h3><br>';
+                    echo "</div>";
+                    exit;
+                }
 
 
                 $model->bank_id = $_POST['FileInfo']['bank_id'];
@@ -514,8 +620,11 @@ class FileInfoController extends Controller
                         $document->detail_date = $date;
                         $document->detail_document_number = $value[2];
                         $document->detail_inn = trim(str_replace("ИНН:", "", $res['inn']));
-                        $document->detail_account = trim(str_replace("Счет:", "", $res['acc']));
-                        $document->detail_name = '-';
+                        $detail_account = trim(str_replace("Счет:", "", $res['acc']));
+                        $document->detail_account = $detail_account;
+                        $unikalCode = substr($detail_account, 9, 8);
+                        $company = Company::find()->where(['unical_code' => $unikalCode])->one();
+                        $document->detail_name = $company->name;// $eee[1];
                         $document->detail_mfo = trim(str_replace("МФО:", "", $res['mfo']));
                         $document->detail_debet = $debet;
                         $document->detail_kredit = $kredit;

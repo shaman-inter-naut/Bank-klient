@@ -79,19 +79,19 @@ use app\models\FileInfo;
     <h4 style="text-align: center; width: auto" >Информация о  потребности в сумовых денежных средствах предприятий локализации (<?= $currentDate; ?>)</h4>
     <table id="" border="1">
         <thead>
-        <tr style="color: white; background-color: darkslategray">
+        <tr style="color: white; background-color: darkslateblue">
             <th rowspan="4">№:</th>
             <th rowspan="4">Корхоналар</th>
             <th rowspan="4">Уникаль коди</th>
             <th colspan="16" style="text-align: center">Хисоб рақамлардаги қолдиқлар</th>
         </tr>
-        <tr style="color: white; background-color: darkslategray">
+        <tr style="color: white; background-color: darkslateblue">
             <th colspan="4" style="text-align: center"> Асосий хисоб рақам</th>
             <th colspan="7" style="text-align: center">Махсус хисоб рақам</th>
             <th colspan="4" style="text-align: center">Депозит хисоб рақам</th>
             <th rowspan="2">Корпоратив карта</th>
         </tr>
-        <tr style="color: white; background-color: darkslategray">
+        <tr style="color: white; background-color: darkslateblue">
             <th>UZS</th>
             <th>USD</th>
             <th>EUR</th>
@@ -108,7 +108,7 @@ use app\models\FileInfo;
             <th>Депозит (EUR)</th>
             <th>Депозит (RUB)</th>
         </tr>
-        <tr style="color: white; background-color: darkslategray; font:italic 12px Arial;">
+        <tr style="color: white; background-color: darkslateblue; font:italic 12px Arial;">
             <th >20208000 / 20210000 / 20214000</th>
             <th>20208840 / 20210840 / 20214840</th>
             <th>20208978 / 20210978 / 20214978</th>
@@ -140,7 +140,7 @@ use app\models\FileInfo;
         <?php } ?>
         </tr>
         <?php } ?>
-        <tr style="color: white; background-color: darkslategray; font:bold 14px Arial;">
+        <tr style="color: white; background-color: darkslateblue; font:bold 14px Arial;">
             <td colspan="3" style="text-align: center">Жами:</td>
             <?php for($j=0; $j<16; $j++){?>
             <td><?= $sum_new_array[$j]; ?></td>
