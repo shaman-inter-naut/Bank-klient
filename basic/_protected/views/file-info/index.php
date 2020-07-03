@@ -131,9 +131,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ////                'value'=> 'companyName.name',
 //                'header' => 'Кредит',
 //            ],
-
+            'description',
             'data_period',
             'file_date',
+
 
             [
                     'class' => 'yii\grid\ActionColumn',

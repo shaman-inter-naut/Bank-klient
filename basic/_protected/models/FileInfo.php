@@ -43,6 +43,7 @@ class FileInfo extends \yii\db\ActiveRecord
             [['company_unikal'], 'string', 'max' => 8],
             [['template'], 'string', 'max' => 5],
             [['file'], 'file'],
+            [['description'], 'integer'],
         ];
     }
 
@@ -65,6 +66,7 @@ class FileInfo extends \yii\db\ActiveRecord
             'name' => 'Корхона номи:',
             'depozitBefore' => 'Бошланғич депозит:',
             'depozitAfter' => 'Якуний депозит:',
+            'description' => 'Изох (Проводкалар)',
         ];
     }
 
