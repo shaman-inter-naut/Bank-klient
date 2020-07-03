@@ -121,11 +121,17 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    'word-wrap' => 'break-word']]
 //
 //            ],
-                [
-                    'attribute'=> 'detail_name',
-                    'value'=> 'detail_name',
-                    'header' => 'Хамкор номи',
-                ],
+            [
+                 'attribute'=> 'detail_name',
+                 'value'=> 'detail_name',
+                 'header' => 'Хамкор номи',
+            ],
+
+            [
+                'attribute'=>  'detail_inn',
+                'value'=>  'detail_inn',
+                'header' => 'Хамкор ИНН',
+            ],
             [
                 'attribute'=> 'detail_account',
                 'value'=> 'detail_account',

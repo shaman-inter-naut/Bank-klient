@@ -29,7 +29,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <?= $form->field($model, 'is_main')->radioList(['1'=>'асосий', '0'=>'иккиламчи'])->label(false) ?>
 
-    <?= $form->field($model, 'stock')->textInput([])->label('stock') ?>
+    <?= $form->field($model, 'stock')->textInput([])->label('Қолдиқ') ?>
 
     <?= $form->field($model, 'stock_date')->widget(DateTimePicker::className(), [
         'language' => 'ru',
@@ -46,7 +46,7 @@ use dosamigos\datetimepicker\DateTimePicker;
             'format' => 'yyyy-mm-dd',
             'todayBtn' => true
         ]
-    ]);?>
+    ])->label('Сана');?>
 
 
 <!---->
