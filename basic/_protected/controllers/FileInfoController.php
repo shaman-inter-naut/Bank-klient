@@ -331,19 +331,21 @@ class FileInfoController extends Controller
                     $debet = trim(str_replace(",", "", $value[5]));
                     $kredit = trim(str_replace(",", "", $value[6]));
                     $contract_date = trim(str_replace("от", "", $res['contract_date']));
+                    $date = date_format(date_create($value[0]), 'Y-m-d H:i:s');
 
                     $document = Document::find()->where(
                         [
-                            'detail_date' => $value[0],
+                            'detail_date' => $date,
                             'detail_document_number' => $value[2],
                             'detail_purpose_of_payment' => $value[7],
                             'detail_debet' => $debet,
                             'detail_kredit' => $kredit,
                         ])->all();
+
                     if (!$document) {
                         $document = new Document();
                         $document->file_id = $lastID;
-                        $document->detail_date = date_format(date_create($value[0]), 'Y-m-d H:i:s');
+                        $document->detail_date = $date;
                         preg_match('/(?P<acc>\d+)\s+(?P<name1>\D+)\s+(?P<inn>\d+)/', $value[1], $matches);
                         $document->detail_account = $matches['acc'];
                         $document->detail_inn = $matches['inn'];
@@ -419,10 +421,11 @@ class FileInfoController extends Controller
                     $debet = trim(str_replace(",", "", $value[5]));
                     $kredit = trim(str_replace(",", "", $value[6]));
                     $contract_date = trim(str_replace("от", "", $res['contract_date']));
+                    $date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
 
                     $document = Document::find()->where(
                         [
-                            'detail_date' => $value[1],
+                            'detail_date' => $date,
                             'detail_document_number' => $value[2],
                             'detail_purpose_of_payment' => $value[4],
                             'detail_debet' => $debet,
@@ -431,7 +434,7 @@ class FileInfoController extends Controller
                     if (!$document) {
                         $document = new Document();
                         $document->file_id = $lastID;
-                        $document->detail_date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
+                        $document->detail_date = $date;
                         $document->detail_document_number = $value[2];
                         $document->detail_inn = $inn;
                         $document->detail_account = $account;
@@ -495,10 +498,11 @@ class FileInfoController extends Controller
                     $debet = trim(str_replace(",", "", $value[5]));
                     $kredit = trim(str_replace(",", "", $value[6]));
                     $contract_date = trim(str_replace("от", "", $res['contract_date']));
+                    $date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
 
                     $document = Document::find()->where(
                         [
-                            'detail_date' => $value[1],
+                            'detail_date' => $date,
                             'detail_document_number' => $value[2],
                             'detail_purpose_of_payment' => $value[4],
                             'detail_debet' => $debet,
@@ -507,7 +511,7 @@ class FileInfoController extends Controller
                     if (!$document) {
                         $document = new Document();
                         $document->file_id = $lastID;
-                        $document->detail_date = date_format(date_create($value[1]), 'Y-m-d H:i:s');
+                        $document->detail_date = $date;
                         $document->detail_document_number = $value[2];
                         $document->detail_inn = trim(str_replace("ИНН:", "", $res['inn']));
                         $document->detail_account = trim(str_replace("Счет:", "", $res['acc']));

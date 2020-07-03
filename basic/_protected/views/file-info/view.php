@@ -73,17 +73,17 @@ $this->params['breadcrumbs'][] = $this->title;
     ){
 
         ?>
-        <div class="alert">
+        <div class="alert info" style="text-align: center">
             <span class="closebtn">&times;</span>
-            <b><h2 style="color:darkgreen">Маълумотлар муваффаққиятли сақланди.</h2></b><hr>Баъзи бир
+            <b><h4 style="color:yellow">Маълумотлар муваффаққиятли сақланди !</h4></b><hr>Баъзи
             маълумотлар базада аввалдан мавжуд бўлганлиги сабабли улар ўтказиб юборилди !
         </div>
         <?php session_destroy(); } ?>
 
-    <div class="col-md-10"><?= Html::a('Файллар', [Yii::$app->controller->id.'/index']); ?></div>
+    <div class="col-md-10"><b><?= Html::a('ФАЙЛЛАР', [Yii::$app->controller->id.'/index']); ?></b></div>
     <div class="col-md-2">
         <p class="pull-right">
-            <?= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
+<!--            --><?//= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
             <?= Html::a('!', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('-', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
