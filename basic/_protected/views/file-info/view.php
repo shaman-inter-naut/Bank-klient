@@ -71,21 +71,21 @@ $this->params['breadcrumbs'][] = $this->title;
             && isset($_SESSION['detail_debet'])
             && isset($_SESSION['detail_kredit'])
     ){
-
         ?>
-        <div class="alert">
-            <span class="closebtn">&times;</span>
-            <b><h2 style="color:darkgreen">Маълумотлар муваффаққиятли сақланди.</h2></b><hr>Баъзи бир
-            маълумотлар базада аввалдан мавжуд бўлганлиги сабабли улар ўтказиб юборилди !
+        <div class="alert info" style="text-align: center">
+            <span class="closebtn"></span>
+            <b><h4 style="color:yellow">Маълумотлар муваффаққиятли ўқиб олинди !</h4></b><hr>
+            <h6 style="color: black">Фақат, баъзи маълумотлар детализацияси базада мавжуд бўлганлиги учун сақланмади !</h6>
+            <p>(Ушбу файлни ўчириб юбориш хам мумкин !)</p>
         </div>
         <?php session_destroy(); } ?>
 
-    <div class="col-md-10"><?= Html::a('Файллар', [Yii::$app->controller->id.'/index']); ?></div>
+    <div class="col-md-10"><b><?= Html::a('ФАЙЛЛАР', [Yii::$app->controller->id.'/index']); ?></b></div>
     <div class="col-md-2">
         <p class="pull-right">
-            <?= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
-            <?= Html::a('!', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('-', ['delete', 'id' => $model->id], [
+<!--            --><?//= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
+            <?//= Html::a('!', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Ўчириш', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
                     'confirm' => 'Сиз ушбу маълумотни чиндан хам ўчириб юбормоқчимисиз ?',

@@ -22,15 +22,19 @@ use yii\bootstrap\Modal;
         <div >
 
 
-            <div id="tooltip" style="text-decoration: none;">
 
-                <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-spreed')?>">
+
+<!--            <div id="tooltip" style="text-decoration: none;">-->
+
+
+
+                <a style="text-decoration: none; " href="<?=Url::to('/file-info/to-html-table')?>">
 
                     <span id="tooltip" style="color:#52af50; text-decoration: none  font-size: 20px;" >Кўчириб олиш</span> </i>
                     <img style="height: 30px; padding-right: 50px" src="themes/Excel-icon.png">
                 </a>
-                <span class="tooltiptext">Ms Excel га юкланган файллар ушбу манзилга сақланади: <br><br><b>С:/Сводные отчёты</b></span>
-            </div>
+<!--                <span class="tooltiptext">Юклаб олинган Ms Excel форматдаги файллар ушбу манзилга сақланди: <br><br><b>С:/Сводные отчёты/Сводный отчёт (...)</b></span>-->
+<!--            </div>-->
 
             <? if (Yii::$app->user->isGuest) {?>
 <!--                --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], [
