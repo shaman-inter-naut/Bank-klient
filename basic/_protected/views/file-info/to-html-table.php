@@ -4,14 +4,11 @@ use app\models\Company;
 use app\models\Document;
 use app\models\FileInfo;
 
-
-
 //?>
+<div  style="padding-bottom: 30px">
+    <?=Yii::$app->controller->renderPartial("//layouts/header")?>
+</div>
 
-
-<!DOCTYPE html>
-<html>
-<head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         table {
@@ -67,11 +64,11 @@ use app\models\FileInfo;
         }
 
     </script>
-</head>
-<body>
+
+
 
 <div id="stil" style="overflow-x:auto;">
-    <button onclick="exportTableToExcel('tblData')">Ms Excel га юклаб олиш</button>
+<!--    <button onclick="exportTableToExcel('tblData')">Ms Excel га юклаб олиш</button>-->
 <div class="container-fluid" id="tblData">
     <?php
         $timezone  = +5; //(GMT -5:00) EST (U.S. & Canada)
@@ -159,7 +156,7 @@ use app\models\FileInfo;
 
 <script>
     var w = window.innerWidth;
-    var h = window.innerHeight;
+    var h = window.innerHeight-87;
     document.getElementById("stil").style.height = h+"px";
 </script>
 
