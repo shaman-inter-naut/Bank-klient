@@ -27,7 +27,9 @@ use yii\helpers\Html;
                         <li><a href="<?=Url::to('/file-info/index')?>">Файллар</a></li>
                         <li><a href="<?=Url::to('/xujjat/index')?>">Барча проводкалар</a></li>
                         <li><a href="<?=Url::to('/expence-types/index')?>">Харажатлар тури</a></li>
+                        <? if (Yii::$app->controller->action->id!=="to-html-table") {?>
                         <li><a href="<?=Url::to('/file-info/to-html-table')?>">to Ms Excel</a></li>
+                        <?}?>
                     </ul>
                 </li>
 
@@ -45,7 +47,6 @@ use yii\helpers\Html;
                     <li ><a href="">Админ</a></li>
                     <li ><a href="<?=Url::to('/user/index')?>">Фойдаланувчилар</a></li>
                 <?}?>
-
                 <? if (Yii::$app->user->isGuest) {?>
 
 <!--                    <li > --><?//= Html::a('Рўйхатдан ўтиш', ['site/signup'], ['data' => ['method' => 'post']]) ?><!--</li>-->
@@ -54,12 +55,8 @@ use yii\helpers\Html;
                 <? if (!Yii::$app->user->isGuest) {?>
                     <li > <?= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post']]) ?></li>
 
-
                 <?}?>
-                <?= (Yii::$app->controller->action->id=="to-html-table")?'
-                <li onclick="exportTableToExcel(\'tblData\')"><a href="">Ms Excel юклаб олиш</a>
-                   
-                </li>':'' ?>
+                <?= (Yii::$app->controller->action->id=="to-html-table")?'<li onclick="exportTableToExcel(\'tblData\')"><a href="">Ms Excel юклаб олиш</a></li>':'' ?>
 
 
 
