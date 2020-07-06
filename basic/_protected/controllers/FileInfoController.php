@@ -346,7 +346,7 @@ class FileInfoController extends Controller
                     $model->depozitBefore = $beginDeposit;
                     $endDeposit = trim(str_replace(",", "", $endDeposit));
                     $model->depozitAfter = $endDeposit;
-                    $model->description = $detail_counter;
+//                    $model->description = $detail_counter;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
@@ -478,6 +478,9 @@ class FileInfoController extends Controller
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
+                    $countDetailToRecord= 0;
+                    $countDetailNoRecord = 0;
+
                     foreach ($eee as $key => $value) {
                         $pat = array(
                             "mfo" => "((МФО:)\d{5})",     //mfo
@@ -509,6 +512,7 @@ class FileInfoController extends Controller
                                 'detail_kredit' => $kredit,
                             ])->all();
                         if (!$document) {
+                            $countDetailToRecord++;
                             $document = new Document();
                             $document->file_id = $lastID;
                             $document->detail_date = $date;
@@ -530,16 +534,25 @@ class FileInfoController extends Controller
 
                             $document->save(false);
                         } else if ($document) {
+                            $countDetailNoRecord++;
                             session_start();
-                            $_SESSION['file_date'] = $value[0];
-                            $_SESSION['detail_document_number'] = $value[2];
-                            $_SESSION['detail_purpose_of_payment'] = $value[4];
-                            $_SESSION['detail_debet'] = $debet;
-                            $_SESSION['detail_kredit'] = $kredit;
-                            $s = 'Refresh:0; url='.Url::home(true).'file-info/view?id=' . $lastID;
-                            header($s);
+//                            $_SESSION['file_date'] = $value[0];
+//                            $_SESSION['detail_document_number'] = $value[2];
+//                            $_SESSION['detail_purpose_of_payment'] = $value[4];
+//                            $_SESSION['detail_debet'] = $debet;
+//                            $_SESSION['detail_kredit'] = $kredit;
+//                            $s = 'Refresh:0; url='.Url::home(true).'file-info/view?id=' . $lastID;
+//                            header($s);
                         }
                     }
+
+                    $model->countDetailToRecord = $countDetailToRecord;
+                    $model->countDetailNoRecord = $countDetailNoRecord;
+                    $model->save(false);
+
+                    //                  echo "To: ".$countDetailToRecord;
+                    //                  echo "No: ".$countDetailNoRecord;
+
                     //******************************* end save to db ********************
                     echo $mainTest->account_number;
                 }else{
