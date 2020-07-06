@@ -77,9 +77,6 @@ use app\models\FileInfo;
         ?>
 
 
-
-
-
     <h4 style="text-align: center; width: auto" >Информация о  потребности в сумовых денежных средствах предприятий локализации (<?= $currentDate; ?>)</h4>
     <table id="" border="1">
         <thead>
@@ -144,14 +141,14 @@ use app\models\FileInfo;
                 $natija = array_sum($arr_bosh)+array_sum($arr_kredit)-array_sum($arr_debet);
                 $sum_new_array[$j] += $natija;
                 ?>
-            <td><?= $natija; ?></td>
+            <td style="text-align: right"><?= number_format($natija, 2, ',', ' '); ?></td>
         <?php } ?>
         </tr>
         <?php } ?>
         <tr style="color: white; background-color: darkslateblue; font:bold 14px Arial;">
             <td colspan="2" style="text-align: center">Жами:</td>
             <?php for($j=0; $j<16; $j++){?>
-            <td><?= $sum_new_array[$j]; ?></td>
+            <td><?= number_format($sum_new_array[$j], 2, ',', ' '); ?></td>
             <?php } ?>
         </tr>
         </tbody>

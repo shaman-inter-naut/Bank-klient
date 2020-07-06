@@ -17,7 +17,7 @@ class FileInfoSearch extends FileInfo
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'countDetailToRecord', 'countDetailNoRecord'], 'integer'],
             [['bank_mfo', 'company_account', 'company_inn', 'file_name', 'file_date', 'doc','data_period'], 'safe'],
         ];
     }
@@ -69,7 +69,9 @@ class FileInfoSearch extends FileInfo
             ->andFilterWhere(['like', 'company_inn', $this->company_inn])
             ->andFilterWhere(['like', 'file_name', $this->file_name])
             ->andFilterWhere(['like', 'file_date', $this->file_date])
-            ->andFilterWhere(['like', 'data_period', $this->data_period]);
+            ->andFilterWhere(['like', 'data_period', $this->data_period])
+            ->andFilterWhere(['like', 'countDetailToRecord', $this->countDetailToRecord])
+            ->andFilterWhere(['like', 'countDetailNoRecord', $this->countDetailNoRecord]);
 //        $query->andFilterWhere(['like','doc.tip_deb_kred', $this->id]);
 
         return $dataProvider;

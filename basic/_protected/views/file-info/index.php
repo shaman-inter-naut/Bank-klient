@@ -102,18 +102,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //    'id',
-//           'company_inn',
-
             [
                 'attribute'=>'company_inn',
-                'value'=> 'companyName.name',
-//                'header' => 'Корхона 1',
+                'header'=> 'Корхона номи',
+            ],
+            [
+                'attribute'=>'company_account',
+                'header'=> 'Хисоб рақами',
             ],
 
-//            'bank_mfo',
-            'company_account',
-
             ['attribute'=>'file_name',
+                'header'=> 'Файл номи',
                 'format'=>'raw',
 //                '' => '',
                 'value' => function($data)
@@ -131,7 +130,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ////                'value'=> 'companyName.name',
 //                'header' => 'Кредит',
 //            ],
-            'description',
+            [
+                'attribute'=>'countDetailToRecord',
+                'header'=> 'Жами проводкалар сони',
+            ],
+            [
+                'attribute'=>'countDetailNoRecord',
+                'header'=> 'Сақланмаган проводкалар сони',
+            ],
+
             'data_period',
             'file_date',
 
