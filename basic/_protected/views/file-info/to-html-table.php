@@ -73,7 +73,11 @@ use app\models\FileInfo;
     <?php
         $timezone  = +5; //(GMT -5:00) EST (U.S. & Canada)
         $currentDate = gmdate("j.m.Y H:i:s", time() + 3600*($timezone+date("I")));
-    ?>
+
+        ?>
+
+
+
 
 
     <h4 style="text-align: center; width: auto" >Информация о  потребности в сумовых денежных средствах предприятий локализации (<?= $currentDate; ?>)</h4>
@@ -82,7 +86,7 @@ use app\models\FileInfo;
         <tr style="color: white; background-color: darkslateblue">
             <th rowspan="4">№:</th>
             <th rowspan="4">Корхоналар</th>
-            <th rowspan="4">Уникаль коди</th>
+<!--            <th rowspan="4">Уникаль коди</th>-->
             <th colspan="16" style="text-align: center">Хисоб рақамлардаги қолдиқлар</th>
         </tr>
         <tr style="color: white; background-color: darkslateblue">
@@ -132,16 +136,20 @@ use app\models\FileInfo;
          <tr>
             <td><?= $i; ?></td>
             <td><b><?= $cName->name; ?></b></td>
-            <td style="color: darkblue"><?= $cName->unical_code; ?></td>
+<!--            <td style="color: darkblue">--><?//= $cName->unical_code; ?><!--</td>-->
         <?php for($j=0; $j<16; $j++){
-                $arr = $summa[$cName->unical_code][$j] ? $summa[$cName->unical_code][$j] : [];
-                $sum_new_array[$j] += array_sum($arr);?>
-            <td><?= array_sum($arr); ?></td>
+                $arr_kredit = $summa[$cName->unical_code]['kredit'][$j] ? $summa[$cName->unical_code]['kredit'][$j] : [];
+                $arr_debet = $summa[$cName->unical_code]['debet'][$j] ? $summa[$cName->unical_code]['debet'][$j] : [];
+                $arr_bosh = $summa[$cName->unical_code]['bosh'][$j] ? $summa[$cName->unical_code]['bosh'][$j] : [];
+                $natija = array_sum($arr_bosh)+array_sum($arr_kredit)-array_sum($arr_debet);
+                $sum_new_array[$j] += $natija;
+                ?>
+            <td><?= $natija; ?></td>
         <?php } ?>
         </tr>
         <?php } ?>
         <tr style="color: white; background-color: darkslateblue; font:bold 14px Arial;">
-            <td colspan="3" style="text-align: center">Жами:</td>
+            <td colspan="2" style="text-align: center">Жами:</td>
             <?php for($j=0; $j<16; $j++){?>
             <td><?= $sum_new_array[$j]; ?></td>
             <?php } ?>

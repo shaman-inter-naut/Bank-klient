@@ -350,8 +350,6 @@ class FileInfoController extends Controller
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
-                    $provodka = 0;
-
                     foreach ($eee as $key => $value) {
                         $pat = array(
                             "contract_date" => "((от )\d{1,2}\.\d{1,2}\.\d{4})",     //contract_date
@@ -367,8 +365,6 @@ class FileInfoController extends Controller
                         $kredit = trim(str_replace(",", "", $value[6]));
                         $contract_date = trim(str_replace("от", "", $res['contract_date']));
                         $date = date_format(date_create($value[0]), 'Y-m-d H:i:s');
-
-
 
                         $document = Document::find()->where(
                             [
@@ -401,17 +397,17 @@ class FileInfoController extends Controller
                             $document->company_unikal = substr($main, 9, 8);
 
                             $document->save(false);
-                        } else if ($document) {
-                            session_start();
-                            $_SESSION['file_date'] = $value[0];
-                            $_SESSION['detail_document_number'] = $value[2];
-                            $_SESSION['detail_purpose_of_payment'] = $value[4];
-                            $_SESSION['detail_debet'] = $debet;
-                            $_SESSION['detail_kredit'] = $kredit;
-                            $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
-                            header($s);
                         }
-                        echo $provodka; exit;
+//                        else if ($document) {
+//                            session_start();
+//                            $_SESSION['file_date'] = $value[0];
+//                            $_SESSION['detail_document_number'] = $value[2];
+//                            $_SESSION['detail_purpose_of_payment'] = $value[4];
+//                            $_SESSION['detail_debet'] = $debet;
+//                            $_SESSION['detail_kredit'] = $kredit;
+//                            $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
+//                            header($s);
+//                        }
                     }
                 //******************************* end save to db **********************
                 }else{
@@ -770,6 +766,7 @@ class FileInfoController extends Controller
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
 //                print_r( $file);
                 foreach ($file as $key_file => $value_file) {
+                    $value_file->depozitBefore = $value_file->depozitBefore ? $value_file->depozitBefore : 0;
 //                    print_r( $value_file);
                     $company_unikal = substr($value_file->company_account, 9, 8);
 //                    print_r($company_unikal);
@@ -778,7 +775,10 @@ class FileInfoController extends Controller
                     foreach ($document as $k => $val) {
 //                        print_r($val);
                         $val->detail_kredit = $val->detail_kredit ? $val->detail_kredit : 0;
-                        $summa[$company_unikal][$key_massiv][$value_n] += $val->detail_kredit;
+                        $val->detail_debet = $val->detail_debet ? $val->detail_debet : 0;
+                        $summa[$company_unikal]['kredit'][$key_massiv][$value_n] += $val->detail_kredit;
+                        $summa[$company_unikal]['debet'][$key_massiv][$value_n] += $val->detail_debet;
+                        $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $value_file->depozitBefore;
                     }
                 }
             }
@@ -788,7 +788,7 @@ class FileInfoController extends Controller
 
 
 
-//        print_r($summa);
+//        print_r($bosh); exit;
 
 
 //        foreach ($companyName as $i => $cName) {
