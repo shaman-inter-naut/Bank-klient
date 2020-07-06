@@ -32,17 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
     /*    position: absolute;*/
     /*    top: 0;*/
     /*}*/
-    .short{
-        /*width: 50px !important;*/
+     .short{
+     	text-overflow: ellipsis ;
         white-space: nowrap ;
-        overflow: hidden !important;
-        /*text-overflow: ellipsis !important;*/
+        width: 100px ;
+        overflow: hidden;        
         /*border: 1px solid #000000;*/
     }
 
+
 </style>
 
-<div  ">
+<div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
 <div class="xujjat-index">
@@ -148,15 +149,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> 'detail_account',
                 'header' => 'Хамкор Х-Р',
             ],
-
             ['attribute'=>'detail_purpose_of_payment',
                 'header' => ' Тўлов мақсади ',
-
                 'format'=>'raw',
                 'value' => function($data)
                 {
-                    return Html::a(mb_substr($data->detail_purpose_of_payment,0,20).'...',
-                        [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'short bank ']);
+//                    return Html::a(mb_substr($data->detail_purpose_of_payment,0,20).'...',
+//                        [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'short bank ']);
+                    return Html::a(' <div class="short">' .$data->detail_purpose_of_payment. '</div>',
+                        [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>' bank']);
                 }
             ],
             [
