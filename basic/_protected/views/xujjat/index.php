@@ -18,7 +18,9 @@ use kartik\datecontrol\DateControl;
 $this->title = 'Хужжатлар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
     .stil{
 
         overflow-x:auto;
@@ -31,12 +33,84 @@ $this->params['breadcrumbs'][] = $this->title;
     /*    position: absolute;*/
     /*    top: 0;*/
     /*}*/
+     .short{
+     	text-overflow: ellipsis ;
+        white-space: nowrap ;
+        width: 100px ;
+        overflow: hidden;        
+        /*border: 1px solid #000000;*/
+    }
+
+
 </style>
 
-<div  ">
+<script>
+    function exportTableToExcel(tableID, filename = ''){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename?filename+'.xls':'excel_documents.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    function tableau(pid, iid, fmt, ofile) {
+        if(typeof Downloadify !== 'undefined') Downloadify.create(pid,{
+            swf: 'downloadify.swf',
+            downloadImage: 'download.png',
+            width: 100,
+            height: 30,
+            filename: ofile, data: function() { return doit(fmt, ofile, true); },
+            transparent: false,
+            append: false,
+            dataType: 'base64',
+            onComplete: function(){ alert('Your File Has Been Saved!'); },
+            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
+            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); }
+        }); else document.getElementById(pid).innerHTML = "";
+    }
+    tableau('biff8btn', 'xportbiff8', 'biff8', 'SheetJSTableExport.xls');
+    tableau('odsbtn',   'xportods',   'ods',   'SheetJSTableExport.ods');
+    tableau('fodsbtn',  'xportfods',  'fods',  'SheetJSTableExport.fods');
+    tableau('xlsbbtn',  'xportxlsb',  'xlsb',  'SheetJSTableExport.xlsb');
+    tableau('xlsxbtn',  'xportxlsx',  'xlsx',  'SheetJSTableExport.xlsx');
+
+</script>
+
+
+<div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
-<div class="xujjat-index">
+
+
+
+
+<div class="xujjat-index" >
+    <button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button>
 
     <h1><?= Html::encode($this->title) ?></h1>
 <!---->
@@ -50,6 +124,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'layout' => '{items}{pager}',
+        'tableOptions' => ['class' => 'table  table-bordered table-hover', 'id' => 'tblData'],
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return [
+                'style' => "cursor: pointer",
+                'onclick' => 'location.href="'
+                    . Yii::$app->urlManager->createUrl('xujjat/index')
+                    . '?id="+(this.id);',
+            ];
+        },
         'options' => [
 //            'class' => ' table-responsive '
             'class' => 'stil',
@@ -57,6 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn',
+
 
                 ],
 
@@ -121,23 +205,34 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    'word-wrap' => 'break-word']]
 //
 //            ],
-                [
-                    'attribute'=> 'detail_name',
-                    'value'=> 'detail_name',
-                    'header' => 'Хамкор номи',
-                ],
+            [
+                 'attribute'=> 'detail_name',
+                 'value'=> 'detail_name',
+//                 'value'=> htmlspecialchars_decode('detail_name', ENT_QUOTES),
+
+                 'header' => 'Хамкор номи',
+            ],
+
+            [
+                'attribute'=>  'detail_inn',
+                'value'=>  'detail_inn',
+                'header' => 'Хамкор ИНН',
+            ],
             [
                 'attribute'=> 'detail_account',
                 'value'=> 'detail_account',
                 'header' => 'Хамкор Х-Р',
             ],
-
             ['attribute'=>'detail_purpose_of_payment',
-                'header' => 'Тўлов мақсади',
-
+                'header' => ' Тўлов мақсади ',
                 'format'=>'raw',
                 'value' => function($data)
-                {return Html::a('Кўриш ', [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'bank',]);}
+                {
+//                    return Html::a(mb_substr($data->detail_purpose_of_payment,0,20).'...',
+//                        [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'short bank ']);
+                    return Html::a(' <div class="short">' .$data->detail_purpose_of_payment. '</div>',
+                        [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>' bank']);
+                }
             ],
             [
                 'attribute'=> 'code_currency',
