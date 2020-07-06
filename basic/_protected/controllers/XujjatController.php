@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\FileInfo;
 
 /**
  * XujjatController implements the CRUD actions for Xujjat model.
@@ -79,13 +80,22 @@ class XujjatController extends Controller
     }
     public function actionTable(){
 
-        $searchModel = new XujjatSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if ($_POST){
+            $date = $_POST['date'];
+            $document = Xujjat::find()->joinWith('file')->joinWith('file.file_date')->where(['file_id'=>$date])->all();
+
+            return $this->render('table',[
+
+                'document' => $document,
+//            var_dump($document); die;
+            ]);
+
+        }
+
         $document = Xujjat::find()->all();
 
         return $this->render('table',[
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+
             'document' => $document,
 
         ]);

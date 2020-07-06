@@ -43,7 +43,7 @@ use yii\helpers\Html;
                     </ul>
                 </li>
 
-                <? if ((Yii::$app->user->can('admin')) && (Yii::$app->controller->action->id!=="to-html-table")){?>
+                <? if ((Yii::$app->user->can('admin')) && (Yii::$app->controller->action->id!=="to-html-table") && (Yii::$app->controller->action->id!=="table") ){?>
                     <li ><a href="">Админ</a></li>
                     <li ><a href="<?=Url::to('/user/index')?>">Фойдаланувчилар</a></li>
                 <?}?>
@@ -57,6 +57,7 @@ use yii\helpers\Html;
 
                 <?}?>
                 <?= (Yii::$app->controller->action->id=="to-html-table")?'<li class="active" onclick="exportTableToExcel(\'tblData\')"><a href="">Ms Excel юклаб олиш</a></li>':'' ?>
+                <?= (Yii::$app->controller->action->id=="table")?'<li class="active" onclick="exportTableToExcel(\'tblData\', \'members-data\')"><a href="">Ms Excel юклаб олиш</a></li>':'' ?>
 
 
 

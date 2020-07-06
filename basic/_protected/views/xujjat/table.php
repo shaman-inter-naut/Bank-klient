@@ -3,12 +3,14 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
+use dosamigos\datetimepicker\DateTimePicker;
+use kartik\date\DatePicker;
+use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 $this->title = 'Xujjatlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
 <style>
     .stil{
         overflow-x:auto;
@@ -63,18 +65,56 @@ $this->params['breadcrumbs'][] = $this->title;
 <div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
+    <div>
+        <h3 style="text-align: center">Qidiruv tizimi</h3>
+<section style="padding: 10px 0">
+<!--        --><?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+               <div>
+<!--                   --><?// Pjax::begin(); ?>
+                    <?php $form = ActiveForm::begin(); ?>
+                <div class="col-md-3">
+                    <?=DatePicker::widget([
+                        'options' => [
+                                'placeholder' => 'Санани киритинг',
+
+                            ],
+                        'name' => 'month',
+                        'value' => $date,
+                        'pluginOptions' => [
+                            'autoclose' => true,
+                            'format' => 'dd.mm.yyyy'
+                        ],
+                    ]);?>
+                </div>
+                   <div class="form-group">
+                       <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
+                   </div>
+                    <?php ActiveForm::end(); ?>
+<!--                   --><?// Pjax::end(); ?>
+            </div>
+</section>
+        <section  style="padding: 10px 0">
+        <div style="padding-left: 15px">
+        <input class="input" type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Корхона.." title="Корхонани киритинг">
+        <input class="input" type="text" id="myInput2" onkeyup="myFunction2()" placeholder="МФО.." title="МФОни киритинг">
+        <input class="input" type="text" id="myInput3" onkeyup="myFunction3()" placeholder="ИНН.." title="ИННни киритинг">
+        <input class="input" type="text" id="myInput4" onkeyup="myFunction4()" placeholder="Хисоб рақам.." title="Хисоб рақамни киритинг">
+<!--        <input class="input" type="text" id="myInput5" onkeyup="myFunction5()" placeholder="date.." title="Хисоб рақамни киритинг">-->
+        <input class="input" type="text" id="myInput7" onkeyup="myFunction7()" placeholder="Хамкор номи.." title="Хамкор номини киритинг">
+        <input class="input" type="text" id="myInput8" onkeyup="myFunction8()" placeholder="Хамкор ИНН.." title="Хамкор ИННни киритинг">
+        <input class="input" type="text" id="myInput9" onkeyup="myFunction9()" placeholder="Хамкор Х-Р.." title="Хамкор Х-Рни киритинг">
+        <input class="input" type="text" id="myInput10" onkeyup="myFunction10()" placeholder="Тўлов мақсади.." title="Тўлов мақсадини киритинг">
+        <input class="input" type="text" id="myInput11" onkeyup="myFunction11()" placeholder="Валюта коди.." title="Валюта кодини киритинг">
+        </div>
+        </section>
+    </div>
 
 <div class="container-fluid">
-    <h1><?=$this->title ?></h1>
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button>
-
-<div id="stil" class="stil" >
+<!--    <h1>--><?//=$this->title ?><!--</h1>-->
+    <? if ($document){?>
+    <div id="stil" class="stil" >
     <table  class=" table table-striped" id="tblData">
-
-
         <thead class="thed">
         <tr>
             <th>№</th>
@@ -140,6 +180,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </table>
 </div>
+    <?}?>
 </div>
 
 
@@ -160,7 +201,7 @@ Modal::end();
 <script>
     var w = window.innerWidth;
     // var h = window.innerHeight-190;
-    var h = window.innerHeight-190;
+    var h = window.innerHeight-250;
     document.getElementById("stil").style.height = h+"px";
 </script>
 
@@ -187,3 +228,207 @@ Modal::end();
     tableau('xlsxbtn',  'xportxlsx',  'xlsx',  'SheetJSTableExport.xlsx');
 
 </script>
+<!--search-->
+<script>
+    function myFunction1() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction2() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput2");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction3() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput3");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction4() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput4");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction5() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput5");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[5];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction7() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput7");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction8() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput8");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[8];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction9() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput9");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[9];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction10() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput10");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[10];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function myFunction11() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput11");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tblData");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[11];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $(function () {-->
+<!--            $("#myInput5").datepicker();-->
+<!--        });-->
+<!--        -->
+<!--    });-->
+<!--</script>-->
+<!--<script> src="jquery.datetimepicker.full.min.js" </script>-->
+<!--<script>-->
+<!--    $('#myInput4').datetimepicker({-->
+<!--        timepicker: false,-->
+<!--        datepicker: true,-->
+<!--        format: 'Y-M-d',-->
+<!--        value: date('Y-m-d'),-->
+<!--        weeks: true,-->
+<!--    })-->
+<!--</script>-->
+
+<!--https://www.youtube.com/watch?v=Bv9XrpmdopI&t=844s-->
