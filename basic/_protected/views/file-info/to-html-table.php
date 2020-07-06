@@ -84,8 +84,8 @@ use app\models\FileInfo;
     <table id="" border="1">
         <thead>
         <tr style="color: white; background-color: darkslateblue">
-            <th rowspan="4">№:</th>
-            <th rowspan="4">Корхоналар</th>
+            <th rowspan="3">№:</th>
+            <th rowspan="3">Корхоналар</th>
 <!--            <th rowspan="4">Уникаль коди</th>-->
             <th colspan="16" style="text-align: center">Хисоб рақамлардаги қолдиқлар</th>
         </tr>
@@ -112,24 +112,24 @@ use app\models\FileInfo;
             <th>Депозит (EUR)</th>
             <th>Депозит (RUB)</th>
         </tr>
-        <tr style="color: white; background-color: darkslateblue; font:italic 12px Arial;">
-            <th >20208000 / 20210000 / 20214000</th>
-            <th>20208840 / 20210840 / 20214840</th>
-            <th>20208978 / 20210978 / 20214978</th>
-            <th>20208643 / 20210643 / 20214643</th>
-            <th>22602000</th>
-            <th>22602840</th>
-            <th>22602978</th>
-            <th>22613000</th>
-            <th>22618840</th>
-            <th>22614978</th>
-            <th>22614978</th>
-            <th>20614000</th>
-            <th>20614840</th>
-            <th>20614978</th>
-            <th>20614643</th>
-            <th>22620</th>
-        </tr>
+<!--        <tr style="color: white; background-color: darkslateblue; font:italic 12px Arial;">-->
+<!--            <th >20208000 / 20210000 / 20214000</th>-->
+<!--            <th>20208840 / 20210840 / 20214840</th>-->
+<!--            <th>20208978 / 20210978 / 20214978</th>-->
+<!--            <th>20208643 / 20210643 / 20214643</th>-->
+<!--            <th>22602000</th>-->
+<!--            <th>22602840</th>-->
+<!--            <th>22602978</th>-->
+<!--            <th>22613000</th>-->
+<!--            <th>22618840</th>-->
+<!--            <th>22614978</th>-->
+<!--            <th>22614978</th>-->
+<!--            <th>20614000</th>-->
+<!--            <th>20614840</th>-->
+<!--            <th>20614978</th>-->
+<!--            <th>20614643</th>-->
+<!--            <th>22620</th>-->
+<!--        </tr>-->
         </thead>
         <tbody>
         <?php foreach ($companyName as $i => $cName) {  ?>
