@@ -350,6 +350,9 @@ class FileInfoController extends Controller
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
+                    $countDetailToRecord= 0;
+                    $countDetailNoRecord = 0;
+
                     foreach ($eee as $key => $value) {
                         $pat = array(
                             "contract_date" => "((от )\d{1,2}\.\d{1,2}\.\d{4})",     //contract_date
@@ -377,7 +380,7 @@ class FileInfoController extends Controller
 
 
                         if (!$document) {
-                            $provodka++;
+                            $countDetailToRecord ++;
                             $document = new Document();
                             $document->file_id = $lastID;
                             $document->detail_date = $date;
@@ -398,7 +401,8 @@ class FileInfoController extends Controller
 
                             $document->save(false);
                         }
-//                        else if ($document) {
+                        else if ($document) {
+                            $countDetailNoRecord++;
 //                            session_start();
 //                            $_SESSION['file_date'] = $value[0];
 //                            $_SESSION['detail_document_number'] = $value[2];
@@ -407,8 +411,17 @@ class FileInfoController extends Controller
 //                            $_SESSION['detail_kredit'] = $kredit;
 //                            $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
 //                            header($s);
-//                        }
+                        }
                     }
+
+                    $model->countDetailToRecord = $countDetailToRecord;
+                    $model->countDetailNoRecord = $countDetailNoRecord;
+                    $model->save(false);
+
+  //                  echo "To: ".$countDetailToRecord;
+  //                  echo "No: ".$countDetailNoRecord;
+
+
                 //******************************* end save to db **********************
                 }else{
                     $s = 'Refresh:15; url='.Url::home(true).'file-info/index';

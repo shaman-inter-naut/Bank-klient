@@ -120,6 +120,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'data_period',
             'depozitBefore',
             'depozitAfter',
+            'countDetailToRecord',
+            'countDetailNoRecord',
         ],
     ]) ?>
 

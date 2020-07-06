@@ -44,6 +44,8 @@ class FileInfo extends \yii\db\ActiveRecord
             [['template'], 'string', 'max' => 5],
             [['file'], 'file'],
             [['description'], 'integer'],
+            [['countDetailToRecord'], 'integer'],
+            [['countDetailNoRecord'], 'integer'],
         ];
     }
 
@@ -66,7 +68,9 @@ class FileInfo extends \yii\db\ActiveRecord
             'name' => 'Корхона номи:',
             'depozitBefore' => 'Бошланғич депозит:',
             'depozitAfter' => 'Якуний депозит:',
-            'description' => 'Изох (Проводкалар)',
+            'description' => 'Изох (Проводкалар):',
+            'countDetailToRecord' => 'Жами проводкалар сони:',
+            'countDetailNoRecord' => 'Сақланмаган проводкалар (аввал сақланган)',
         ];
     }
 

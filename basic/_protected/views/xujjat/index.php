@@ -44,6 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </style>
 
+
+
 <div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>

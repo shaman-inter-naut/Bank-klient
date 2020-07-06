@@ -23,6 +23,39 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </style>
 
+<script>
+    function exportTableToExcel(tableID, filename = ''){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename?filename+'.xls':'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
+
 <div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
@@ -32,8 +65,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?=$this->title ?></h1>
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button>
+
 <div id="stil" class="stil" >
-    <table  class=" table table-striped">
+    <table  class=" table table-striped" id="tblData">
 
 
         <thead class="thed">
@@ -47,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Проводканинг сана</th>
             <th>Хамкор номи</th>
             <th>Хамкор ИНН</th>
-            <th>Хамкор Х-Р</th>
+            <th width="20%">Хамкор Х-Р</th>
             <th>Тўлов мақсади</th>
             <th>Валюта коди</th>
             <th>Кирим</th>
