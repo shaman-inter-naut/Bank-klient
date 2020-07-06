@@ -16,7 +16,7 @@ use kartik\daterange\DateRangePicker;
 <div class="xujjat-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['table'],
         'method' => 'get',
     ]); ?>
 

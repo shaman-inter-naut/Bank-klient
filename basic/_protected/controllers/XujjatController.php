@@ -77,6 +77,20 @@ class XujjatController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionTable(){
+
+        $searchModel = new XujjatSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $document = Xujjat::find()->all();
+
+        return $this->render('table',[
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'document' => $document,
+
+        ]);
+
+    }
 
 
     /**

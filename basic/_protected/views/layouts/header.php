@@ -25,7 +25,7 @@ use yii\helpers\Html;
                 <li class="drop-down"><a>Файл</a>
                     <ul>
                         <li><a href="<?=Url::to('/file-info/index')?>">Файллар</a></li>
-                        <li><a href="<?=Url::to('/xujjat/index')?>">Барча проводкалар</a></li>
+                        <li><a href="<?=Url::to('/xujjat/table')?>">Барча проводкалар</a></li>
                         <li><a href="<?=Url::to('/expence-types/index')?>">Харажатлар тури</a></li>
                         <? if (Yii::$app->controller->action->id!=="to-html-table") {?>
                         <li><a href="<?=Url::to('/file-info/to-html-table')?>">to Ms Excel</a></li>

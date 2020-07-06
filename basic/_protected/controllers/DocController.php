@@ -3,34 +3,20 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\FileInfo;
-use app\models\FileInfoSearch;
+use app\models\Xujjat;
+use app\models\DocSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
 
 /**
- * DocController implements the CRUD actions for FileInfo model.
+ * DocController implements the CRUD actions for Xujjat model.
  */
 class DocController extends Controller
 {
     /**
      * {@inheritdoc}
      */
-
-    public function beforeAction($action)
-    {
-
-        if (Yii::$app->user->isGuest) {
-            if((Yii::$app->controller->action->id!='login') &&
-                (Yii::$app->controller->action->id!='signup')){
-                $model = new LoginForm();
-                return $this->redirect(['/site/login', 'model' => $model]);
-            }
-        }
-        return parent::beforeAction($action);
-    }
     public function behaviors()
     {
         return [
@@ -44,12 +30,12 @@ class DocController extends Controller
     }
 
     /**
-     * Lists all FileInfo models.
+     * Lists all Xujjat models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FileInfoSearch();
+        $searchModel = new DocSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -59,7 +45,7 @@ class DocController extends Controller
     }
 
     /**
-     * Displays a single FileInfo model.
+     * Displays a single Xujjat model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -72,13 +58,13 @@ class DocController extends Controller
     }
 
     /**
-     * Creates a new FileInfo model.
+     * Creates a new Xujjat model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new FileInfo();
+        $model = new Xujjat();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -90,7 +76,7 @@ class DocController extends Controller
     }
 
     /**
-     * Updates an existing FileInfo model.
+     * Updates an existing Xujjat model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -110,7 +96,7 @@ class DocController extends Controller
     }
 
     /**
-     * Deletes an existing FileInfo model.
+     * Deletes an existing Xujjat model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -124,15 +110,15 @@ class DocController extends Controller
     }
 
     /**
-     * Finds the FileInfo model based on its primary key value.
+     * Finds the Xujjat model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return FileInfo the loaded model
+     * @return Xujjat the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = FileInfo::findOne($id)) !== null) {
+        if (($model = Xujjat::findOne($id)) !== null) {
             return $model;
         }
 
