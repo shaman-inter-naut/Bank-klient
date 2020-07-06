@@ -21,6 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
         /*border: 1px solid #000000;*/
     }
 
+    .xlText {
+        mso-number-format: "\@";
+    }
+
 </style>
 
 <script>
@@ -77,12 +81,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Корхона</th>
             <th>МФО</th>
             <th> ИНН</th>
-            <th>Хисоб рақам</th>
+            <th class="xlText">Хисоб рақам</th>
             <th>Сана</th>
             <th>Проводканинг сана</th>
             <th>Хамкор номи</th>
             <th>Хамкор ИНН</th>
-            <th width="20%">Хамкор Х-Р</th>
+            <th class="xlText">Хамкор Х-Р</th>
             <th>Тўлов мақсади</th>
             <th>Валюта коди</th>
             <th>Кирим</th>
@@ -152,10 +156,34 @@ Modal::begin([
 Modal::end();
 ?>
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
     var w = window.innerWidth;
     // var h = window.innerHeight-190;
     var h = window.innerHeight-190;
     document.getElementById("stil").style.height = h+"px";
+</script>
+
+<script type="text/javascript">
+    function tableau(pid, iid, fmt, ofile) {
+        if(typeof Downloadify !== 'undefined') Downloadify.create(pid,{
+            swf: 'downloadify.swf',
+            downloadImage: 'download.png',
+            width: 100,
+            height: 30,
+            filename: ofile, data: function() { return doit(fmt, ofile, true); },
+            transparent: false,
+            append: false,
+            dataType: 'base64',
+            onComplete: function(){ alert('Your File Has Been Saved!'); },
+            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
+            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); }
+        }); else document.getElementById(pid).innerHTML = "";
+    }
+    tableau('biff8btn', 'xportbiff8', 'biff8', 'SheetJSTableExport.xls');
+    tableau('odsbtn',   'xportods',   'ods',   'SheetJSTableExport.ods');
+    tableau('fodsbtn',  'xportfods',  'fods',  'SheetJSTableExport.fods');
+    tableau('xlsbbtn',  'xportxlsb',  'xlsb',  'SheetJSTableExport.xlsb');
+    tableau('xlsxbtn',  'xportxlsx',  'xlsx',  'SheetJSTableExport.xlsx');
+
 </script>
