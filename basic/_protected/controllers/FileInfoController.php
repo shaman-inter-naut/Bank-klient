@@ -779,6 +779,8 @@ class FileInfoController extends Controller
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
 //                print_r( $file);
                 foreach ($file as $key_file => $value_file) {
+                    $accounts = AccountNumber::find()->where(['like', 'account_number', $value_file->company_account])->all();
+                    $acc = $accounts[0]['stock'];
                     $value_file->depozitBefore = $value_file->depozitBefore ? $value_file->depozitBefore : 0;
 //                    print_r( $value_file);
                     $company_unikal = substr($value_file->company_account, 9, 8);
@@ -791,7 +793,7 @@ class FileInfoController extends Controller
                         $val->detail_debet = $val->detail_debet ? $val->detail_debet : 0;
                         $summa[$company_unikal]['kredit'][$key_massiv][$value_n] += $val->detail_kredit;
                         $summa[$company_unikal]['debet'][$key_massiv][$value_n] += $val->detail_debet;
-                        $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $value_file->depozitBefore;
+                        $summa[$company_unikal]['bosh'][$key_massiv][$value_n] = $accounts[0]['stock'];
                     }
                 }
             }

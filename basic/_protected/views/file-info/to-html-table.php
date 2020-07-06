@@ -138,6 +138,9 @@ use app\models\FileInfo;
                 $arr_kredit = $summa[$cName->unical_code]['kredit'][$j] ? $summa[$cName->unical_code]['kredit'][$j] : [];
                 $arr_debet = $summa[$cName->unical_code]['debet'][$j] ? $summa[$cName->unical_code]['debet'][$j] : [];
                 $arr_bosh = $summa[$cName->unical_code]['bosh'][$j] ? $summa[$cName->unical_code]['bosh'][$j] : [];
+//                echo "Kredit: ".array_sum($arr_kredit);
+//                echo "Bosh: ".array_sum($arr_bosh);
+//                echo "Debet: ".array_sum($arr_debet);
                 $natija = array_sum($arr_bosh)+array_sum($arr_kredit)-array_sum($arr_debet);
                 $sum_new_array[$j] += $natija;
                 ?>

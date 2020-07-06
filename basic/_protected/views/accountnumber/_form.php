@@ -16,7 +16,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'bank_branch_id')->widget(Select2::classname(), [
-        'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','short_name'),
+        'data' =>  ArrayHelper::map(\app\models\BankBranch::find()->all(),'id','mfo'),
         'language' => 'ru',
         'options' => ['placeholder' => '---Банк МФО киритинг ёки танланг---'],
         'pluginOptions' => [
