@@ -387,7 +387,7 @@ class FileInfoController extends Controller
                             $document->detail_document_number = $value[2];
                             $unikalCode = substr($matches['acc'], 9, 8);
                             $company = Company::find()->where(['unical_code' => $unikalCode])->one();
-                            $document->detail_name = htmlspecialchars($company->name, ENT_QUOTES);
+                            $document->detail_name = htmlspecialchars($company->name, ENT_NOQUOTES);
                             $document->detail_mfo = $value[4];
                             $document->detail_debet = $debet;
                             $document->detail_kredit = $kredit;
@@ -506,7 +506,7 @@ class FileInfoController extends Controller
                             $unikalCode = substr($account, 9, 8);
                             $company = Company::find()->where(['unical_code' => $unikalCode])->one();
 //                            echo $company->name;
-                            $document->detail_name = htmlspecialchars($company->name, ENT_QUOTES);
+                            $document->detail_name = htmlspecialchars($company->name, ENT_NOQUOTES);
                             $document->detail_mfo = $mfo;
                             $document->detail_debet = $debet;
                             $document->detail_kredit = $kredit;
@@ -630,7 +630,7 @@ class FileInfoController extends Controller
                         $document->detail_account = $detail_account;
                         $unikalCode = substr($detail_account, 9, 8);
                         $company = Company::find()->where(['unical_code' => $unikalCode])->one();
-                        $document->detail_name = $company->name;// $eee[1];
+                        $document->detail_name = htmlspecialchars($company->name, ENT_NOQUOTES);
                         $document->detail_mfo = trim(str_replace("МФО:", "", $res['mfo']));
                         $document->detail_debet = $debet;
                         $document->detail_kredit = $kredit;
