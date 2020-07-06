@@ -44,64 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </style>
 
-<script>
-    function exportTableToExcel(tableID, filename = ''){
-        var downloadLink;
-        var dataType = 'application/vnd.ms-excel';
-        var tableSelect = document.getElementById(tableID);
-        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-
-        // Specify file name
-        filename = filename?filename+'.xls':'excel_documents.xls';
-
-        // Create download link element
-        downloadLink = document.createElement("a");
-
-        document.body.appendChild(downloadLink);
-
-        if(navigator.msSaveOrOpenBlob){
-            var blob = new Blob(['\ufeff', tableHTML], {
-                type: dataType
-            });
-            navigator.msSaveOrOpenBlob( blob, filename);
-        }else{
-            // Create a link to the file
-            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-            // Setting the file name
-            downloadLink.download = filename;
-
-            //triggering the function
-            downloadLink.click();
-        }
-    }
-</script>
-
-<script type="text/javascript">
-    function tableau(pid, iid, fmt, ofile) {
-        if(typeof Downloadify !== 'undefined') Downloadify.create(pid,{
-            swf: 'downloadify.swf',
-            downloadImage: 'download.png',
-            width: 100,
-            height: 30,
-            filename: ofile, data: function() { return doit(fmt, ofile, true); },
-            transparent: false,
-            append: false,
-            dataType: 'base64',
-            onComplete: function(){ alert('Your File Has Been Saved!'); },
-            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
-            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); }
-        }); else document.getElementById(pid).innerHTML = "";
-    }
-    tableau('biff8btn', 'xportbiff8', 'biff8', 'SheetJSTableExport.xls');
-    tableau('odsbtn',   'xportods',   'ods',   'SheetJSTableExport.ods');
-    tableau('fodsbtn',  'xportfods',  'fods',  'SheetJSTableExport.fods');
-    tableau('xlsbbtn',  'xportxlsb',  'xlsb',  'SheetJSTableExport.xlsb');
-    tableau('xlsxbtn',  'xportxlsx',  'xlsx',  'SheetJSTableExport.xlsx');
-
-</script>
-
-
 <div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
@@ -110,7 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <div class="xujjat-index" >
-    <button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button>
 
     <h1><?= Html::encode($this->title) ?></h1>
 <!---->
@@ -124,15 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'layout' => '{items}{pager}',
-        'tableOptions' => ['class' => 'table  table-bordered table-hover', 'id' => 'tblData'],
-        'rowOptions' => function ($model, $key, $index, $grid) {
-            return [
-                'style' => "cursor: pointer",
-                'onclick' => 'location.href="'
-                    . Yii::$app->urlManager->createUrl('xujjat/index')
-                    . '?id="+(this.id);',
-            ];
-        },
         'options' => [
 //            'class' => ' table-responsive '
             'class' => 'stil',
