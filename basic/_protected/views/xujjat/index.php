@@ -19,6 +19,7 @@ $this->title = 'Хужжатлар';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
+
     .stil{
 
         overflow-x:auto;
@@ -31,6 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
     /*    position: absolute;*/
     /*    top: 0;*/
     /*}*/
+    .short{
+        /*width: 50px !important;*/
+        white-space: nowrap ;
+        overflow: hidden !important;
+        /*text-overflow: ellipsis !important;*/
+        /*border: 1px solid #000000;*/
+    }
+
 </style>
 
 <div  ">
@@ -141,11 +150,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             ['attribute'=>'detail_purpose_of_payment',
-                'header' => 'Тўлов мақсади',
+                'header' => ' Тўлов мақсади ',
 
                 'format'=>'raw',
                 'value' => function($data)
-                {return Html::a('Кўриш ', [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'bank',]);}
+                {
+                    return Html::a(mb_substr($data->detail_purpose_of_payment,0,20).'...',
+                        [Yii::$app->controller->id.'/views','id'=>$data->id],['class'=>'short bank ']);
+                }
             ],
             [
                 'attribute'=> 'code_currency',
