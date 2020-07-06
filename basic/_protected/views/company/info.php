@@ -34,18 +34,20 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <div id='<?= $getID->id; ?>' class="tabcontent">
-    <table class="table table-striped">
-
-
+    <table class="table table-striped"  width="100%">
         <thead class="thed">
         <tr>
-            <th><h4>№</h4></th>
-            <th style=""><h4>
-                    <div class="col-md-11"><?= $getID->name; ?> нинг хисоб рақамлари</div>
-                    <div class="col-md-1"><?= Html::a('add_circle',
+            <th width="5%"><h4>№</h4></th>
+            <th width="45%" style=""><h4>
+
+                    <div class="col-md-1 pull-right"><?= Html::a('add_circle',
                             ['accountnumber/create?company_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
+                    <div class="col-md-11"><?= $getID->name; ?> нинг хисоб рақамлари</div>
                 </h4> </th>
-            <th><h4> ХИСОБ РАКАМ</h4></th>
+            <th width="15%"><h4> Хисоб рақам:</h4></th>
+<!--            <th width="10%"><h4> Статус:</h4></th>-->
+            <th width="10%"><h4> Қолдиқ:</h4></th>
+            <th width="15%"><h4> Сана:</h4></th>
         </tr>
         </thead>
         <tbody>
@@ -54,31 +56,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th><?=$key+1?></th>
                 <th style="text-align: left; vertical-align: center !important;"><?=$val->bankbr->short_name?></th>
                 <th style="text-align: left">
-                    <button  class="accordion"  style="color: darkgreen; padding: 10px"><?= $val->account_number; ?></button>
-                    <div class="panels">
-                        <br>
-                        <table class="table" border="1" width="100%">
-                            <tr>
-                                <td ><?= $val->account_number; ?></td>
-                                <td  >
-                                    <?= Html::a('create', ['accountnumber/update', 'id' => $val->id], ['class' => 'kor material-icons']);?>
-                                </td>
-                                <td >
-<!--                                    --><?//= Html::a('delete_forever', ['accountnumber/view', 'id' => $val->id], ['class' => 'material-icons']);?>
-                                    <?= Html::a('delete_forever', ['/accountnumber/delete', 'id' => $val->id], [
-                                        'class' => 'material-icons',
-                                        'data' => [
-                                            'confirm' => 'Ўчириб юборилсинми?',
-                                            'method' => 'post',
-                                        ],
-                                    ]) ?>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    <?= $val->account_number?>
                 </th>
-                <!--                <th>--><?//=$val->account_number?><!--</th>-->
-
+<!--                <th>--><?//= ($val->is_main == 0) ? "Асосий" : "Иккиламчи"; ?><!--</th>-->
+                <th><?= $val->stock?></th>
+                <th><?= $val->stock_date?></th>
             </tr>
         <?php } ?>
         </tbody>
