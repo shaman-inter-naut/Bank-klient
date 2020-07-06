@@ -56,7 +56,7 @@ use yii\helpers\Html;
                     <li > <?= Html::a('Чиқиш', ['/site/logout'], ['data' => ['method' => 'post']]) ?></li>
 
                 <?}?>
-                <?= (Yii::$app->controller->action->id=="to-html-table")?'<li onclick="exportTableToExcel(\'tblData\')"><a href="">Ms Excel юклаб олиш</a></li>':'' ?>
+                <?= (Yii::$app->controller->action->id=="to-html-table")?'<li class="active" onclick="exportTableToExcel(\'tblData\')"><a href="">Ms Excel юклаб олиш</a></li>':'' ?>
 
 
 
