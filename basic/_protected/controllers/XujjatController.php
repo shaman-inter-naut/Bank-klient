@@ -102,7 +102,6 @@ class XujjatController extends Controller
                 'detail_name'=>$detail_name,
                 'detail_inn'=>$detail_inn,
                 'detail_account'=>$detail_account,
-//                'detail_purpose_of_payment'=>$detail_purpose_of_payment,
                 'code_currency'=>$code_currency,
                 'tip_deb_kred'=>$tip_deb_kred,
                 'contract_date'=>$contract_date,
