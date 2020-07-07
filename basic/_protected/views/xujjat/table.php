@@ -212,7 +212,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Валюта коди</th>
             <th>Кирим</th>
             <th>Чиқим</th>
-            <th>Статус</th>
+<!--            <th>Статус</th>-->
             <th>Шартнома санаси</th>
             <th>Шартнома Рақами</th>
         </tr>
@@ -250,7 +250,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?=$doc->code_currency?></td>
             <td><?=$doc->detail_debet?></td>
             <td><?=$doc->detail_kredit?></td>
-            <td><?=$doc->tip_deb_kred?></td>
+<!--            <td>--><?//=$doc->tip_deb_kred?><!--</td>-->
             <td><?=$doc->contract_date?></td>
             <td><?=$doc->detail_document_number?></td>
 
