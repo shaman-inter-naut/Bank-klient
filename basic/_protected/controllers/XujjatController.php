@@ -10,10 +10,11 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\FileInfo;
-
+use yii\data\Pagination;
 /**
  * XujjatController implements the CRUD actions for Xujjat model.
  */
+
 class XujjatController extends Controller
 {
     /**
@@ -82,21 +83,63 @@ class XujjatController extends Controller
 
         if ($_POST){
             $date = $_POST['date'];
-            $document = Xujjat::find()->joinWith('file')->joinWith('file.file_date')->where(['file_id'=>$date])->all();
+            $detail_name = $_POST['detail_name'];
+            $detail_inn = $_POST['detail_inn'];
+            $detail_account = $_POST['detail_account'];
+            $detail_purpose_of_payment = $_POST['detail_purpose_of_payment'];
+            $code_currency = $_POST['code_currency'];
+            $tip_deb_kred = $_POST['tip_deb_kred'];
+            $contract_date = $_POST['contract_date'];
+            $company_account = $_POST['company_account'];
+            $bank_mfo = $_POST['bank_mfo'];
+            $company_inn = $_POST['company_inn'];
+            $startDT = $_POST['startDT'];
+            $endDT = $_POST['endDT'];
 
+
+            $document = Xujjat::find()->joinWith('file')->andFilterWhere([
+                'file_date'=>$date,
+                'detail_name'=>$detail_name,
+                'detail_inn'=>$detail_inn,
+                'detail_account'=>$detail_account,
+                'detail_purpose_of_payment'=>$detail_purpose_of_payment,
+                'code_currency'=>$code_currency,
+                'tip_deb_kred'=>$tip_deb_kred,
+                'contract_date'=>$contract_date,
+                'company_account'=>$company_account,
+                'bank_mfo'=>$bank_mfo,
+                'company_inn'=>$company_inn,
+                ])
+                ->andFilterWhere(['between', 'detail_date', $startDT,$endDT.' 23:59:59']);
+//                ->orwhere(['detail_name'=>$detail_name])
+//                ->andwhere(['detail_name'=>$detail_name])
+//                ->all();
+
+            $pagination = new Pagination([
+                'defaultPageSize' => 10,
+                'totalCount' => $document->count()
+            ]);
+            $document=$document->offset($pagination->offset)->limit($pagination->limit)->all();
             return $this->render('table',[
 
                 'document' => $document,
-//            var_dump($document); die;
+                'pagination' => $pagination,
             ]);
 
         }
 
-        $document = Xujjat::find()->all();
+        $document = Xujjat::find();
 
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $document->count()
+        ]);
+        $document=$document->offset($pagination->offset)->limit($pagination->limit)->all();
         return $this->render('table',[
 
             'document' => $document,
+            'pagination' => $pagination,
 
         ]);
 

@@ -1,5 +1,5 @@
 <?
-
+use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
@@ -12,6 +12,20 @@ $this->title = 'Xujjatlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
+
+
+    .inputform {
+        /*background-image: url('/themes/searchicon.png');*/
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 15%;
+        /*height: 40px;*/
+        font-size: 12px;
+        /*padding: 12px 0 12px 5px;*/
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+
     .stil{
         overflow-x:auto;
     }
@@ -65,64 +79,144 @@ $this->params['breadcrumbs'][] = $this->title;
 <div >
     <?=Yii::$app->controller->renderPartial("//layouts/header")?>
 </div>
-    <div>
-        <h3 style="text-align: center">Qidiruv tizimi</h3>
-<section style="padding: 10px 0">
+
+        <h3 style="text-align: center">Қидирув тизими</h3>
+        <section style="padding: 10px 0">
 <!--        --><?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-               <div>
-<!--                   --><?// Pjax::begin(); ?>
-                    <?php $form = ActiveForm::begin(); ?>
+
                 <div class="col-md-3">
+                    <?php $form = ActiveForm::begin(); ?>
+
                     <?=DatePicker::widget([
                         'options' => [
-                                'placeholder' => 'Санани киритинг',
-
-                            ],
-                        'name' => 'month',
-                        'value' => $date,
+                            'placeholder' => 'Хужжат яратилган санани киритинг',
+                            'class'=> 'inputform',
+                        ],
+                        'name' => 'date',
+//                        'value' => $date,
                         'pluginOptions' => [
                             'autoclose' => true,
                             'format' => 'dd.mm.yyyy'
                         ],
                     ]);?>
                 </div>
-                   <div class="form-group">
-                       <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
-                   </div>
+            <div class="col-md-3">
+                <?=DatePicker::widget([
+                    'options' => [
+                        'placeholder' => 'Шартнома санасини киритинг',
+                        'class'=> 'inputform',
+                    ],
+                    'name' => 'contract_date',
+//                    'value' => $contract_date,
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'dd.mm.yyyy'
+                    ],
+                ]);?>
+            </div>
+            <div class="col-md-3">
+                <?= DatePicker::widget([
+                    'options' => ['placeholder' => 'Проводка(Дан...)',
+                        // 'value' => date('Y-m-d')
+                    ],
+                    'name'=> 'startDT',
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' =>'yyyy-mm-dd'
+                    ]
+                ]); ?>
+            </div>
+            <div class="col-md-3">
+                <?= DatePicker::widget([
+                    'options' => ['placeholder' => 'Проводка(Дан...)',
+                        // 'value' => date('Y-m-d')
+                    ],
+                    'name'=> 'endDT',
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' =>'yyyy-mm-dd'
+                    ]
+                ]); ?>
+            </div>
+
+
+
+
+        </section>
+        <section style="padding: 0 0 0 15px">
+
+                           <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор ИНН ни киритинг'] ?>
+                           <?= Html::textInput('detail_inn',null , $options) ?>
+
+
+                           <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор Х-Рни киритинг'] ?>
+                           <?= Html::textInput('detail_account',null , $options) ?>
+
+
+
+
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Тўлов мақсадини киритинг'] ?>
+                            <?= Html::textInput('detail_purpose_of_payment',null , $options) ?>
+
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Валюта кодини киритинг'] ?>
+                            <?= Html::textInput('code_currency',null , $options) ?>
+
+                            <?
+                            $items=[
+                            Null=>'Кирим-чиқим турини танланг',
+                            1=>'Кирим',
+                            0=>'Чиқим',
+                            ];?>
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Валюта кодини киритинг'] ?>
+                            <?= Html::dropDownList('tip_deb_kred',null , $items,$options) ?>
+
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор номини киритинг'] ?>
+                            <?= Html::textInput('detail_name',null , $options) ?>
+
+
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Хисоб рақамни киритинг'] ?>
+                            <?= Html::textInput('company_account',null , $options) ?>
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'МФОни киритинг'] ?>
+                            <?= Html::textInput('bank_mfo',null , $options) ?>
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'ИННни киритинг'] ?>
+                            <?= Html::textInput('company_inn',null , $options) ?>
+
+
+
+
+
+                            <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
+                            <?= Html::submitButton('Reset', ['class' => 'btn btn-success']) ?>
+
+
+
+
                     <?php ActiveForm::end(); ?>
 <!--                   --><?// Pjax::end(); ?>
-            </div>
+
 </section>
-        <section  style="padding: 10px 0">
-        <div style="padding-left: 15px">
-        <input class="input" type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Корхона.." title="Корхонани киритинг">
-        <input class="input" type="text" id="myInput2" onkeyup="myFunction2()" placeholder="МФО.." title="МФОни киритинг">
-        <input class="input" type="text" id="myInput3" onkeyup="myFunction3()" placeholder="ИНН.." title="ИННни киритинг">
-        <input class="input" type="text" id="myInput4" onkeyup="myFunction4()" placeholder="Хисоб рақам.." title="Хисоб рақамни киритинг">
-<!--        <input class="input" type="text" id="myInput5" onkeyup="myFunction5()" placeholder="date.." title="Хисоб рақамни киритинг">-->
-        <input class="input" type="text" id="myInput7" onkeyup="myFunction7()" placeholder="Хамкор номи.." title="Хамкор номини киритинг">
-        <input class="input" type="text" id="myInput8" onkeyup="myFunction8()" placeholder="Хамкор ИНН.." title="Хамкор ИННни киритинг">
-        <input class="input" type="text" id="myInput9" onkeyup="myFunction9()" placeholder="Хамкор Х-Р.." title="Хамкор Х-Рни киритинг">
-        <input class="input" type="text" id="myInput10" onkeyup="myFunction10()" placeholder="Тўлов мақсади.." title="Тўлов мақсадини киритинг">
-        <input class="input" type="text" id="myInput11" onkeyup="myFunction11()" placeholder="Валюта коди.." title="Валюта кодини киритинг">
-        </div>
-        </section>
-    </div>
+
 
 <div class="container-fluid">
 <!--    <h1>--><?//=$this->title ?><!--</h1>-->
     <? if ($document){?>
     <div id="stil" class="stil" >
     <table  class=" table table-striped" id="tblData">
-        <thead class="thed">
+        <thead  class="thed">
         <tr>
             <th>№</th>
             <th>Корхона</th>
             <th>МФО</th>
             <th> ИНН</th>
             <th class="xlText">Хисоб рақам</th>
-            <th>Сана</th>
+            <th>Хужжат яратилган сана</th>
             <th>Проводканинг сана</th>
             <th>Хамкор номи</th>
             <th>Хамкор ИНН</th>
@@ -167,8 +261,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--            ['accountnumber/create?company_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?>-->
 
             <td><?=$doc->code_currency?></td>
-            <td><?=$doc->code_currency?></td>
             <td><?=$doc->detail_debet?></td>
+            <td><?=$doc->detail_kredit?></td>
             <td><?=$doc->tip_deb_kred?></td>
             <td><?=$doc->contract_date?></td>
             <td><?=$doc->detail_document_number?></td>
@@ -179,6 +273,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     </table>
+        <div class="col-sm-6 text-left">
+            <?= LinkPager::widget([
+                'pagination' => $pagination,
+            ]);?>
+        </div>
 </div>
     <?}?>
 </div>
@@ -201,7 +300,7 @@ Modal::end();
 <script>
     var w = window.innerWidth;
     // var h = window.innerHeight-190;
-    var h = window.innerHeight-250;
+    var h = window.innerHeight-290;
     document.getElementById("stil").style.height = h+"px";
 </script>
 
@@ -228,207 +327,5 @@ Modal::end();
     tableau('xlsxbtn',  'xportxlsx',  'xlsx',  'SheetJSTableExport.xlsx');
 
 </script>
-<!--search-->
-<script>
-    function myFunction1() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput1");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction2() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput2");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction3() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput3");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction4() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput4");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[4];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction5() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput5");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[5];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction7() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput7");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[7];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction8() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput8");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[8];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction9() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput9");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[9];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction10() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput10");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[10];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function myFunction11() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput11");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tblData");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[11];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-
-</script>
-<!--<script>-->
-<!--    $(document).ready(function () {-->
-<!--        $(function () {-->
-<!--            $("#myInput5").datepicker();-->
-<!--        });-->
-<!--        -->
-<!--    });-->
-<!--</script>-->
-<!--<script> src="jquery.datetimepicker.full.min.js" </script>-->
-<!--<script>-->
-<!--    $('#myInput4').datetimepicker({-->
-<!--        timepicker: false,-->
-<!--        datepicker: true,-->
-<!--        format: 'Y-M-d',-->
-<!--        value: date('Y-m-d'),-->
-<!--        weeks: true,-->
-<!--    })-->
-<!--</script>-->
 
 <!--https://www.youtube.com/watch?v=Bv9XrpmdopI&t=844s-->
