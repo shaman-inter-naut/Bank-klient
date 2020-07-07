@@ -139,27 +139,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ]); ?>
             </div>
-
-
-
-
         </section>
+
         <section style="padding: 0 0 0 15px">
 
                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор ИНН ни киритинг'] ?>
                            <?= Html::textInput('detail_inn',null , $options) ?>
 
-
                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор Х-Рни киритинг'] ?>
                            <?= Html::textInput('detail_account',null , $options) ?>
 
-
-
-
-
                             <?$options = ['class'=> 'inputform','placeholder' => 'Тўлов мақсадини киритинг'] ?>
                             <?= Html::textInput('detail_purpose_of_payment',null , $options) ?>
-
 
                             <?$options = ['class'=> 'inputform','placeholder' => 'Валюта кодини киритинг'] ?>
                             <?= Html::textInput('code_currency',null , $options) ?>
@@ -170,14 +161,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             1=>'Кирим',
                             0=>'Чиқим',
                             ];?>
+
                             <?$options = ['class'=> 'inputform','placeholder' => 'Валюта кодини киритинг'] ?>
                             <?= Html::dropDownList('tip_deb_kred',null , $items,$options) ?>
 
-
                             <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор номини киритинг'] ?>
                             <?= Html::textInput('detail_name',null , $options) ?>
-
-
 
                             <?$options = ['class'=> 'inputform','placeholder' => 'Хисоб рақамни киритинг'] ?>
                             <?= Html::textInput('company_account',null , $options) ?>
@@ -187,6 +176,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <?$options = ['class'=> 'inputform','placeholder' => 'ИННни киритинг'] ?>
                             <?= Html::textInput('company_inn',null , $options) ?>
+
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Корхонани киритинг'] ?>
+                            <?= Html::textInput('short_name',null , $options) ?>
 
 
 

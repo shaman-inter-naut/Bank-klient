@@ -95,11 +95,11 @@ class XujjatController extends Controller
             $company_inn = $_POST['company_inn'];
             $startDT = $_POST['startDT'];
             $endDT = $_POST['endDT'];
+            $short_name = $_POST['short_name'];
 
 
-            $document = Xujjat::find()->joinWith('file')->andFilterWhere([
+            $document = Xujjat::find()->joinWith('file')->joinWith('file.companyName')->andFilterWhere([
                 'file_date'=>$date,
-                'detail_name'=>$detail_name,
                 'detail_inn'=>$detail_inn,
                 'detail_account'=>$detail_account,
                 'code_currency'=>$code_currency,
@@ -110,7 +110,9 @@ class XujjatController extends Controller
                 'company_inn'=>$company_inn,
                 ])
                 ->andFilterWhere(['between', 'detail_date', $startDT,$endDT.' 23:59:59'])
-                ->andFilterWhere(['like', 'detail_purpose_of_payment', $detail_purpose_of_payment]);
+                ->andFilterWhere(['like', 'detail_purpose_of_payment', $detail_purpose_of_payment])
+                ->andFilterWhere(['like', 'detail_name', $detail_name])
+                ->andFilterWhere(['like', 'short_name', $short_name]);
 //                ->orwhere(['detail_name'=>$detail_name])
 //                ->andwhere(['detail_name'=>$detail_name])
 //                ->all();
