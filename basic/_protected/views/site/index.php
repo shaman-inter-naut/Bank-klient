@@ -133,7 +133,7 @@ use yii\bootstrap\Modal;
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-slideshow"></i></div>
-                        <h4><a href="<?=Url::to('/xujjat/index')?>">Барча проводкалар</a></h4>
+                        <h4><a href="<?=Url::to('/xujjat/table')?>">Барча проводкалар</a></h4>
                         <p>Барча корхоналарнинг барча ҳисоб рақамларидаги кирим чиқим амалиётлари</p>
                     </div>
                 </div>
