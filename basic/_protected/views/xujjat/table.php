@@ -181,13 +181,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= Html::textInput('short_name',null , $options) ?>
 
 
-
-
-
                             <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
                             <?= Html::submitButton('Reset', ['class' => 'btn btn-success']) ?>
-
-
 
 
                     <?php ActiveForm::end(); ?>
@@ -200,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--    <h1>--><?//=$this->title ?><!--</h1>-->
     <? if ($document){?>
     <div id="stil" class="stil" >
-    <table  class=" table table-striped" id="tblData">
+    <table  border="1"  class=" table table-striped" id="tblData">
         <thead  class="thed">
         <tr>
             <th>№</th>
@@ -230,7 +225,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?=$doc->file->bank_mfo?></td>
             <td><?=$doc->file->company_inn?></td>
             <td><?=$doc->file->company_account?></td>
-            <td><?=$doc->file->file_date?>	</td>
+            <td><?=$doc->file->file_date?></td>
             <td><?=$doc->detail_date?></td>
             <td><?=$doc->detail_name?></td>
             <td><?=$doc->detail_inn?></td>
