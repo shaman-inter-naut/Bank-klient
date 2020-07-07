@@ -102,7 +102,7 @@ class XujjatController extends Controller
                 'detail_name'=>$detail_name,
                 'detail_inn'=>$detail_inn,
                 'detail_account'=>$detail_account,
-                'detail_purpose_of_payment'=>$detail_purpose_of_payment,
+//                'detail_purpose_of_payment'=>$detail_purpose_of_payment,
                 'code_currency'=>$code_currency,
                 'tip_deb_kred'=>$tip_deb_kred,
                 'contract_date'=>$contract_date,
@@ -110,7 +110,8 @@ class XujjatController extends Controller
                 'bank_mfo'=>$bank_mfo,
                 'company_inn'=>$company_inn,
                 ])
-                ->andFilterWhere(['between', 'detail_date', $startDT,$endDT.' 23:59:59']);
+                ->andFilterWhere(['between', 'detail_date', $startDT,$endDT.' 23:59:59'])
+                ->andFilterWhere(['like', 'detail_purpose_of_payment', $detail_purpose_of_payment]);
 //                ->orwhere(['detail_name'=>$detail_name])
 //                ->andwhere(['detail_name'=>$detail_name])
 //                ->all();
