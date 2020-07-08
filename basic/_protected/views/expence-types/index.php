@@ -8,7 +8,7 @@ use yii\bootstrap\Modal;
 /* @var $searchModel app\models\ExpenceTypesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Expence Types';
+$this->title = 'Харажатлар тури';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div  style="padding-bottom: 30px">
