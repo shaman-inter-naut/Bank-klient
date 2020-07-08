@@ -1,4 +1,5 @@
 <?
+use yii\helpers\ArrayHelper;
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -95,6 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         'name' => 'date',
 //                        'value' => $date,
+//                        'value' => $_POST['date'] ? $_POST['date'] : [],
                         'pluginOptions' => [
                             'autoclose' => true,
                             'format' => 'dd.mm.yyyy'
@@ -119,6 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DatePicker::widget([
                     'options' => ['placeholder' => 'Проводка(Дан...)',
                         // 'value' => date('Y-m-d')
+                        'class'=> 'inputform',
                     ],
                     'name'=> 'startDT',
                     'pluginOptions' => [
@@ -131,6 +134,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DatePicker::widget([
                     'options' => ['placeholder' => 'Проводка(Дан...)',
                         // 'value' => date('Y-m-d')
+                        'class'=> 'inputform',
                     ],
                     'name'=> 'endDT',
                     'pluginOptions' => [
@@ -179,6 +183,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <?$options = ['class'=> 'inputform','placeholder' => 'Корхонани киритинг'] ?>
                             <?= Html::textInput('short_name',null , $options) ?>
+<!--                            --><?//= Html::dropDownList('short_name',null ,  [ null=>'Корхонани киритинг', ArrayHelper::map(\app\models\Company::find()->all(),'id','short_name')],$options) ?>
+
 
 
                             <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
