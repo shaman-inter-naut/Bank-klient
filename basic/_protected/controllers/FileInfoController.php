@@ -793,7 +793,10 @@ class FileInfoController extends Controller
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
 //                print_r( $file);
                 foreach ($file as $key_file => $value_file) {
-                    $accounts = AccountNumber::find()->where(['company_inn' => $value_file->company_inn])
+                    $company = Company::find()->where(['inn' => $value_file->company_inn])->one();
+//                    print_r($company->inn);
+
+                    $accounts = AccountNumber::find()->where(['company_id' => $company->id])
                                                     ->andWhere(['account_number' => $value_file->company_account])->sum('stock');
 
 //                    print_r($accounts);

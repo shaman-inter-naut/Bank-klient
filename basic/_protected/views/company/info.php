@@ -44,26 +44,61 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['accountnumber/create?company_id='.$getID->id, 'id' => $val->id], ['class' => 'bankview material-icons']);?></div>
                     <div class="col-md-11"><?= $getID->name; ?> нинг хисоб рақамлари</div>
                 </h4> </th>
-            <th width="15%"><h4> Хисоб рақам:</h4></th>
+            <th width="15%"><h4> Қолдиқ:</h4></th>
 <!--            <th width="10%"><h4> Статус:</h4></th>-->
-            <th width="10%"><h4> Қолдиқ:</h4></th>
             <th width="15%"><h4> Сана:</h4></th>
         </tr>
         </thead>
         <tbody>
-        <?  foreach ( $companyone as $key => $val){  ?>
+        <?  foreach ($companyone as $key => $val){  ?>
             <tr>
                 <th><?=$key+1?></th>
-                <th style="text-align: left; vertical-align: center !important;"><?=$val->bankbr->short_name?></th>
                 <th style="text-align: left">
-                    <?= $val->account_number?>
+                    <button class="accordion"  style="color: darkgreen"><?= $val->bankbr->short_name; ?></button>
+                    <div class="panel">
+                        <br>
+                        <table class="table" border="1" width="100%">
+                            <tr>
+                                <td width="90%"><?= $val->account_number; ?></td>
+                                <td width="5%" >
+                                    <?= Html::a('create', ['accountnumber/update', 'id' => $val->id], ['class' => 'bankview material-icons']);?>
+                                </td>
+                                <td width="5%">
+                                    <!--                                    --><?//= Html::a('delete_forever', ['bankbranch/delete', 'id' => $val->id], ['class' => ' material-icons']);?>
+                                    <!--                                    <a href="--><?//=Url::to(['bankbranch/delete','id'=>$value->id]);?>
+                                    <!--                                    " title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Ushbu bo`lim o`chirib tashlansinmi?" method="post">-->
+                                    <!--                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"><i class="delete_forever"></i></span></a>-->
+                                    <?= Html::a('delete_forever', ['/accountnumber/delete', 'id' => $val->id], [
+                                        'class' => 'bankview material-icons',
+                                        'data' => [
+                                            'confirm' => 'Ўчириб юборилсинми?',
+                                            'method' => 'post',
+                                        ],
+                                    ]) ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </th>
-<!--                <th>--><?//= ($val->is_main == 0) ? "Асосий" : "Иккиламчи"; ?><!--</th>-->
                 <th><?= $val->stock?></th>
                 <th><?= $val->stock_date?></th>
             </tr>
         <?php } ?>
         </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </table>
 </div>
 </div>

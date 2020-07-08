@@ -33,7 +33,7 @@ class AccountNumber extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['account_number', 'company_id', 'company_inn', 'bank_branch_id'], 'integer'],
+            [['account_number', 'company_id',  'bank_branch_id'], 'integer'],
             [['account_number'], 'required'],
             [['bank_branch_id'], 'exist', 'skipOnError' => true, 'targetClass' => BankBranch::className(), 'targetAttribute' => ['bank_branch_id' => 'id']],
             [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
@@ -50,7 +50,6 @@ class AccountNumber extends \yii\db\ActiveRecord
             'account_number' => 'Account Number',
             'company_id' => 'Company ID',
             'bank_branch_id' => 'Bank Branch ID',
-            'company_inn' => 'Корхона ИНН',
         ];
     }
 
