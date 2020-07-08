@@ -67,6 +67,7 @@ class AccountnumberController extends Controller
      */
     public function actionView($id)
     {
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -79,6 +80,9 @@ class AccountnumberController extends Controller
      */
     public function actionCreate()
     {
+
+
+
         $model = new AccountNumber123();
         $model->company_id = empty(Yii::$app->request->get('company_id')) ? 1 : Yii::$app->request->get('company_id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

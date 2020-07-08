@@ -764,7 +764,6 @@ class FileInfoController extends Controller
 
     public function actionToHtmlTable(){
 
-        $model = new FileInfo();
 
         $companyName = Company::find()->limit(23)->all();
 
@@ -784,7 +783,7 @@ class FileInfoController extends Controller
             $nDepUSD = ['20614840'],
             $nDepEUR = ['20614978'],
             $nDepRUB = ['20614643'],
-            $nKorpKarta = ['226200001', '226200005', '226200008', '226200003'],
+            $nKorpKarta = ['22620000'],
         ];
 
         foreach ($massiv as $key_massiv => $value_massiv){
@@ -794,12 +793,16 @@ class FileInfoController extends Controller
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
 //                print_r( $file);
                 foreach ($file as $key_file => $value_file) {
-                    $accounts = AccountNumber::find()->where(['company_inn' => $value_file->company_inn])->sum('stock');
+                    $accounts = AccountNumber::find()->where(['company_inn' => $value_file->company_inn])
+                                                    ->andWhere(['account_number' => $value_file->company_account])->sum('stock');
+
 //                    print_r($accounts);
+
                     //$value_file->depozitBefore = $value_file->depozitBefore ? $value_file->depozitBefore : 0;
 
                     $company_unikal = substr($value_file->company_account, 9, 8);
-                    $summa[$company_unikal]['bosh'][$key_massiv][$value_n] = $accounts;
+                    $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $accounts;
+
 //                    foreach ($accounts as $key_acc => $value_acc){
 //                        $summa[$company_unikal]['bosh'][$key_massiv][$value_acc->account_number] += $value_acc->stock;
 //                    }
@@ -824,11 +827,11 @@ class FileInfoController extends Controller
             }
         }
 
-        //print_r($acc);
+//        print_r($accounts);
 
 
 
-        //print_r($summa); exit;
+//        print_r($summa); exit;
 
 
 //        foreach ($companyName as $i => $cName) {
