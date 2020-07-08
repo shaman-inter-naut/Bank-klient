@@ -27,6 +27,8 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <?= $form->field($model, 'account_number')->textInput([])->label('Хисоб рақам') ?>
 
+    <?= $form->field($model, 'company_inn')->textInput([])->label('Корхона ИНН') ?>
+
     <?= $form->field($model, 'is_main')->radioList(['1'=>'Асосий ', '2'=>'Махсус', '3'=>'Депозит ', '4'=>'Корпоратив карта '])->label(false) ?>
 
     <?= $form->field($model, 'stock')->textInput([])->label('Қолдиқ') ?>

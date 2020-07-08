@@ -142,8 +142,9 @@ use app\models\FileInfo;
 //            echo " Kredit: ".array_sum($arr_kredit)." | ";
 //            echo " Debet: ".array_sum($arr_debet)." | ";
                 $natija = array_sum($arr_bosh) + array_sum($arr_kredit) - array_sum($arr_debet);
+//                $model->depozitAfter = $natija;
+//                $model->save();
                 $sum_new_array[$j] += $natija;
-
                 ?>
             <td style="text-align: right"><?= number_format($natija, 2, ',', ' '); ?></td>
         <?php } ?>

@@ -109,7 +109,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'company_account',
             'company_inn',
-//            'file_name',
             ['attribute'=>'file_name',
                 'format'=>'raw',
 //                '' => '',
@@ -118,8 +117,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'file_date',
             'data_period',
-            'depozitBefore',
-            'depozitAfter',
+            ['attribute'=>'depozitBefore',
+                'value' => $getBeforeDeposit->stock
+            ],
+            ['attribute'=>'depozitAfter',
+                'value' => $getAfterDeposit
+            ],
             'countDetailToRecord',
             'countDetailNoRecord',
         ],
