@@ -78,11 +78,19 @@ class FileInfoController extends Controller
     public function actionView($id)
     {
 
+        $model = new FileInfo();
+
         $allDebet = Document::find()->where(['file_id' => $id])->sum('detail_debet');
         $allKredit = Document::find()->where(['file_id' => $id])->sum('detail_kredit');
 
         $lastInserted = FileInfo::find()->where(['id' => $id])->one();
         $getCompanyINN = Company::find()->where(['inn' => $lastInserted->company_inn])->one();
+
+        $getAfterDeposit = $lastInserted->depozitAfter;
+        $getBeforeDeposit = AccountNumber::find()->where(['account_number' => $lastInserted->company_account])->one();
+
+//        $model->depozitBefore = $getBeforeDeposit->stock;
+//        $model->save(false);
 
         $get_company_name = $getCompanyINN->name;
 
@@ -107,6 +115,8 @@ class FileInfoController extends Controller
             'debet' => $debet,
             'allDebet' => $allDebet,
             'allKredit' => $allKredit,
+            'getBeforeDeposit' => $getBeforeDeposit,
+            'getAfterDeposit' => $getAfterDeposit,
         ]);
     }
 
@@ -754,6 +764,7 @@ class FileInfoController extends Controller
 
     public function actionToHtmlTable(){
 
+
         $companyName = Company::find()->limit(23)->all();
 
         $massiv = [
@@ -772,7 +783,7 @@ class FileInfoController extends Controller
             $nDepUSD = ['20614840'],
             $nDepEUR = ['20614978'],
             $nDepRUB = ['20614643'],
-            $nKorpKarta = ['226200001', '226200005', '226200008', '226200003'],
+            $nKorpKarta = ['22620000'],
         ];
 
         foreach ($massiv as $key_massiv => $value_massiv){
@@ -782,12 +793,22 @@ class FileInfoController extends Controller
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
 //                print_r( $file);
                 foreach ($file as $key_file => $value_file) {
-                    $accounts = AccountNumber::find()->where(['like', 'account_number', $value_file->company_account])->all();
+                    $accounts = AccountNumber::find()->where(['company_inn' => $value_file->company_inn])
+                                                    ->andWhere(['account_number' => $value_file->company_account])->sum('stock');
+
 //                    print_r($accounts);
-                    $acc = $accounts[0]['stock'];
+
                     //$value_file->depozitBefore = $value_file->depozitBefore ? $value_file->depozitBefore : 0;
-//                    print_r( $value_file);
+
                     $company_unikal = substr($value_file->company_account, 9, 8);
+                    $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $accounts;
+
+//                    foreach ($accounts as $key_acc => $value_acc){
+//                        $summa[$company_unikal]['bosh'][$key_massiv][$value_acc->account_number] += $value_acc->stock;
+//                    }
+
+
+
 //                    print_r($company_unikal);
                     $document = Document::find()->where(['file_id' => $value_file->id])->all();
 //                    print_r($document);
@@ -798,21 +819,19 @@ class FileInfoController extends Controller
                             $val->detail_debet = $val->detail_debet ? $val->detail_debet : 0;
                             $summa[$company_unikal]['kredit'][$key_massiv][$value_n] += $val->detail_kredit;
                             $summa[$company_unikal]['debet'][$key_massiv][$value_n] += $val->detail_debet;
-                            $summa[$company_unikal]['bosh'][$key_massiv][$value_n] = $accounts[0]['stock'];
                         }
                     }
-                    else{
-                        $summa[$company_unikal]['bosh'][$key_massiv][$value_n] = $accounts[0]['stock'];
-                    }
                 }
+
+
             }
         }
 
+//        print_r($accounts);
 
 
 
-
-//        print_r($bosh); exit;
+//        print_r($summa); exit;
 
 
 //        foreach ($companyName as $i => $cName) {
@@ -833,7 +852,8 @@ class FileInfoController extends Controller
         return $this->render('to-html-table', [
             'companyName' => $companyName,
             'nUZS' => $nUZS,
-            'summa' => $summa
+            'summa' => $summa,
+            'model' => $model
         ]);
     }
 

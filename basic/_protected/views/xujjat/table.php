@@ -1,4 +1,5 @@
 <?
+use yii\helpers\ArrayHelper;
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -95,6 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         'name' => 'date',
 //                        'value' => $date,
+//                        'value' => $_POST['date'] ? $_POST['date'] : [],
                         'pluginOptions' => [
                             'autoclose' => true,
                             'format' => 'dd.mm.yyyy'
@@ -119,6 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DatePicker::widget([
                     'options' => ['placeholder' => 'Проводка(Дан...)',
                         // 'value' => date('Y-m-d')
+                        'class'=> 'inputform',
                     ],
                     'name'=> 'startDT',
                     'pluginOptions' => [
@@ -131,6 +134,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DatePicker::widget([
                     'options' => ['placeholder' => 'Проводка(Дан...)',
                         // 'value' => date('Y-m-d')
+                        'class'=> 'inputform',
                     ],
                     'name'=> 'endDT',
                     'pluginOptions' => [
@@ -139,27 +143,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]
                 ]); ?>
             </div>
-
-
-
-
         </section>
+
         <section style="padding: 0 0 0 15px">
 
                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор ИНН ни киритинг'] ?>
                            <?= Html::textInput('detail_inn',null , $options) ?>
 
-
                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор Х-Рни киритинг'] ?>
                            <?= Html::textInput('detail_account',null , $options) ?>
 
-
-
-
-
                             <?$options = ['class'=> 'inputform','placeholder' => 'Тўлов мақсадини киритинг'] ?>
                             <?= Html::textInput('detail_purpose_of_payment',null , $options) ?>
-
 
                             <?$options = ['class'=> 'inputform','placeholder' => 'Валюта кодини киритинг'] ?>
                             <?= Html::textInput('code_currency',null , $options) ?>
@@ -170,14 +165,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             1=>'Кирим',
                             0=>'Чиқим',
                             ];?>
+
                             <?$options = ['class'=> 'inputform','placeholder' => 'Валюта кодини киритинг'] ?>
                             <?= Html::dropDownList('tip_deb_kred',null , $items,$options) ?>
 
-
                             <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор номини киритинг'] ?>
                             <?= Html::textInput('detail_name',null , $options) ?>
-
-
 
                             <?$options = ['class'=> 'inputform','placeholder' => 'Хисоб рақамни киритинг'] ?>
                             <?= Html::textInput('company_account',null , $options) ?>
@@ -188,14 +181,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?$options = ['class'=> 'inputform','placeholder' => 'ИННни киритинг'] ?>
                             <?= Html::textInput('company_inn',null , $options) ?>
 
-
+                            <?$options = ['class'=> 'inputform','placeholder' => 'Корхонани киритинг'] ?>
+                            <?= Html::textInput('short_name',null , $options) ?>
+<!--                            --><?//= Html::dropDownList('short_name',null ,  [ null=>'Корхонани киритинг', ArrayHelper::map(\app\models\Company::find()->all(),'id','short_name')],$options) ?>
 
 
 
                             <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
                             <?= Html::submitButton('Reset', ['class' => 'btn btn-success']) ?>
-
-
 
 
                     <?php ActiveForm::end(); ?>
@@ -208,7 +201,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--    <h1>--><?//=$this->title ?><!--</h1>-->
     <? if ($document){?>
     <div id="stil" class="stil" >
-    <table  class=" table table-striped" id="tblData">
+    <table  border="1"  class=" table table-striped" id="tblData">
         <thead  class="thed">
         <tr>
             <th>№</th>
@@ -225,7 +218,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Валюта коди</th>
             <th>Кирим</th>
             <th>Чиқим</th>
-            <th>Статус</th>
+<!--            <th>Статус</th>-->
             <th>Шартнома санаси</th>
             <th>Шартнома Рақами</th>
         </tr>
@@ -238,7 +231,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?=$doc->file->bank_mfo?></td>
             <td><?=$doc->file->company_inn?></td>
             <td><?=$doc->file->company_account?></td>
-            <td><?=$doc->file->file_date?>	</td>
+            <td><?=$doc->file->file_date?></td>
             <td><?=$doc->detail_date?></td>
             <td><?=$doc->detail_name?></td>
             <td><?=$doc->detail_inn?></td>
@@ -263,7 +256,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?=$doc->code_currency?></td>
             <td><?=$doc->detail_debet?></td>
             <td><?=$doc->detail_kredit?></td>
-            <td><?=$doc->tip_deb_kred?></td>
+<!--            <td>--><?//=$doc->tip_deb_kred?><!--</td>-->
             <td><?=$doc->contract_date?></td>
             <td><?=$doc->detail_document_number?></td>
 

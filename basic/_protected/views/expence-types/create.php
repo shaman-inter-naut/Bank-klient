@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ExpenceTypes */
 
-$this->title = 'Create Expence Types';
+$this->title = 'Харажатлар тури қўшиш';
 $this->params['breadcrumbs'][] = ['label' => 'Expence Types', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

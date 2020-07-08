@@ -37,7 +37,7 @@ class AccountNumber123 extends \yii\db\ActiveRecord
     {
         return [
             [['company_id', 'account_number'], 'required'],
-            [['company_id', 'bank_branch_id', 'is_main'], 'integer'],
+            [['company_id', 'bank_branch_id', 'company_inn', 'is_main'], 'integer'],
             [['stock'], 'number'],
             [['stock_date'], 'safe'],
             [['account_number'], 'string', 'max' => 20],

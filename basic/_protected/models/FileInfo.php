@@ -40,8 +40,8 @@ class FileInfo extends \yii\db\ActiveRecord
             [['company_account', 'data_period'], 'string', 'max' => 50],
             [['company_inn', 'file_date'], 'string', 'max' => 25],
             [['file_name'], 'string', 'max' => 255],
-            [['company_unikal'], 'string', 'max' => 8],
             [['template'], 'string', 'max' => 5],
+            [['depozitAfter', 'depozitBefore'], 'string', 'max' => 75],
             [['file'], 'file'],
             [['description'], 'integer'],
             [['countDetailToRecord'], 'integer'],
@@ -73,6 +73,17 @@ class FileInfo extends \yii\db\ActiveRecord
             'countDetailNoRecord' => 'Сақланмаган проводкалар (аввал сақланган)',
         ];
     }
+
+//    public function beforeSave($insert)
+//    {
+//        if ($insert) {
+//
+//            ($this->detail_debet == 0) ? $this->tip_deb_kred = 0 : $this->tip_deb_kred = 1;
+//
+//            return parent::beforeSave($insert);
+//        }
+//    }
+
 
 
     public function getCompanyName()
