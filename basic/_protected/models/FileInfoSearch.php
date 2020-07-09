@@ -46,6 +46,7 @@ class FileInfoSearch extends FileInfo
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['id' => SORT_DESC]],
         ]);
 
         $this->load($params);
@@ -78,4 +79,5 @@ class FileInfoSearch extends FileInfo
 
         return $dataProvider;
     }
+
 }

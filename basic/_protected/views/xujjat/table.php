@@ -201,26 +201,33 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--    <h1>--><?//=$this->title ?><!--</h1>-->
     <? if ($document){?>
     <div id="stil" class="stil" >
+
+        <br>
     <table  border="1"  class=" table table-striped" id="tblData">
-        <thead  class="thed">
-        <tr>
-            <th>№</th>
-            <th>Корхона</th>
-            <th>МФО</th>
-            <th> ИНН</th>
-            <th class="xlText">Хисоб рақам</th>
-            <th>Хужжат яратилган сана</th>
-            <th>Проводканинг сана</th>
-            <th>Хамкор номи</th>
-            <th>Хамкор ИНН</th>
-            <th class="xlText">Хамкор Х-Р</th>
-            <th>Тўлов мақсади</th>
-            <th>Валюта коди</th>
-            <th>Кирим</th>
-            <th>Чиқим</th>
+        <thead   class="thed">
+        <tr style="text-align: center; background-color: white; color: darkblue; height: 50px;">
+            <th colspan="16">
+                <h4 >Барча проводкалар хақида маълумот</h4>
+            </th>
+        </tr>
+        <tr  >
+            <th style="background-color: darkgreen; color: white; height: 100px;">№</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Корхона</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">МФО</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;"> ИНН</th>
+            <th class="xlText" style="background-color: darkgreen; color: white; height: 100px;">Хисоб рақам</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Хужжат яратилган сана</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Проводканинг сана</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Хамкор номи</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Хамкор ИНН</th>
+            <th class="xlText" style="background-color: darkgreen; color: white; height: 100px;">Хамкор Х-Р</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Тўлов мақсади</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Валюта коди</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Кирим</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Чиқим</th>
 <!--            <th>Статус</th>-->
-            <th>Шартнома санаси</th>
-            <th>Шартнома Рақами</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Шартнома санаси</th>
+            <th style="background-color: darkgreen; color: white; height: 100px;">Шартнома Рақами</th>
         </tr>
         </thead>
         <tbody>
