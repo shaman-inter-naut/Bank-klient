@@ -121,7 +121,7 @@ class XujjatController extends Controller
                 'defaultPageSize' => 10,
                 'totalCount' => $document->count()
             ]);
-            $document=$document->offset($pagination->offset)->limit($pagination->limit)->all();
+            $document=$document->offset($pagination->offset)->limit($pagination->limit)->orderBy(['id'=>SORT_DESC])->all();
             return $this->render('table',[
 
                 'document' => $document,
@@ -137,7 +137,7 @@ class XujjatController extends Controller
             'defaultPageSize' => 10,
             'totalCount' => $document->count()
         ]);
-        $document=$document->offset($pagination->offset)->limit($pagination->limit)->all();
+        $document=$document->offset($pagination->offset)->limit($pagination->limit)->orderBy(['id'=>SORT_DESC])->all();
         return $this->render('table',[
 
             'document' => $document,
