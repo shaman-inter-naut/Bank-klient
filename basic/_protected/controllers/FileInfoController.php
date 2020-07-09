@@ -605,6 +605,10 @@ class FileInfoController extends Controller
                     $model->data_period = $interval;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
+
+                    $countDetailToRecord= 0;
+                    $countDetailNoRecord = 0;
+
                     foreach ($eee as $key => $value) {
                         $pat = array(
                             "mfo" => "((МФО:)\d{5})",     //mfo
@@ -631,6 +635,7 @@ class FileInfoController extends Controller
                                 'detail_kredit' => $kredit,
                             ])->all();
                         if (!$document) {
+                            $countDetailToRecord++;
                             $document = new Document();
                             $document->file_id = $lastID;
                             $document->detail_date = $date;
@@ -650,6 +655,7 @@ class FileInfoController extends Controller
                             $document->company_unikal = substr($acc, 9, 8);
                             $document->save(false);
                         } else if ($document) {
+                            $countDetailNoRecord++;
                             /*    session_start();
                                 $_SESSION['file_date'] = $value[0];
                                 $_SESSION['detail_document_number'] = $value[2];
