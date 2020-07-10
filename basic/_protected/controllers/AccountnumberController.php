@@ -80,14 +80,11 @@ class AccountnumberController extends Controller
      */
     public function actionCreate()
     {
-
-
-
         $model = new AccountNumber123();
         $model->company_id = empty(Yii::$app->request->get('company_id')) ? 1 : Yii::$app->request->get('company_id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 //            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['../company/info']);
+            return $this->redirect(['../company/info', 'id' =>$model->company_id]);
         }
 
         return $this->renderAjax('create', [
@@ -108,7 +105,7 @@ class AccountnumberController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['../company/info' ]);
+            return $this->redirect(['../company/info', 'id' =>$model->company_id ]);
         }
 
         return $this->renderAjax('update', [
