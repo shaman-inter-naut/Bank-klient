@@ -379,9 +379,12 @@ class FileInfoController extends Controller
                     $model->bank_id = $_POST['FileInfo']['bank_id'];
                     $model->bank_mfo = $mfo;
                     $model->company_account = $main;
+
                     $model->company_inn = $inn;
                     $unikal = substr($main, 9, 8);
                     $company = Company::find()->where(['unical_code' => $unikal])->one();
+                    $name = $company->name;
+                    $uni = $company->unical_code;
                     $model->company_id = $company->id;
                     $model->file_name = $filePath;
                     $model->file_date = date_format(date_create($date), 'Y-m-d');
@@ -464,10 +467,10 @@ class FileInfoController extends Controller
                     header($s);
                     echo '<div style="border: 0px solid gray; border-radius: 2px; background-color: silver; margin: 50px; padding: 30px; box-shadow: 5px 5px 20px;">';
                     echo '<b><h3 style="text-align: center; color:red;">Ушбу корхонанинг реквизитлари МБ га киритилмаганлиги сабабли дастур томонидан қабул қилинмади: </h3></b><br><br>';
-                    echo 'Банк МФО: <b>'.$mfoTest.'</b><br><br>';
-                    echo 'Корхона номи: <b>'.$innTest->name.'</b><br><br>';
-                    echo 'Корхона ИНН: <b>'.$innTest->inn.'</b><br><br>';
-                    echo 'Уникаль коди: <b>'.$innTest->unical_code.'</b><br><br><br>';
+                    echo 'Банк МФО: <b>'.$mfo.'</b><br><br>';
+                    echo 'Корхона номи: <b>'.$name.'</b><br><br>';
+                    echo 'Корхона ИНН: <b>'.$inn.'</b><br><br>';
+                    echo 'Уникаль коди: <b>'.$uni.'</b><br><br><br>';
                     echo '<h3>Корхонанинг реквизитларини киритиш учун <a href="'.Url::home(true).'company/info" ><b> "Корхона ва хисоб рақамлар"</b> сахифасига ўтиш</a></h3><br>';
                     echo "</div>";
                     exit;
@@ -866,7 +869,8 @@ class FileInfoController extends Controller
             $nDepUSD = ['20614840'],
             $nDepEUR = ['20614978'],
             $nDepRUB = ['20614643'],
-            $nKorpKarta = ['226200001', '226200003', '226200005', '226200008'],
+//            $nKorpKarta = ['226200001', '226200003', '226200005', '226200008'],
+            $nKorpKarta = ['226200000','226200001','226200002','226200003','226200004','226200005','226200006', '226200007', '226200008', '226200009'],
         ];
 
         foreach ($massiv as $key_massiv => $value_massiv){
@@ -883,6 +887,7 @@ class FileInfoController extends Controller
 //                        echo "Okkey";
                     }else{
                         $summa[$company_unikal]['bosh'][$key_massiv][$value_n] = $accounts;
+//                        echo "NO";
                     }
 
 
@@ -903,7 +908,7 @@ class FileInfoController extends Controller
         }
 
 
-    //    print_r($summa);
+//        print_r($summa);
 
 
 //        foreach ($companyName as $i => $cName) {
