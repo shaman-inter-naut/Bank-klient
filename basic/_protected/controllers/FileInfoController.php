@@ -116,7 +116,7 @@ class FileInfoController extends Controller
             'allDebet' => $allDebet,
             'allKredit' => $allKredit,
             'getBeforeDeposit' => $getBeforeDeposit,
-            'getAfterDeposit' => $getAfterDeposit,
+           // 'getAfterDeposit' => $getAfterDeposit,
         ]);
     }
 
@@ -252,8 +252,10 @@ class FileInfoController extends Controller
                             "inn" => "((ИНН:\s+)\d{9})",   // inn
                             "toMFO" => "((ЖИЗЗАХ Ш.,\s+)\D+)",   // inn
                             "date" => "((Входящий остаток на\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
-                            "interval1" => "((\s+Выписка с\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
-                            "interval2" => "((\s+по\s+)\d{1,2}\.\d{1,2}\.\d{4})",         // date
+                            "depositBefore" => "((Входящий остаток на\s+\d{1,2}\.\d{1,2}\.\d{4}:\s+)?\d{2,}\.\d{2})",              // depositBefore
+                            "depositAfter" => "((Исходящий остаток за\s+\d{1,2}\.\d{1,2}\.\d{4}:\s+)?\d{3,}\.\d{2})",              // depositBefore
+                            "interval1" => "((\s+Выписка с\s+)\d{1,2}\.\d{1,2}\.\d{4})",           // interval1
+                            "interval2" => "((\s+по\s+)\d{1,2}\.\d{1,2}\.\d{4})",                  // interval2
                             "toMFO" => '(/ТИФ МИЛЛИЙ БАНКИ/)'         // toMFO
                         );
                         foreach ($patterns as $key => $pattern) {
@@ -262,18 +264,28 @@ class FileInfoController extends Controller
                                 $results[$key] = $matches[0][0];
                             }
                         }
-
-
-                        
-                        
-
-//
 //
 //                        echo "<pre>";
 //                            print_r($results);
 //                        echo "<pre>";
 
+                    }else{
+                        $patterns2 = array(
+                            "depositAfter" => "((Исходящий остаток за\s+\d{1,2}\.\d{1,2}\.\d{4}:\s+)?\d{3,}\.\d{2})",              // depositAfter
+                        );
+                        foreach ($patterns2 as $key2 => $pattern2) {
+                            preg_match($pattern2, $s, $matches2, PREG_OFFSET_CAPTURE, 0);
+                            if ($matches2) {
+                                $results2[$key2] = $matches2[0][0];
+                            }
+                        }
+//                        echo "<pre>";
+//                        print_r($results2);
+//                        echo "<pre>";
+
                     }
+
+
                     // begin   Asosiy contentni ichini o`qish
                     if (strpos($s, "КОРРЕСПОНДЕНТ:")) {
                         $details = true;
@@ -337,8 +349,10 @@ class FileInfoController extends Controller
                 $beginDeposit = trim(str_replace("Остаток на начало периода:", "", $results['beginDeposit']));
                 $beginDeposit = trim(str_replace(",", "", $beginDeposit));
                 $endDeposit = trim(str_replace("Остаток на конец периода:", "", $results['endDeposit']));
+                $endDeposit = trim(str_replace(",", "", $endDeposit));
                 $interval = trim(str_replace("Сведения о работе счета c ", "", $results['interval']));
                 $interval = str_replace(" по ", " - ", $interval);
+                $period = explode(" - ", $interval);
 
                 $mfoTest = BankBranch::find()->where(['mfo' => $mfo])->one();
                 $innTest = Company::find()->where(['inn' => $inn])->one();
@@ -346,6 +360,22 @@ class FileInfoController extends Controller
 
                 if (isset($mainTest)) {
                 //******************************* begin save to db ********************
+
+                    $file = FileInfo::find()->where(
+                        [
+                            'bank_mfo' => $mfo,
+                            'company_account' => $main,
+                            'company_inn' => $inn,
+                            'file_date' => date_format(date_create($date), 'Y-m-d'),
+                            'data_period_start' => date_format(date_create($period[0]), 'Y-m-d'),
+                            'data_period_end' => date_format(date_create($period[1]), 'Y-m-d'),
+                            'depozitBefore' => $beginDeposit,
+                            'depozitAfter' => $endDeposit,
+                        ])->all();
+
+                    $getThisID = $file[0]['id'];
+
+                    if (!$file){
                     $model->bank_id = $_POST['FileInfo']['bank_id'];
                     $model->bank_mfo = $mfo;
                     $model->company_account = $main;
@@ -354,12 +384,11 @@ class FileInfoController extends Controller
                     $company = Company::find()->where(['unical_code' => $unikal])->one();
                     $model->company_id = $company->id;
                     $model->file_name = $filePath;
-                    $model->file_date = $date;
-                    $model->data_period = $interval;
-        //            $model->depozitBefore = $beginDeposit;
-        //            $endDeposit = trim(str_replace(",", "", $endDeposit));
-        //            $model->depozitAfter = $endDeposit;
-//                    $model->description = $detail_counter;
+                    $model->file_date = date_format(date_create($date), 'Y-m-d');
+                    $model->data_period_start = date_format(date_create($period[0]), 'Y-m-d');
+                    $model->data_period_end = date_format(date_create($period[1]), 'Y-m-d');
+                    $model->depozitBefore = $beginDeposit;
+                    $model->depozitAfter = $endDeposit;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
@@ -391,9 +420,8 @@ class FileInfoController extends Controller
                                 'detail_kredit' => $kredit,
                             ])->all();
 
-
                         if (!$document) {
-                            $countDetailToRecord ++;
+                            $countDetailToRecord++;
                             $document = new Document();
                             $document->file_id = $lastID;
                             $document->detail_date = $date;
@@ -413,8 +441,7 @@ class FileInfoController extends Controller
                             $document->company_unikal = substr($main, 9, 8);
 
                             $document->save(false);
-                        }
-                        else if ($document) {
+                        } else if ($document) {
                             $countDetailNoRecord++;
 //                            session_start();
 //                            $_SESSION['file_date'] = $value[0];
@@ -426,14 +453,10 @@ class FileInfoController extends Controller
 //                            header($s);
                         }
                     }
-
-                    $model->countDetailToRecord = $countDetailToRecord;
-                    $model->countDetailNoRecord = $countDetailNoRecord;
-                    $model->save(false);
-
-  //                  echo "To: ".$countDetailToRecord;
-  //                  echo "No: ".$countDetailNoRecord;
-
+                        $model->countDetailToRecord = $countDetailToRecord;
+                        $model->countDetailNoRecord = $countDetailNoRecord;
+                        $model->save(false);
+                    }
 
                 //******************************* end save to db **********************
                 }else{
@@ -460,9 +483,13 @@ class FileInfoController extends Controller
                 $interval2 = trim(str_replace("посл.проводки :", "", $results['interval2']));
                 $interval = $interval1 . ' - ' . $interval2;
 
-        //        $beginDeposit = trim(str_replace("Начало дня Пассив", "", $results['beginDeposit']));
-        //        $beginDeposit = trim(str_replace(",", "", $beginDeposit));
-        //        $endDeposit = trim(str_replace("Конец дня Пассив", "", $results['endDeposit']));
+                $beginDeposit = trim(str_replace("Начало дня Пассив", "", $results['beginDeposit']));
+                $beginDeposit = trim(str_replace(",", "", $beginDeposit));
+                $endDeposit = trim(str_replace("Конец дня Пассив", "", $results['endDeposit']));
+                $endDeposit = trim(str_replace(",", "", $endDeposit));
+
+//                echo $beginDeposit." | ";
+//                echo $endDeposit." | ";
 
                 $mfoTest = BankBranch::find()->where(['mfo' => $mfo])->one();
                 $unikalTest = substr($acc, 9, 8);
@@ -477,18 +504,36 @@ class FileInfoController extends Controller
 
                 if (isset($accTest)) {
                     //******************************* begin save to db ********************
+
+                    $unikal = substr($acc, 9, 8);
+                    $company = Company::find()->where(['unical_code' => $unikal])->one();
+
+                    $file = FileInfo::find()->where(
+                        [
+                            'bank_mfo' => $mfo,
+                            'company_account' => $acc,
+                            'company_inn' => $company->inn,
+                            'file_date' => date_format(date_create($date), 'Y-m-d'),
+                            'data_period_start' => date_format(date_create($interval1), 'Y-m-d'),
+                            'data_period_end' => date_format(date_create($interval2), 'Y-m-d'),
+                            'depozitBefore' => $beginDeposit,
+                            'depozitAfter' => $endDeposit,
+                        ])->all();
+
+                    $getThisID = $file[0]['id'];
+
+                    if (!$file){
                     $model->bank_id = $_POST['FileInfo']['bank_id'];
                     $model->bank_mfo = $mfo;
                     $model->company_account = $acc;
-                    $unikal = substr($acc, 9, 8);
-                    $company = Company::find()->where(['unical_code' => $unikal])->one();
+
                     $model->company_inn = $company->inn;
                     $model->file_name = $filePath;
-                    $model->file_date = $date;
-                    $model->data_period = $interval;
-                  //  $model->depozitBefore = $beginDeposit;
-                 //   $endDeposit = trim(str_replace(",", "", $endDeposit));
-                 //   $model->depozitAfter = $endDeposit;
+                    $model->file_date = date_format(date_create($date), 'Y-m-d');
+                    $model->data_period_start = date_format(date_create($interval1), 'Y-m-d');
+                    $model->data_period_end = date_format(date_create($interval2), 'Y-m-d');
+                    $model->depozitBefore = $beginDeposit;
+                    $model->depozitAfter = $endDeposit;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
@@ -552,13 +597,14 @@ class FileInfoController extends Controller
 //                            $_SESSION['detail_purpose_of_payment'] = $value[4];
 //                            $_SESSION['detail_debet'] = $debet;
 //                            $_SESSION['detail_kredit'] = $kredit;
-//                            $s = 'Refresh:0; url='.Url::home(true).'file-info/view?id=' . $lastID;
+//                            $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
 //                            header($s);
                         }
                     }
-                    $model->countDetailToRecord = $countDetailToRecord;
-                    $model->countDetailNoRecord = $countDetailNoRecord;
-                    $model->save(false);
+                        $model->countDetailToRecord = $countDetailToRecord;
+                        $model->countDetailNoRecord = $countDetailNoRecord;
+                        $model->save(false);
+                    }
 
                     //******************************* end save to db ********************
 //                    echo $mainTest->account_number;
@@ -583,7 +629,13 @@ class FileInfoController extends Controller
                 $interval1 = trim(str_replace("Выписка с", "", $results['interval1']));
                 $interval2 = trim(str_replace("по", "", $results['interval2']));
                 $interval = $interval1 . ' - ' . $interval2;
-                $toMFO =
+                $depositBefore = trim(str_replace("Входящий остаток на", "", $results['depositBefore']));
+                $position = strpos($depositBefore, ':');
+                $getDepositBefore = substr($depositBefore, $position+2, strlen($depositBefore));
+                $depositAfter = trim(str_replace("Входящий остаток на", "", $results2['depositAfter']));
+                $position2 = strpos($depositAfter, ':');
+                $getdepositAfter = substr($depositAfter, $position2+2, strlen($depositAfter));
+//                print_r($getdepositAfter);
                    // ТИФ МИЛЛИЙ БАНКИ
 
 //                $mfoTest = BankBranch::find()->where(['mfo' => $mfo])->one();
@@ -596,13 +648,31 @@ class FileInfoController extends Controller
                 $mainTest = AccountNumber::find()->where(['account_number' => $acc])->one();
                 if (isset($mainTest)) {
                     //******************************* begin save to db ********************
+                    $file = FileInfo::find()->where(
+                        [
+                            'bank_mfo' => '00121',
+                            'company_account' => $acc,
+                            'company_inn' => $inn,
+                            'file_date' => date_format(date_create($date), 'Y-m-d'),
+                            'data_period_start' => date_format(date_create($interval1), 'Y-m-d'),
+                            'data_period_end' => date_format(date_create($interval2), 'Y-m-d'),
+                            'depozitBefore' => $getDepositBefore,
+                            'depozitAfter' => $getdepositAfter,
+                        ])->all();
+
+                    $getThisID = $file[0]['id'];
+
+                    if (!$file){
                     $model->bank_id = $_POST['FileInfo']['bank_id'];
                     $model->bank_mfo = '00121';
                     $model->company_account = $acc;
                     $model->company_inn = $inn;
                     $model->file_name = $filePath;
-                    $model->file_date = $date;
-                    $model->data_period = $interval;
+                    $model->file_date = date_format(date_create($date), 'Y-m-d');
+                    $model->data_period_start = date_format(date_create($interval1), 'Y-m-d');
+                    $model->data_period_end = date_format(date_create($interval2), 'Y-m-d');
+                    $model->depozitBefore = $getDepositBefore;
+                    $model->depozitAfter = $getdepositAfter;
                     $model->save(false);
                     $lastID = Yii::$app->db->getLastInsertID();
 
@@ -656,20 +726,20 @@ class FileInfoController extends Controller
                             $document->save(false);
                         } else if ($document) {
                             $countDetailNoRecord++;
-                            /*    session_start();
-                                $_SESSION['file_date'] = $value[0];
-                                $_SESSION['detail_document_number'] = $value[2];
-                                $_SESSION['detail_purpose_of_payment'] = $value[4];
-                                $_SESSION['detail_debet'] = $debet;
-                                $_SESSION['detail_kredit'] = $kredit;
-                                $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
-                                header($s); */
+//                            session_start();
+//                            $_SESSION['file_date'] = $value[0];
+//                            $_SESSION['detail_document_number'] = $value[2];
+//                            $_SESSION['detail_purpose_of_payment'] = $value[4];
+//                            $_SESSION['detail_debet'] = $debet;
+//                            $_SESSION['detail_kredit'] = $kredit;
+//                            $s = 'Refresh:0; url=http://bank-klient/file-info/view?id=' . $lastID;
+//                            header($s);
                         }
                     }
-                    $model->countDetailToRecord = $countDetailToRecord;
-                    $model->countDetailNoRecord = $countDetailNoRecord;
-                    $model->save(false);
-
+                        $model->countDetailToRecord = $countDetailToRecord;
+                        $model->countDetailNoRecord = $countDetailNoRecord;
+                        $model->save(false);
+                    }
                     //******************************* end save to db ********************
                 }else{
                     $s = 'Refresh:15; url='.Url::home(true).'file-info/index';
@@ -690,8 +760,15 @@ class FileInfoController extends Controller
 
 
         if ($model->load(Yii::$app->request->post())) {
+
+            if (isset($model->id)){
+                $id = $model->id;
+            }else{
+                $id = $getThisID;
+            }
+
             return $this->redirect(['view',
-                'id' => $model->id,
+                'id' => $id,
             ]);
         }
 
@@ -789,41 +866,32 @@ class FileInfoController extends Controller
             $nDepUSD = ['20614840'],
             $nDepEUR = ['20614978'],
             $nDepRUB = ['20614643'],
-            $nKorpKarta = ['22620000'],
+            $nKorpKarta = ['226200001', '226200003', '226200005', '226200008'],
         ];
 
         foreach ($massiv as $key_massiv => $value_massiv){
-//            print_r($value_massiv);
             foreach ($value_massiv as $key_n => $value_n) {
-//                print_r($key_massiv." | ".$value_n."<br>");
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
-//                print_r( $file);
                 foreach ($file as $key_file => $value_file) {
                     $company = Company::find()->where(['inn' => $value_file->company_inn])->one();
-//                    print_r($company->inn);
-
                     $accounts = AccountNumber::find()->where(['company_id' => $company->id])
-                                                    ->andWhere(['account_number' => $value_file->company_account])->sum('stock');
-
-//                    print_r($accounts);
-
-                    //$value_file->depozitBefore = $value_file->depozitBefore ? $value_file->depozitBefore : 0;
-
+                                                     ->andWhere(['account_number' => $value_file->company_account])->sum('stock');
                     $company_unikal = substr($value_file->company_account, 9, 8);
-                    $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $accounts;
 
-//                    foreach ($accounts as $key_acc => $value_acc){
-//                        $summa[$company_unikal]['bosh'][$key_massiv][$value_acc->account_number] += $value_acc->stock;
-//                    }
+                    if (round($accounts, 2) == $value_file->depozitBefore){
+                        $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $accounts;
+//                        echo "Okkey";
+                    }else{
+                        $summa[$company_unikal]['bosh'][$key_massiv][$value_n] = $accounts;
+                    }
 
 
 
-//                    print_r($company_unikal);
+//                    print_r($summa);
+
                     $document = Document::find()->where(['file_id' => $value_file->id])->all();
-//                    print_r($document);
                     if ($document) {
                         foreach ($document as $k => $val) {
-//                        print_r($val);
                             $val->detail_kredit = $val->detail_kredit ? $val->detail_kredit : 0;
                             $val->detail_debet = $val->detail_debet ? $val->detail_debet : 0;
                             $summa[$company_unikal]['kredit'][$key_massiv][$value_n] += $val->detail_kredit;
@@ -831,16 +899,11 @@ class FileInfoController extends Controller
                         }
                     }
                 }
-
-
             }
         }
 
-//        print_r($accounts);
 
-
-
-//        print_r($summa); exit;
+    //    print_r($summa);
 
 
 //        foreach ($companyName as $i => $cName) {
@@ -850,12 +913,6 @@ class FileInfoController extends Controller
 //            $sum_new_array += array_sum($new_array);
 //        }
 //        print_r($sum_new_array."<br>");
-
-
-
-
-
-
 
 
         return $this->render('to-html-table', [

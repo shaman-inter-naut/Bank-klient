@@ -116,12 +116,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 {return Html::a($data->file_name, ['#']);}
             ],
             'file_date',
-            'data_period',
+
+            'data_period_start',
+
+            'data_period_end',
+
             ['attribute'=>'depozitBefore',
-                'value' => $getBeforeDeposit->stock
+//                'value' => $getBeforeDeposit->stock,
             ],
+
             ['attribute'=>'depozitAfter',
-                'value' => $getAfterDeposit
+//                'value' => $getAfterDeposit->stock,
             ],
             'countDetailToRecord',
             'countDetailNoRecord',

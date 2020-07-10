@@ -37,7 +37,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'file_date')->hiddenInput(['maxlength' => true, 'value' => $fileINTER])->label(false)->error(false) ?>
 
-    <?= $form->field($model, 'data_period')->hiddenInput(['maxlength' => true, 'value' => $fileINTER])->label(false)->error(false) ?>
+    <?= $form->field($model, 'data_period_start')->hiddenInput(['maxlength' => true, 'value' => $fileINTER])->label(false)->error(false) ?>
+
+    <?= $form->field($model, 'data_period_end')->hiddenInput(['maxlength' => true, 'value' => $fileINTER])->label(false)->error(false) ?>
 
     <div class="form-group">
         <hr style="border: 2px solid silver">

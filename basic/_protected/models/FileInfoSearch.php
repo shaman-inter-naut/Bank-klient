@@ -18,7 +18,7 @@ class FileInfoSearch extends FileInfo
     {
         return [
             [['id', 'countDetailToRecord', 'countDetailNoRecord'], 'integer'],
-            [['depozitAfter', 'depozitBefore', 'bank_mfo', 'company_account', 'company_inn', 'file_name', 'file_date', 'doc','data_period'], 'safe'],
+            [['depozitAfter', 'depozitBefore', 'bank_mfo', 'company_account', 'company_inn', 'file_name', 'file_date', 'doc','data_period_start', 'data_period_end'], 'safe'],
         ];
     }
 
@@ -70,7 +70,8 @@ class FileInfoSearch extends FileInfo
             ->andFilterWhere(['like', 'company_inn', $this->company_inn])
             ->andFilterWhere(['like', 'file_name', $this->file_name])
             ->andFilterWhere(['like', 'file_date', $this->file_date])
-            ->andFilterWhere(['like', 'data_period', $this->data_period])
+            ->andFilterWhere(['like', 'data_period_start', $this->data_period_start])
+            ->andFilterWhere(['like', 'data_period_end', $this->data_period_end])
             ->andFilterWhere(['like', 'depozitAfter', $this->depozitAfter])
             ->andFilterWhere(['like', 'depozitBefore', $this->depozitBefore])
             ->andFilterWhere(['like', 'countDetailToRecord', $this->countDetailToRecord])

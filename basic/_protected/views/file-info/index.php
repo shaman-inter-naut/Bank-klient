@@ -139,7 +139,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header'=> 'Сақланмаган проводкалар сони',
             ],
 
-            'data_period',
+            'data_period_start',
+            'data_period_end',
             'file_date',
 
 
