@@ -123,10 +123,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['attribute'=>'depozitBefore',
 //                'value' => $getBeforeDeposit->stock,
+
             ],
 
             ['attribute'=>'depozitAfter',
-//                'value' => $getAfterDeposit->stock,
+                // 1-shablon bo`yicha OK
+            //    'value' => $getAfterDeposit->stock,
+                // 2-shablon bo`yicha sozlsh kerak
             ],
             'countDetailToRecord',
             'countDetailNoRecord',
@@ -158,8 +161,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--                    <td>--><?//= $value->detail_inn;  ?><!--</td>-->
                     <td><?= $value->detail_document_number;  ?></td>
                     <td><?= $value->detail_mfo;  ?></td>
-                    <td><?= $value->detail_debet;  ?></td>
-                    <td><?= $value->detail_kredit;  ?></td>
+                    <td><?= number_format($value->detail_debet, 2, ',', ' ')  ?></td>
+                    <td><?= number_format($value->detail_kredit, 2, ',', ' ')  ?></td>
                     <td><?= $value->detail_purpose_of_payment;  ?></td>
                 </tr>
     <?php
@@ -172,9 +175,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <thead  style="background-color: gray">
                     <th colspan="4" >ЖАМИ: </th>
-                    <th  ><?= round($allDebet, 2); ?></th>
+                    <th  ><?= number_format($allDebet, 2, ',', ' '); ?></th>
+                    <th  ><?= number_format($allKredit, 2, ',', ' '); ?></th>
 <!--                    <th  >--><?//=$kredit; ?><!--</th>-->
-                    <th  ><?= round($allKredit, 2); ?></th>
                 </thead>
 
             </table>

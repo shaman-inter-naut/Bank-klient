@@ -854,7 +854,12 @@ class FileInfoController extends Controller
         $companyName = Company::find()->limit(23)->all();
 
         $massiv = [
-            $n = ['20208000', '20210000', '20214000'],
+            $n = [
+                '20208000',
+                '20210000',
+                '20214000',
+                //'202140001', '202140002', '202140003', '202140004', '202140005', '202140006', '202140007', '202140008', '202140009'
+            ],
             $nUSD = ['20208840', '20210840', '20214840'],
             $nEUR = ['20208978', '20210978', '20214978'],
             $nRUB = ['20208643', '20210643', '20214643'],
@@ -869,8 +874,7 @@ class FileInfoController extends Controller
             $nDepUSD = ['20614840'],
             $nDepEUR = ['20614978'],
             $nDepRUB = ['20614643'],
-//            $nKorpKarta = ['226200001', '226200003', '226200005', '226200008'],
-            $nKorpKarta = ['226200000','226200001','226200002','226200003','226200004','226200005','226200006', '226200007', '226200008', '226200009'],
+            $nKorpKarta = ['22620000'],
         ];
 
         foreach ($massiv as $key_massiv => $value_massiv){
@@ -878,9 +882,9 @@ class FileInfoController extends Controller
                 $file = FileInfo::find()->where(['like', 'company_account', $value_n])->all();
                 foreach ($file as $key_file => $value_file) {
                     $company = Company::find()->where(['inn' => $value_file->company_inn])->one();
-                    $accounts = AccountNumber::find()->where(['company_id' => $company->id])
-                                                     ->andWhere(['account_number' => $value_file->company_account])->sum('stock');
                     $company_unikal = substr($value_file->company_account, 9, 8);
+                    $accounts = AccountNumber::find()->where(['company_id' => $company->id])
+                                                     ->andWhere(['like', 'account_number', substr($value_file->company_account, 0, 8)])->sum('stock');
 
                     if (round($accounts, 2) == $value_file->depozitBefore){
                         $summa[$company_unikal]['bosh'][$key_massiv][$value_n] += $accounts;
