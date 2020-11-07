@@ -81,21 +81,23 @@ class XujjatController extends Controller
     }
     public function actionTable(){
 
-        if ($_POST){
-            $date = $_POST['date'];
-            $detail_name = $_POST['detail_name'];
-            $detail_inn = $_POST['detail_inn'];
-            $detail_account = $_POST['detail_account'];
-            $detail_purpose_of_payment = $_POST['detail_purpose_of_payment'];
-            $code_currency = $_POST['code_currency'];
-            $tip_deb_kred = $_POST['tip_deb_kred'];
-            $contract_date = $_POST['contract_date'];
-            $company_account = $_POST['company_account'];
-            $bank_mfo = $_POST['bank_mfo'];
-            $company_inn = $_POST['company_inn'];
-            $startDT = $_POST['startDT'];
-            $endDT = $_POST['endDT'];
-            $short_name = $_POST['short_name'];
+        if ($_GET) {
+            $date = $_GET['date'];
+            $detail_name = $_GET['detail_name'];
+            $detail_inn = $_GET['detail_inn'];
+            $detail_account = $_GET['detail_account'];
+            $detail_purpose_of_payment = $_GET['detail_purpose_of_payment'];
+            $code_currency = $_GET['code_currency'];
+            $tip_deb_kred = $_GET['tip_deb_kred'];
+            $contract_date = $_GET['contract_date'];
+            $company_account = $_GET['company_account'];
+            $bank_mfo = $_GET['bank_mfo'];
+            $company_inn = $_GET['company_inn'];
+            $startDT = $_GET['startDT'];
+            $endDT = $_GET['endDT'];
+            $short_name = $_GET['short_name'];
+//        }
+
 
 
             $document = Xujjat::find()->joinWith('file')->joinWith('file.companyName')->andFilterWhere([
@@ -126,6 +128,7 @@ class XujjatController extends Controller
 
                 'document' => $document,
                 'pagination' => $pagination,
+                'detail_inn'=>$detail_inn
             ]);
 
         }

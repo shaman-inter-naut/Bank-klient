@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <div class="col-md-3">
-                    <?php $form = ActiveForm::begin(); ?>
+                    <?php $form = ActiveForm::begin(['method' => 'GET']); ?>
 
                     <?=DatePicker::widget([
                         'options' => [
@@ -145,10 +145,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </section>
 
+<?
+if (!isset($detail_inn)){
+    $detail_inn = null;
+}
+?>
+
         <section style="padding: 0 0 0 15px">
 
                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор ИНН ни киритинг'] ?>
-                           <?= Html::textInput('detail_inn',null , $options) ?>
+                           <?= Html::textInput('detail_inn',$detail_inn , $options) ?>
 
                            <?$options = ['class'=> 'inputform','placeholder' => 'Хамкор Х-Рни киритинг'] ?>
                            <?= Html::textInput('detail_account',null , $options) ?>
@@ -187,7 +193,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-                            <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary']) ?>
+                            <?= Html::submitButton('Қидириш', ['class' => 'btn btn-primary', 'method' => 'GET']) ?>
                             <?= Html::submitButton('Reset', ['class' => 'btn btn-success']) ?>
 
 
@@ -276,6 +282,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-6 text-left">
             <?= LinkPager::widget([
                 'pagination' => $pagination,
+//                'linkOptions' => ['data-method' => 'post']
             ]);?>
         </div>
 </div>
