@@ -9,6 +9,7 @@ use kartik\daterange\DateRangePicker;
 use kartik\field\FieldRange;
 use kartik\datecontrol\Module;
 use kartik\datecontrol\DateControl;
+use \nterms\pagesize\PageSize;
 
 
 /* @var $this yii\web\View */
@@ -42,6 +43,21 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
 
+     #w4 {
+         /*display: block;*/
+         /*width: 100%;*/
+         height: 34px;
+         padding: 6px 12px;
+         font-size: 14px;
+         line-height: 1.42857143;
+         color: #555;
+         background-color: #fff;
+         background-image: none;
+         border: 2px solid #ccc !important;
+         border-radius: 4px !important;
+     }
+
+
 </style>
 
 
@@ -62,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--    </p>-->
 
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?=PageSize::widget();?>
 <?// Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -72,6 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'stil',
             'id' => 'stil',
         ],
+        'filterSelector' => 'select[name="per-page"]',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn',
 

@@ -53,6 +53,7 @@ class XujjatController extends Controller
     {
         $searchModel = new XujjatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+//        $dataProvider->pagination = ['pageSize' => 15];
 
 
         return $this->render('index', [
@@ -120,7 +121,7 @@ class XujjatController extends Controller
 //                ->all();
 
             $pagination = new Pagination([
-                'defaultPageSize' => 10,
+                'defaultPageSize' => 5,
                 'totalCount' => $document->count()
             ]);
             $document=$document->offset($pagination->offset)->limit($pagination->limit)->orderBy(['id'=>SORT_DESC])->all();
@@ -137,7 +138,7 @@ class XujjatController extends Controller
 
 
         $pagination = new Pagination([
-            'defaultPageSize' => 10,
+            'defaultPageSize' => 5,
             'totalCount' => $document->count()
         ]);
         $document=$document->offset($pagination->offset)->limit($pagination->limit)->orderBy(['id'=>SORT_DESC])->all();

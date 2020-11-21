@@ -23,7 +23,8 @@
         "kartik-v/yii2-datecontrol": "@dev",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-date-range": "dev-master",
-        "phpoffice/phpspreadsheet": "^1.12"
+        "phpoffice/phpspreadsheet": "^1.12",
+        "nterms/yii2-pagesize-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

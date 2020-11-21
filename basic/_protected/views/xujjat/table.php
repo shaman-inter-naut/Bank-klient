@@ -279,11 +279,24 @@ if (!isset($detail_inn)){
 
 
     </table>
-        <div class="col-sm-6 text-left">
+        <div style="display: flex" class="col-sm-6 text-left">
             <?= LinkPager::widget([
                 'pagination' => $pagination,
 //                'linkOptions' => ['data-method' => 'post']
             ]);?>
+            <form>
+                <div style="padding-left: 0; margin: 22px 0 22px 20px; border-radius: 4px;" class="form-group">
+                    <select class="form-control" id="sel1">
+                        <option>20</option>
+                        <option>50</option>
+                        <option>100</option>
+<!--                        <option>200</option>-->
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6 text-left">
+
         </div>
 </div>
     <?}?>
