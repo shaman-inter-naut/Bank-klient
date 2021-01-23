@@ -66,6 +66,30 @@
       <path value="$PROJECT_DIR$/basic/_protected/vendor/phpspreadsheet/src" />
       <path value="$PROJECT_DIR$/basic/_protected/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/basic/_protected/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/yiisoft/yii2-jui" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/nterms/yii2-pagesize-widget" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-widget-activeform" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/2amigos/yii2-date-time-picker-widget" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-field-range" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-helpers" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-date-range" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/bower/smalot-bootstrap-datetimepicker" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/bower/jquery-ui" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-widget-select2" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-datecontrol" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/kartik-v/php-date-formatter" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/basic/_protected/vendor/select2/select2" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

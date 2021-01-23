@@ -32,22 +32,9 @@ class AppAsset extends AssetBundle
         '../../web/new.css',
         'css/bootstrap.min.css',
         'css/style.css',
-
-
-
-
-
-
-
-
-
-
-
     ];
 
     public $js = [
-
-
 //        '../../web/assets/vendor/jquery/jquery.min.js',
 //        '../../web/assets/vendor/bootstrap/js/bootstrap.bundle.min.js',
         '../../web/assets/vendor/jquery.easing/jquery.easing.min.js',

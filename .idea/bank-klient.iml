@@ -2,10 +2,13 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/2amigos/yii2-date-time-picker-widget" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/inputmask" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/jquery-ui" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/punycode" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/smalot-bootstrap-datetimepicker" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/bower/yii2-pjax" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/cebe/markdown" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/codeception/phpunit-wrapper" />
@@ -16,11 +19,25 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/fakerphp/faker" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/fzaninotto/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/php-date-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/strength-meter" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-date-range" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-datecontrol" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-field-range" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-helpers" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-krajee-base" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-password" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-widget-activeform" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-widget-datepicker" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/kartik-v/yii2-widget-select2" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/maennchen/zipstream-php" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/markbaker/complex" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/markbaker/matrix" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/myclabs/php-enum" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/nterms/yii2-pagesize-widget" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/opis/closure" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phar-io/version" />
@@ -38,6 +55,10 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/sebastian/comparator" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/sebastian/diff" />
@@ -50,10 +71,12 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/select2/select2" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/symfony/polyfill-iconv" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/symfony/polyfill-intl-normalizer" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/theseer/tokenizer" />
@@ -65,6 +88,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/yiisoft/yii2-debug" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/yiisoft/yii2-faker" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/yiisoft/yii2-gii" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/yiisoft/yii2-jui" />
       <excludeFolder url="file://$MODULE_DIR$/basic/_protected/vendor/yiisoft/yii2-swiftmailer" />
     </content>
     <orderEntry type="inheritedJdk" />

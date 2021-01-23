@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?// Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-//        'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'layout' => '{items}{pager}',
         'options' => [
 //            'class' => ' table-responsive '
